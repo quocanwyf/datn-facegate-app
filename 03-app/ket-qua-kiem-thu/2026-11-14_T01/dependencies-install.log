@@ -1,0 +1,31 @@
+Using Python 3.13.13 environment at: 03-app\hub\.venv
+Resolved 25 packages in 5.84s
+Downloading pillow (6.9MiB)
+Downloading pygments (1.2MiB)
+Downloading scipy (34.9MiB)
+Downloading numpy (12.0MiB)
+Downloading opencv-python (39.3MiB)
+Downloading scikit-image (11.4MiB)
+ Downloaded pygments
+ Downloaded pillow
+ Downloaded scikit-image
+ Downloaded numpy
+ Downloaded scipy
+ Downloaded opencv-python
+Prepared 15 packages in 2m 38s
+Installed 15 packages in 1.28s
+ + colorama==0.4.6
+ + imageio==2.38.1
+ + iniconfig==2.3.1
+ + lazy-loader==0.6
+ + numpy==2.5.4
+ + opencv-python==4.14.0.94
+ + packaging==24.1
+ + pillow==13.0.0
+ + pluggy==1.7.0
+ + pygments==2.21.0
+ + pytest==9.2.0
+ + pyyaml==6.0.3
+ + scikit-image==0.26.0
+ + scipy==1.18.1
+ + tifffile==2026.11.12

@@ -1,0 +1,12 @@
+warning: in the working copy of '03-app/hub/app/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/app/recog/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/app/recog/model_loader.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/pyproject.toml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/requirements.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/scripts/vendor_sync.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/tests/conftest.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/tests/test_feature_boundary.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/tests/test_model_gate.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/tests/test_vendor_hash.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/hub/tests/test_vendor_isolated.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '03-app/ket-qua-kiem-thu/2026-11-14_T01/bao-cao.md', LF will be replaced by CRLF the next time Git touches it

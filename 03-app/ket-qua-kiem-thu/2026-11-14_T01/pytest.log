@@ -1,0 +1,57 @@
+....{
+  "verify_report": {
+    "manifest_id": "r18_uniface_v1_lam0.6_m0.45_s3_e28:best",
+    "device": "cpu",
+    "steps": [
+      {
+        "step": 1,
+        "ok": true,
+        "sha256": "120489621accefd7e78da9bd83fe3c6360ad94877e8ac4b9cdfa1038ec8eef88"
+      },
+      {
+        "step": 2,
+        "ok": true,
+        "stripped_sha256": "b00612f58a5a3d6be9055ce6ff073fdafd3d8071c85ebdaa5462b198f2b1a065"
+      },
+      {
+        "step": 3,
+        "ok": true,
+        "epoch": 18,
+        "amp": false,
+        "missing_keys": [],
+        "unexpected_keys": []
+      },
+      {
+        "step": 4,
+        "ok": true,
+        "t_eq30": 0.3736472427845001,
+        "reference_t_eq30": 0.3736472427845001
+      }
+    ]
+  },
+  "meta": {
+    "sha256": "120489621accefd7e78da9bd83fe3c6360ad94877e8ac4b9cdfa1038ec8eef88",
+    "epoch": 18,
+    "global_step": 16416,
+    "head_name": "uniface_v1",
+    "backbone": "r18",
+    "amp": false,
+    "head_keys_ignored": [
+      "bias",
+      "proto",
+      "proto_seen",
+      "weight",
+      "weight_mom"
+    ],
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "is_stripped": false,
+    "t_eq30": 0.3736472427845001
+  }
+}
+.....Vendor: 33 file khớp manifest và nguồn.
+.backbones/eval/align/utils của code và code-v1: byte-equal.
+..{"features": "C:\\Users\\NMinH\\OneDrive\\Desktop\\code\\datn-facegate-app\\03-app\\hub\\vendor\\evaltest\\features.py", "backbones": "C:\\Users\\NMinH\\OneDrive\\Desktop\\code\\datn-facegate-app\\03-app\\hub\\vendor\\code\\fr\\backbones\\__init__.py", "research_on_sys_path": false}
+
+.
+13 passed in 14.24s

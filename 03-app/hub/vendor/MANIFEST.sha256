@@ -1,0 +1,170 @@
+{
+  "format": 1,
+  "files": [
+    {
+      "path": "code/train.py",
+      "source": "02-thuc-nghiem/code/train.py",
+      "sha256": "6fed45dfddecd6ef949d9957842b23ab55b2e2c826703d793b6264c4bbadc4f7"
+    },
+    {
+      "path": "code/fr/__init__.py",
+      "source": "02-thuc-nghiem/code/fr/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/fr/align/__init__.py",
+      "source": "02-thuc-nghiem/code/fr/align/__init__.py",
+      "sha256": "4dcfec99ad04448260171b79b57dce59496ce4eb21eba6024b9690ae1748a57c"
+    },
+    {
+      "path": "code/fr/align/detector.py",
+      "source": "02-thuc-nghiem/code/fr/align/detector.py",
+      "sha256": "5d2ca312fb57293fcdff500e4ede00d26d1a0c1ed5ab7ccc51b66a6e7acbdc95"
+    },
+    {
+      "path": "code/fr/align/models/face_detection_yunet_2023mar.onnx",
+      "source": "02-thuc-nghiem/code/fr/align/models/face_detection_yunet_2023mar.onnx",
+      "sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4"
+    },
+    {
+      "path": "code/fr/align/pipeline.py",
+      "source": "02-thuc-nghiem/code/fr/align/pipeline.py",
+      "sha256": "1833ad7fff0c6d44104edcf012e5e36692b6c5d486d004d9ec1bcf51fd4dd251"
+    },
+    {
+      "path": "code/fr/align/template.py",
+      "source": "02-thuc-nghiem/code/fr/align/template.py",
+      "sha256": "45a1679d25370cdc6c19e487a729781aa509ed5bd2ed56168bbb71e23dd399fc"
+    },
+    {
+      "path": "code/fr/backbones/__init__.py",
+      "source": "02-thuc-nghiem/code/fr/backbones/__init__.py",
+      "sha256": "2fc82a91c8b98e9cdf37dc545bed1c511a6038bc10248b055acc0874d222ec8b"
+    },
+    {
+      "path": "code/fr/backbones/iresnet.py",
+      "source": "02-thuc-nghiem/code/fr/backbones/iresnet.py",
+      "sha256": "182c2cfe7cc99f531c75a851050bf71f8fefb28c58eb31332cec6948b87f3e03"
+    },
+    {
+      "path": "code/fr/data/__init__.py",
+      "source": "02-thuc-nghiem/code/fr/data/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/fr/data/bin_loader.py",
+      "source": "02-thuc-nghiem/code/fr/data/bin_loader.py",
+      "sha256": "ae5df1ecb034495edff25482880fafe9c5fed140b64842461043b0132f32096d"
+    },
+    {
+      "path": "code/fr/data/casia_split.py",
+      "source": "02-thuc-nghiem/code/fr/data/casia_split.py",
+      "sha256": "4ae3b35742a1bb0109a89a05214dbcd85d559f6b8d8a073f3941d303acf110b3"
+    },
+    {
+      "path": "code/fr/data/datasets.py",
+      "source": "02-thuc-nghiem/code/fr/data/datasets.py",
+      "sha256": "b7900bdc5f228893f9a85179ca9cab786669fc5376691af07d2118f26f696280"
+    },
+    {
+      "path": "code/fr/data/recordio.py",
+      "source": "02-thuc-nghiem/code/fr/data/recordio.py",
+      "sha256": "761e2c02ff5c57a3e91499de6407ecd76ba9613770803d238d7c31804168b11f"
+    },
+    {
+      "path": "code/fr/eval/__init__.py",
+      "source": "02-thuc-nghiem/code/fr/eval/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/fr/eval/ijbc.py",
+      "source": "02-thuc-nghiem/code/fr/eval/ijbc.py",
+      "sha256": "6a7468b5ca1dfda92ef095b0bac62113e45bd06769ec34452351c2ee2cf1d0d0"
+    },
+    {
+      "path": "code/fr/eval/lfw_protocol.py",
+      "source": "02-thuc-nghiem/code/fr/eval/lfw_protocol.py",
+      "sha256": "56348949a5de711fde501587c9132dc08d541c2cb870e718932303f3b52646eb"
+    },
+    {
+      "path": "code/fr/eval/metrics.py",
+      "source": "02-thuc-nghiem/code/fr/eval/metrics.py",
+      "sha256": "a0639316e3176792f794b9b60a11f9b07c279e112e644eb930441da0af2dc27e"
+    },
+    {
+      "path": "code/fr/eval/openset.py",
+      "source": "02-thuc-nghiem/code/fr/eval/openset.py",
+      "sha256": "32c09b207e84b6590fb1ac28e26288a5f5496b2942e85d1e24420c5fc53174dd"
+    },
+    {
+      "path": "code/fr/eval/val_casia.py",
+      "source": "02-thuc-nghiem/code/fr/eval/val_casia.py",
+      "sha256": "92b7ea6ed79b2b00f1094e4f9dab3c1c3519b26965e27cd46f0e35390027c7e9"
+    },
+    {
+      "path": "code/fr/eval/verification.py",
+      "source": "02-thuc-nghiem/code/fr/eval/verification.py",
+      "sha256": "fbee7452c4686deaf893565ad916d4c5415655acefb87bcabdc4e984ce9a21ab"
+    },
+    {
+      "path": "code/fr/heads.py",
+      "source": "02-thuc-nghiem/code/fr/heads.py",
+      "sha256": "8bc092feb54084e4460840dcdebeff28e444866b030c4d4d55fd55fd34310b08"
+    },
+    {
+      "path": "code/fr/utils/__init__.py",
+      "source": "02-thuc-nghiem/code/fr/utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "code/fr/utils/checkpoint.py",
+      "source": "02-thuc-nghiem/code/fr/utils/checkpoint.py",
+      "sha256": "afaf7abf6e5ec98211e70351c912884c97ef16cf21dc5c84573922f929b9cb42"
+    },
+    {
+      "path": "code/fr/utils/config.py",
+      "source": "02-thuc-nghiem/code/fr/utils/config.py",
+      "sha256": "4a691cbeaa07200e891383739c3194aca86e2b99e0c9bfd419a0ccab7bb5527f"
+    },
+    {
+      "path": "code/fr/utils/dist.py",
+      "source": "02-thuc-nghiem/code/fr/utils/dist.py",
+      "sha256": "6083f5c99d3f5d3d447c24655df0b2a61f02badfdeb646a4523877025043fecd"
+    },
+    {
+      "path": "code/fr/utils/logger.py",
+      "source": "02-thuc-nghiem/code/fr/utils/logger.py",
+      "sha256": "5ed10564cb2d3cd74aee5a2b63fccafb15d1d82fd16900f0bcce58f4fc29bc97"
+    },
+    {
+      "path": "code/fr/utils/seed.py",
+      "source": "02-thuc-nghiem/code/fr/utils/seed.py",
+      "sha256": "bbffbae73ad6755a640deec235a92468f3aaabe3f56e1ef6459f5a6cdb8de048"
+    },
+    {
+      "path": "evaltest/__init__.py",
+      "source": "02-thuc-nghiem/eval-test/evaltest/__init__.py",
+      "sha256": "90ba637e1c15f194a0e42cb7c03aca362ccc534de722946b93714971907df953"
+    },
+    {
+      "path": "evaltest/features.py",
+      "source": "02-thuc-nghiem/eval-test/evaltest/features.py",
+      "sha256": "038d5574571dbea0362a52e3ddb49fc1dabc1b6486c2ced2eeafb650a8c28572"
+    },
+    {
+      "path": "evaltest/common.py",
+      "source": "02-thuc-nghiem/eval-test/evaltest/common.py",
+      "sha256": "df4f4b9ccae875ce403c0496a9658bea5361a723c7c5873ead18561d1851021b"
+    },
+    {
+      "path": "manifest/manifest_24.json",
+      "source": "02-thuc-nghiem/eval-test/manifest/manifest_24.json",
+      "sha256": "92a70fb76e0fa95ff752dbe74b35cea5bc24c99e63a69f061447d5cb6055d54a"
+    },
+    {
+      "path": "manifest/strip_map_ban_sao.json",
+      "source": "02-thuc-nghiem/eval-test/tools/windows/logs/strip_map_ban_sao.json",
+      "sha256": "399c37fbd565d5dd66821c5e554a038a97f32e7b2ab8b9f5616ed517f1e4a824"
+    }
+  ]
+}
