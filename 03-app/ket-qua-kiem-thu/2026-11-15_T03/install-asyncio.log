@@ -1,0 +1,5 @@
+Using Python 3.13.13 environment at: 03-app\hub\.venv
+Resolved 3 packages in 1.26s
+Prepared 1 package in 709ms
+Installed 1 package in 70ms
+ + greenlet==3.5.6

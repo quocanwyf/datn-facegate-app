@@ -1,0 +1,22 @@
+F............s...............                                            [100%]
+================================== FAILURES ===================================
+______________________ test_login_identity_and_contract _______________________
+
+runtime = (<httpx.AsyncClient object at 0x000001532CDE5D30>, async_sessionmaker(class_='AsyncSession', join_transaction_mode='cr...000015302071270>, autoflush=True, expire_on_commit=False), <fastapi.applications.FastAPI object at 0x000001532CF21450>)
+
+    async def test_login_identity_and_contract(runtime):
+        client, factory, _ = runtime
+        pair = await login(client)
+        validate('TokenPair', pair)
+>       assert pair['expires_in'] == 900 and pair['must_change_password'] is True
+E       assert (900 == 900 and False is True)
+
+tests\test_auth.py:64: AssertionError
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_color_order.py:11: Chưa cung cấp LFW thật qua T02_LFW_ROOT
+FAILED tests/test_auth.py::test_login_identity_and_contract - assert (900 == ...
+1 failed, 27 passed, 1 skipped in 40.98s
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\pytest_asyncio\plugin.py:306: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session". Set it to "fixture-scope" to keep the current behavior.
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))

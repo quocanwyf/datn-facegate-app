@@ -1,0 +1,85 @@
+--- reference
++++ alembic
+@@ -2,7 +2,7 @@
+ -- PostgreSQL database dump
+ --
+ 
+-\restrict Q4XKPYj4pmtYn1Cn2GffYKeRDfCH5uNifLkzJ2InhOJex7mNaU6irbkoAyIIluN
++\restrict hOuC6hlnKeNp7ER3LWMySHB2uEQa1m9aicbeoFW7OcsfE3MwzgGO1m0CH3sj3l0
+ 
+ -- Dumped from database version 16.16
+ -- Dumped by pg_dump version 16.16
+@@ -39,21 +39,13 @@
+ CREATE FUNCTION public.event_handling_check() RETURNS trigger
+     LANGUAGE plpgsql
+     AS $$
+-
+ DECLARE r text;
+-
+ BEGIN
+-
+   SELECT result INTO r FROM recognition_event WHERE id = NEW.event_id;
+-
+   IF r NOT IN ('UNKNOWN','SPOOF') THEN
+-
+     RAISE EXCEPTION 'event_handling chỉ áp dụng cho UNKNOWN/SPOOF (nhận %)', r;
+-
+   END IF;
+-
+   RETURN NEW;
+-
+ END $$;
+ 
+ 
+@@ -64,29 +56,17 @@
+ CREATE FUNCTION public.recognition_event_guard() RETURNS trigger
+     LANGUAGE plpgsql
+     AS $$
+-
+ BEGIN
+-
+   IF TG_OP = 'DELETE' THEN
+-
+     RAISE EXCEPTION 'recognition_event là dữ liệu chỉ thêm: không được DELETE';
+-
+   END IF;
+-
+   IF NEW.snapshot_path IS NOT NULL AND NEW.snapshot_path IS DISTINCT FROM OLD.snapshot_path THEN
+-
+     RAISE EXCEPTION 'recognition_event: snapshot_path chỉ được đặt về NULL';
+-
+   END IF;
+-
+   IF (to_jsonb(NEW) - 'snapshot_path') IS DISTINCT FROM (to_jsonb(OLD) - 'snapshot_path') THEN
+-
+     RAISE EXCEPTION 'recognition_event là dữ liệu chỉ thêm: chỉ được xoá snapshot_path';
+-
+   END IF;
+-
+   RETURN NEW;
+-
+ END $$;
+ 
+ 
+@@ -97,13 +77,9 @@
+ CREATE FUNCTION public.set_updated_at() RETURNS trigger
+     LANGUAGE plpgsql
+     AS $$
+-
+ BEGIN
+-
+   NEW.updated_at := now();
+-
+   RETURN NEW;
+-
+ END $$;
+ 
+ 
+@@ -1551,5 +1527,5 @@
+ -- PostgreSQL database dump complete
+ --
+ 
+-\unrestrict Q4XKPYj4pmtYn1Cn2GffYKeRDfCH5uNifLkzJ2InhOJex7mNaU6irbkoAyIIluN
+-
++\unrestrict hOuC6hlnKeNp7ER3LWMySHB2uEQa1m9aicbeoFW7OcsfE3MwzgGO1m0CH3sj3l0
++

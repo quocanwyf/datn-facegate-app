@@ -1,0 +1,35 @@
+{
+  "health": {
+    "status": "degraded",
+    "db": true,
+    "gpu": false,
+    "model_verified": false,
+    "gallery_size": 0,
+    "version": "0.1.0"
+  },
+  "login_status": 200,
+  "expires_in": 900,
+  "must_change_password": false,
+  "me": {
+    "id": "5a07ec43-9513-5104-82c6-dc4df6385741",
+    "email": "nv001@demo.local",
+    "roles": [
+      {
+        "role": "EMPLOYEE",
+        "scope_department_id": null
+      },
+      {
+        "role": "OWNER",
+        "scope_department_id": null
+      }
+    ],
+    "employee": {
+      "id": "d4cfbfb9-d466-5b09-a65b-1dc4bc34fda7",
+      "code": "NV001",
+      "full_name": "Trần Minh Khoa",
+      "department_id": "3b3a2d70-1ba4-55e5-bd36-3f50b8bd97db",
+      "department_name": "Ban Giám đốc"
+    }
+  },
+  "logout_status": 204
+}

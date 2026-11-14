@@ -1,0 +1,4 @@
+...............s...............                                          [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_color_order.py:11: Chưa cung cấp LFW thật qua T02_LFW_ROOT
+30 passed, 1 skipped in 24.75s
