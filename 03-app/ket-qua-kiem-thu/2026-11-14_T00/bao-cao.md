@@ -1,7 +1,7 @@
 # Báo cáo T00 — Môi trường dev, skill ngoài, cơ sở dữ liệu
 
 - Trạng thái: **XONG** — DB, công cụ, AVD và preview webcam thật đã kiểm tra.
-- Commit: ghi hash triển khai sau khi tạo commit T00; không commit .env/checkpoint/ảnh webcam.
+- Commit triển khai: `10be9e0f3b276630b254cb1c96f213944db08dc2`; không commit .env/checkpoint/ảnh webcam.
 - Máy: Windows 11; Python 3.13.13, Node v24.15.0, pnpm 11.25.0, PostgreSQL 16.16 (`versions-current.log`).
 - Ngày bắt đầu: 14/11/2026 (Asia/Bangkok).
 - Báo cáo cũ được giữ ở `bao-cao-lan-dau.md`. Vướng mắc .env đã gỡ theo xác nhận của người dùng; checkpoint đã nhận và khớp manifest.
