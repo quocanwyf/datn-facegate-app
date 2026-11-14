@@ -1,7 +1,7 @@
 # Báo cáo T01 — Vendor và cổng nạp mô hình
 
 - Trạng thái: **XONG** trên CPU theo tiêu chí T01. Chưa xác nhận parity GPU T02.
-- Commit triển khai: sẽ ghi hash sau khi tạo commit.
+- Commit triển khai: `fcd09f7e9f3e8fd310acd0a85e747c950b2a070b`. Hoàn tất bàn giao ngày 15/11/2026.
 - Máy chạy: Windows; Python 3.13.13, torch 2.11.0+cpu, OpenCV 4.14.0, numpy 2.5.4, scikit-image 0.26.0; CUDA false. Output `env.log`, `packages.log`.
 - Đọc task/đặc tả §2.3/§4.1–4.4, Hub AGENTS và hub-rules; chỉ ghi trong phạm vi T01. T00 đã hoàn tất, push ở 2dca389 (triển khai 10be9e0).
 
