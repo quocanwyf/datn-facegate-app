@@ -1,0 +1,18 @@
+variant=normal; sequences=488280; max_length=8
+.variant=lost_face; sequences=488280; max_length=8
+.variant=iou_reset; sequences=488280; max_length=8
+.......endpoint_latency_ms=2.938000; worker_busy=true
+..private_webcam_images=1; device=cpu; amp=False; max_abs_delta=0.0
+..gallery_real_db_rows=0; ready=True; no_demo_templates_created=true
+.
+============================== warnings summary ===============================
+tests/test_embed_smoke.py::test_actual_private_webcam_image_matches_vendor
+  C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+    tform.estimate(lmk, dst)
+
+tests/test_embed_smoke.py::test_actual_private_webcam_image_matches_vendor
+  C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+    with torch.cuda.amp.autocast(self.fp16):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+14 passed, 2 warnings in 71.61s (0:01:11)
