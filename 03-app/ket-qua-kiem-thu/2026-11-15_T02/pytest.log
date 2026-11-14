@@ -1,0 +1,4 @@
+s...............                                                         [100%]
+=========================== short test summary info ===========================
+SKIPPED [1] tests\\test_color_order.py:11: Ch\u01b0a cung c\u1ea5p LFW th\u1eadt qua T02_LFW_ROOT
+15 passed, 1 skipped in 18.24s

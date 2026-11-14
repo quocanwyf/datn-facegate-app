@@ -1,0 +1,5 @@
+check_env.py --help OK
+gen_thresholds.py --help OK
+m0_tensor_equal.py --help OK
+parity_features.py --help OK
+parity_landmarks.py --help OK

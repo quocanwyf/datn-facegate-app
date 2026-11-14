@@ -1,0 +1,25 @@
+{
+  "thresholds": {
+    "DEFAULT_VAL": {
+      "value": 0.4232754409313202,
+      "source_ref": "02-thuc-nghiem/results/V1-s3-Hy/phien-1/r18_uniface_v1_lam0.6_m0.45_s3_e28/val.jsonl: epoch=18, results[thr@far=1e-05]",
+      "seed_literal": 0.4232754409313202,
+      "abs_delta": 0.0
+    },
+    "STRICT_TEST": {
+      "value": 0.4657080352306366,
+      "source_ref": "02-thuc-nghiem/results/2026-11-12_test-blufr-lfw/eval_test/ket_qua_blufr_lfw.json: mean(10 trial thr_DIR@0.01)",
+      "seed_literal": 0.4657080352306366,
+      "abs_delta": 0.0
+    },
+    "t_eq30": {
+      "value": 0.3736472427845001,
+      "source_ref": "02-thuc-nghiem/results/2026-11-12_test-blufr-lfw/eval_test/ket_qua_blufr_lfw.json: ket_qua[r18_uniface_v1_lam0.6_m0.45_s3_e28:best].meta.t_eq30",
+      "seed_literal": 0.3736472427845001,
+      "abs_delta": 0.0
+    }
+  },
+  "tolerance": 1e-09,
+  "matches_seed": true,
+  "blufr_repeated": false
+}

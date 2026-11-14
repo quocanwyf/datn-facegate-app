@@ -1,0 +1,13 @@
+{
+  "python": "3.13.13 (main, May 10 2026, 19:31:06) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch": "2.11.0+cpu",
+  "torch_cuda_build": null,
+  "cuda_available": false,
+  "gpus": [],
+  "nvidia_smi": "FileNotFoundError",
+  "opencv": "4.14.0",
+  "numpy": "2.5.4",
+  "require_cuda": false,
+  "blufr_repeated": false
+}
