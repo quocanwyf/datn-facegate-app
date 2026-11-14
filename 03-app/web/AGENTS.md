@@ -25,7 +25,7 @@ pnpm typecheck; pnpm lint; pnpm test:e2e
 ```
 
 ## Luật
-1. **Không viết type API bằng tay.** Đổi API = đề xuất sửa `openapi.yaml` → An duyệt → `pnpm gen:api`.
+1. **Không viết type API bằng tay.** Đổi API = đề xuất sửa `openapi.yaml` → nhắn An (đây là thay đổi thiết kế) → `pnpm gen:api`.
 2. Màu, chữ, bo góc **chỉ** qua theme (`ConfigProvider theme`) và `web-css-vars.css`; không hard-code hex trong component (trừ file theme).
 3. Nhãn + màu trạng thái **chỉ** lấy từ `status.ts` (bản sao `ui/tokens/status.json`).
 4. Mỗi màn theo đúng `03-app/ui/man-hinh/admin.md` / `me.md`: bố cục, dữ liệu, trạng thái tải/trống/lỗi/403, chữ tiếng Việt.

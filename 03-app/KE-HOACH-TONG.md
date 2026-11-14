@@ -24,8 +24,8 @@ Luồng một task: Claude soạn task → An duyệt → Hy giao cho Codex → 
 | 7 | **S4** Plan 16 task T00–T15 + mẫu báo cáo | ✅ | `plan-codex/` |
 | 8 | **S5** Script đóng gói, kiểm checkpoint, kiểm bí mật, README bàn giao | ✅ | `tools/`, `ban-giao/repo-root/` |
 | 9 | **S6** Tự kiểm bộ bàn giao | ✅ | mục 7 bên dưới |
-| 10 | **S7** Đẩy repo GitHub public + gửi Hy | ⏳ 🅰 | hướng dẫn mục 8 |
-| 11 | Code (Hy + Codex) T00 → T15 | ⏳ 🅷 | `plan-codex/README.md` |
+| 10 | **S7** Đẩy repo GitHub public + gửi Hy | ✅ `quocanwyf/datn-facegate-app` | hướng dẫn mục 8 |
+| 11 | Code (Hy + Codex, **Hy tự nghiệm thu, An không review**) T00 → T15 | ⏳ 🅷 | `plan-codex/README.md` |
 
 ## 2. Quyết định cho hai đầu vào mới
 

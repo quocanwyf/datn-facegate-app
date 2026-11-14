@@ -1,5 +1,5 @@
 # BÀN GIAO CHO HY — đọc đầu tiên
-> An + Claude đã làm xong phần **thiết kế, đặc tả và plan**. Hy + Codex **code theo plan**. An duyệt mọi thay đổi.
+> An + Claude đã làm xong phần **thiết kế, đặc tả và plan**. Hy + Codex **code theo plan và tự chịu trách nhiệm nghiệm thu**. An **không review code, không duyệt PR** — chỉ làm đúng các việc ở mục 5.
 > Ngày bàn giao: 14/11/2026.
 
 ## 1. Repo có gì
@@ -32,13 +32,20 @@
 4. Làm lần lượt theo bảng thứ tự trong `03-app/plan-codex/README.md`.
 
 ## 4. Mỗi task
-1. Codex tạo nhánh `task/Txx-…`, code, chạy kiểm, viết `03-app/ket-qua-kiem-thu/<ngày>_Txx/bao-cao.md`.
-2. Hy xem nhanh, chạy lại lệnh kiểm nếu cần, mở **Pull Request** vào `main`.
-3. Nhắn An link PR. An duyệt (đối chiếu báo cáo với tiêu chí) → merge → task tiếp.
-4. Codex báo **DỪNG** → không tự sửa đặc tả/tiêu chí; gửi báo cáo cho An.
+1. `git pull` → giao task cho Codex → Codex code, chạy **mọi** lệnh kiểm trong "Tiêu chí nghiệm thu", viết `03-app/ket-qua-kiem-thu/<ngày>_Txx/bao-cao.md`.
+2. Hy tự nghiệm thu: mọi tiêu chí **Đạt** (có số đo/log thật) → `kiem-bi-mat.py` SẠCH → commit + push thẳng lên `main` → làm task tiếp. Không cần chờ ai.
+3. Chưa đạt → bảo Codex sửa tới khi đạt. Codex báo **DỪNG** (lỗi thiết kế, đặc tả mâu thuẫn) → mới nhắn An, kèm báo cáo.
+4. Nếu báo cáo có mục **"Cần An làm"** → copy nguyên tin nhắn trong mục đó gửi An.
 
-## 5. Việc cần laptop An (có GPU)
-- **T02** (parity GPU), **T13** (hiệu chỉnh chống giả mạo), **T14** (demo). Hy viết script ở máy mình, An chạy trên laptop của An theo hướng dẫn trong task, gửi lại log.
+## 5. Những lúc DUY NHẤT cần An
+| Khi | Hy nhắn An | An làm |
+|---|---|---|
+| Bắt đầu T01 | "Gửi mình `best.pt`" | Gửi file qua Drive/Zalo |
+| T02 xong phần script | "Pull repo, chạy lệnh T02 theo `RUN-T02.md`" | Chạy trên laptop GPU, gửi lại thư mục log (nếu laptop Hy có GPU NVIDIA thì Hy tự chạy, An chỉ gửi thêm LFW + 24 backbone) |
+| T13 cần dữ liệu thử | "Cần người tình nguyện quay mặt thật / ảnh in / màn hình / video" | Tổ chức quay, chạy script hiệu chỉnh, chọn ngưỡng L |
+| T14 | "Hẹn ngày chạy demo chung Wi-Fi" | Cài Hub trên laptop mình, chạy demo cùng Hy |
+| Codex báo DỪNG vì thiết kế | Gửi báo cáo | Trả lời / sửa thiết kế |
+Ngoài các lúc này, Hy tự làm.
 
 ## 6. Trước mỗi lần push
 `python 03-app/tools/kiem-bi-mat.py` → phải **SẠCH** (repo public: không `.env`, không `*.pt`, không ảnh khuôn mặt, không LFW).

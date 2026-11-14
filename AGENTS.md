@@ -32,8 +32,9 @@ Nếu đặc tả và code mâu thuẫn, hoặc task thiếu thông tin: **dừn
 - Web: Node 20+ (pnpm). Kiosk: Expo dev build + **máy ảo Android** (Android Studio), Hub trên cùng máy gọi qua `http://10.0.2.2:8000`.
 
 ## Quy trình mỗi task
-1. Tạo nhánh `task/Txx-<ten-ngan>` từ `main`.
+1. `git pull` trên `main` (làm thẳng trên `main`, không cần nhánh/PR; An không review code).
 2. Làm theo các bước trong file task; chạy hết lệnh kiểm trong mục "Tiêu chí nghiệm thu".
 3. Viết `03-app/ket-qua-kiem-thu/<YYYY-MM-DD>_Txx/bao-cao.md` theo mẫu ở `03-app/plan-codex/README.md` (kèm log).
-4. Commit nhỏ, thông điệp tiếng Anh dạng `Txx: <what>`; mở Pull Request vào `main`, dán phần tóm tắt báo cáo vào mô tả PR.
+4. Chỉ khi **mọi** tiêu chí Đạt (số đo/log thật) và `kiem-bi-mat.py` SẠCH: commit nhỏ, thông điệp tiếng Anh `Txx: <what>`, push lên `main`.
+4b. Nếu task có bước người khác phải làm (gửi file, chạy trên máy GPU, quay dữ liệu, chạy demo chung): báo cáo phải có mục **"Cần An làm"** gồm một tin nhắn soạn sẵn để Hy copy gửi An (việc gì, file/lệnh chính xác, gửi lại gì). Với T02/T13 phần chạy trên máy An: viết thêm `03-app/ket-qua-kiem-thu/RUN-Txx.md` — lệnh PowerShell copy-dán chạy được, không cần đọc code.
 5. Gặp **điều kiện dừng** của task → dừng ngay, ghi báo cáo trạng thái "DỪNG" + lý do, không tự nới tiêu chí.

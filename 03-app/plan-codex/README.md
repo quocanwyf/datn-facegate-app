@@ -1,5 +1,5 @@
 # PLAN CODE CHO CODEX — đọc trước khi làm bất kỳ task nào
-> Soạn 14/11/2026 bởi session thiết kế (An + Claude). Người chạy: **Hy + Codex** (ChatGPT desktop app, chế độ Local, Windows). Người duyệt: **An**.
+> Soạn 14/11/2026 bởi session thiết kế (An + Claude). Người chạy: **Hy + Codex** (ChatGPT desktop app, chế độ Local, Windows). Nghiệm thu: **Hy tự nghiệm thu theo tiêu chí** (An không review code). An chỉ tham gia ở các mốc ghi **laptop An** / checkpoint / DỪNG.
 > Luật chung: `AGENTS.md` ở gốc repo + `AGENTS.md` của thư mục con + skill trong `.agents/skills/`.
 
 ## Cách giao một task cho Codex
@@ -36,7 +36,7 @@ Checkpoint (1 file `best.pt` ~132 MB) **không có trong repo** — Hy xin An kh
 ```markdown
 # Báo cáo Txx — <tên>
 - Trạng thái: XONG | DỪNG (lý do) | XONG MỘT PHẦN (phần nào)
-- Nhánh / PR: task/Txx-… / #…
+- Commit: <hash>
 - Máy chạy: (Windows, CPU/GPU, phiên bản Python/Node/torch/OpenCV — dán output thật)
 
 ## Tiêu chí nghiệm thu
@@ -46,11 +46,12 @@ Checkpoint (1 file `best.pt` ~132 MB) **không có trong repo** — Hy xin An kh
 ## File đã tạo / sửa
 ## Vấn đề gặp + cách xử lý
 ## Đề xuất cho thiết kế (nếu có — KHÔNG tự sửa đặc tả/db/ui/openapi)
-## Câu hỏi cho An
+## Cần An làm (nếu có) — tin nhắn soạn sẵn để Hy gửi
+## Câu hỏi cho An (chỉ khi DỪNG)
 ```
 Log thật (stdout/stderr, output pytest, ảnh chụp màn) để cùng thư mục.
 
 ## Quy ước chung cho mọi task
-- Nhánh `task/Txx-<ten-ngan>`; PR vào `main`; An duyệt (có thể nhờ session thiết kế đối chiếu báo cáo).
+- Làm thẳng trên `main`; push khi mọi tiêu chí Đạt + `kiem-bi-mat.py` SẠCH. Không chờ duyệt.
 - Không chạm vào `02-thuc-nghiem/`, `03-app/hub/vendor/` (sau T01), `03-app/dac-ta-app.md`, `03-app/db/`, `03-app/ui/`, `03-app/openapi/`, `03-app/plan-codex/`.
 - Mọi tham số có nhãn **[khởi đầu]** trong đặc tả để trong `company.settings` / cấu hình, không hard-code.
