@@ -469,7 +469,7 @@ erDiagram
 | `face_consent` | employee_id, terms_id, accepted_at, revoked_at?, collected_by_user_id, device_id? | partial UNIQUE(employee_id) WHERE revoked_at IS NULL |
 | `face_profile` | employee_id, status `PENDING_REVIEW/ACTIVE/REJECTED/SUPERSEDED`, enrolled_by_user_id, reviewed_by_user_id?, reviewed_at?, duplicate_of_employee_id?, review_note? | partial UNIQUE(employee_id) WHERE status='ACTIVE' |
 | `face_sample` | profile_id, image_path (PNG 112×112 RGB đã căn chỉnh), det_score, yaw_ratio, p_live, device_id | INDEX(profile_id) |
-| `recognition_model` | name, role `PRODUCTION/COMPARISON`, backbone, source_path, source_sha256, stripped_sha256, epoch, t_bs, alignment_version (detector + quy tắc chọn mặt), runtime jsonb (python/torch/opencv/cuda/fp16), is_active | partial UNIQUE(role) WHERE is_active |
+| `recognition_model` | code, name, backbone, manifest_id, source_path, source_sha256, stripped_sha256, epoch, t_bs, alignment_version (detector + quy tắc chọn mặt), runtime jsonb (python/torch/opencv/cuda/fp16), is_active | tối đa 1 dòng `is_active` (`ux_model_one_active`); v1.4.2 bỏ cột `role` (khớp `db/schema.sql`) |
 | `face_embedding` | sample_id, model_id, vector vec512 | UNIQUE(sample_id, model_id) |
 | `face_template` | profile_id, model_id, vector vec512, n_samples | UNIQUE(profile_id, model_id) |
 | `threshold_profile` | model_id, level `DEFAULT_VAL/STRICT_TEST/CUSTOM`, cos_threshold, source_ref, label | UNIQUE(model_id, level) WHERE level<>'CUSTOM' |
