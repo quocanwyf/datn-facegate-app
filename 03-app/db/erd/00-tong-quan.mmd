@@ -1,0 +1,38 @@
+erDiagram
+  COMPANY ||--o{ DEPARTMENT : has
+  COMPANY ||--o{ EMPLOYEE : has
+  COMPANY ||--o{ USER_ACCOUNT : has
+  COMPANY ||--o{ GATE : has
+  COMPANY ||--o{ SHIFT : has
+  COMPANY ||--o{ HOLIDAY : has
+  DEPARTMENT ||--o{ EMPLOYEE : contains
+  DEPARTMENT ||--o{ USER_ROLE : "scope of"
+  DEPARTMENT ||--o{ SHIFT_ASSIGNMENT : assigned
+  DEPARTMENT ||--o{ GATE_ALLOWED_DEPARTMENT : allowed
+  USER_ACCOUNT ||--o{ USER_ROLE : granted
+  USER_ACCOUNT ||--o{ AUTH_REFRESH_TOKEN : holds
+  USER_ACCOUNT |o--o| EMPLOYEE : "is"
+  EMPLOYEE ||--o{ FACE_PROFILE : enrolls
+  FACE_PROFILE ||--o{ FACE_SAMPLE : contains
+  FACE_SAMPLE ||--o{ FACE_EMBEDDING : "per model"
+  FACE_PROFILE ||--o{ FACE_TEMPLATE : "per model"
+  RECOGNITION_MODEL ||--o{ FACE_EMBEDDING : produces
+  RECOGNITION_MODEL ||--o{ FACE_TEMPLATE : produces
+  RECOGNITION_MODEL ||--o{ THRESHOLD_PROFILE : calibrated
+  GATE ||--o{ DEVICE : hosts
+  GATE ||--o{ GATE_ALLOWED_DEPARTMENT : policy
+  DEVICE ||--o{ FACE_PROFILE : "enrolled at"
+  SHIFT ||--o{ SHIFT_ASSIGNMENT : used
+  EMPLOYEE ||--o{ SHIFT_ASSIGNMENT : assigned
+  GATE ||--o{ RECOGNITION_EVENT : at
+  DEVICE ||--o{ RECOGNITION_EVENT : captured
+  RECOGNITION_MODEL ||--o{ RECOGNITION_EVENT : decided
+  EMPLOYEE ||--o{ RECOGNITION_EVENT : subject
+  USER_ACCOUNT ||--o{ RECOGNITION_EVENT : "manual by"
+  RECOGNITION_EVENT ||--o| EVENT_HANDLING : handled
+  EMPLOYEE ||--o{ ATTENDANCE_DAY : has
+  SHIFT ||--o{ ATTENDANCE_DAY : of
+  RECOGNITION_EVENT ||--o{ ATTENDANCE_DAY : "check in or out"
+  EMPLOYEE ||--o{ ATTENDANCE_REQUEST : "about"
+  USER_ACCOUNT ||--o{ ATTENDANCE_REQUEST : "requests or reviews"
+  USER_ACCOUNT ||--o{ AUDIT_LOG : performs

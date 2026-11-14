@@ -1,0 +1,20 @@
+{
+  "global_step": 25536,
+  "epoch": 28,
+  "steps_per_epoch": 912,
+  "effective_batch": 512,
+  "world_size": 2,
+  "num_windows": 1299,
+  "median_sec_per_iter": 0.6465493977069855,
+  "extrapolated_hours_per_epoch": 0.16379251408576967,
+  "extrapolated_hours_total_epochs": 4.586190394401551,
+  "total_epochs_cfg": 28,
+  "note": "ngoại suy = median(sec/iter) × steps_per_epoch; chưa tính thời gian eval/checkpoint",
+  "best_val": {
+    "metric": "tar@far=0.001",
+    "value": 0.7802327542587283,
+    "epoch": 18,
+    "global_step": 16416
+  },
+  "vram_alloc_max_mb_last_epoch": 6218.59375
+}

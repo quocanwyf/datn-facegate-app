@@ -1,0 +1,80 @@
+/* "Fresh Bloom" UI kit — CSS variables. Colors as raw RGB channels so Tailwind opacity modifiers work. */
+:root {
+  /* surfaces */
+  --bg: 234 232 228;            /* stone-100 #EAE8E4 */
+  --surface: 241 240 237;       /* stone-50  #F1F0ED */
+  --surface-raised: 255 255 255;
+  --border: 221 218 213;        /* stone-200 */
+  /* text */
+  --text-primary: 26 26 24;     /* #1A1A18  14.2:1 on bg */
+  --text-secondary: 102 99 94;  /* #66635E  4.9:1 on bg */
+  --text-disabled: 163 160 154; /* #A3A09A  decorative only */
+  /* brand */
+  --primary: 163 216 83;        /* leaf-400 #A3D853 */
+  --primary-strong: 79 124 32;  /* leaf-700 — green text/icons on white */
+  --on-primary: 26 26 24;       /* never white on lime */
+  --accent: 245 160 10;         /* amber-500 */
+  --accent-2: 217 45 47;        /* berry-500 */
+  --inverse: 26 26 24;          /* black pill buttons, capture button */
+  --on-inverse: 255 255 255;
+  --focus: 138 196 58;          /* leaf-500 */
+  /* semantic (text-safe) */
+  --success: 47 122 31;   --success-surface: 245 251 234;
+  --warning: 148 87 11;   --warning-surface: 255 248 230;
+  --error: 181 36 31;     --error-surface: 253 236 236;
+  --info: 37 105 181;     --info-surface: 234 242 251;
+
+  /* radius */
+  --radius-xs: 8px; --radius-sm: 12px; --radius-md: 16px; --radius-lg: 24px;
+  --radius-xl: 32px; --radius-2xl: 44px; --radius-full: 9999px;
+
+  /* elevation */
+  --shadow-1: 0 1px 2px rgb(26 26 24 / 0.05);
+  --shadow-2: 0 2px 6px rgb(26 26 24 / 0.04), 0 8px 24px -4px rgb(26 26 24 / 0.06);
+  --shadow-3: 0 12px 32px -8px rgb(26 26 24 / 0.06), 0 24px 64px -12px rgb(26 26 24 / 0.08);
+  --ring: 0 0 0 4px rgb(163 216 83 / 0.35);
+
+  /* gradients */
+  --gradient-backdrop: linear-gradient(160deg, #2E5E14 0%, #A8C957 100%);
+  --gradient-bloom: radial-gradient(circle, #FFB547 0%, #FFE07A 45%, #C9EE8A 75%, transparent 100%);
+  --gradient-scan: linear-gradient(180deg, rgb(163 216 83 / 0) 0%, rgb(163 216 83 / 0.4) 100%);
+  --gradient-media-fade: linear-gradient(180deg, rgb(var(--bg) / 0) 0%, rgb(var(--bg)) 100%);
+
+  /* motion */
+  --dur-fast: 120ms; --dur-base: 200ms; --dur-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1.2);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* type */
+  --font-display: "Inter Display", "Inter", "Manrope", system-ui, sans-serif;
+  --font-body: "Inter", "Manrope", system-ui, sans-serif;
+}
+
+.dark {
+  --bg: 18 19 17;               /* #121311 */
+  --surface: 28 29 26;          /* #1C1D1A */
+  --surface-raised: 37 38 34;   /* #252622 */
+  --border: 51 52 47;
+  --text-primary: 242 241 238;  /* 16.5:1 */
+  --text-secondary: 169 167 161;/* 7.0:1 */
+  --text-disabled: 106 104 99;
+  --primary: 163 216 83;        /* lime 11.1:1 on bg */
+  --primary-strong: 185 226 118;
+  --on-primary: 26 26 24;
+  --inverse: 242 241 238;
+  --on-inverse: 18 19 17;
+  --focus: 185 226 118;
+  --success: 138 196 58;  --success-surface: 34 50 20;
+  --warning: 253 184 39;  --warning-surface: 56 40 12;
+  --error: 236 111 113;   --error-surface: 60 22 21;
+  --info: 120 170 230;    --info-surface: 20 36 56;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-2: 0 8px 24px -4px rgb(0 0 0 / 0.45);
+  --shadow-3: 0 24px 64px -12px rgb(0 0 0 / 0.6);
+  --gradient-media-fade: linear-gradient(180deg, rgb(var(--bg) / 0) 0%, rgb(var(--bg)) 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+}

@@ -1,0 +1,12 @@
+/* Biến CSS bổ sung cho component riêng (PageHero, KpiTile, StatusPill). Giá trị = web-antd-theme.json. */
+:root {
+  --c-primary: #0E7C74; --c-primary-hover: #0A5F59; --c-primary-soft: #DDF1EE; --c-on-primary-soft: #0A5F59;
+  --c-bg: #F7F9F8; --c-surface: #FFFFFF; --c-surface-muted: #F4F5F4; --c-surface-selected: #E3EBE9; --c-border: #EDEFEE;
+  --c-text: #1B2B2A; --c-text-2: #5F6865; --c-placeholder: #6A726F; --c-dot: #E5484D;
+  --g-sider: linear-gradient(180deg, #12A08F 0%, #0B7E73 100%);
+  --g-hero-mist: linear-gradient(180deg, rgba(181,226,219,.8) 0%, rgba(234,246,244,.9) 100%);
+  --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-2xl: 20px;
+  --font-heading: 'Be Vietnam Pro', Inter, system-ui, sans-serif;
+  --font-body: Inter, 'Be Vietnam Pro', system-ui, sans-serif;
+}
+@media (prefers-reduced-motion: reduce) { :root { --motion-scale: 0; } }

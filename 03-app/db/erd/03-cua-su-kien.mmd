@@ -1,0 +1,64 @@
+erDiagram
+  GATE ||--o{ DEVICE : hosts
+  GATE ||--o{ GATE_ALLOWED_DEPARTMENT : policy
+  GATE ||--o{ RECOGNITION_EVENT : at
+  DEVICE ||--o{ RECOGNITION_EVENT : captured
+  RECOGNITION_MODEL ||--o{ RECOGNITION_EVENT : decided
+  EMPLOYEE ||--o{ RECOGNITION_EVENT : subject
+  USER_ACCOUNT ||--o{ RECOGNITION_EVENT : "manual by"
+  RECOGNITION_EVENT ||--o| EVENT_HANDLING : handled
+  GATE {
+    uuid id PK
+    uuid company_id FK
+    text name
+    text mode "ATTENDANCE_ACCESS ACCESS_ONLY"
+    text default_policy "ALLOW_ALL_ACTIVE DEPARTMENTS_ONLY"
+    text threshold_level "DEFAULT_VAL STRICT_TEST CUSTOM"
+    real custom_threshold
+    boolean is_active
+  }
+  GATE_ALLOWED_DEPARTMENT {
+    uuid gate_id PK,FK
+    uuid department_id PK,FK
+  }
+  DEVICE {
+    uuid id PK
+    uuid company_id FK
+    uuid gate_id FK
+    text name
+    text status "PENDING ACTIVE REVOKED"
+    text pairing_code_hash
+    timestamptz pairing_expires_at
+    smallint pairing_attempts
+    text token_hash "UNIQUE"
+    timestamptz token_expires_at
+    timestamptz last_seen_at
+    text app_version
+  }
+  RECOGNITION_EVENT {
+    uuid id PK "chi them, trigger chan sua xoa"
+    uuid company_id FK
+    uuid gate_id FK
+    uuid device_id FK
+    timestamptz occurred_at
+    text result "MATCH UNKNOWN SPOOF DENIED_RULE DENIED_INACTIVE MANUAL_OPEN MANUAL_ATTENDANCE"
+    uuid employee_id FK
+    uuid model_id FK
+    real top1_score
+    real threshold_used
+    text threshold_level
+    real p_live_min
+    smallint n_frames
+    text door_action "OPEN NONE"
+    text snapshot_path "chi UNKNOWN SPOOF"
+    uuid performed_by_user_id FK
+    text reason
+  }
+  EVENT_HANDLING {
+    uuid event_id PK,FK "chi UNKNOWN SPOOF"
+    text status "RESOLVED FALSE_ALARM IS_EMPLOYEE"
+    uuid linked_employee_id FK
+    uuid handled_by_user_id FK
+    timestamptz handled_at
+    text note
+  }

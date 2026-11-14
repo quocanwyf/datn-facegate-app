@@ -1,0 +1,55 @@
+# === Bí mật & cấu hình máy ===
+.env
+.env.*
+!.env.example
+
+# === Mô hình / trọng số (gửi riêng, KHÔNG đưa lên repo public) ===
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+!02-thuc-nghiem/code/fr/align/models/face_detection_yunet_2023mar.onnx
+!02-thuc-nghiem/code-v1/fr/align/models/face_detection_yunet_2023mar.onnx
+!03-app/hub/vendor/code/fr/align/models/face_detection_yunet_2023mar.onnx
+!03-app/hub/vendor/silentface/**
+*.npy
+*.npz
+
+# === Dữ liệu khuôn mặt, dữ liệu Hub, LFW, bộ thử chống giả mạo ===
+hub_data/
+HUB_DATA_DIR/
+**/faces/
+**/snapshots/
+lfw/
+lfw-deepfunneled/
+**/liveness-data/
+03-app/ket-qua-kiem-thu/**/work/
+
+# === Python ===
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# === Node / web / kiosk ===
+node_modules/
+dist/
+build/
+.expo/
+03-app/kiosk/android/
+03-app/kiosk/ios/
+*.apk
+*.aab
+playwright-report/
+test-results/
+
+# === Hệ điều hành / IDE ===
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

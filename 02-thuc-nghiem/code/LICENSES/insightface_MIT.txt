@@ -1,0 +1,35 @@
+Third-party code: InsightFace (https://github.com/deepinsight/insightface)
+File used: fr/backbones/iresnet.py (copied verbatim from recognition/arcface_torch/backbones/iresnet.py, 05/11/2026)
+
+License statement in the InsightFace README (section "License"):
+  "The code of InsightFace is released under the MIT License. There is no limitation for both
+   academic and commercial usage."
+  "The training data containing the annotation (and the models trained with these data) are
+   available for non-commercial research purposes only."
+
+Update (Claude, B1, 05/11/2026): GitHub API listing of the repository root at master
+c6c3af7bd2d0a0bf4b78c78437357f3521aa5d52 shows NO LICENSE file (API "license" field = null); the MIT
+statement exists only in the README. B1 also uses (verbatim, with minimal edits listed in fr/eval/ijbc.py):
+recognition/arcface_torch/eval_ijbc.py, recognition/_evaluation_/ijb/ijb_evals.py,
+python-package/insightface/utils/face_align.py — originals kept in third_party/insightface_ijb/.
+
+Note (Claude, 05/11/2026): the raw LICENSE file at the repository root could not be fetched in this
+session, so the exact copyright line is NOT reproduced here. Before publishing this code, open
+https://github.com/deepinsight/insightface and copy the repository's LICENSE text into this file.
+
+Standard MIT License text (template):
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish, distribute,
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or
+substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

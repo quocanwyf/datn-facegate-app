@@ -1,0 +1,62 @@
+erDiagram
+  COMPANY ||--o{ DEPARTMENT : has
+  COMPANY ||--o{ EMPLOYEE : has
+  COMPANY ||--o{ USER_ACCOUNT : has
+  DEPARTMENT ||--o{ EMPLOYEE : contains
+  DEPARTMENT ||--o{ USER_ROLE : "scope of"
+  USER_ACCOUNT ||--o{ USER_ROLE : granted
+  USER_ACCOUNT ||--o{ AUTH_REFRESH_TOKEN : holds
+  USER_ACCOUNT |o--o| EMPLOYEE : "is"
+  COMPANY {
+    uuid id PK
+    text name
+    text timezone
+    jsonb settings "tham so nhan dang, cham cong"
+  }
+  DEPARTMENT {
+    uuid id PK
+    uuid company_id FK
+    text name "UNIQUE(company_id,name)"
+  }
+  EMPLOYEE {
+    uuid id PK
+    uuid company_id FK
+    uuid department_id FK
+    text code "UNIQUE(company_id,code)"
+    text full_name
+    text email
+    text phone
+    text status "ACTIVE SUSPENDED TERMINATED"
+    text attendance_method "FACE MANUAL"
+    date joined_at
+    timestamptz terminated_at
+    timestamptz face_consent_at
+    uuid face_consent_by FK
+    timestamptz biometric_deleted_at
+  }
+  USER_ACCOUNT {
+    uuid id PK
+    uuid company_id FK
+    text email "UNIQUE lower(email)"
+    text password_hash "argon2id"
+    text status "ACTIVE DISABLED"
+    uuid employee_id FK "UNIQUE"
+    boolean must_change_password
+    text kiosk_pin_hash
+    smallint pin_failed_count
+    timestamptz pin_locked_until
+    timestamptz last_login_at
+  }
+  USER_ROLE {
+    uuid id PK
+    uuid user_id FK
+    text role "OWNER HR MANAGER SECURITY EMPLOYEE"
+    uuid scope_department_id FK "chi khi MANAGER"
+  }
+  AUTH_REFRESH_TOKEN {
+    uuid id PK
+    uuid user_id FK
+    text token_hash "UNIQUE"
+    timestamptz expires_at
+    timestamptz revoked_at
+  }

@@ -1,0 +1,368 @@
+{
+ "$comment": "Bộ màu + nhãn tiếng Việt DÙNG CHUNG cho web và kiosk. Code không tự đặt nhãn/màu khác. Tương phản đã đo trong design-system.md §2.3.",
+ "groups": {
+  "success": {
+   "web": {
+    "bg": "#DDF6DF",
+    "fg": "#256B2F"
+   },
+   "kiosk": {
+    "bg": "#A3D853",
+    "fg": "#1A1A18"
+   }
+  },
+  "progress": {
+   "web": {
+    "bg": "#FCEFB4",
+    "fg": "#7A5B00"
+   },
+   "kiosk": {
+    "bg": "#F5A00A",
+    "fg": "#1A1A18"
+   }
+  },
+  "warning": {
+   "web": {
+    "bg": "#FFF1E0",
+    "fg": "#9A4A00"
+   }
+  },
+  "error": {
+   "web": {
+    "bg": "#FDECEB",
+    "fg": "#B42318"
+   },
+   "kiosk": {
+    "bg": "#B5241F",
+    "fg": "#FFFFFF"
+   }
+  },
+  "danger-strong": {
+   "web": {
+    "bg": "#FDECEB",
+    "fg": "#B42318",
+    "icon": "shield-alert"
+   },
+   "kiosk": {
+    "bg": "#1A1A18",
+    "fg": "#FFFFFF",
+    "border": "#B5241F",
+    "borderWidth": 6
+   }
+  },
+  "info": {
+   "web": {
+    "bg": "#E3F2FD",
+    "fg": "#1767AD"
+   }
+  },
+  "new": {
+   "web": {
+    "bg": "#DFF5F8",
+    "fg": "#0A6670"
+   }
+  },
+  "neutral": {
+   "web": {
+    "bg": "#EDEFEE",
+    "fg": "#46504D"
+   }
+  }
+ },
+ "enums": {
+  "attendance_day.status": {
+   "NORMAL": {
+    "group": "success",
+    "label_vi": "Đúng giờ"
+   },
+   "LATE": {
+    "group": "progress",
+    "label_vi": "Đi muộn"
+   },
+   "EARLY": {
+    "group": "warning",
+    "label_vi": "Về sớm"
+   },
+   "LATE_EARLY": {
+    "group": "warning",
+    "label_vi": "Muộn & về sớm"
+   },
+   "MISSING_OUT": {
+    "group": "warning",
+    "label_vi": "Thiếu giờ ra"
+   },
+   "ABSENT": {
+    "group": "error",
+    "label_vi": "Vắng"
+   },
+   "IN_PROGRESS": {
+    "group": "info",
+    "label_vi": "Đang làm"
+   },
+   "NOT_STARTED": {
+    "group": "info",
+    "label_vi": "Chưa tới ca"
+   },
+   "LEAVE": {
+    "group": "new",
+    "label_vi": "Nghỉ phép"
+   },
+   "OFF": {
+    "group": "neutral",
+    "label_vi": "Không có ca"
+   },
+   "HOLIDAY": {
+    "group": "neutral",
+    "label_vi": "Ngày lễ"
+   }
+  },
+  "attendance_day.source": {
+   "AUTO": {
+    "group": "neutral",
+    "label_vi": "Tự động"
+   },
+   "ADJUSTED": {
+    "group": "new",
+    "label_vi": "Đã giải trình"
+   },
+   "MANUAL": {
+    "group": "new",
+    "label_vi": "Sửa tay"
+   }
+  },
+  "attendance_request.status": {
+   "PENDING": {
+    "group": "progress",
+    "label_vi": "Chờ duyệt"
+   },
+   "APPROVED": {
+    "group": "success",
+    "label_vi": "Đã duyệt"
+   },
+   "REJECTED": {
+    "group": "error",
+    "label_vi": "Từ chối"
+   },
+   "CANCELLED": {
+    "group": "neutral",
+    "label_vi": "Đã huỷ"
+   }
+  },
+  "attendance_request.type": {
+   "FORGOT_IN": {
+    "group": "neutral",
+    "label_vi": "Quên chấm vào"
+   },
+   "FORGOT_OUT": {
+    "group": "neutral",
+    "label_vi": "Quên chấm ra"
+   },
+   "NOT_RECOGNIZED": {
+    "group": "neutral",
+    "label_vi": "Máy không nhận"
+   },
+   "BUSINESS_TRIP": {
+    "group": "neutral",
+    "label_vi": "Đi công tác"
+   },
+   "OTHER": {
+    "group": "neutral",
+    "label_vi": "Lý do khác"
+   }
+  },
+  "face_profile.status": {
+   "NONE": {
+    "group": "neutral",
+    "label_vi": "Chưa đăng ký"
+   },
+   "PENDING_REVIEW": {
+    "group": "progress",
+    "label_vi": "Chờ xác nhận"
+   },
+   "ACTIVE": {
+    "group": "success",
+    "label_vi": "Đang dùng"
+   },
+   "REJECTED": {
+    "group": "error",
+    "label_vi": "Bị từ chối"
+   },
+   "SUPERSEDED": {
+    "group": "neutral",
+    "label_vi": "Đã thay thế"
+   }
+  },
+  "recognition_event.result": {
+   "MATCH": {
+    "group": "success",
+    "label_vi": "Nhận diện"
+   },
+   "UNKNOWN": {
+    "group": "warning",
+    "label_vi": "Người lạ"
+   },
+   "SPOOF": {
+    "group": "danger-strong",
+    "label_vi": "Nghi giả mạo"
+   },
+   "DENIED_RULE": {
+    "group": "error",
+    "label_vi": "Không được phép"
+   },
+   "DENIED_INACTIVE": {
+    "group": "error",
+    "label_vi": "Tài khoản tạm khoá"
+   },
+   "MANUAL_OPEN": {
+    "group": "new",
+    "label_vi": "Mở cửa thủ công"
+   },
+   "MANUAL_ATTENDANCE": {
+    "group": "new",
+    "label_vi": "Chấm công hộ"
+   }
+  },
+  "event_handling.status": {
+   "RESOLVED": {
+    "group": "success",
+    "label_vi": "Đã xử lý"
+   },
+   "FALSE_ALARM": {
+    "group": "neutral",
+    "label_vi": "Báo động giả"
+   },
+   "IS_EMPLOYEE": {
+    "group": "info",
+    "label_vi": "Là nhân viên"
+   }
+  },
+  "employee.status": {
+   "ACTIVE": {
+    "group": "success",
+    "label_vi": "Đang làm việc"
+   },
+   "SUSPENDED": {
+    "group": "neutral",
+    "label_vi": "Tạm khoá"
+   },
+   "TERMINATED": {
+    "group": "error",
+    "label_vi": "Đã nghỉ việc"
+   }
+  },
+  "employee.attendance_method": {
+   "FACE": {
+    "group": "success",
+    "label_vi": "Khuôn mặt"
+   },
+   "MANUAL": {
+    "group": "new",
+    "label_vi": "Chấm công hộ"
+   }
+  },
+  "device.status": {
+   "PENDING": {
+    "group": "progress",
+    "label_vi": "Chờ ghép"
+   },
+   "ACTIVE": {
+    "group": "success",
+    "label_vi": "Hoạt động"
+   },
+   "REVOKED": {
+    "group": "error",
+    "label_vi": "Đã thu hồi"
+   }
+  },
+  "gate.mode": {
+   "ATTENDANCE_ACCESS": {
+    "group": "info",
+    "label_vi": "Chấm công + ra vào"
+   },
+   "ACCESS_ONLY": {
+    "group": "neutral",
+    "label_vi": "Chỉ ra vào"
+   }
+  },
+  "gate.default_policy": {
+   "ALLOW_ALL_ACTIVE": {
+    "group": "neutral",
+    "label_vi": "Mọi nhân viên"
+   },
+   "DEPARTMENTS_ONLY": {
+    "group": "neutral",
+    "label_vi": "Chỉ phòng ban được phép"
+   }
+  },
+  "threshold.level": {
+   "DEFAULT_VAL": {
+    "group": "info",
+    "label_vi": "Mặc định (chọn trên validation)"
+   },
+   "STRICT_TEST": {
+    "group": "progress",
+    "label_vi": "Nghiêm ngặt (hiệu chỉnh trên test)"
+   },
+   "CUSTOM": {
+    "group": "neutral",
+    "label_vi": "Tuỳ chỉnh"
+   }
+  },
+  "user_role.role": {
+   "OWNER": {
+    "group": "neutral",
+    "label_vi": "Chủ doanh nghiệp"
+   },
+   "HR": {
+    "group": "neutral",
+    "label_vi": "Nhân sự"
+   },
+   "MANAGER": {
+    "group": "neutral",
+    "label_vi": "Quản lý"
+   },
+   "SECURITY": {
+    "group": "neutral",
+    "label_vi": "Lễ tân / Bảo vệ"
+   },
+   "EMPLOYEE": {
+    "group": "neutral",
+    "label_vi": "Nhân viên"
+   }
+  },
+  "kiosk.display": {
+   "OK": {
+    "group": "success",
+    "label_vi": "Thành công"
+   },
+   "ALREADY": {
+    "group": "progress",
+    "label_vi": "Đã ghi nhận"
+   },
+   "DENY:UNKNOWN": {
+    "group": "error",
+    "label_vi": "Không nhận diện được"
+   },
+   "DENY:RULE": {
+    "group": "error",
+    "label_vi": "Không được phép"
+   },
+   "DENY:INACTIVE": {
+    "group": "error",
+    "label_vi": "Tài khoản tạm khoá"
+   },
+   "DENY:SPOOF": {
+    "group": "danger-strong",
+    "label_vi": "Không thể xác thực"
+   },
+   "$comment": "Khoá = result hoặc result:reason của message WS result (openapi/ws-protocol.md)"
+  }
+ },
+ "kiosk_state_hint_vi": {
+  "NO_FACE": "Vui lòng đứng vào khung",
+  "TOO_FAR": "Lại gần hơn một chút",
+  "LOOK_STRAIGHT": "Nhìn thẳng vào màn hình",
+  "HOLD_STILL": "Giữ yên…",
+  "CHECKING": "Đang kiểm tra…"
+ }
+}

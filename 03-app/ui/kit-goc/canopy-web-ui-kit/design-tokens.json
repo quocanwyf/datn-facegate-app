@@ -1,0 +1,872 @@
+{
+  "color": {
+    "teal": {
+      "50": {
+        "$type": "color",
+        "$value": "#EAF6F4"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#DDF1EE"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#B5E2DB"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#84CFC4"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#4FB8A9"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#12A08F"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#0E7C74"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#0A5F59"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#084A46"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#063735"
+      },
+      "$description": "Primary — deep teal. 600 = buttons/active (est. #0E7C74); 500 = sidebar gradient top."
+    },
+    "sky": {
+      "50": {
+        "$type": "color",
+        "$value": "#EEF7FD"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#D9EDFB"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#B6DCF7"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#8CC8F2"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#5FB0EA"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#3B96DC"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#2A7BC0"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#1F6299"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#184C77"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#133B5C"
+      },
+      "$description": "Secondary — sky blue (info badges, backdrop sky, links in charts)."
+    },
+    "gray": {
+      "0": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "25": {
+        "$type": "color",
+        "$value": "#FAFAFA"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#F4F5F4"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#EDEFEE"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#E3EBE9"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#D3D9D7"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#A9B0AD"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#828A87"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#5F6865"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#46504D"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#2C3836"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#1B2B2A"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#0E1A19"
+      },
+      "$description": "Cool green-tinted neutrals. 200 = selected-row tint."
+    },
+    "status": {
+      "neutral": {
+        "bg": {
+          "$type": "color",
+          "$value": "{color.gray.100}"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "{color.gray.700}"
+        }
+      },
+      "new": {
+        "bg": {
+          "$type": "color",
+          "$value": "#DFF5F8"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#0A6670",
+          "$description": "5.89:1"
+        }
+      },
+      "progress": {
+        "bg": {
+          "$type": "color",
+          "$value": "#FCEFB4"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#7A5B00",
+          "$description": "5.46:1 — 'In development', 'Draft'"
+        }
+      },
+      "success": {
+        "bg": {
+          "$type": "color",
+          "$value": "#DDF6DF"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#256B2F",
+          "$description": "5.69:1 — 'Approved', 'Active'"
+        }
+      },
+      "info": {
+        "bg": {
+          "$type": "color",
+          "$value": "#E3F2FD"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#1767AD",
+          "$description": "5.14:1 — 'In review'"
+        }
+      },
+      "error": {
+        "bg": {
+          "$type": "color",
+          "$value": "#FDECEB"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#B42318",
+          "$description": "6.57:1 on white"
+        }
+      },
+      "warning": {
+        "bg": {
+          "$type": "color",
+          "$value": "#FFF1E0"
+        },
+        "fg": {
+          "$type": "color",
+          "$value": "#9A4A00"
+        }
+      },
+      "notification-dot": {
+        "$type": "color",
+        "$value": "#E5484D"
+      }
+    },
+    "light": {
+      "canvas": {
+        "$type": "color",
+        "$value": "{color.sky.300}",
+        "$description": "page backdrop behind the glass frame (optional, marketing/auth)"
+      },
+      "bg": {
+        "$type": "color",
+        "$value": "#F7F9F8"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{color.gray.0}"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "{color.gray.50}",
+        "$description": "filled inputs, table header, stat tiles"
+      },
+      "surface-selected": {
+        "$type": "color",
+        "$value": "{color.gray.200}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.gray.100}"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "{color.gray.300}"
+      },
+      "text-primary": {
+        "$type": "color",
+        "$value": "{color.gray.900}",
+        "$description": "14.7:1"
+      },
+      "text-secondary": {
+        "$type": "color",
+        "$value": "{color.gray.600}",
+        "$description": "5.26:1 on surface-muted — ref #9AA19E was 2.64, fixed"
+      },
+      "text-placeholder": {
+        "$type": "color",
+        "$value": "#6A726F",
+        "$description": "4.52:1 on input"
+      },
+      "text-disabled": {
+        "$type": "color",
+        "$value": "{color.gray.400}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.teal.600}"
+      },
+      "on-primary": {
+        "$type": "color",
+        "$value": "#FFFFFF",
+        "$description": "5.06:1"
+      },
+      "primary-soft": {
+        "$type": "color",
+        "$value": "{color.teal.100}"
+      },
+      "on-primary-soft": {
+        "$type": "color",
+        "$value": "{color.teal.700}",
+        "$description": "6.4:1"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{color.teal.400}"
+      }
+    },
+    "dark": {
+      "canvas": {
+        "$type": "color",
+        "$value": "#0A1312"
+      },
+      "bg": {
+        "$type": "color",
+        "$value": "#0E1A19"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "#162321"
+      },
+      "surface-muted": {
+        "$type": "color",
+        "$value": "#1C2B29"
+      },
+      "surface-selected": {
+        "$type": "color",
+        "$value": "#22403C"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "#243331"
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "#33443F"
+      },
+      "text-primary": {
+        "$type": "color",
+        "$value": "#E8F0EE"
+      },
+      "text-secondary": {
+        "$type": "color",
+        "$value": "#9AA8A5",
+        "$description": "6.57:1"
+      },
+      "text-placeholder": {
+        "$type": "color",
+        "$value": "#7E8B88"
+      },
+      "text-disabled": {
+        "$type": "color",
+        "$value": "#55625F"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "#2BC4B0",
+        "$description": "8.15:1 on bg"
+      },
+      "on-primary": {
+        "$type": "color",
+        "$value": "#0E1A19"
+      },
+      "primary-soft": {
+        "$type": "color",
+        "$value": "#123C37"
+      },
+      "on-primary-soft": {
+        "$type": "color",
+        "$value": "#7FDCCD"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "#4FB8A9"
+      }
+    }
+  },
+  "gradient": {
+    "sidebar": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#12A08F",
+          "position": 0
+        },
+        {
+          "color": "#0B7E73",
+          "position": 1
+        }
+      ],
+      "$description": "linear 180deg"
+    },
+    "glass-frame": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#FFFFFFB3",
+          "position": 0
+        },
+        {
+          "color": "#D9EDFB80",
+          "position": 0.6
+        },
+        {
+          "color": "#C9D8A866",
+          "position": 1
+        }
+      ],
+      "$description": "1.5px frame border, 180deg; with backdrop-filter blur(24px)"
+    },
+    "header-tint": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#EAF6F4",
+          "position": 0
+        },
+        {
+          "color": "#FFFFFF",
+          "position": 1
+        }
+      ],
+      "$description": "top bar → content, 180deg"
+    },
+    "hero-mist": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#B5E2DBCC",
+          "position": 0
+        },
+        {
+          "color": "#EAF6F4E6",
+          "position": 1
+        }
+      ],
+      "$description": "overlay on banner illustrations/photos for title legibility"
+    },
+    "map": {
+      "$type": "color",
+      "$value": "#84CFC4",
+      "$description": "map land tint (teal-300)"
+    }
+  },
+  "font": {
+    "family": {
+      "heading": {
+        "$type": "fontFamily",
+        "$value": [
+          "Poppins",
+          "Plus Jakarta Sans",
+          "system-ui",
+          "sans-serif"
+        ]
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": [
+          "Inter",
+          "system-ui",
+          "sans-serif"
+        ]
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      }
+    }
+  },
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "0.5": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "1.5": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "40px"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "80px"
+    }
+  },
+  "size": {
+    "header": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "sidebar-rail": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "sidebar-icon-btn": {
+      "$type": "dimension",
+      "$value": "40px"
+    },
+    "control-sm": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "control-md": {
+      "$type": "dimension",
+      "$value": "40px"
+    },
+    "control-lg": {
+      "$type": "dimension",
+      "$value": "44px"
+    },
+    "input-floating": {
+      "$type": "dimension",
+      "$value": "56px"
+    },
+    "table-row": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "hero-banner": {
+      "$type": "dimension",
+      "$value": "280px"
+    },
+    "content-max": {
+      "$type": "dimension",
+      "$value": "1440px"
+    }
+  },
+  "radius": {
+    "xs": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "3xl": {
+      "$type": "dimension",
+      "$value": "28px"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  },
+  "shadow": {
+    "1": {
+      "$type": "shadow",
+      "$value": {
+        "color": "#1B2B2A0A",
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "2px",
+        "spread": "0px"
+      }
+    },
+    "2": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#1B2B2A0A",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "4px",
+          "spread": "0px"
+        },
+        {
+          "color": "#1B2B2A0F",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "20px",
+          "spread": "-6px"
+        }
+      ]
+    },
+    "3": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#1B2B2A14",
+          "offsetX": "0px",
+          "offsetY": "16px",
+          "blur": "40px",
+          "spread": "-12px"
+        },
+        {
+          "color": "#1B2B2A0A",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0px"
+        }
+      ]
+    },
+    "frame": {
+      "$type": "shadow",
+      "$value": {
+        "color": "#0E3B5C26",
+        "offsetX": "0px",
+        "offsetY": "30px",
+        "blur": "80px",
+        "spread": "-20px"
+      },
+      "$description": "glass app frame on a canvas"
+    },
+    "ring": {
+      "$type": "shadow",
+      "$value": {
+        "color": "#4FB8A966",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "3px"
+      }
+    }
+  },
+  "duration": {
+    "fast": {
+      "$type": "duration",
+      "$value": "120ms"
+    },
+    "base": {
+      "$type": "duration",
+      "$value": "180ms"
+    },
+    "slow": {
+      "$type": "duration",
+      "$value": "280ms"
+    }
+  },
+  "easing": {
+    "standard": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ]
+    },
+    "exit": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ]
+    }
+  },
+  "typography": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontSize": "48px",
+        "lineHeight": 1.1,
+        "fontWeight": 500,
+        "letterSpacing": "-0.02em"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontSize": "36px",
+        "lineHeight": 1.15,
+        "fontWeight": 500,
+        "letterSpacing": "-0.015em"
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontSize": "28px",
+        "lineHeight": 1.2,
+        "fontWeight": 500,
+        "letterSpacing": "-0.01em"
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontSize": "22px",
+        "lineHeight": 1.3,
+        "fontWeight": 500,
+        "letterSpacing": "-0.005em"
+      }
+    },
+    "h4": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontSize": "18px",
+        "lineHeight": 1.35,
+        "fontWeight": 500,
+        "letterSpacing": "0em"
+      }
+    },
+    "h5": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "16px",
+        "lineHeight": 1.4,
+        "fontWeight": 600,
+        "letterSpacing": "0em"
+      }
+    },
+    "h6": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "14px",
+        "lineHeight": 1.4,
+        "fontWeight": 600,
+        "letterSpacing": "0em"
+      }
+    },
+    "body-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "16px",
+        "lineHeight": 1.5,
+        "fontWeight": 400,
+        "letterSpacing": "0em"
+      }
+    },
+    "body-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "14px",
+        "lineHeight": 1.5,
+        "fontWeight": 400,
+        "letterSpacing": "0em"
+      }
+    },
+    "body-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "13px",
+        "lineHeight": 1.45,
+        "fontWeight": 400,
+        "letterSpacing": "0em"
+      }
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "12px",
+        "lineHeight": 1.35,
+        "fontWeight": 400,
+        "letterSpacing": "0.01em"
+      }
+    },
+    "overline": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "11px",
+        "lineHeight": 1.3,
+        "fontWeight": 500,
+        "letterSpacing": "0.04em"
+      },
+      "$description": "UPPERCASE step labels only"
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "12px",
+        "lineHeight": 1.3,
+        "fontWeight": 400,
+        "letterSpacing": "0.005em"
+      }
+    },
+    "button": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "14px",
+        "lineHeight": 1,
+        "fontWeight": 500,
+        "letterSpacing": "0em"
+      }
+    },
+    "table": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "13px",
+        "lineHeight": 1.4,
+        "fontWeight": 500,
+        "letterSpacing": "0em"
+      }
+    },
+    "metric": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.heading}",
+        "fontSize": "28px",
+        "lineHeight": 1.15,
+        "fontWeight": 500,
+        "letterSpacing": "-0.01em"
+      },
+      "$description": "tabular-nums"
+    }
+  }
+}

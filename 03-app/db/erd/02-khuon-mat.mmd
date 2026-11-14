@@ -1,0 +1,62 @@
+erDiagram
+  EMPLOYEE ||--o{ FACE_PROFILE : enrolls
+  FACE_PROFILE ||--o{ FACE_SAMPLE : contains
+  FACE_SAMPLE ||--o{ FACE_EMBEDDING : "per model"
+  FACE_PROFILE ||--o{ FACE_TEMPLATE : "per model"
+  RECOGNITION_MODEL ||--o{ FACE_EMBEDDING : produces
+  RECOGNITION_MODEL ||--o{ FACE_TEMPLATE : produces
+  RECOGNITION_MODEL ||--o{ THRESHOLD_PROFILE : calibrated
+  RECOGNITION_MODEL {
+    uuid id PK
+    text code "V1_S3"
+    text backbone
+    text manifest_id "id trong manifest_24"
+    text source_path
+    char64 source_sha256
+    char64 stripped_sha256 "= meta.sha256 BLUFR"
+    smallint epoch
+    real t_bs "b/s, chi hien thi"
+    text alignment_version
+    jsonb runtime
+    boolean is_active "toi da 1 dang chay"
+  }
+  THRESHOLD_PROFILE {
+    uuid id PK
+    uuid model_id FK
+    text level "DEFAULT_VAL STRICT_TEST"
+    real cos_threshold
+    text label "nhan bat buoc"
+    text source_ref "file log + truong"
+  }
+  FACE_PROFILE {
+    uuid id PK
+    uuid company_id FK
+    uuid employee_id FK "1 ACTIVE, 1 PENDING moi NV"
+    text status "PENDING_REVIEW ACTIVE REJECTED SUPERSEDED"
+    uuid enrolled_by_user_id FK
+    uuid enrolled_device_id FK
+    uuid duplicate_of_employee_id FK
+    real duplicate_score
+    uuid reviewed_by_user_id FK
+    timestamptz reviewed_at
+    text review_note
+  }
+  FACE_SAMPLE {
+    uuid id PK
+    uuid profile_id FK "cascade"
+    text image_path "PNG 112x112 RGB"
+    real det_score
+    real yaw_ratio
+    real p_live
+  }
+  FACE_EMBEDDING {
+    uuid sample_id PK,FK
+    uuid model_id PK,FK
+    real_array vector "512 chieu, L2"
+  }
+  FACE_TEMPLATE {
+    uuid profile_id PK,FK
+    uuid model_id PK,FK
+    real_array vector "L2 mean, 512"
+    smallint n_samples
+  }

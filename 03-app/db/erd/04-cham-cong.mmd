@@ -1,0 +1,84 @@
+erDiagram
+  SHIFT ||--o{ SHIFT_ASSIGNMENT : used
+  EMPLOYEE ||--o{ SHIFT_ASSIGNMENT : assigned
+  DEPARTMENT ||--o{ SHIFT_ASSIGNMENT : assigned
+  EMPLOYEE ||--o{ ATTENDANCE_DAY : has
+  SHIFT ||--o{ ATTENDANCE_DAY : of
+  RECOGNITION_EVENT ||--o{ ATTENDANCE_DAY : "check in or out"
+  EMPLOYEE ||--o{ ATTENDANCE_REQUEST : about
+  USER_ACCOUNT ||--o{ ATTENDANCE_REQUEST : "requests or reviews"
+  COMPANY ||--o{ HOLIDAY : has
+  USER_ACCOUNT ||--o{ AUDIT_LOG : performs
+  SHIFT {
+    uuid id PK
+    uuid company_id FK
+    text name
+    time start_time
+    time end_time "khong qua nua dem, toi da 17h"
+    time break_start
+    time break_end
+    smallint grace_in_min
+    smallint grace_out_min
+  }
+  SHIFT_ASSIGNMENT {
+    uuid id PK
+    uuid company_id FK
+    uuid shift_id FK
+    uuid employee_id FK "XOR department_id"
+    uuid department_id FK
+    smallint weekday "1-7 ISO"
+    date effective_from
+    date effective_to
+    daterange effective "EXCLUDE chong lan"
+  }
+  HOLIDAY {
+    uuid company_id PK,FK
+    date date PK
+    text name
+  }
+  ATTENDANCE_DAY {
+    uuid id PK
+    uuid company_id FK
+    uuid employee_id FK "UNIQUE(employee_id,work_date)"
+    date work_date
+    uuid shift_id FK
+    timestamptz check_in_at
+    timestamptz check_out_at
+    uuid check_in_event_id FK
+    uuid check_out_event_id FK
+    text status "11 trang thai"
+    boolean suspect_forgot_out
+    smallint late_min
+    smallint early_min
+    smallint worked_min
+    text source "AUTO ADJUSTED MANUAL"
+    boolean finalized
+    uuid edited_by_user_id FK
+    text edit_reason
+  }
+  ATTENDANCE_REQUEST {
+    uuid id PK
+    uuid company_id FK
+    uuid employee_id FK
+    uuid requested_by_user_id FK
+    date work_date
+    text type "FORGOT_IN FORGOT_OUT NOT_RECOGNIZED BUSINESS_TRIP OTHER"
+    timestamptz requested_in
+    timestamptz requested_out
+    text reason
+    text status "PENDING APPROVED REJECTED CANCELLED"
+    uuid reviewer_user_id FK "khac nguoi gui"
+    timestamptz reviewed_at
+    text review_note
+  }
+  AUDIT_LOG {
+    bigserial id PK
+    uuid company_id FK
+    uuid actor_user_id FK
+    uuid actor_device_id FK
+    text action
+    text entity
+    text entity_id
+    jsonb detail
+    timestamptz at
+  }

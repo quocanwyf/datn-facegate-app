@@ -1,0 +1,3731 @@
+openapi: 3.1.0
+info:
+  title: Hub API — Chấm công & ra vào bằng khuôn mặt (bản demo ĐATN)
+  version: 1.0.0
+  description: 'Hợp đồng API giữa Hub (FastAPI) với Web (`/admin`, `/me`) và Kiosk App. Theo `03-app/dac-ta-app.md` v1.4.2 §8 và `db/thiet-ke-db.md`.
+
+
+    - Mọi đường dẫn có tiền tố `/api/v1`. Bản demo chạy HTTP trong LAN.
+
+    - `x-roles`: vai trò được gọi (`public` = không cần đăng nhập, `any` = mọi người đã đăng nhập, `device` = Kiosk). Server luôn kiểm quyền +
+    phạm vi phòng ban (MANAGER).
+
+    - Thời gian ISO-8601 có múi giờ; ngày công tính theo múi giờ công ty.
+
+    - Phân trang: `page` (từ 1), `size` (≤ 100) → `{items,total,page,size}`.
+
+    - WebSocket `/api/v1/ws/kiosk` và `/api/v1/ws/monitor`: xem `openapi/ws-protocol.md`.'
+servers:
+- url: http://localhost:8000/api/v1
+  description: dev trên máy Hy
+- url: http://10.0.2.2:8000/api/v1
+  description: từ máy ảo Android tới Hub trên cùng máy
+security:
+- bearerAuth: []
+tags:
+- name: Auth
+  description: Đăng nhập, token
+- name: Me
+  description: Trang nhân viên /me
+- name: Dashboard
+  description: W-02
+- name: Employees
+  description: Nhân viên, nghỉ việc, xoá dữ liệu khuôn mặt
+- name: Organization
+  description: Phòng ban, tài khoản, vai trò, PIN
+- name: Faces
+  description: Hồ sơ khuôn mặt chờ xác nhận
+- name: Gates
+  description: Cửa, thiết bị, mở cửa thủ công
+- name: Kiosk
+  description: API cho Kiosk App (device token)
+- name: Schedule
+  description: Ca, phân ca, ngày lễ
+- name: Attendance
+  description: Ngày công, giải trình, chấm công hộ, xuất Excel
+- name: Events
+  description: Sự kiện nhận dạng, cảnh báo
+- name: Settings
+  description: Cấu hình nhận dạng, mô hình, nhật ký
+- name: System
+  description: Tình trạng Hub
+paths:
+  /auth/login:
+    post:
+      tags:
+      - Auth
+      summary: Đăng nhập
+      x-roles:
+      - public
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenPair'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '429':
+          $ref: '#/components/responses/E429'
+      security: []
+      operationId: postAuthLogin
+  /auth/refresh:
+    post:
+      tags:
+      - Auth
+      summary: Đổi refresh token lấy cặp token mới (xoay vòng)
+      x-roles:
+      - public
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenPair'
+        '401':
+          $ref: '#/components/responses/E401'
+      security: []
+      operationId: postAuthRefresh
+  /auth/logout:
+    post:
+      tags:
+      - Auth
+      summary: Đăng xuất (thu hồi refresh token)
+      x-roles:
+      - any
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+      responses:
+        '204':
+          description: Không có nội dung
+        '401':
+          $ref: '#/components/responses/E401'
+      operationId: postAuthLogout
+  /auth/change-password:
+    post:
+      tags:
+      - Auth
+      summary: Đổi mật khẩu
+      x-roles:
+      - any
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangePassword'
+      responses:
+        '204':
+          description: Không có nội dung
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postAuthChangePassword
+  /me:
+    get:
+      tags:
+      - Me
+      summary: Thông tin người đang đăng nhập
+      x-roles:
+      - any
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserMe'
+        '401':
+          $ref: '#/components/responses/E401'
+      operationId: getMe
+  /me/today:
+    get:
+      tags:
+      - Me
+      summary: E-02 Hôm nay
+      x-roles:
+      - EMPLOYEE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeToday'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getMeToday
+  /me/attendance:
+    get:
+      tags:
+      - Me
+      summary: E-03 Bảng công tháng
+      x-roles:
+      - EMPLOYEE
+      parameters:
+      - $ref: '#/components/parameters/month'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeMonth'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getMeAttendance
+  /me/days/{date}:
+    get:
+      tags:
+      - Me
+      summary: E-04 Chi tiết ngày
+      x-roles:
+      - EMPLOYEE
+      parameters:
+      - name: date
+        in: path
+        required: true
+        schema: &id005
+          type: string
+          format: date
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeDay'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getMeDaysById
+  /me/requests:
+    get:
+      tags:
+      - Me
+      summary: E-06 Giải trình của tôi
+      x-roles:
+      - EMPLOYEE
+      parameters:
+      - name: status
+        in: query
+        schema:
+          $ref: '#/components/schemas/RequestStatus'
+      - &id001
+        $ref: '#/components/parameters/page'
+      - &id002
+        $ref: '#/components/parameters/size'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAttendanceRequest'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getMeRequests
+    post:
+      tags:
+      - Me
+      summary: E-05 Gửi giải trình
+      x-roles:
+      - EMPLOYEE
+      description: 409 REQUEST_PENDING_EXISTS nếu ngày đã có giải trình chờ; 422 PERIOD_CLOSED nếu ngày đã quá cửa sổ cho phép.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceRequestCreate'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRequest'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postMeRequests
+  /me/requests/{id}/cancel:
+    post:
+      tags:
+      - Me
+      summary: Huỷ giải trình đang chờ
+      x-roles:
+      - EMPLOYEE
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRequest'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postMeRequestsCancel
+  /me/face:
+    get:
+      tags:
+      - Me
+      summary: E-08 Trạng thái dữ liệu khuôn mặt
+      x-roles:
+      - EMPLOYEE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeFace'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getMeFace
+  /me/face/revoke:
+    post:
+      tags:
+      - Me
+      summary: 'Rút đồng ý: xoá dữ liệu khuôn mặt, chuyển sang chấm công hộ'
+      x-roles:
+      - EMPLOYEE
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeFace'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: postMeFaceRevoke
+  /dashboard/today:
+    get:
+      tags:
+      - Dashboard
+      summary: W-02 Số liệu hôm nay
+      x-roles: &id003
+      - OWNER
+      - HR
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getDashboardToday
+  /employees:
+    get:
+      tags:
+      - Employees
+      summary: Danh sách nhân viên
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      description: MANAGER chỉ thấy NV thuộc phòng ban mình quản lý.
+      parameters:
+      - name: q
+        in: query
+        schema: &id004
+          type: string
+        description: tên hoặc mã
+      - $ref: '#/components/parameters/department_id'
+      - name: status
+        in: query
+        schema:
+          $ref: '#/components/schemas/EmployeeStatus'
+      - name: attendance_method
+        in: query
+        schema:
+          $ref: '#/components/schemas/AttendanceMethod'
+      - name: face_profile_status
+        in: query
+        schema:
+          type: string
+          enum:
+          - NONE
+          - PENDING_REVIEW
+          - ACTIVE
+          - REJECTED
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageEmployee'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getEmployees
+    post:
+      tags:
+      - Employees
+      summary: Thêm nhân viên
+      x-roles: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreate'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeCreated'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: postEmployees
+  /employees/{id}:
+    get:
+      tags:
+      - Employees
+      summary: Chi tiết nhân viên
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: getEmployeesById
+    patch:
+      tags:
+      - Employees
+      summary: Sửa nhân viên
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeUpdate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: patchEmployeesById
+  /employees/{id}/suspend:
+    post:
+      tags:
+      - Employees
+      summary: Tạm khoá
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postEmployeesSuspend
+  /employees/{id}/reactivate:
+    post:
+      tags:
+      - Employees
+      summary: Mở khoá
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postEmployeesReactivate
+  /employees/{id}/terminate:
+    post:
+      tags:
+      - Employees
+      summary: 'Nghỉ việc: xoá ngay dữ liệu khuôn mặt, giữ dữ liệu chấm công'
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postEmployeesTerminate
+  /employees/{id}/face:
+    delete:
+      tags:
+      - Employees
+      summary: Xoá dữ liệu khuôn mặt (ảnh mẫu, embedding, template, crop liên quan)
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Không có nội dung
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: deleteEmployeesFace
+  /departments:
+    get:
+      tags:
+      - Organization
+      summary: Danh sách phòng ban
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      - SECURITY
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getDepartments
+    post:
+      tags:
+      - Organization
+      summary: Thêm phòng ban
+      x-roles: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentInput'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: postDepartments
+  /departments/{id}:
+    patch:
+      tags:
+      - Organization
+      summary: Đổi tên phòng ban
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: patchDepartmentsById
+  /users:
+    get:
+      tags:
+      - Organization
+      summary: Danh sách tài khoản
+      x-roles: *id003
+      parameters:
+      - name: q
+        in: query
+        schema: *id004
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageUser'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getUsers
+    post:
+      tags:
+      - Organization
+      summary: Tạo tài khoản (trả mật khẩu tạm 1 lần)
+      x-roles: *id003
+      description: HR không được cấp vai trò OWNER.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+                  temporary_password: *id004
+                required:
+                - user
+                - temporary_password
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: postUsers
+  /users/{id}:
+    patch:
+      tags:
+      - Organization
+      summary: Sửa tài khoản
+      x-roles: *id003
+      description: HR không sửa được tài khoản có vai trò OWNER.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: patchUsersById
+  /users/{id}/roles:
+    put:
+      tags:
+      - Organization
+      summary: Đặt toàn bộ vai trò
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolesInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: putUsersRoles
+  /users/{id}/kiosk-pin:
+    put:
+      tags:
+      - Organization
+      summary: Đặt PIN Kiosk (chỉ tài khoản có vai trò OWNER/HR)
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PinInput'
+      responses:
+        '204':
+          description: Không có nội dung
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: putUsersKioskPin
+  /users/{id}/reset-password:
+    post:
+      tags:
+      - Organization
+      summary: Đặt lại mật khẩu (mật khẩu tạm 1 lần)
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TempPassword'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: postUsersResetPassword
+  /face-profiles:
+    get:
+      tags:
+      - Faces
+      summary: W-08 Hồ sơ khuôn mặt
+      x-roles: *id003
+      parameters:
+      - name: status
+        in: query
+        schema:
+          $ref: '#/components/schemas/FaceProfileStatus'
+      - $ref: '#/components/parameters/employee_id'
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageFaceProfile'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getFaceProfiles
+  /face-profiles/{id}:
+    get:
+      tags:
+      - Faces
+      summary: Chi tiết hồ sơ (kèm mẫu)
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FaceProfile'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: getFaceProfilesById
+  /face-profiles/{id}/approve:
+    post:
+      tags:
+      - Faces
+      summary: Xác nhận hồ sơ → ACTIVE, nạp lại gallery trước khi trả về
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FaceProfile'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postFaceProfilesApprove
+  /face-profiles/{id}/reject:
+    post:
+      tags:
+      - Faces
+      summary: Từ chối hồ sơ
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FaceProfile'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postFaceProfilesReject
+  /face-samples/{id}/image:
+    get:
+      tags:
+      - Faces
+      summary: Ảnh mẫu 112×112 (PNG)
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: getFaceSamplesImage
+  /gates:
+    get:
+      tags:
+      - Gates
+      summary: Danh sách cửa
+      x-roles:
+      - OWNER
+      - HR
+      - SECURITY
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Gate'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getGates
+    post:
+      tags:
+      - Gates
+      summary: Thêm cửa
+      x-roles:
+      - OWNER
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GateInput'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gate'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: postGates
+  /gates/{id}:
+    patch:
+      tags:
+      - Gates
+      summary: Sửa cửa
+      x-roles:
+      - OWNER
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GateInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gate'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '409':
+          $ref: '#/components/responses/E409'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: patchGatesById
+  /gates/{id}/allowed-departments:
+    put:
+      tags:
+      - Gates
+      summary: Đặt phòng ban được phép (DEPARTMENTS_ONLY)
+      x-roles:
+      - OWNER
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdList'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gate'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: putGatesAllowedDepartments
+  /gates/{id}/manual-open:
+    post:
+      tags:
+      - Gates
+      summary: Mở cửa thủ công (mô phỏng) → event MANUAL_OPEN
+      x-roles:
+      - OWNER
+      - SECURITY
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManualOpenInput'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: postGatesManualOpen
+  /devices:
+    get:
+      tags:
+      - Gates
+      summary: Danh sách thiết bị
+      x-roles:
+      - OWNER
+      parameters:
+      - name: gate_id
+        in: query
+        schema: &id007
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getDevices
+    post:
+      tags:
+      - Gates
+      summary: Thêm thiết bị → mã ghép 6 số (10 phút) + QR
+      x-roles:
+      - OWNER
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCreate'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DevicePairing'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: postDevices
+  /devices/{id}/revoke:
+    post:
+      tags:
+      - Gates
+      summary: Thu hồi thiết bị
+      x-roles:
+      - OWNER
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: postDevicesRevoke
+  /kiosk/pair:
+    post:
+      tags:
+      - Kiosk
+      summary: K-01 Ghép thiết bị
+      x-roles:
+      - public
+      description: 'Lỗi: 422 PAIRING_EXPIRED, 404 PAIRING_INVALID, 429 PAIRING_LOCKED (5 lần sai).'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PairRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PairResponse'
+        '400':
+          $ref: '#/components/responses/E400'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+        '429':
+          $ref: '#/components/responses/E429'
+      security: []
+      operationId: postKioskPair
+  /kiosk/enrollers:
+    get:
+      tags:
+      - Kiosk
+      summary: K-05 Danh sách người có PIN (chỉ tên)
+      x-roles:
+      - device
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Enroller'
+        '401':
+          $ref: '#/components/responses/E401'
+      security:
+      - deviceToken: []
+      operationId: getKioskEnrollers
+  /kiosk/enroll/sessions:
+    post:
+      tags:
+      - Kiosk
+      summary: K-05 Mở phiên đăng ký bằng PIN (5 phút)
+      x-roles:
+      - device
+      description: 403 PIN_INVALID (kèm details.remaining), 429 PIN_LOCKED.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnrollSessionCreate'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrollSession'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '429':
+          $ref: '#/components/responses/E429'
+      security:
+      - deviceToken: []
+      operationId: postKioskEnrollSessions
+  /kiosk/enroll/sessions/{id}/employees:
+    get:
+      tags:
+      - Kiosk
+      summary: K-06 Tìm nhân viên ACTIVE
+      x-roles:
+      - device
+      description: 422 SESSION_EXPIRED.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: q
+        in: query
+        schema: *id004
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KioskEmployee'
+        '401':
+          $ref: '#/components/responses/E401'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - deviceToken: []
+      operationId: getKioskEnrollSessionsEmployees
+  /kiosk/enroll/sessions/{id}/consent:
+    post:
+      tags:
+      - Kiosk
+      summary: K-07 Đồng ý / không đồng ý
+      x-roles:
+      - device
+      description: agree=true → ghi face_consent_at/by, attendance_method=FACE; agree=false → attendance_method=MANUAL.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConsentInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KioskEmployee'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      security:
+      - deviceToken: []
+      operationId: postKioskEnrollSessionsConsent
+  /shifts:
+    get:
+      tags:
+      - Schedule
+      summary: Danh sách ca
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Shift'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getShifts
+    post:
+      tags:
+      - Schedule
+      summary: Thêm ca
+      x-roles: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShiftInput'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shift'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postShifts
+  /shifts/{id}:
+    patch:
+      tags:
+      - Schedule
+      summary: Sửa ca
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShiftInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Shift'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: patchShiftsById
+  /shift-assignments:
+    get:
+      tags:
+      - Schedule
+      summary: Phân ca
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      parameters:
+      - $ref: '#/components/parameters/employee_id'
+      - $ref: '#/components/parameters/department_id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShiftAssignment'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getShiftAssignments
+    post:
+      tags:
+      - Schedule
+      summary: Thêm phân ca (mỗi thứ một dòng)
+      x-roles: *id003
+      description: 409 ASSIGNMENT_OVERLAP khi trùng thời gian.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShiftAssignmentInput'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ShiftAssignment'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: postShiftAssignments
+  /shift-assignments/{id}:
+    delete:
+      tags:
+      - Schedule
+      summary: Xoá phân ca
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '204':
+          description: Không có nội dung
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: deleteShiftAssignmentsById
+  /holidays:
+    get:
+      tags:
+      - Schedule
+      summary: Ngày lễ
+      x-roles:
+      - any
+      parameters:
+      - name: year
+        in: query
+        schema: &id008
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Holiday'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getHolidays
+    post:
+      tags:
+      - Schedule
+      summary: Thêm ngày lễ
+      x-roles: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Holiday'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Holiday'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '409':
+          $ref: '#/components/responses/E409'
+      operationId: postHolidays
+  /holidays/{date}:
+    delete:
+      tags:
+      - Schedule
+      summary: Xoá ngày lễ
+      x-roles: *id003
+      parameters:
+      - name: date
+        in: path
+        required: true
+        schema: *id005
+      responses:
+        '204':
+          description: Không có nội dung
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: deleteHolidaysById
+  /attendance/days:
+    get:
+      tags:
+      - Attendance
+      summary: W-09 Ngày công
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      parameters:
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      - $ref: '#/components/parameters/department_id'
+      - $ref: '#/components/parameters/employee_id'
+      - name: status
+        in: query
+        schema:
+          $ref: '#/components/schemas/AttendanceStatus'
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAttendanceDay'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getAttendanceDays
+  /attendance/days/{id}:
+    patch:
+      tags:
+      - Attendance
+      summary: Sửa ngày công (lý do bắt buộc)
+      x-roles: *id003
+      description: 403 SELF_EDIT_FORBIDDEN.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttendanceDayEdit'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceDay'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: patchAttendanceDaysById
+  /attendance/leave:
+    post:
+      tags:
+      - Attendance
+      summary: Đánh dấu nghỉ phép
+      x-roles: *id003
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeaveInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttendanceDay'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: postAttendanceLeave
+  /attendance/export:
+    get:
+      tags:
+      - Attendance
+      summary: Xuất Excel tháng (sheet Tổng hợp + Chi tiết)
+      x-roles: *id003
+      parameters:
+      - $ref: '#/components/parameters/month'
+      - $ref: '#/components/parameters/department_id'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: string
+                format: binary
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getAttendanceExport
+  /attendance/manual:
+    post:
+      tags:
+      - Attendance
+      summary: Chấm công hộ (NV MANUAL)
+      x-roles:
+      - OWNER
+      - HR
+      - SECURITY
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManualAttendanceInput'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postAttendanceManual
+  /attendance/requests:
+    get:
+      tags:
+      - Attendance
+      summary: W-12 / E-10 Giải trình
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      description: '`can_review` = false với giải trình của chính người gọi. MANAGER chỉ thấy team.'
+      parameters:
+      - name: status
+        in: query
+        schema:
+          $ref: '#/components/schemas/RequestStatus'
+      - name: scope
+        in: query
+        schema:
+          type: string
+          enum:
+          - all
+          - team
+          default: all
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAttendanceRequest'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getAttendanceRequests
+  /attendance/requests/{id}/approve:
+    post:
+      tags:
+      - Attendance
+      summary: Duyệt giải trình → recompute_day
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      description: 403 SELF_REVIEW_FORBIDDEN; 422 NOT_PENDING.
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRequest'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postAttendanceRequestsApprove
+  /attendance/requests/{id}/reject:
+    post:
+      tags:
+      - Attendance
+      summary: Từ chối giải trình (ghi chú bắt buộc)
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttendanceRequest'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postAttendanceRequestsReject
+  /events:
+    get:
+      tags:
+      - Events
+      summary: W-11 Tra cứu sự kiện
+      x-roles:
+      - OWNER
+      - HR
+      - SECURITY
+      - MANAGER
+      parameters:
+      - name: from_ts
+        in: query
+        schema: &id006
+          type: string
+          format: date-time
+      - name: to_ts
+        in: query
+        schema: *id006
+      - name: gate_id
+        in: query
+        schema: *id007
+      - name: result
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventResult'
+      - $ref: '#/components/parameters/employee_id'
+      - name: performed_by
+        in: query
+        schema: *id007
+      - name: handled
+        in: query
+        schema: &id009
+          type: boolean
+      - name: limit
+        in: query
+        schema: *id008
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageEvent'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getEvents
+  /events/{id}/snapshot:
+    get:
+      tags:
+      - Events
+      summary: Ảnh crop của event UNKNOWN/SPOOF (JPEG)
+      x-roles:
+      - OWNER
+      - HR
+      - SECURITY
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: OK
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+      operationId: getEventsSnapshot
+  /events/{id}/handle:
+    post:
+      tags:
+      - Events
+      summary: Xử lý cảnh báo
+      x-roles:
+      - OWNER
+      - SECURITY
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventHandleInput'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '404':
+          $ref: '#/components/responses/E404'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: postEventsHandle
+  /events/manual-report:
+    get:
+      tags:
+      - Events
+      summary: Báo cáo chấm công hộ theo người chấm
+      x-roles:
+      - OWNER
+      - HR
+      - SECURITY
+      parameters:
+      - $ref: '#/components/parameters/from'
+      - $ref: '#/components/parameters/to'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ManualReportRow'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getEventsManualReport
+  /events/export:
+    get:
+      tags:
+      - Events
+      summary: Xuất CSV sự kiện (cùng bộ lọc /events)
+      x-roles:
+      - OWNER
+      - HR
+      - SECURITY
+      parameters:
+      - name: from_ts
+        in: query
+        schema: *id006
+      - name: to_ts
+        in: query
+        schema: *id006
+      - name: gate_id
+        in: query
+        schema: *id007
+      - name: result
+        in: query
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventResult'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/csv:
+              schema:
+                type: string
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getEventsExport
+  /settings/recognition:
+    get:
+      tags:
+      - Settings
+      summary: Đọc cấu hình nhận dạng
+      x-roles:
+      - OWNER
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecognitionSettings'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getSettingsRecognition
+    put:
+      tags:
+      - Settings
+      summary: Lưu cấu hình nhận dạng
+      x-roles:
+      - OWNER
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecognitionSettings'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecognitionSettings'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+        '422':
+          $ref: '#/components/responses/E422'
+      operationId: putSettingsRecognition
+  /models/active:
+    get:
+      tags:
+      - Settings
+      summary: Mô hình đang chạy + ngưỡng có nguồn
+      x-roles: *id003
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelActive'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getModelsActive
+  /audit-logs:
+    get:
+      tags:
+      - Settings
+      summary: W-16 Nhật ký thao tác
+      x-roles:
+      - OWNER
+      parameters:
+      - name: from_ts
+        in: query
+        schema: *id006
+      - name: to_ts
+        in: query
+        schema: *id006
+      - name: actor_user_id
+        in: query
+        schema: *id007
+      - name: action
+        in: query
+        schema: *id004
+      - *id001
+      - *id002
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAuditLog'
+        '400':
+          $ref: '#/components/responses/E400'
+        '401':
+          $ref: '#/components/responses/E401'
+        '403':
+          $ref: '#/components/responses/E403'
+      operationId: getAuditLogs
+  /health:
+    get:
+      tags:
+      - System
+      summary: Tình trạng Hub (không lộ dữ liệu nhạy cảm)
+      x-roles:
+      - public
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+      security: []
+      operationId: getHealth
+  /version:
+    get:
+      tags:
+      - System
+      summary: Phiên bản
+      x-roles:
+      - public
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version: *id004
+                  api: *id004
+                required:
+                - version
+                - api
+      security: []
+      operationId: getVersion
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Access token 15 phút.
+    deviceToken:
+      type: http
+      scheme: bearer
+      description: Device token của Kiosk (30 ngày).
+  parameters:
+    page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    size:
+      name: size
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 20
+    id:
+      name: id
+      in: path
+      required: true
+      schema: *id007
+    from:
+      name: from
+      in: query
+      schema: *id005
+    to:
+      name: to
+      in: query
+      schema: *id005
+    month:
+      name: month
+      in: query
+      required: true
+      schema:
+        type: string
+        pattern: ^\d{4}-\d{2}$
+    department_id:
+      name: department_id
+      in: query
+      schema: *id007
+    employee_id:
+      name: employee_id
+      in: query
+      schema: *id007
+  responses:
+    E400:
+      description: Dữ liệu không hợp lệ
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E401:
+      description: Chưa xác thực / token hết hạn
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E403:
+      description: Không đủ quyền
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E404:
+      description: Không tìm thấy
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E409:
+      description: Xung đột (trùng)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E422:
+      description: Vi phạm quy tắc nghiệp vụ
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E429:
+      description: Quá số lần thử
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code: *id004
+            message: *id004
+            details:
+              type: object
+              additionalProperties: true
+          required:
+          - code
+          - message
+      required:
+      - error
+      description: Mọi lỗi. `code` là mã máy đọc (vd. PAIRING_EXPIRED, ASSIGNMENT_OVERLAP, REQUEST_PENDING_EXISTS, SELF_REVIEW_FORBIDDEN, MODEL_NOT_VERIFIED);
+        `message` tiếng Việt hiển thị được.
+    Role:
+      type: string
+      enum:
+      - OWNER
+      - HR
+      - MANAGER
+      - SECURITY
+      - EMPLOYEE
+    RoleGrant:
+      type: object
+      properties:
+        role:
+          $ref: '#/components/schemas/Role'
+        scope_department_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      required:
+      - role
+    LoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password: *id004
+      required:
+      - email
+      - password
+    TokenPair:
+      type: object
+      properties:
+        access_token: *id004
+        refresh_token: *id004
+        expires_in: *id008
+        must_change_password: *id009
+        user:
+          $ref: '#/components/schemas/UserMe'
+      required:
+      - access_token
+      - refresh_token
+      - expires_in
+      - must_change_password
+      - user
+    UserMe:
+      type: object
+      properties:
+        id: *id007
+        email: *id004
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGrant'
+        employee:
+          oneOf:
+          - $ref: '#/components/schemas/EmployeeBrief'
+          - type: 'null'
+      required:
+      - id
+      - email
+      - roles
+    Department:
+      type: object
+      properties:
+        id: *id007
+        name: *id004
+        employee_count: *id008
+      required:
+      - id
+      - name
+    DepartmentInput:
+      type: object
+      properties:
+        name: *id004
+      required:
+      - name
+    EmployeeStatus:
+      type: string
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - TERMINATED
+    AttendanceMethod:
+      type: string
+      enum:
+      - FACE
+      - MANUAL
+    FaceProfileStatus:
+      type: string
+      enum:
+      - PENDING_REVIEW
+      - ACTIVE
+      - REJECTED
+      - SUPERSEDED
+    EmployeeBrief:
+      type: object
+      properties:
+        id: *id007
+        code: *id004
+        full_name: *id004
+        department_id: *id007
+        department_name: *id004
+      required:
+      - id
+      - code
+      - full_name
+    Employee:
+      type: object
+      properties:
+        id: *id007
+        code: *id004
+        full_name: *id004
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        department_id: *id007
+        department_name: *id004
+        status:
+          $ref: '#/components/schemas/EmployeeStatus'
+        attendance_method:
+          $ref: '#/components/schemas/AttendanceMethod'
+        joined_at:
+          type:
+          - string
+          - 'null'
+          format: date
+        terminated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        face_consent_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        face_profile_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - PENDING_REVIEW
+          - ACTIVE
+          - REJECTED
+          - SUPERSEDED
+          - null
+          description: Trạng thái hồ sơ mới nhất; null = chưa đăng ký
+        user_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      required:
+      - id
+      - code
+      - full_name
+      - department_id
+      - status
+      - attendance_method
+    EmployeeCreate:
+      type: object
+      properties:
+        code: *id004
+        full_name: *id004
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        department_id: *id007
+        joined_at:
+          type:
+          - string
+          - 'null'
+          format: date
+        create_account:
+          type: boolean
+          default: false
+      required:
+      - code
+      - full_name
+      - department_id
+    EmployeeCreated:
+      type: object
+      properties:
+        employee:
+          $ref: '#/components/schemas/Employee'
+        temporary_password:
+          type:
+          - string
+          - 'null'
+      required:
+      - employee
+    EmployeeUpdate:
+      type: object
+      properties:
+        full_name: *id004
+        email:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+        department_id: *id007
+        joined_at:
+          type:
+          - string
+          - 'null'
+          format: date
+    User:
+      type: object
+      properties:
+        id: *id007
+        email: *id004
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - DISABLED
+        employee:
+          oneOf:
+          - $ref: '#/components/schemas/EmployeeBrief'
+          - type: 'null'
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGrant'
+        has_kiosk_pin: *id009
+        last_login_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      required:
+      - id
+      - email
+      - status
+      - roles
+      - has_kiosk_pin
+    UserCreate:
+      type: object
+      properties:
+        email: *id004
+        employee_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGrant'
+      required:
+      - email
+      - roles
+    UserUpdate:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - DISABLED
+        employee_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+    TempPassword:
+      type: object
+      properties:
+        temporary_password: *id004
+      required:
+      - temporary_password
+    FaceSample:
+      type: object
+      properties:
+        id: *id007
+        det_score: &id010
+          type: number
+        yaw_ratio: *id010
+        p_live:
+          type:
+          - number
+          - 'null'
+        image_url: *id004
+      required:
+      - id
+      - det_score
+      - yaw_ratio
+      - image_url
+    FaceProfile:
+      type: object
+      properties:
+        id: *id007
+        employee:
+          $ref: '#/components/schemas/EmployeeBrief'
+        status:
+          $ref: '#/components/schemas/FaceProfileStatus'
+        enrolled_by: *id004
+        enrolled_at: *id006
+        duplicate_of:
+          oneOf:
+          - $ref: '#/components/schemas/EmployeeBrief'
+          - type: 'null'
+        duplicate_score:
+          type:
+          - number
+          - 'null'
+        reviewed_by:
+          type:
+          - string
+          - 'null'
+        reviewed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        review_note:
+          type:
+          - string
+          - 'null'
+        samples:
+          type: array
+          items:
+            $ref: '#/components/schemas/FaceSample'
+      required:
+      - id
+      - employee
+      - status
+      - enrolled_by
+      - enrolled_at
+      - samples
+    ReviewInput:
+      type: object
+      properties:
+        note:
+          type:
+          - string
+          - 'null'
+      description: Bắt buộc `note` khi từ chối, và khi duyệt hồ sơ có cảnh báo trùng.
+    GateMode:
+      type: string
+      enum:
+      - ATTENDANCE_ACCESS
+      - ACCESS_ONLY
+    ThresholdLevel:
+      type: string
+      enum:
+      - DEFAULT_VAL
+      - STRICT_TEST
+      - CUSTOM
+    Gate:
+      type: object
+      properties:
+        id: *id007
+        name: *id004
+        mode:
+          $ref: '#/components/schemas/GateMode'
+        default_policy:
+          type: string
+          enum:
+          - ALLOW_ALL_ACTIVE
+          - DEPARTMENTS_ONLY
+        allowed_department_ids:
+          type: array
+          items: *id007
+        threshold_level:
+          $ref: '#/components/schemas/ThresholdLevel'
+        custom_threshold:
+          type:
+          - number
+          - 'null'
+        effective_threshold: *id010
+        is_active: *id009
+        devices_online: *id008
+        devices_total: *id008
+      required:
+      - id
+      - name
+      - mode
+      - default_policy
+      - allowed_department_ids
+      - threshold_level
+      - effective_threshold
+      - is_active
+    GateInput:
+      type: object
+      properties:
+        name: *id004
+        mode:
+          $ref: '#/components/schemas/GateMode'
+        default_policy:
+          type: string
+          enum:
+          - ALLOW_ALL_ACTIVE
+          - DEPARTMENTS_ONLY
+        threshold_level:
+          $ref: '#/components/schemas/ThresholdLevel'
+        custom_threshold:
+          type:
+          - number
+          - 'null'
+        is_active: *id009
+    Device:
+      type: object
+      properties:
+        id: *id007
+        gate_id: *id007
+        name: *id004
+        status:
+          type: string
+          enum:
+          - PENDING
+          - ACTIVE
+          - REVOKED
+        last_seen_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        app_version:
+          type:
+          - string
+          - 'null'
+        online: *id009
+      required:
+      - id
+      - gate_id
+      - name
+      - status
+      - online
+    DeviceCreate:
+      type: object
+      properties:
+        gate_id: *id007
+        name: *id004
+      required:
+      - gate_id
+      - name
+    DevicePairing:
+      type: object
+      properties:
+        device:
+          $ref: '#/components/schemas/Device'
+        pairing_code:
+          type: string
+          pattern: ^\d{6}$
+        expires_at: *id006
+        qr_payload:
+          type: string
+          description: JSON {"hub":"http://…","code":"123456"} để tạo mã QR
+      required:
+      - device
+      - pairing_code
+      - expires_at
+      - qr_payload
+    PairRequest:
+      type: object
+      properties:
+        code:
+          type: string
+          pattern: ^\d{6}$
+        device_info:
+          type: object
+          properties:
+            model: *id004
+            os: *id004
+            app_version: *id004
+      required:
+      - code
+    PairResponse:
+      type: object
+      properties:
+        device_id: *id007
+        device_token: *id004
+        token_expires_at: *id006
+        gate:
+          $ref: '#/components/schemas/KioskGate'
+      required:
+      - device_id
+      - device_token
+      - token_expires_at
+      - gate
+    KioskGate:
+      type: object
+      properties:
+        id: *id007
+        name: *id004
+        mode:
+          $ref: '#/components/schemas/GateMode'
+      required:
+      - id
+      - name
+      - mode
+    Enroller:
+      type: object
+      properties:
+        user_id: *id007
+        name: *id004
+      required:
+      - user_id
+      - name
+    EnrollSessionCreate:
+      type: object
+      properties:
+        user_id: *id007
+        pin:
+          type: string
+          pattern: ^\d{4}$
+      required:
+      - user_id
+      - pin
+    EnrollSession:
+      type: object
+      properties:
+        enroll_session_id: *id007
+        expires_at: *id006
+        enroller_name: *id004
+      required:
+      - enroll_session_id
+      - expires_at
+    KioskEmployee:
+      type: object
+      properties:
+        id: *id007
+        code: *id004
+        full_name: *id004
+        department_name: *id004
+        attendance_method:
+          $ref: '#/components/schemas/AttendanceMethod'
+        face_profile_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - PENDING_REVIEW
+          - ACTIVE
+          - REJECTED
+          - SUPERSEDED
+          - null
+      required:
+      - id
+      - code
+      - full_name
+      - attendance_method
+    ConsentInput:
+      type: object
+      properties:
+        employee_id: *id007
+        agree: *id009
+      required:
+      - employee_id
+      - agree
+    Shift:
+      type: object
+      properties:
+        id: *id007
+        name: *id004
+        start_time: &id011
+          type: string
+          pattern: ^\d{2}:\d{2}$
+          example: 08:30
+        end_time: *id011
+        break_start:
+          type:
+          - string
+          - 'null'
+          pattern: ^\d{2}:\d{2}$
+          example: 08:30
+        break_end:
+          type:
+          - string
+          - 'null'
+          pattern: ^\d{2}:\d{2}$
+          example: 08:30
+        grace_in_min: *id008
+        grace_out_min: *id008
+      required:
+      - id
+      - name
+      - start_time
+      - end_time
+      - grace_in_min
+      - grace_out_min
+    ShiftInput:
+      type: object
+      properties:
+        name: *id004
+        start_time: *id011
+        end_time: *id011
+        break_start:
+          type:
+          - string
+          - 'null'
+          pattern: ^\d{2}:\d{2}$
+          example: 08:30
+        break_end:
+          type:
+          - string
+          - 'null'
+          pattern: ^\d{2}:\d{2}$
+          example: 08:30
+        grace_in_min: *id008
+        grace_out_min: *id008
+      required:
+      - name
+      - start_time
+      - end_time
+    ShiftAssignment:
+      type: object
+      properties:
+        id: *id007
+        shift_id: *id007
+        shift_name: *id004
+        employee_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        department_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        weekday:
+          type: integer
+          minimum: 1
+          maximum: 7
+          description: 'ISO: 1 = Thứ Hai'
+        effective_from: *id005
+        effective_to:
+          type:
+          - string
+          - 'null'
+          format: date
+      required:
+      - id
+      - shift_id
+      - weekday
+      - effective_from
+    ShiftAssignmentInput:
+      type: object
+      properties:
+        shift_id: *id007
+        employee_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        department_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        weekdays:
+          type: array
+          items:
+            type: integer
+            minimum: 1
+            maximum: 7
+        effective_from: *id005
+        effective_to:
+          type:
+          - string
+          - 'null'
+          format: date
+      required:
+      - shift_id
+      - weekdays
+      - effective_from
+      description: Đúng một trong employee_id / department_id. Tạo một dòng mỗi thứ.
+    Holiday:
+      type: object
+      properties:
+        date: *id005
+        name: *id004
+      required:
+      - date
+      - name
+    AttendanceStatus:
+      type: string
+      enum:
+      - HOLIDAY
+      - LEAVE
+      - 'OFF'
+      - NOT_STARTED
+      - IN_PROGRESS
+      - ABSENT
+      - MISSING_OUT
+      - NORMAL
+      - LATE
+      - EARLY
+      - LATE_EARLY
+    AttendanceDay:
+      type: object
+      properties:
+        id: *id007
+        employee:
+          $ref: '#/components/schemas/EmployeeBrief'
+        work_date: *id005
+        shift:
+          oneOf:
+          - $ref: '#/components/schemas/ShiftBrief'
+          - type: 'null'
+        check_in_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        check_out_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        status:
+          $ref: '#/components/schemas/AttendanceStatus'
+        suspect_forgot_out: *id009
+        late_min: *id008
+        early_min: *id008
+        worked_min: *id008
+        source:
+          type: string
+          enum:
+          - AUTO
+          - ADJUSTED
+          - MANUAL
+        finalized: *id009
+        edit_reason:
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - employee
+      - work_date
+      - status
+      - suspect_forgot_out
+      - late_min
+      - early_min
+      - worked_min
+      - source
+      - finalized
+    ShiftBrief:
+      type: object
+      properties:
+        id: *id007
+        name: *id004
+        start_time: *id011
+        end_time: *id011
+      required:
+      - id
+      - name
+      - start_time
+      - end_time
+    AttendanceDayEdit:
+      type: object
+      properties:
+        check_in_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        check_out_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        reason: *id004
+      required:
+      - reason
+      description: Server chặn sửa ngày công của chính người đang đăng nhập (403 SELF_EDIT_FORBIDDEN).
+    LeaveInput:
+      type: object
+      properties:
+        employee_id: *id007
+        dates:
+          type: array
+          items: *id005
+        reason: *id004
+      required:
+      - employee_id
+      - dates
+      - reason
+    ManualAttendanceInput:
+      type: object
+      properties:
+        employee_id: *id007
+        gate_id: *id007
+        reason: *id004
+      required:
+      - employee_id
+      - gate_id
+      - reason
+      description: Chỉ cho NV attendance_method=MANUAL; người thực hiện ≠ NV được chấm (403 SELF_MANUAL_FORBIDDEN). Thời điểm = hiện tại.
+    RequestType:
+      type: string
+      enum:
+      - FORGOT_IN
+      - FORGOT_OUT
+      - NOT_RECOGNIZED
+      - BUSINESS_TRIP
+      - OTHER
+    RequestStatus:
+      type: string
+      enum:
+      - PENDING
+      - APPROVED
+      - REJECTED
+      - CANCELLED
+    AttendanceRequest:
+      type: object
+      properties:
+        id: *id007
+        employee:
+          $ref: '#/components/schemas/EmployeeBrief'
+        work_date: *id005
+        type:
+          $ref: '#/components/schemas/RequestType'
+        requested_in:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        requested_out:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        reason: *id004
+        status:
+          $ref: '#/components/schemas/RequestStatus'
+        recorded_in:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        recorded_out:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        created_at: *id006
+        reviewer_name:
+          type:
+          - string
+          - 'null'
+        reviewed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        review_note:
+          type:
+          - string
+          - 'null'
+        can_review: *id009
+      required:
+      - id
+      - employee
+      - work_date
+      - type
+      - reason
+      - status
+      - created_at
+      - can_review
+    AttendanceRequestCreate:
+      type: object
+      properties:
+        work_date: *id005
+        type:
+          $ref: '#/components/schemas/RequestType'
+        requested_in:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        requested_out:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        reason: *id004
+      required:
+      - work_date
+      - type
+      - reason
+    EventResult:
+      type: string
+      enum:
+      - MATCH
+      - UNKNOWN
+      - SPOOF
+      - DENIED_RULE
+      - DENIED_INACTIVE
+      - MANUAL_OPEN
+      - MANUAL_ATTENDANCE
+    Event:
+      type: object
+      properties:
+        id: *id007
+        occurred_at: *id006
+        gate:
+          $ref: '#/components/schemas/KioskGate'
+        device_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        result:
+          $ref: '#/components/schemas/EventResult'
+        employee:
+          oneOf:
+          - $ref: '#/components/schemas/EmployeeBrief'
+          - type: 'null'
+        top1_score:
+          type:
+          - number
+          - 'null'
+        threshold_used:
+          type:
+          - number
+          - 'null'
+        threshold_level:
+          oneOf:
+          - $ref: '#/components/schemas/ThresholdLevel'
+          - type: 'null'
+        p_live_min:
+          type:
+          - number
+          - 'null'
+        n_frames:
+          type:
+          - integer
+          - 'null'
+        door_action:
+          type: string
+          enum:
+          - OPEN
+          - NONE
+        has_snapshot: *id009
+        performed_by:
+          type:
+          - string
+          - 'null'
+        reason:
+          type:
+          - string
+          - 'null'
+        handling:
+          oneOf:
+          - $ref: '#/components/schemas/EventHandling'
+          - type: 'null'
+      required:
+      - id
+      - occurred_at
+      - gate
+      - result
+      - door_action
+      - has_snapshot
+    EventHandling:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - RESOLVED
+          - FALSE_ALARM
+          - IS_EMPLOYEE
+        linked_employee:
+          oneOf:
+          - $ref: '#/components/schemas/EmployeeBrief'
+          - type: 'null'
+        handled_by: *id004
+        handled_at: *id006
+        note:
+          type:
+          - string
+          - 'null'
+      required:
+      - status
+      - handled_by
+      - handled_at
+    EventHandleInput:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - RESOLVED
+          - FALSE_ALARM
+          - IS_EMPLOYEE
+        linked_employee_id:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        note:
+          type:
+          - string
+          - 'null'
+      required:
+      - status
+      description: Chỉ cho event UNKNOWN/SPOOF. IS_EMPLOYEE KHÔNG thêm ảnh vào hồ sơ khuôn mặt.
+    ManualOpenInput:
+      type: object
+      properties:
+        reason: *id004
+      required:
+      - reason
+    ManualReportRow:
+      type: object
+      properties:
+        performed_by:
+          $ref: '#/components/schemas/EmployeeBrief'
+        count: *id008
+        distinct_employees: *id008
+      required:
+      - performed_by
+      - count
+      - distinct_employees
+    Dashboard:
+      type: object
+      properties:
+        date: *id005
+        present: *id008
+        late: *id008
+        not_arrived: *id008
+        strangers: *id008
+        pending_face_profiles: *id008
+        pending_requests: *id008
+        open_alerts: *id008
+        devices_offline: *id008
+      required:
+      - date
+      - present
+      - late
+      - not_arrived
+      - strangers
+    ModelActive:
+      type: object
+      properties:
+        code: *id004
+        name: *id004
+        epoch: *id008
+        source_sha256: *id004
+        stripped_sha256: *id004
+        t_bs: *id010
+        alignment_version: *id004
+        runtime:
+          type: object
+          additionalProperties: true
+        verified_at: *id006
+        thresholds:
+          type: array
+          items:
+            type: object
+            properties:
+              level:
+                type: string
+                enum:
+                - DEFAULT_VAL
+                - STRICT_TEST
+              cos_threshold: *id010
+              label: *id004
+              source_ref: *id004
+            required:
+            - level
+            - cos_threshold
+            - label
+            - source_ref
+      required:
+      - code
+      - name
+      - epoch
+      - source_sha256
+      - stripped_sha256
+      - t_bs
+      - thresholds
+    RecognitionSettings:
+      type: object
+      properties:
+        window_size: *id008
+        match_min: *id008
+        unknown_min: *id008
+        spoof_min: *id008
+        lost_face_sec: *id010
+        iou_reset: *id010
+        cooldown_employee_sec: *id008
+        cooldown_alert_sec: *id008
+        result_display_sec: *id008
+        max_fps: *id008
+        frame_long_side: *id008
+        jpeg_quality: *id008
+        min_face_px: *id008
+        max_abs_yaw_ratio: *id010
+        anti_spoof_enabled: *id009
+        liveness_threshold:
+          type:
+          - number
+          - 'null'
+        attendance_window_before_h: *id008
+        attendance_window_after_h: *id008
+        min_checkout_after_checkin_min: *id008
+        forgot_out_before_end_h: *id008
+      description: '= company.settings (db/thiet-ke-db.md §6). Server kiểm: anti_spoof_enabled=true cần liveness_threshold ≠ null (422).'
+    AuditLog:
+      type: object
+      properties:
+        id: *id008
+        at: *id006
+        actor:
+          type:
+          - string
+          - 'null'
+        actor_device:
+          type:
+          - string
+          - 'null'
+        action: *id004
+        entity: *id004
+        entity_id:
+          type:
+          - string
+          - 'null'
+        detail:
+          type:
+          - object
+          - 'null'
+          additionalProperties: true
+      required:
+      - id
+      - at
+      - action
+      - entity
+    Health:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ok
+          - degraded
+        db: *id009
+        gpu: *id009
+        model_verified: *id009
+        gallery_size: *id008
+        version: *id004
+      required:
+      - status
+      - db
+      - gpu
+      - model_verified
+      - gallery_size
+      - version
+    MeToday:
+      type: object
+      properties:
+        date: *id005
+        shift:
+          oneOf:
+          - $ref: '#/components/schemas/ShiftBrief'
+          - type: 'null'
+        holiday:
+          type:
+          - string
+          - 'null'
+        attendance_method:
+          $ref: '#/components/schemas/AttendanceMethod'
+        day:
+          oneOf:
+          - $ref: '#/components/schemas/AttendanceDay'
+          - type: 'null'
+        passes:
+          type: array
+          items:
+            type: object
+            properties:
+              occurred_at: *id006
+              gate_name: *id004
+              gate_mode:
+                $ref: '#/components/schemas/GateMode'
+              result:
+                $ref: '#/components/schemas/EventResult'
+            required:
+            - occurred_at
+            - gate_name
+            - gate_mode
+            - result
+      required:
+      - date
+      - attendance_method
+      - passes
+    MeMonth:
+      type: object
+      properties:
+        month:
+          type: string
+          pattern: ^\d{4}-\d{2}$
+        days:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendanceDay'
+        summary:
+          type: object
+          properties:
+            work_days: *id008
+            late_count: *id008
+            late_minutes: *id008
+            missing_or_absent: *id008
+          required:
+          - work_days
+          - late_count
+          - late_minutes
+          - missing_or_absent
+      required:
+      - month
+      - days
+      - summary
+    MeDay:
+      type: object
+      properties:
+        day:
+          oneOf:
+          - $ref: '#/components/schemas/AttendanceDay'
+          - type: 'null'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        request:
+          oneOf:
+          - $ref: '#/components/schemas/AttendanceRequest'
+          - type: 'null'
+      required:
+      - events
+    MeFace:
+      type: object
+      properties:
+        attendance_method:
+          $ref: '#/components/schemas/AttendanceMethod'
+        face_consent_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        face_profile_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - PENDING_REVIEW
+          - ACTIVE
+          - REJECTED
+          - SUPERSEDED
+          - null
+      required:
+      - attendance_method
+    ChangePassword:
+      type: object
+      properties:
+        old_password: *id004
+        new_password:
+          type: string
+          minLength: 8
+      required:
+      - old_password
+      - new_password
+    RefreshRequest:
+      type: object
+      properties:
+        refresh_token: *id004
+      required:
+      - refresh_token
+    PinInput:
+      type: object
+      properties:
+        pin:
+          type: string
+          pattern: ^\d{4}$
+      required:
+      - pin
+    RolesInput:
+      type: object
+      properties:
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGrant'
+      required:
+      - roles
+    IdList:
+      type: object
+      properties:
+        department_ids:
+          type: array
+          items: *id007
+      required:
+      - department_ids
+    PageEmployee:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Employee'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size
+    PageUser:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size
+    PageFaceProfile:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/FaceProfile'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size
+    PageAttendanceDay:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendanceDay'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size
+    PageAttendanceRequest:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AttendanceRequest'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size
+    PageEvent:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size
+    PageAuditLog:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AuditLog'
+        total: *id008
+        page: *id008
+        size: *id008
+      required:
+      - items
+      - total
+      - page
+      - size

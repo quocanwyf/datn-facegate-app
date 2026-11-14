@@ -1,0 +1,69 @@
+run_name: r18_uniface_v1_lam0.6_m0.45_s3_e28
+seed: 3
+output_dir: /kaggle/working/runs
+data:
+  type: rec
+  root: /kaggle/input/datasets/debarghamitraroy/casia-webface/casia-webface
+  num_workers: 4
+  workers_per_rank: null
+  prewarm: true
+  val:
+    enabled: true
+    ids_file: null
+    ids_sha256: a648dba7022e03678aa1df7e660d2580b31a42b5a7bf0373295657aa4a8c4a9f
+    frac: 0.05
+    seed: 2026
+    max_per_id: 10
+  num_images: 256
+  num_classes: 16
+  size: 112
+eval:
+  bin_dir: /kaggle/input/datasets/debarghamitraroy/casia-webface/eval
+  bins:
+  - lfw
+  - cfp_fp
+  - agedb_30
+  - calfw
+  - cplfw
+  every_epochs: 0
+  at_end: false
+  batch_size: 256
+  val_every_epochs: 1
+  best_metric: tar@far=0.001
+model:
+  backbone: r18
+  emb_dim: 512
+  dropout: 0.0
+head:
+  name: uniface_v1
+  s: 64.0
+  m: 0.45
+  lam: 0.6
+  r: 1.0
+  margin_type: cos
+  clamp: true
+  w_init_std: 0.01
+  v1_enabled: true
+  v1_alpha: 1.0
+  v1_start_epoch: 4
+train:
+  global_batch: 512
+  micro_batch: 256
+  accum_steps: 4
+  epochs: 28
+  lr: 0.1
+  lr_steps:
+  - 16
+  - 24
+  lr_gamma: 0.1
+  warmup_epochs: 0
+  momentum: 0.9
+  weight_decay: 0.0005
+  clip_grad: 5.0
+  amp: true
+  max_iters: null
+  log_every: 20
+  ckpt_every_iters: 500
+  save_epoch_ckpt: false
+  deterministic: false
+  device: auto

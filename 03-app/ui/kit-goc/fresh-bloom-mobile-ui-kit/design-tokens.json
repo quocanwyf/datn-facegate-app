@@ -1,0 +1,821 @@
+{
+  "color": {
+    "leaf": {
+      "50": {
+        "$type": "color",
+        "$value": "#F5FBEA"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#E8F6D0"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#D2EDA4"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#B9E276"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#A3D853"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#8AC43A"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#6BA22A"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#4F7C20"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#3B5D1C"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#2C4517"
+      },
+      "$description": "Primary — lime/leaf green (scan frame, active states, highlights). 400 = brand lime (est. #A3D853)."
+    },
+    "forest": {
+      "50": {
+        "$type": "color",
+        "$value": "#EEF4E8"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#D7E6C8"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#B3CF95"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#8DB563"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#6A9A3C"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#4F8126"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#3E6A1A"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#2E5E14"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#234A10"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#17330A"
+      },
+      "$description": "Secondary — deep green used for brand backdrops / hero gradients."
+    },
+    "amber": {
+      "50": {
+        "$type": "color",
+        "$value": "#FFF8E6"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#FFEDBF"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#FFDD8A"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#FFCB4F"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#FDB827"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#F5A00A"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#D6820A"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#A9610C"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#7F4A10"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#5C3610"
+      },
+      "$description": "Accent — warm amber/orange (secondary metric, ratings, bloom gradient)."
+    },
+    "berry": {
+      "50": {
+        "$type": "color",
+        "$value": "#FDECEC"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#FAD0D0"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#F4A3A4"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#EC6F71"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#E5484B"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#D92D2F"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#B5241F"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#8F1D1A"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#6B1715"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#4A1110"
+      },
+      "$description": "Accent 2 / error — tomato red (third metric, destructive)."
+    },
+    "stone": {
+      "0": {
+        "$type": "color",
+        "$value": "#FFFFFF"
+      },
+      "25": {
+        "$type": "color",
+        "$value": "#F7F6F4"
+      },
+      "50": {
+        "$type": "color",
+        "$value": "#F1F0ED"
+      },
+      "100": {
+        "$type": "color",
+        "$value": "#EAE8E4"
+      },
+      "200": {
+        "$type": "color",
+        "$value": "#DDDAD5"
+      },
+      "300": {
+        "$type": "color",
+        "$value": "#C7C4BE"
+      },
+      "400": {
+        "$type": "color",
+        "$value": "#A3A09A"
+      },
+      "500": {
+        "$type": "color",
+        "$value": "#85827C"
+      },
+      "600": {
+        "$type": "color",
+        "$value": "#66635E"
+      },
+      "700": {
+        "$type": "color",
+        "$value": "#4A4844"
+      },
+      "800": {
+        "$type": "color",
+        "$value": "#2E2D2A"
+      },
+      "900": {
+        "$type": "color",
+        "$value": "#1A1A18"
+      },
+      "950": {
+        "$type": "color",
+        "$value": "#0F0F0E"
+      },
+      "$description": "Warm neutral scale."
+    },
+    "semantic": {
+      "success": {
+        "$type": "color",
+        "$value": "#2F7A1F",
+        "$description": "5.35:1 on white"
+      },
+      "success-on-bg": {
+        "$type": "color",
+        "$value": "{color.leaf.800}",
+        "$description": "6.2:1 on stone.100"
+      },
+      "warning": {
+        "$type": "color",
+        "$value": "#94570B",
+        "$description": "4.73:1 on stone.100"
+      },
+      "warning-surface": {
+        "$type": "color",
+        "$value": "{color.amber.50}"
+      },
+      "error": {
+        "$type": "color",
+        "$value": "#B5241F",
+        "$description": "5.3:1 on stone.100"
+      },
+      "error-surface": {
+        "$type": "color",
+        "$value": "{color.berry.50}"
+      },
+      "info": {
+        "$type": "color",
+        "$value": "#2569B5",
+        "$description": "5.58:1 on white"
+      },
+      "info-surface": {
+        "$type": "color",
+        "$value": "#EAF2FB"
+      }
+    },
+    "light": {
+      "bg": {
+        "$type": "color",
+        "$value": "{color.stone.100}"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "{color.stone.50}"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "{color.stone.0}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.stone.200}"
+      },
+      "text-primary": {
+        "$type": "color",
+        "$value": "{color.stone.900}",
+        "$description": "14.2:1 on bg"
+      },
+      "text-secondary": {
+        "$type": "color",
+        "$value": "{color.stone.600}",
+        "$description": "4.89:1 on bg — original #8A8A86 was 2.83:1, fixed"
+      },
+      "text-disabled": {
+        "$type": "color",
+        "$value": "{color.stone.400}",
+        "$description": "decorative/disabled only"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.leaf.400}"
+      },
+      "on-primary": {
+        "$type": "color",
+        "$value": "{color.stone.900}",
+        "$description": "10.4:1 — never white on lime"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "{color.stone.900}"
+      },
+      "on-inverse": {
+        "$type": "color",
+        "$value": "{color.stone.0}"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{color.leaf.500}"
+      }
+    },
+    "dark": {
+      "bg": {
+        "$type": "color",
+        "$value": "#121311"
+      },
+      "surface": {
+        "$type": "color",
+        "$value": "#1C1D1A"
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "#252622"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "#33342F"
+      },
+      "text-primary": {
+        "$type": "color",
+        "$value": "#F2F1EE"
+      },
+      "text-secondary": {
+        "$type": "color",
+        "$value": "#A9A7A1"
+      },
+      "text-disabled": {
+        "$type": "color",
+        "$value": "#6A6863"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.leaf.400}"
+      },
+      "on-primary": {
+        "$type": "color",
+        "$value": "{color.stone.900}"
+      },
+      "inverse": {
+        "$type": "color",
+        "$value": "#F2F1EE"
+      },
+      "on-inverse": {
+        "$type": "color",
+        "$value": "#121311"
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{color.leaf.300}"
+      }
+    }
+  },
+  "gradient": {
+    "backdrop": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#2E5E14",
+          "position": 0
+        },
+        {
+          "color": "#A8C957",
+          "position": 1
+        }
+      ],
+      "$description": "linear 160deg; marketing/hero backdrop only"
+    },
+    "bloom": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#FFB547",
+          "position": 0
+        },
+        {
+          "color": "#FFE07A",
+          "position": 0.45
+        },
+        {
+          "color": "#C9EE8A",
+          "position": 0.75
+        },
+        {
+          "color": "#FFFFFF00",
+          "position": 1
+        }
+      ],
+      "$description": "radial; data-viz 'petal' fills, highlight halos"
+    },
+    "scan": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#A3D85300",
+          "position": 0
+        },
+        {
+          "color": "#A3D85366",
+          "position": 1
+        }
+      ],
+      "$description": "linear 180deg; active/selected media overlay"
+    },
+    "media-fade": {
+      "$type": "gradient",
+      "$value": [
+        {
+          "color": "#EAE8E400",
+          "position": 0
+        },
+        {
+          "color": "#EAE8E4",
+          "position": 1
+        }
+      ],
+      "$description": "image bottom fade into bg"
+    }
+  },
+  "font": {
+    "family": {
+      "display": {
+        "$type": "fontFamily",
+        "$value": [
+          "Inter Display",
+          "Inter",
+          "Manrope",
+          "Plus Jakarta Sans",
+          "system-ui",
+          "sans-serif"
+        ]
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": [
+          "Inter",
+          "Manrope",
+          "system-ui",
+          "sans-serif"
+        ]
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      }
+    }
+  },
+  "typography": {
+    "display": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": "56px",
+        "lineHeight": 1.05,
+        "fontWeight": 600,
+        "letterSpacing": "-0.03em"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": "40px",
+        "lineHeight": 1.1,
+        "fontWeight": 600,
+        "letterSpacing": "-0.025em"
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": "32px",
+        "lineHeight": 1.15,
+        "fontWeight": 600,
+        "letterSpacing": "-0.02em"
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": "24px",
+        "lineHeight": 1.25,
+        "fontWeight": 600,
+        "letterSpacing": "-0.015em"
+      }
+    },
+    "h4": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "20px",
+        "lineHeight": 1.3,
+        "fontWeight": 600,
+        "letterSpacing": "-0.01em"
+      }
+    },
+    "h5": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "18px",
+        "lineHeight": 1.35,
+        "fontWeight": 500,
+        "letterSpacing": "-0.005em"
+      }
+    },
+    "h6": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "16px",
+        "lineHeight": 1.4,
+        "fontWeight": 600,
+        "letterSpacing": "0em"
+      }
+    },
+    "body-lg": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "18px",
+        "lineHeight": 1.55,
+        "fontWeight": 400,
+        "letterSpacing": "0em"
+      }
+    },
+    "body-md": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "16px",
+        "lineHeight": 1.5,
+        "fontWeight": 400,
+        "letterSpacing": "0em"
+      }
+    },
+    "body-sm": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "14px",
+        "lineHeight": 1.45,
+        "fontWeight": 400,
+        "letterSpacing": "0em"
+      }
+    },
+    "caption": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "12px",
+        "lineHeight": 1.35,
+        "fontWeight": 400,
+        "letterSpacing": "0.01em"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "13px",
+        "lineHeight": 1.2,
+        "fontWeight": 500,
+        "letterSpacing": "0.005em"
+      }
+    },
+    "button": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.body}",
+        "fontSize": "15px",
+        "lineHeight": 1,
+        "fontWeight": 600,
+        "letterSpacing": "-0.005em"
+      }
+    },
+    "metric": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.display}",
+        "fontSize": "22px",
+        "lineHeight": 1.1,
+        "fontWeight": 600,
+        "letterSpacing": "-0.01em"
+      },
+      "$description": "numbers: font-variant-numeric tabular-nums"
+    }
+  },
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "0.5": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "1.5": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "40px"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "80px"
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "96px"
+    }
+  },
+  "radius": {
+    "xs": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "2xl": {
+      "$type": "dimension",
+      "$value": "44px"
+    },
+    "full": {
+      "$type": "dimension",
+      "$value": "9999px"
+    }
+  },
+  "shadow": {
+    "1": {
+      "$type": "shadow",
+      "$value": {
+        "color": "#1A1A180D",
+        "offsetX": "0px",
+        "offsetY": "1px",
+        "blur": "2px",
+        "spread": "0px"
+      }
+    },
+    "2": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#1A1A180A",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "0px"
+        },
+        {
+          "color": "#1A1A180F",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "-4px"
+        }
+      ]
+    },
+    "3": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "#1A1A180F",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "-8px"
+        },
+        {
+          "color": "#1A1A1814",
+          "offsetX": "0px",
+          "offsetY": "24px",
+          "blur": "64px",
+          "spread": "-12px"
+        }
+      ]
+    },
+    "glow": {
+      "$type": "shadow",
+      "$value": {
+        "color": "#A3D85359",
+        "offsetX": "0px",
+        "offsetY": "0px",
+        "blur": "0px",
+        "spread": "4px"
+      },
+      "$description": "focus ring"
+    }
+  },
+  "duration": {
+    "fast": {
+      "$type": "duration",
+      "$value": "120ms"
+    },
+    "base": {
+      "$type": "duration",
+      "$value": "200ms"
+    },
+    "slow": {
+      "$type": "duration",
+      "$value": "320ms"
+    },
+    "scan": {
+      "$type": "duration",
+      "$value": "1600ms"
+    }
+  },
+  "easing": {
+    "standard": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.2,
+        0,
+        0,
+        1
+      ]
+    },
+    "emphasized": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.3,
+        0,
+        0,
+        1.2
+      ]
+    },
+    "exit": {
+      "$type": "cubicBezier",
+      "$value": [
+        0.4,
+        0,
+        1,
+        1
+      ]
+    }
+  }
+}
