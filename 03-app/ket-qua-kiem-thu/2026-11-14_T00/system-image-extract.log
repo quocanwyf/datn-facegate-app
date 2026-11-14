@@ -1,0 +1,2 @@
+Archive members: ['x86_64/NOTICE.txt', 'x86_64/VerifiedBootParams.textproto', 'x86_64/advancedFeatures.ini', 'x86_64/build.prop', 'x86_64/encryptionkey.img', 'x86_64/kernel-ranchu', 'x86_64/ramdisk.img', 'x86_64/source.properties', 'x86_64/system.img', 'x86_64/userdata.img']
+Extracted official archive into C:\Developer\Tools\Android\SDK\system-images\android-34\default

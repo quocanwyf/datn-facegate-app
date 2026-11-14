@@ -1,0 +1,7 @@
+Auto-selecting single ABI x86_64
+Error: Could not load devices from C:\Developer\Tools\Android\SDK\system-images\android-34\default\x86_64\devices.xml
+Error: C:\Developer\Tools\Android\SDK\system-images\android-34\default\x86_64\devices.xml
+List of web cameras connected to the computer:
+ Camera 'webcam0' is connected to device 'USB2.0 HD UVC WebCam' on channel 0 using pixel format 'NV12'
+
+Emulator launcher PID=7296, serial=emulator-5556

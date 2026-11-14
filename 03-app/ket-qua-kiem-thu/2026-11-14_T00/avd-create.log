@@ -1,0 +1,3 @@
+Auto-selecting single ABI x86_64
+Error: Could not load devices from C:\Developer\Tools\Android\SDK\system-images\android-34\default\x86_64\devices.xml
+Error: C:\Developer\Tools\Android\SDK\system-images\android-34\default\x86_64\devices.xml

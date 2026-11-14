@@ -1,0 +1,2 @@
+CREATE ROLE
+PostgreSQL 16 sẵn sàng tại 127.0.0.1:5433; role facegate, DB facegate_dev. Không in thông tin xác thực.

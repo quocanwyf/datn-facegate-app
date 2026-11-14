@@ -1,0 +1,95 @@
+BEGIN
+CREATE TABLE
+CREATE FUNCTION
+INSERT 0 1
+CREATE VIEW
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+E1 MATCH hợp lệ|PHẢI ĐƯỢC|ĐẠT
+E2 MATCH có ảnh crop|PHẢI LỖI|ĐẠT
+E3 MATCH không mở cửa|PHẢI LỖI|ĐẠT
+E4 UNKNOWN gắn nhân viên|PHẢI LỖI|ĐẠT
+E5 UNKNOWN hợp lệ (có crop)|PHẢI ĐƯỢC|ĐẠT
+E6 MATCH thiếu mô hình|PHẢI LỖI|ĐẠT
+E7 Chấm hộ thiếu lý do|PHẢI LỖI|ĐẠT
+E8 Chấm hộ hợp lệ|PHẢI ĐƯỢC|ĐẠT
+E9 Sửa điểm của event|PHẢI LỖI|ĐẠT
+E10 Xoá event|PHẢI LỖI|ĐẠT
+E11 Xoá ảnh crop (snapshot_path → NULL)|PHẢI ĐƯỢC|ĐẠT
+E12 Đổi snapshot_path sang file khác|PHẢI LỖI|ĐẠT
+H1 Xử lý cảnh báo trên event MATCH|PHẢI LỖI|ĐẠT
+H2 IS_EMPLOYEE không gắn NV|PHẢI LỖI|ĐẠT
+H3 Xử lý cảnh báo UNKNOWN hợp lệ|PHẢI ĐƯỢC|ĐẠT
+S1 Chồng phân ca phòng ban cùng thứ|PHẢI LỖI|ĐẠT
+S2 Phân ca cá nhân (không chồng)|PHẢI ĐƯỢC|ĐẠT
+S3 Chồng phân ca cá nhân|PHẢI LỖI|ĐẠT
+S4 Phân ca vừa NV vừa phòng ban|PHẢI LỖI|ĐẠT
+S5 Ca dài hơn 17 giờ|PHẢI LỖI|ĐẠT
+S6 Ca qua nửa đêm|PHẢI LỖI|ĐẠT
+R1 Người duyệt = người gửi|PHẢI LỖI|ĐẠT
+R2 Giải trình hợp lệ (PENDING)|PHẢI ĐƯỢC|ĐẠT
+R3 Hai giải trình chờ cùng ngày|PHẢI LỖI|ĐẠT
+R4 FORGOT_IN thiếu giờ vào|PHẢI LỖI|ĐẠT
+R5 APPROVED thiếu người duyệt|PHẢI LỖI|ĐẠT
+A1 NORMAL thiếu giờ ra|PHẢI LỖI|ĐẠT
+A2 Giờ ra trước giờ vào|PHẢI LỖI|ĐẠT
+A3 Sửa tay thiếu lý do|PHẢI LỖI|ĐẠT
+A4 Ngày công hợp lệ|PHẢI ĐƯỢC|ĐẠT
+A5 Trùng ngày công cùng NV|PHẢI LỖI|ĐẠT
+U1 MANAGER không có phạm vi|PHẢI LỖI|ĐẠT
+U2 Vai trò trùng lặp|PHẢI LỖI|ĐẠT
+U3 Email trùng (khác hoa thường)|PHẢI LỖI|ĐẠT
+F1 Hồ sơ PENDING hợp lệ|PHẢI ĐƯỢC|ĐẠT
+F2 Hai hồ sơ PENDING cùng NV|PHẢI LỖI|ĐẠT
+F3 ACTIVE mà chưa ai duyệt|PHẢI LỖI|ĐẠT
+F4 Embedding 511 chiều|PHẢI LỖI|ĐẠT
+F5 Embedding 512 chiều hợp lệ|PHẢI ĐƯỢC|ĐẠT
+F6 Xoá hồ sơ → xoá dây chuyền mẫu + embedding|PHẢI ĐƯỢC|ĐẠT
+M1 Hai mô hình cùng đang chạy|PHẢI LỖI|ĐẠT
+G1 Cửa CUSTOM không có ngưỡng|PHẢI LỖI|ĐẠT
+G2 Thiết bị ACTIVE không có token|PHẢI LỖI|ĐẠT
+N1 TERMINATED không có ngày nghỉ|PHẢI LỖI|ĐẠT
+44|44
+ROLLBACK

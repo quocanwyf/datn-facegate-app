@@ -1,0 +1,16 @@
+
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:11:(Camera ID: 10, Cost: 100, PID: 2114, Score: 0, State: 2User Id: 0, Client Package Name: com.android.camera2, Conflicting Client Devices: {})
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:12:]
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:146:  11-14 23:15:22 : Device 10 is open. Client instance dump:
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:147:    Client priority score: 0 state: 2
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:290:      Frames produced: 0, last timestamp: 0 ns
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:291:      Total buffers: 19, currently dequeued: 0, currently cached: 0
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:302:      Frames produced: 190, last timestamp: 236439195854 ns
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:303:      Total buffers: 7, currently dequeued: 4, currently cached: 1
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:536:        [917513 (forwardMatrix1) 1179654 (availableHotPixelMapModes) 851984 (availableRotateAndCropModes) -2080374781 (hdrplus.PayloadFrames) ]
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:537:        [-2080374773 (hdr.UsageMode) 2162688 (availableJpegRStreamConfigurations) 2162689 (availableJpegRMinFrameDurations) 2162690 (availableJpegRStallDurations) ]
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:835:      com.google.internal.hdrplus.PayloadFrames (84000003): int32[1]
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:836:        [0 ]
+> 03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:1186:    0x84000003 (hdrplus.PayloadFrames) with type 1 (int32) defined in section com.google.internal
+  03-app\ket-qua-kiem-thu\2026-11-14_T00\camera-front-dumpsys.log:1187:    0x84000004 (ProcessingMode) with type 0 (byte) defined in section com.google.internal
+

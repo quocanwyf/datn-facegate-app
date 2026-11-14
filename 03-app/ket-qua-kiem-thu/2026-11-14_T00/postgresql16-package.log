@@ -1,0 +1,31 @@
+The `msstore` source requires that you view the following agreements before using.
+Terms of Transaction: https://aka.ms/microsoft-store-terms-of-transaction
+The source requires the current machine's 2-letter geographic region to be sent to the backend service to function properly (ex. "US").
+
+Found PostgreSQL 16 [PostgreSQL.PostgreSQL.16]
+Version: 16.16-1
+Publisher: PostgreSQL Global Development Group
+Publisher Url: https://www.postgresql.org/
+Publisher Support Url: https://www.postgresql.org/support/
+Moniker: postgresql-16
+Description: PostgreSQL is a powerful, open source object-relational database system with over 35 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
+Homepage: https://www.postgresql.org/download/windows/
+License: PostgreSQL
+License Url: https://www.postgresql.org/about/licence
+Privacy Url: https://www.postgresql.org/about/policies/privacy/
+Copyright: Portions Copyright © 1996-2026, The PostgreSQL Global Development Group
+Portions Copyright © 1994, The Regents of the University of California
+Copyright Url: https://www.postgresql.org/about/policies/trademarks/
+Release Notes Url: https://www.postgresql.org/docs/release/
+Documentation:
+  Documentation: https://www.postgresql.org/docs/
+  Wiki: https://wiki.postgresql.org/
+Tags:
+  database
+  db
+Installer:
+  Installer Type: exe
+  Installer Url: https://get.enterprisedb.com/postgresql/postgresql-16.16-1-windows-x64.exe
+  Installer SHA256: 37cad2be2c9ff2b43ab230a0614e571bc0ce48455fa0b6c68c9706a5b34fe2b3
+  Release Date: 2026-11-12
+  Offline Distribution Supported: true

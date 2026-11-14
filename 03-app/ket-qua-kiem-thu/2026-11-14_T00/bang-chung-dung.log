@@ -1,0 +1,90 @@
+**********************
+PowerShell transcript start
+Start time: 20261114163912
+Username: GUMAYUHI\NMinH
+RunAs User: GUMAYUHI\NMinH
+Configuration Name: 
+Machine: GUMAYUHI (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\native\powershell\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+$env:PYTHONUTF8 = '1'; $logPath = '03-app/ket-qua-kiem-thu/2026-11-14_T00/bang-chung-dung.log'; Start-Transcript -LiteralPath $logPath -Force | Out-Null; '=== CPU ==='; Get-CimInstance Win32_Processor | Select-Object -ExpandProperty Name; '=== Kiểm bí mật với UTF-8, chưa có .env ==='; python '03-app/tools/kiem-bi-mat.py'; 'Exit code: ' + $LASTEXITCODE; '=== Quy định dừng ==='; rg -n 'mâu thuẫn|thiếu thông tin|dừng|Được ghi|kiem-bi-mat|\.env' 'AGENTS.md' '03-app/plan-codex/T00-moi-truong.md'; '=== Toàn bộ logic checker ==='; Get-Content -LiteralPath '03-app/tools/kiem-bi-mat.py'; '=== Git / .env ==='; git check-ignore -v -- .env; git ls-files -- .env; git status --short; Stop-Transcript | Out-Null
+Process ID: 10436
+PSVersion: 7.6.9
+PSEdition: Core
+GitCommitId: 7.6.9
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+=== CPU ===
+12th Gen Intel(R) Core(TM) i5-12500H
+=== Kiểm bí mật với UTF-8, chưa có .env ===
+
+Exit code: 0
+=== Quy định dừng ===
+
+=== Toàn bộ logic checker ===
+"""Kiểm repo không chứa file cấm trước khi commit/push (repo PUBLIC).
+
+    python 03-app/tools/kiem-bi-mat.py [thư_mục_gốc]
+
+Chặn: checkpoint/trọng số lớn, .env thật, ảnh khuôn mặt/dữ liệu Hub, LFW, file > 50 MB, chuỗi giống khoá bí mật.
+Bỏ qua thư mục bị .gitignore loại (node_modules, .venv, .git).
+"""
+import os
+import re
+import sys
+
+ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(__file__), "..", ".."))
+SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", ".expo", "android", "ios", "dist", "build"}
+BAN_EXT = {".pt", ".pth", ".ckpt", ".safetensors", ".bin", ".npy", ".npz"}
+ALLOW = {os.path.normpath(x) for x in [
+    "02-thuc-nghiem/code/fr/align/models/face_detection_yunet_2023mar.onnx",   # YuNet, MIT, ~0,2 MB
+    "02-thuc-nghiem/code-v1/fr/align/models/face_detection_yunet_2023mar.onnx",
+    "03-app/hub/vendor/code/fr/align/models/face_detection_yunet_2023mar.onnx",
+]}
+ALLOW_PREFIX = (os.path.normpath("03-app/hub/vendor/silentface") + os.sep,)   # MiniFASNet, Apache-2.0 (T13)
+BAN_NAME = re.compile(r"^\.env(\..+)?$")
+BAN_DIRS = re.compile(r"(^|/)(hub_data|HUB_DATA_DIR|lfw|lfw-deepfunneled|faces|snapshots)(/|$)", re.I)
+SECRET = re.compile(r"(AKIA[0-9A-Z]{16}|-----BEGIN (RSA |EC )?PRIVATE KEY-----|ghp_[0-9A-Za-z]{36}|sk-[0-9A-Za-z]{32,})")
+MAX = 50 * 1024 * 1024
+
+bad = []
+for d, dirs, files in os.walk(ROOT):
+    dirs[:] = [x for x in dirs if x not in SKIP_DIRS]
+    rel_d = os.path.relpath(d, ROOT).replace("\\", "/")
+    if rel_d != "." and BAN_DIRS.search(rel_d):
+        bad.append((rel_d + "/", "thư mục dữ liệu khuôn mặt / LFW")); dirs[:] = []; continue
+    for f in files:
+        p = os.path.join(d, f); rel = os.path.normpath(os.path.relpath(p, ROOT))
+        ext = os.path.splitext(f)[1].lower()
+        if rel in ALLOW or rel.startswith(ALLOW_PREFIX):
+            continue
+        if BAN_NAME.match(f) and f != ".env.example":
+            bad.append((rel, "file .env thật"))
+        elif ext in BAN_EXT or ext == ".onnx":
+            bad.append((rel, "trọng số / mảng dữ liệu"))
+        elif os.path.getsize(p) > MAX:
+            bad.append((rel, "file > 50 MB"))
+        elif ext in {".py", ".ts", ".tsx", ".js", ".json", ".yaml", ".yml", ".md", ".txt", ".toml", ".cfg", ".ini", ".sql"}:
+            try:
+                if SECRET.search(open(p, encoding="utf-8", errors="ignore").read()):
+                    bad.append((rel, "chuỗi giống khoá bí mật"))
+            except OSError:
+                pass
+if bad:
+    print("KHÔNG SẠCH — gỡ các file sau trước khi commit/push:")
+    for r, why in bad:
+        print(f"  {r}  ({why})")
+    sys.exit(1)
+print(f"SẠCH: {ROOT}")
+=== Git / .env ===
+
+
+
+**********************
+PowerShell transcript end
+End time: 20261114163914
+**********************

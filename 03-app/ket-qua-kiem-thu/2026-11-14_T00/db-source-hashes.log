@@ -1,0 +1,13 @@
+
+Algorithm : SHA256
+Hash      : 7BE372A6666AA10B36D1FFFFEAAB59588EA00A65A2F6A5CBAE6C11F9E9ECFC41
+Path      : C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\db\schema.sql
+
+Algorithm : SHA256
+Hash      : 6FFD87A1C6295BF273C014DF67E0218855F2D8F2AE00BF2B24FBC80D2A74C10D
+Path      : C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\db\seed.sql
+
+Algorithm : SHA256
+Hash      : F17232554D505372CCA245C3AB47FBE1BB1237390C777C12A7154AF0BB090BDF
+Path      : C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\db\test_constraints.sql
+

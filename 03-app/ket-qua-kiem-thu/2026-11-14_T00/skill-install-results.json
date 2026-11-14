@@ -1,0 +1,87 @@
+[
+  {
+    "repo": "fastapi/fastapi",
+    "sha": "5758a9c8347d911444dca97a55b708cc4a8de4f8",
+    "paths": [
+      "fastapi/.agents/skills/fastapi"
+    ],
+    "exit": 0,
+    "log": "install-fastapi-fastapi.log"
+  },
+  {
+    "repo": "supabase/agent-skills",
+    "sha": "c9be0e931b7930f7d02126d04774d904c381e7d7",
+    "paths": [
+      "skills/supabase-postgres-best-practices"
+    ],
+    "exit": 0,
+    "log": "install-supabase-agent-skills.log"
+  },
+  {
+    "repo": "vercel-labs/agent-skills",
+    "sha": "1a2c79d4e6c4a2283dc2c614b6538cbe1ed5ca62",
+    "paths": [
+      "skills/react-best-practices",
+      "skills/web-design-guidelines",
+      "skills/react-native-skills"
+    ],
+    "exit": 0,
+    "log": "install-vercel-labs-agent-skills.log"
+  },
+  {
+    "repo": "greensock/gsap-skills",
+    "sha": "aed9cfd3277740755f6bfc1155c7aa645403b760",
+    "paths": [
+      "skills/gsap-core",
+      "skills/gsap-frameworks",
+      "skills/gsap-performance",
+      "skills/gsap-plugins",
+      "skills/gsap-react",
+      "skills/gsap-scrolltrigger",
+      "skills/gsap-timeline",
+      "skills/gsap-utils"
+    ],
+    "exit": 0,
+    "log": "install-greensock-gsap-skills.log"
+  },
+  {
+    "repo": "expo/skills",
+    "sha": "7582922d039d5a96dc574757d399d22d56370f2b",
+    "paths": [
+      "plugins/expo/skills/eas-app-stores",
+      "plugins/expo/skills/eas-hosting",
+      "plugins/expo/skills/eas-observe",
+      "plugins/expo/skills/eas-simulator",
+      "plugins/expo/skills/eas-update-insights",
+      "plugins/expo/skills/eas-update",
+      "plugins/expo/skills/eas-workflows",
+      "plugins/expo/skills/expo-animation",
+      "plugins/expo/skills/expo-app-clip",
+      "plugins/expo/skills/expo-brownfield",
+      "plugins/expo/skills/expo-data-fetching",
+      "plugins/expo/skills/expo-design-system",
+      "plugins/expo/skills/expo-dev-client",
+      "plugins/expo/skills/expo-dom",
+      "plugins/expo/skills/expo-examples",
+      "plugins/expo/skills/expo-module",
+      "plugins/expo/skills/expo-native-ui",
+      "plugins/expo/skills/expo-overview",
+      "plugins/expo/skills/expo-project-structure",
+      "plugins/expo/skills/expo-router",
+      "plugins/expo/skills/expo-ui",
+      "plugins/expo/skills/expo-upgrade",
+      "plugins/expo/skills/expo-web-to-native"
+    ],
+    "exit": 0,
+    "log": "install-expo-skills.log"
+  },
+  {
+    "repo": "software-mansion-labs/skills",
+    "sha": "43cde80af628d103647c13bde07975d0b21b8419",
+    "paths": [
+      "skills/react-native-best-practices"
+    ],
+    "exit": 0,
+    "log": "install-software-mansion-labs-skills.log"
+  }
+]

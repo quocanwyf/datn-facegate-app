@@ -1,0 +1,69 @@
+**********************
+PowerShell transcript start
+Start time: 20261114163839
+Username: GUMAYUHI\NMinH
+RunAs User: GUMAYUHI\NMinH
+Configuration Name: 
+Machine: GUMAYUHI (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\native\powershell\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+$logPath = '03-app/ket-qua-kiem-thu/2026-11-14_T00/kiem-tra-ban-dau.log'; Start-Transcript -LiteralPath $logPath -Force | Out-Null; '=== Repo ==='; git status --short; git branch --show-current; git rev-parse HEAD; '=== Windows / CPU ==='; Get-CimInstance Win32_OperatingSystem | Select-Object Caption,Version,OSArchitecture; Get-CimInstance Win32_Processor | Select-Object Name; '=== Versions ==='; git --version; python --version; py --list-paths; node --version; pnpm --version; winget --version; '=== PostgreSQL ==='; Get-Service -Name '*postgres*' -ErrorAction SilentlyContinue | Format-Table Name,Status; Get-ChildItem -LiteralPath 'C:/Program Files/PostgreSQL' -Directory -ErrorAction SilentlyContinue | Select-Object FullName; if (Test-Path -LiteralPath 'C:/Program Files/PostgreSQL/18/bin/psql.exe') { & 'C:/Program Files/PostgreSQL/18/bin/psql.exe' --version }; '=== Android Studio ==='; if (Test-Path -LiteralPath 'C:/Program Files/Android/Android Studio/product-info.json') { Get-Content -LiteralPath 'C:/Program Files/Android/Android Studio/product-info.json' | ConvertFrom-Json | Select-Object name,version,buildNumber }; '=== Android emulator / AVD ==='; $emulatorPath = Join-Path $env:LOCALAPPDATA 'Android/Sdk/emulator/emulator.exe'; if (Test-Path -LiteralPath $emulatorPath) { & $emulatorPath -version; & $emulatorPath -list-avds } else { 'Chưa tìm thấy emulator.exe tại đường dẫn SDK mặc định.' }; '=== .env ==='; 'File .env tồn tại: ' + (Test-Path -LiteralPath '.env'); git ls-files --error-unmatch -- .env; 'git ls-files exit code: ' + $LASTEXITCODE; git check-ignore -v -- .env; '=== Mâu thuẫn trong checker ==='; rg -n 'SKIP_DIRS|BAN_NAME|BAN_NAME.match|file .env|os.walk|gitignore' '03-app/tools/kiem-bi-mat.py'; '=== Yêu cầu T00 ==='; rg -n '\.env|kiem-bi-mat|Được ghi|Điều kiện' '03-app/plan-codex/T00-moi-truong.md'; '=== Kiểm bí mật trên trạng thái hiện tại ==='; python '03-app/tools/kiem-bi-mat.py'; 'kiem-bi-mat exit code: ' + $LASTEXITCODE; Stop-Transcript | Out-Null
+Process ID: 30800
+PSVersion: 7.6.9
+PSEdition: Core
+GitCommitId: 7.6.9
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+=== Repo ===
+
+
+
+=== Windows / CPU ===
+
+Caption                                   Version    OSArchitecture
+-------                                   -------    --------------
+Microsoft Windows 11 Home Single Language 10.0.26200 64-bit
+
+=== Versions ===
+
+
+
+
+
+
+=== PostgreSQL ===
+
+
+Name               Status
+----               ------
+postgresql-x64-18 Running
+
+
+
+FullName
+--------
+C:\Program Files\PostgreSQL\18
+=== Android Studio ===
+
+=== Android emulator / AVD ===
+Chưa tìm thấy emulator.exe tại đường dẫn SDK mặc định.
+=== .env ===
+File .env tồn tại: False
+
+git ls-files exit code: 1
+
+=== Mâu thuẫn trong checker ===
+
+=== Yêu cầu T00 ===
+
+=== Kiểm bí mật trên trạng thái hiện tại ===
+
+kiem-bi-mat exit code: 1
+**********************
+PowerShell transcript end
+End time: 20261114163849
+**********************

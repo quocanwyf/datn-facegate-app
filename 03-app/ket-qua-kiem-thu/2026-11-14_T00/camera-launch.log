@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.android.camera2/com.android.camera.CameraActivity (has extras) }
+Status: ok
+LaunchState: WARM
+Activity: com.android.camera2/com.android.camera.CameraActivity
+TotalTime: 3697
+WaitTime: 3700
+Complete

@@ -1,0 +1,19 @@
+Kiểm tra lại trước khi tiếp tục plan ngày 14/11/2026
+--- .env tồn tại ---
+False
+--- .env được Git theo dõi ---
+.gitignore:2:.env	.env
+
+03-app\plan-codex\T00-moi-truong.md:18:4. `copy .env.example .env`, điền `DATABASE_URL`; `JWT_SECRET` sinh bằng `python -c "import secrets;print(secrets.token_urlsafe(48))"`.
+03-app\plan-codex\T00-moi-truong.md:21:7. Chạy `python 03-app/tools/kiem-bi-mat.py` (kiểm repo không có file cấm) — phải sạch.
+03-app\plan-codex\T00-moi-truong.md:31:| 6 | `kiem-bi-mat.py` báo sạch; `.env` không bị git theo dõi | output + `git status` |
+
+
+03-app\tools\kiem-bi-mat.py:21:BAN_NAME = re.compile(r"^\.env(\..+)?$")
+03-app\tools\kiem-bi-mat.py:37:        if BAN_NAME.match(f) and f != ".env.example":
+03-app\tools\kiem-bi-mat.py:38:            bad.append((rel, "file .env thật"))
+
+THIẾU: chưa có checkpoint.
+  Cần đặt file vào: C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\02-thuc-nghiem\results\V1-s3-Hy\phien-1\r18_uniface_v1_lam0.6_m0.45_s3_e28\checkpoints\best.pt
+  Xin An gửi (Google Drive / Zalo).
+checkpoint exit=1

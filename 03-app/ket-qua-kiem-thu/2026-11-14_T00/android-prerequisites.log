@@ -1,0 +1,14 @@
+
+Name                                    : 12th Gen Intel(R) Core(TM) i5-12500H
+VirtualizationFirmwareEnabled           : False
+VMMonitorModeExtensions                 : False
+SecondLevelAddressTranslationExtensions : False
+
+
+HypervisorPresent : True
+
+
+Name     : USB2.0 HD UVC WebCam
+Status   : OK
+PNPClass : Camera
+

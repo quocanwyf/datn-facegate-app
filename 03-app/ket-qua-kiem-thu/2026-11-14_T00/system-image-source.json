@@ -1,0 +1,26 @@
+{
+  "source": "https://dl.google.com/android/repository/sys-img/android/sys-img2-1.xml",
+  "path": "system-images;android-34;default;x86_64",
+  "fields": [
+    [
+      "display-name",
+      "Intel x86_64 Atom System Image",
+      {}
+    ],
+    [
+      "size",
+      "720747116",
+      {}
+    ],
+    [
+      "checksum",
+      "5f6a249f9bc3b1b4c459b13ce2eb646c9680bed1",
+      {}
+    ],
+    [
+      "url",
+      "x86_64-34_r04.zip",
+      {}
+    ]
+  ]
+}

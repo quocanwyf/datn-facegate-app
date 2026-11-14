@@ -1,0 +1,8 @@
+Number of camera devices: 2
+Number of normal camera devices: 2
+(Camera ID: 10, Cost: 100, PID: 2114, Score: 0, State: 2User Id: 0, Client Package Name: com.android.camera2, Conflicting Client Devices: {})
+]
+  11-14 23:21:23 : Device 10 is open. Client instance dump:
+    Client priority score: 0 state: 2
+    Client package: com.android.camera2
+  CameraDeviceClient[10] (0x78c136efd190) dump:

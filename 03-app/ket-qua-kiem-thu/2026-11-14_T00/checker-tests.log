@@ -1,0 +1,15 @@
+test_force_added_checkpoint_blocked (__main__.SecretCheckerTests.test_force_added_checkpoint_blocked) ... ok
+test_force_added_env_blocked (__main__.SecretCheckerTests.test_force_added_env_blocked) ... ok
+test_force_added_file_in_skipped_directory_checked (__main__.SecretCheckerTests.test_force_added_file_in_skipped_directory_checked) ... ok
+test_ignored_local_env_and_canonical_checkpoint_allowed (__main__.SecretCheckerTests.test_ignored_local_env_and_canonical_checkpoint_allowed) ... ok
+test_nonignored_env_blocked (__main__.SecretCheckerTests.test_nonignored_env_blocked) ... ok
+test_other_env_blocked (__main__.SecretCheckerTests.test_other_env_blocked) ... ok
+test_other_ignored_weight_not_whitelisted (__main__.SecretCheckerTests.test_other_ignored_weight_not_whitelisted) ... ok
+test_secret_in_source_still_blocked_without_echoing_value (__main__.SecretCheckerTests.test_secret_in_source_still_blocked_without_echoing_value) ... ok
+test_tracked_env_missing_from_worktree_still_blocked (__main__.SecretCheckerTests.test_tracked_env_missing_from_worktree_still_blocked) ... ok
+test_without_git_local_exceptions_fail_closed (__main__.SecretCheckerTests.test_without_git_local_exceptions_fail_closed) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.013s
+
+OK

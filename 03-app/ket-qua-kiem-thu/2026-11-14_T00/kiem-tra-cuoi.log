@@ -1,0 +1,35 @@
+**********************
+PowerShell transcript start
+Start time: 20261114164013
+Username: GUMAYUHI\NMinH
+RunAs User: GUMAYUHI\NMinH
+Configuration Name: 
+Machine: GUMAYUHI (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\Program Files\WindowsApps\OpenAI.CodexPrimaryRuntime.v26-1112-737-0_26.1112.737.0_x64__3k8sg7r9htsxt\dependencies\native\powershell\pwsh.dll -Command try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}
+$env:PYTHONUTF8 = '1'; Start-Transcript -LiteralPath '03-app/ket-qua-kiem-thu/2026-11-14_T00/kiem-tra-cuoi.log' -Force | Out-Null; '=== Kiểm bí mật sau khi viết báo cáo ==='; python '03-app/tools/kiem-bi-mat.py'; 'Exit code: ' + $LASTEXITCODE; '=== Phạm vi thay đổi ==='; git status --short --untracked-files=all; git diff --stat; '=== .env chưa tạo và không được theo dõi ==='; Test-Path -LiteralPath '.env'; git ls-files -- .env; '=== Danh sách kết quả ==='; Get-ChildItem -LiteralPath '03-app/ket-qua-kiem-thu/2026-11-14_T00' | Select-Object Name,Length; Stop-Transcript | Out-Null
+Process ID: 24500
+PSVersion: 7.6.9
+PSEdition: Core
+GitCommitId: 7.6.9
+OS: Microsoft Windows 10.0.26200
+Platform: Win32NT
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1, 6.0, 7.0
+PSRemotingProtocolVersion: 2.4
+SerializationVersion: 1.1.0.1
+WSManStackVersion: 3.0
+**********************
+=== Kiểm bí mật sau khi viết báo cáo ===
+
+Exit code: 0
+=== Phạm vi thay đổi ===
+
+
+=== .env chưa tạo và không được theo dõi ===
+False
+
+=== Danh sách kết quả ===
+
+**********************
+PowerShell transcript end
+End time: 20261114164014
+**********************

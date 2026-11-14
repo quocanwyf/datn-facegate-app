@@ -1,0 +1,42 @@
+Found Android Studio [Google.AndroidStudio]
+Version: 2026.2.2.8
+Publisher: Google LLC
+Publisher Url: https://developer.android.com/
+Publisher Support Url: https://developer.android.com/studio/intro
+Moniker: android-studio
+Description:
+  Android Studio is the official Integrated Development Environment (IDE) for Android app development.
+  Based on the powerful code editor and developer tools from IntelliJ IDEA,
+  Android Studio offers even more features that enhance your productivity when building Android apps.
+Homepage: https://developer.android.com/studio
+License: Android Software Development Kit License Agreement
+License Url: https://developer.android.com/studio/terms
+Privacy Url: https://policies.google.com/privacy
+Copyright: Copyright © 2000–2024 Google
+Copyright Url: https://developer.android.com/studio/terms
+Release Notes Url: https://androidstudio.googleblog.com/
+Documentation:
+  Known Issues: https://developer.android.com/studio/known-issues
+  Troubleshoot: https://developer.android.com/studio/troubleshoot
+Tags:
+  aab
+  adb
+  android
+  androidstudio
+  apk
+  app
+  debug
+  development
+  emulator
+  fastboot
+  ide
+  intellij
+  studio
+Agreements:
+  Android Software Development Kit License Agreement: https://developer.android.com/studio/terms
+Installer:
+  Installer Type: nullsoft
+  Installer Url: https://edgedl.me.gvt1.com/android/studio/install/2026.2.2.8/android-studio-rabbit2-windows.exe
+  Installer SHA256: 260af2d6220f1b7239eef0bce4970f9e444c881d42ed994c4fc0c68b07ef85f8
+  Release Date: 2026-10-28
+  Offline Distribution Supported: true
