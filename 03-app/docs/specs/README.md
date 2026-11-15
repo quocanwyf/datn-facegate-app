@@ -1,6 +1,6 @@
 # Specs tính năng FaceGate — bản demo
 
-Tài liệu dẫn xuất từ đặc tả v1.4.4 ngày 14/11/2026 để quản lý theo tính năng. Đây là **thiết kế dự kiến**, không xác nhận code đã có hoặc kiểm thử đã đạt. Công việc tài liệu theo yêu cầu riêng, không tiếp tục T00 đang dừng.
+Tài liệu dẫn xuất từ đặc tả v1.4.4 ngày 14/11/2026 để quản lý theo tính năng. Trạng thái triển khai/nghiệm thu được ghi theo từng spec và báo cáo Txx; không suy diễn hoàn thành từ thiết kế.
 
 ## Cách đọc
 
@@ -16,7 +16,7 @@ Tài liệu dẫn xuất từ đặc tả v1.4.4 ngày 14/11/2026 để quản l
 | [02.approved](02.approved/README.md) | APPROVED | Đã review và được approved, đủ căn cứ triển khai |
 | [03.archived](03.archived/README.md) | ARCHIVED | Đã triển khai xong và nghiệm thu, có bằng chứng hoàn thành |
 
-Hiện toàn bộ 32 specs nằm trong `02.approved`, đã được người dùng xác nhận review và duyệt ngày 14/11/2026. `01.draft` và `03.archived` chưa có spec tính năng. Xem [lịch sử duyệt](LICH-SU-DUYET.md#approved-2026-11-14).
+Hiện có 31 specs trong `02.approved`, 1 spec FG-AI-003 trong `03.archived`, không có feature draft. Toàn bộ được duyệt ngày 14/11/2026; FG-AI-003 nghiệm thu ngày 15/11/2026 sau T04/T05. Xem [lịch sử duyệt](LICH-SU-DUYET.md#approved-2026-11-14).
 
 Tài liệu dùng chung (mục lục, quy tắc, câu hỏi, ma trận) nằm ở gốc `specs/`. 32 specs đã được duyệt và 13/13 quyết định đã chốt trong `CAN-CHOT.md`. Nguồn chuẩn đã đồng bộ ngày 14/11/2026; chưa xác nhận triển khai/nghiệm thu.
 
@@ -60,7 +60,7 @@ Giữ mã khi đổi tiêu đề, không tái sử dụng mã đã bỏ. W/E/K l
 | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md) | Xóa sinh trắc và rút đồng ý | W-04, E-08; W-03 nghỉ việc | T05, T06, T07, T12 | Q-005 đã chốt (đã đồng bộ), Q-006 đã chốt (đã đồng bộ) |
 | [FG-AI-001](02.approved/FG-AI-001-cong-kiem-mo-hinh.md) | Nạp mô hình đã xác minh | W-14; K-11 khi chưa sẵn sàng | T01, T02, T04 | Q-008 đã chốt (đã đồng bộ) |
 | [FG-AI-002](02.approved/FG-AI-002-pipeline-feature.md) | Pipeline khung và trích đặc trưng | K-02, K-08 | T01, T02, T04 | Q-006 đã chốt (đã đồng bộ) |
-| [FG-AI-003](02.approved/FG-AI-003-bo-quyet-dinh.md) | Bộ quyết định đa khung và cooldown | K-02, K-04; F-03 | T04, T05, T14 | — |
+| [FG-AI-003](03.archived/FG-AI-003-bo-quyet-dinh.md) | Bộ quyết định đa khung và cooldown | K-02, K-04; F-03 | T04, T05, T14 | — |
 | [FG-AI-004](02.approved/FG-AI-004-settings-nguong.md) | Cấu hình nhận dạng và nguồn ngưỡng | W-14, W-07 | T02, T04, T06, T07 | Q-001 đã chốt (đã đồng bộ), Q-007 đã chốt (đã đồng bộ) |
 | [FG-AI-005](02.approved/FG-AI-005-mini-fas-net.md) | Chống giả mạo MiniFASNet và hiệu chỉnh L | W-14, K-04 DENY/SPOOF | T13 | Q-007 đã chốt (đã đồng bộ) |
 | [FG-ACCESS-001](02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md) | Cho phép hoặc từ chối ra vào | K-04; F-03 | T04, T05, T11 | Q-002 đã chốt (đã đồng bộ) |

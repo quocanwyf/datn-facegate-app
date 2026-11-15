@@ -27,7 +27,7 @@ Giữ mã màn từ UI, không thêm màn mới.
 | E-08 | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md), [FG-FACE-001](02.approved/FG-FACE-001-dong-y-sinh-trac.md) |
 | E-10 | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) |
 | K-01 | [FG-DEV-001](02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md) |
-| K-02 | [FG-KIOSK-001](02.approved/FG-KIOSK-001-camera-ket-noi.md), [FG-AI-002](02.approved/FG-AI-002-pipeline-feature.md), [FG-AI-003](02.approved/FG-AI-003-bo-quyet-dinh.md) |
+| K-02 | [FG-KIOSK-001](02.approved/FG-KIOSK-001-camera-ket-noi.md), [FG-AI-002](02.approved/FG-AI-002-pipeline-feature.md), [FG-AI-003](03.archived/FG-AI-003-bo-quyet-dinh.md) |
 | K-04 | [FG-KIOSK-001](02.approved/FG-KIOSK-001-camera-ket-noi.md), [FG-ACCESS-001](02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md) |
 | K-05 | [FG-KIOSK-002](02.approved/FG-KIOSK-002-phien-dang-ky-pin.md) |
 | K-06 | [FG-KIOSK-002](02.approved/FG-KIOSK-002-phien-dang-ky-pin.md) |

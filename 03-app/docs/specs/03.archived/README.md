@@ -1,7 +1,7 @@
 # 03.archived — Tính năng đã hoàn thành
 
-Chứa spec trạng thái `ARCHIVED` sau khi triển khai và nghiệm thu hoàn tất, có commit cùng báo cáo/log chứng minh. Chưa có spec được xác nhận hoàn thành tại lần thiết lập này.
+| Spec | Commit | Bằng chứng |
+|---|---|---|
+| [FG-AI-003 — Bộ quyết định và cooldown](FG-AI-003-bo-quyet-dinh.md) | c110df6, ed90ab6 | [T04](../../../ket-qua-kiem-thu/2026-11-15_T04/bao-cao.md), [T05](../../../ket-qua-kiem-thu/2026-11-15_T05/bao-cao.md) |
 
-Giữ hồ sơ đã hoàn thành để tra cứu. Khi cần thay đổi tính năng, tạo spec thay đổi mã mới trong `01.draft`, tham chiếu mã archived liên quan.
-
-Xem [mục lục và quy trình](../README.md).
+Khi đổi yêu cầu, tạo spec thay đổi mã mới trong 01.draft, tham chiếu hồ sơ archived. Xem [quy trình](../README.md).

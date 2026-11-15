@@ -117,3 +117,8 @@ Người dùng trực tiếp yêu cầu đồng bộ nguồn chuẩn theo các q
 ## Chốt khóa lượt thử ghép thiết bị — 15/11/2026
 
 Người dùng chọn trực tiếp trong chat: “Khóa IP nhập sai trong 10 phút; giữ cách nhập mã hiện tại, đổi thông báo thành khóa lượt thử từ máy này.” FG-DEV-001 cập nhật v1.1 và giữ APPROVED theo xác nhận này. Đồng bộ đúng mô tả PairRequest/OpenAPI, K-01, thiết kế DB và T05; không thêm pairing_id hoặc thay cấu trúc schema DB. Bộ đếm device.pairing_attempts không dùng để gán lỗi cho mã đích không biết. Nghiệm thu backend T05 ghi riêng tại ket-qua-kiem-thu/2026-11-15_T05; chưa đánh dấu hoàn tất SecureStore/UI.
+
+
+## Hoàn thành FG-AI-003 — 15/11/2026
+
+Chuyển archived sau T04 c110df6/T05 ed90ab6: 1.464.840 chuỗi và cooldown thật 1 OK + 2 ALREADY chỉ 1 MATCH. Metadata/AC/báo cáo và các liên kết đã cập nhật. Các spec khác giữ approved khi chưa đủ AC.

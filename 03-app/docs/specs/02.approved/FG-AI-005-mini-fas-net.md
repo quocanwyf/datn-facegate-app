@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §4.2/4.5, §13; T13-chong-gia-mao.md. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-14, K-04 DENY/SPOOF.
 - Task liên quan: T13 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AI-002](FG-AI-002-pipeline-feature.md), [FG-AI-003](FG-AI-003-bo-quyet-dinh.md), [FG-AI-004](FG-AI-004-settings-nguong.md)
+- Liên quan/phụ thuộc: [FG-AI-002](FG-AI-002-pipeline-feature.md), [FG-AI-003](../03.archived/FG-AI-003-bo-quyet-dinh.md), [FG-AI-004](FG-AI-004-settings-nguong.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

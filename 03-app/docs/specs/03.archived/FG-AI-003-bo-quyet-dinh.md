@@ -1,16 +1,16 @@
 # FG-AI-003 — Bộ quyết định đa khung và cooldown
 
 - Phiên bản: 1.0 — 14/11/2026.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 15/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T04 `c110df6`, T05 `ed90ab6`; [báo cáo T04](../../../ket-qua-kiem-thu/2026-11-15_T04/bao-cao.md), [báo cáo T05](../../../ket-qua-kiem-thu/2026-11-15_T05/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §4.5; WS §1.4. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: K-02, K-04; F-03.
 - Task liên quan: T04, T05, T14 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AI-002](FG-AI-002-pipeline-feature.md), [FG-AI-004](FG-AI-004-settings-nguong.md)
+- Liên quan/phụ thuộc: [FG-AI-002](../02.approved/FG-AI-002-pipeline-feature.md), [FG-AI-004](../02.approved/FG-AI-004-settings-nguong.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -71,4 +71,12 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-AI-003-AC04**: Vét cạn chuỗi dài1–8 trên INVALID/NL/LA/LB/LN đối chiếu tham chiếu độc lập.
 - **FG-AI-003-AC05**: Cooldown không tăng event.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC đã nghiệm thu:
+
+| AC | Bằng chứng thật |
+|---|---|
+| AC01–AC03 | Test đúng bằng tau/L, MATCH/SPOOF/UNKNOWN và ưu tiên, [log T04](../../../ket-qua-kiem-thu/2026-11-15_T04/pytest.log) |
+| AC04 | 488.280 chuỗi × 3 biến thể = 1.464.840, tham chiếu độc lập, log T04 và [hồi quy T05](../../../ket-qua-kiem-thu/2026-11-15_T05/pytest-full.log) |
+| AC05 | 1 OK + 2 ALREADY nhưng chỉ 1 MATCH; [summary thật](../../../ket-qua-kiem-thu/2026-11-15_T05/real-run-03/summary.json), [event DB](../../../ket-qua-kiem-thu/2026-11-15_T05/real-run-03/events.json) |
+
+Đây là nghiệm thu chức năng bộ quyết định/cooldown. T14 vẫn kiểm demo tích hợp toàn hệ thống; các chức năng UI khác giữ trạng thái riêng. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.

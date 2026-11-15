@@ -1,7 +1,7 @@
 # Báo cáo T05 — Ghép thiết bị, PIN, WS và đăng ký/nhận dạng thật
 
 - Trạng thái: **XONG phạm vi T05**.
-- Commit nền: c110df6 (T04); commit triển khai tra `T05: connect kiosk pairing enrollment and recognition`.
+- Commit triển khai: **ed90ab6** (`T05: connect kiosk pairing enrollment and recognition`); baseline thiết kế đã duyệt: 71800ae; nền T04: c110df6.
 - Máy: Windows, Python 3.13.13, torch 2.11.0+cpu, OpenCV 4.14.0; websockets 17.4, pillow-heif 1.8.1. CPU, chưa bật chống giả mạo (T13).
 - Quyết định mới được người dùng duyệt trong chat 15/11/2026: 5 lần nhập sai khóa lượt thử từ IP đó 10 phút; giữ request mã 6 số, đổi thông báo. Không tăng device.pairing_attempts cho mã đích không biết. Bộ đếm IP ở RAM của một tiến trình Hub, reset khi khởi động lại; PIN có bộ đếm/thời hạn khóa trong DB.
 

@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.3–5.4; WS §1.4. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: K-04; F-03.
 - Task liên quan: T04, T05, T11 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-GATE-001](FG-GATE-001-cua-chinh-sach.md), [FG-AI-003](FG-AI-003-bo-quyet-dinh.md)
+- Liên quan/phụ thuộc: [FG-GATE-001](FG-GATE-001-cua-chinh-sach.md), [FG-AI-003](../03.archived/FG-AI-003-bo-quyet-dinh.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
