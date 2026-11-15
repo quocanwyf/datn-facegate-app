@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.1, §5.9, §6; admin.md W-03/W-04. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-03, W-04.
 - Task liên quan: T03, T06, T07 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AUTH-001](FG-AUTH-001-xac-thuc-phien.md), [FG-ORG-001](FG-ORG-001-phong-ban.md), [FG-FACE-004](FG-FACE-004-xoa-rut-dong-y.md)
+- Liên quan/phụ thuộc: [FG-AUTH-001](../03.archived/FG-AUTH-001-xac-thuc-phien.md), [FG-ORG-001](../03.archived/FG-ORG-001-phong-ban.md), [FG-FACE-004](FG-FACE-004-xoa-rut-dong-y.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

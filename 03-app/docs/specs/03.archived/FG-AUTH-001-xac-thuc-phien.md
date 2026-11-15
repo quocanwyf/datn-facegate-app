@@ -1,12 +1,12 @@
 # FG-AUTH-001 — Đăng nhập, đổi mật khẩu và quản lý phiên
 
 - Phiên bản: 1.0 — 14/11/2026.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 15/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T03/T05/T06 và T07 `eb13891`; [báo cáo T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §6, §10.1; me.md E-01. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-01, E-01; menu tài khoản.
 - Task liên quan: T03, T07, T12 (không thay phạm vi/điều kiện dừng của task gốc).
@@ -75,4 +75,16 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-AUTH-001-AC04**: Đăng xuất/đổi mật khẩu thu hồi refresh theo nguồn.
 - **FG-AUTH-001-AC05**: API tài nguyên từ chối người thiếu quyền.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC đã đối chiếu với log thật bên dưới. Không seed giả khuôn mặt, sự kiện nhận dạng hoặc ngày công.
+
+## 9. Bằng chứng hoàn thành — 15/11/2026
+
+| AC | Bằng chứng đã chạy |
+|---|---|
+| FG-AUTH-001-AC01 | T03 test_login_identity_and_contract; T07 5 role thật |
+| FG-AUTH-001-AC02 | T03 test_must_change_password_reflects_database; T07 auth đổi lần đầu |
+| FG-AUTH-001-AC03 | T03 concurrent_refresh/rotation/revocation; T07 session hai test |
+| FG-AUTH-001-AC04 | T03 logout/change-password thu hồi; T07 auth logout/đổi mật khẩu |
+| FG-AUTH-001-AC05 | T03/T06 ma trận quyền; T07 route/menu 5 vai trò |
+
+Nguồn log: [T03](../../../ket-qua-kiem-thu/2026-11-15_T03/bao-cao.md), [T05](../../../ket-qua-kiem-thu/2026-11-15_T05/bao-cao.md), [T06](../../../ket-qua-kiem-thu/2026-11-15_T06/bao-cao.md), [T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md). T07: 33 fixture + 10 Hub thật đạt, giữ log các lượt lỗi trước đó.

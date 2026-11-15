@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.3, §6; WS §2; admin.md W-10. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-10; W-02/W-07 nhận WS.
 - Task liên quan: T05, T07, T11 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AUTH-001](FG-AUTH-001-xac-thuc-phien.md), [FG-EVENT-001](FG-EVENT-001-su-kien-csv-bao-cao.md)
+- Liên quan/phụ thuộc: [FG-AUTH-001](../03.archived/FG-AUTH-001-xac-thuc-phien.md), [FG-EVENT-001](FG-EVENT-001-su-kien-csv-bao-cao.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

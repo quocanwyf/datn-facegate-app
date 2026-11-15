@@ -1,16 +1,16 @@
 # FG-AI-004 — Cấu hình nhận dạng và nguồn ngưỡng
 
 - Phiên bản: 1.2 — 14/11/2026; bổ sung quyết định Q-007 của người dùng, giữ các quyết định trước đó.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 15/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T03/T05/T06 và T07 `eb13891`; [báo cáo T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §4.4–4.5; DB §6; admin.md W-14. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-14, W-07.
 - Task liên quan: T02, T04, T06, T07 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AI-001](FG-AI-001-cong-kiem-mo-hinh.md)
+- Liên quan/phụ thuộc: [FG-AI-001](../02.approved/FG-AI-001-cong-kiem-mo-hinh.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -84,4 +84,20 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-AI-004-AC08**: W hoặc các số khung không nguyên/dương, hoặc ngưỡng khung lớn hơn W bị từ chối.
 - **FG-AI-004-AC09**: Cấu hình không hợp lệ không thay bất kỳ giá trị nào của cấu hình cũ; mặc định vẫn 5/3/4/3.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC đã đối chiếu với log thật bên dưới. Không seed giả khuôn mặt, sự kiện nhận dạng hoặc ngày công.
+
+## 9. Bằng chứng hoàn thành — 15/11/2026
+
+| AC | Bằng chứng đã chạy |
+|---|---|
+| FG-AI-004-AC01 | T07 W07/W14 ảnh nguồn và test thật |
+| FG-AI-004-AC02 | T05 real-run-03 event threshold DEFAULT_VAL, t_bs chỉ tham khảo |
+| FG-AI-004-AC03 | T07 OWNER lưu, Kiosk WS thật nhận max_fps mới; hoàn nguyên cấu hình |
+| FG-AI-004-AC04 | T06 non_admin/HR PUT forbidden; T07 HR không có Lưu |
+| FG-AI-004-AC05 | T07 ghi rõ BLUFR gallery 1000, chưa đo văn phòng; ảnh W14 |
+| FG-AI-004-AC06 | T06 ma trận GET/PUT; T07 HR W14 chỉ xem |
+| FG-AI-004-AC07 | T06 settings atomic + T07 real-final-checks.json, UI khóa T13 |
+| FG-AI-004-AC08 | T06 window/count invalid; T07 real-final-checks.json W/count lẻ, 0, >W |
+| FG-AI-004-AC09 | T06 settings giữ cấu hình cũ; T07 7 request sai không đổi toàn bộ, default 5/3/4/3 |
+
+Nguồn log: [T03](../../../ket-qua-kiem-thu/2026-11-15_T03/bao-cao.md), [T05](../../../ket-qua-kiem-thu/2026-11-15_T05/bao-cao.md), [T06](../../../ket-qua-kiem-thu/2026-11-15_T06/bao-cao.md), [T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md). T07: 33 fixture + 10 Hub thật đạt, giữ log các lượt lỗi trước đó.

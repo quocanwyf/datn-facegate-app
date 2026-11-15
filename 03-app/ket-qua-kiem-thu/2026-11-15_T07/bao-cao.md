@@ -1,7 +1,7 @@
 # Báo cáo T07 — Web nền và quản trị lõi
 
 - Trạng thái: **XONG phạm vi T07**; các phần ca/công/event/realtime theo task T09–T12 ghi rõ bên dưới.
-- Commit: đang chốt commit code, sẽ ghi mã trong bản chốt báo cáo.
+- Commit code: `eb13891`.
 - Máy: Windows, CPU. Môi trường chuyển sang `D:/WorkSpace/DATN/datn-facegate-app`; Node 24.15.0, pnpm 11.25.0, Python 3.13.13, torch 2.11.0+cpu, FastAPI 0.163.0. Runtime thật trong `real-hub-final.log`, build trong `build.log`.
 
 ## Tiêu chí nghiệm thu
@@ -46,3 +46,7 @@ web/src/{admin,components,shared,theme}, App/main/CSS; web configs, tests, READM
 ## Review và Cần An làm
 
 Xem REVIEW-T07.md: lệnh PowerShell thủ công, tài khoản và 10 bước đối chiếu. Không cần An ngồi chung; không chờ review để chuyển T08 theo chỉ đạo người dùng. T02 GPU vẫn bàn giao bất đồng bộ như RUN-T02.md.
+
+## Chuyển archived
+
+FG-AUTH-001, FG-ORG-001, FG-AI-004 đủ bằng chứng AC từ T03/T05/T06/T07, đã chuyển archived. Các spec còn phụ thuộc màn/ca/công/giải trình/sự kiện hoặc nhánh sinh trắc chưa đủ AC vẫn giữ approved.

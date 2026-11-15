@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.5, §6; DB shift/shift_assignment/holiday. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-06; W-04 tab Ca; E-02.
 - Task liên quan: T06, T07, T09 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-EMP-001](FG-EMP-001-nhan-vien.md), [FG-ORG-001](FG-ORG-001-phong-ban.md)
+- Liên quan/phụ thuộc: [FG-EMP-001](FG-EMP-001-nhan-vien.md), [FG-ORG-001](../03.archived/FG-ORG-001-phong-ban.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

@@ -16,9 +16,9 @@ Tài liệu dẫn xuất từ đặc tả v1.4.4 ngày 14/11/2026 để quản l
 | [02.approved](02.approved/README.md) | APPROVED | Đã review và được approved, đủ căn cứ triển khai |
 | [03.archived](03.archived/README.md) | ARCHIVED | Đã triển khai xong và nghiệm thu, có bằng chứng hoàn thành |
 
-Hiện có 31 specs trong `02.approved`, 1 spec FG-AI-003 trong `03.archived`, không có feature draft. Toàn bộ được duyệt ngày 14/11/2026; FG-AI-003 nghiệm thu ngày 15/11/2026 sau T04/T05. Xem [lịch sử duyệt](LICH-SU-DUYET.md#approved-2026-11-14).
+Hiện có 28 specs trong `02.approved`, 4 specs FG-AI-003/FG-AUTH-001/FG-ORG-001/FG-AI-004 trong `03.archived`, không có feature draft. Toàn bộ được duyệt ngày 14/11/2026; FG-AI-003 nghiệm thu ngày 15/11/2026 sau T04/T05. Xem [lịch sử duyệt](LICH-SU-DUYET.md#approved-2026-11-14).
 
-Tài liệu dùng chung (mục lục, quy tắc, câu hỏi, ma trận) nằm ở gốc `specs/`. 32 specs đã được duyệt và 13/13 quyết định đã chốt trong `CAN-CHOT.md`. Nguồn chuẩn đã đồng bộ ngày 14/11/2026; chưa xác nhận triển khai/nghiệm thu.
+Tài liệu dùng chung (mục lục, quy tắc, câu hỏi, ma trận) nằm ở gốc `specs/`. 32 specs đã được duyệt và 13/13 quyết định đã chốt trong `CAN-CHOT.md`. Nguồn chuẩn đã đồng bộ ngày 14/11/2026; tiến độ nghiệm thu theo từng spec và báo cáo task.
 
 ### Quy trình chuyển trạng thái
 
@@ -46,9 +46,9 @@ Giữ mã khi đổi tiêu đề, không tái sử dụng mã đã bỏ. W/E/K l
 
 | Mã | Tính năng | Màn hình/luồng | Task liên quan | Quyết định / đồng bộ nguồn |
 |---|---|---|---|---|
-| [FG-AUTH-001](02.approved/FG-AUTH-001-xac-thuc-phien.md) | Đăng nhập, đổi mật khẩu và quản lý phiên | W-01, E-01; menu tài khoản | T03, T07, T12 | — |
+| [FG-AUTH-001](03.archived/FG-AUTH-001-xac-thuc-phien.md) | Đăng nhập, đổi mật khẩu và quản lý phiên | W-01, E-01; menu tài khoản | T03, T07, T12 | — |
 | [FG-AUTH-002](02.approved/FG-AUTH-002-tai-khoan-vai-tro-pin.md) | Tài khoản, vai trò, mật khẩu tạm và PIN | W-05 tab Tài khoản; W-03 tạo kèm | T03, T06, T07 | Q-011 đã chốt (đã đồng bộ) |
-| [FG-ORG-001](02.approved/FG-ORG-001-phong-ban.md) | Quản lý phòng ban | W-05 tab Phòng ban | T03, T06, T07 | — |
+| [FG-ORG-001](03.archived/FG-ORG-001-phong-ban.md) | Quản lý phòng ban | W-05 tab Phòng ban | T03, T06, T07 | — |
 | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | Hồ sơ và vòng đời nhân viên | W-03, W-04 | T03, T06, T07 | Q-002 đã chốt (đã đồng bộ) |
 | [FG-GATE-001](02.approved/FG-GATE-001-cua-chinh-sach.md) | Cửa, chính sách ra vào và ngưỡng từng cửa | W-07 | T06, T07, T11 | Q-001 đã chốt (đã đồng bộ) |
 | [FG-DEV-001](02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md) | Tạo, ghép và thu hồi thiết bị Kiosk | W-07, K-01 | T05, T06, T07, T08 | — |
@@ -61,7 +61,7 @@ Giữ mã khi đổi tiêu đề, không tái sử dụng mã đã bỏ. W/E/K l
 | [FG-AI-001](02.approved/FG-AI-001-cong-kiem-mo-hinh.md) | Nạp mô hình đã xác minh | W-14; K-11 khi chưa sẵn sàng | T01, T02, T04 | Q-008 đã chốt (đã đồng bộ) |
 | [FG-AI-002](02.approved/FG-AI-002-pipeline-feature.md) | Pipeline khung và trích đặc trưng | K-02, K-08 | T01, T02, T04 | Q-006 đã chốt (đã đồng bộ) |
 | [FG-AI-003](03.archived/FG-AI-003-bo-quyet-dinh.md) | Bộ quyết định đa khung và cooldown | K-02, K-04; F-03 | T04, T05, T14 | — |
-| [FG-AI-004](02.approved/FG-AI-004-settings-nguong.md) | Cấu hình nhận dạng và nguồn ngưỡng | W-14, W-07 | T02, T04, T06, T07 | Q-001 đã chốt (đã đồng bộ), Q-007 đã chốt (đã đồng bộ) |
+| [FG-AI-004](03.archived/FG-AI-004-settings-nguong.md) | Cấu hình nhận dạng và nguồn ngưỡng | W-14, W-07 | T02, T04, T06, T07 | Q-001 đã chốt (đã đồng bộ), Q-007 đã chốt (đã đồng bộ) |
 | [FG-AI-005](02.approved/FG-AI-005-mini-fas-net.md) | Chống giả mạo MiniFASNet và hiệu chỉnh L | W-14, K-04 DENY/SPOOF | T13 | Q-007 đã chốt (đã đồng bộ) |
 | [FG-ACCESS-001](02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md) | Cho phép hoặc từ chối ra vào | K-04; F-03 | T04, T05, T11 | Q-002 đã chốt (đã đồng bộ) |
 | [FG-ACCESS-002](02.approved/FG-ACCESS-002-mo-cua-thu-cong.md) | Mở cửa thủ công mô phỏng | W-10 Thao tác nhanh | T06, T11 | — |

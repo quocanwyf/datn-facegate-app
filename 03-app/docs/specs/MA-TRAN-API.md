@@ -4,11 +4,11 @@
 
 | Method | Path | operationId | Feature chính | x-roles | Tham số | HTTP |
 |---|---|---|---|---|---|---|
-| POST | `/auth/login` | `postAuthLogin` | [FG-AUTH-001](02.approved/FG-AUTH-001-xac-thuc-phien.md) | public | — | 200, 400, 401, 429 |
-| POST | `/auth/refresh` | `postAuthRefresh` | [FG-AUTH-001](02.approved/FG-AUTH-001-xac-thuc-phien.md) | public | — | 200, 401 |
-| POST | `/auth/logout` | `postAuthLogout` | [FG-AUTH-001](02.approved/FG-AUTH-001-xac-thuc-phien.md) | any | — | 204, 401 |
-| POST | `/auth/change-password` | `postAuthChangePassword` | [FG-AUTH-001](02.approved/FG-AUTH-001-xac-thuc-phien.md) | any | — | 204, 400, 401, 422 |
-| GET | `/me` | `getMe` | [FG-AUTH-001](02.approved/FG-AUTH-001-xac-thuc-phien.md) | any | — | 200, 401 |
+| POST | `/auth/login` | `postAuthLogin` | [FG-AUTH-001](03.archived/FG-AUTH-001-xac-thuc-phien.md) | public | — | 200, 400, 401, 429 |
+| POST | `/auth/refresh` | `postAuthRefresh` | [FG-AUTH-001](03.archived/FG-AUTH-001-xac-thuc-phien.md) | public | — | 200, 401 |
+| POST | `/auth/logout` | `postAuthLogout` | [FG-AUTH-001](03.archived/FG-AUTH-001-xac-thuc-phien.md) | any | — | 204, 401 |
+| POST | `/auth/change-password` | `postAuthChangePassword` | [FG-AUTH-001](03.archived/FG-AUTH-001-xac-thuc-phien.md) | any | — | 204, 400, 401, 422 |
+| GET | `/me` | `getMe` | [FG-AUTH-001](03.archived/FG-AUTH-001-xac-thuc-phien.md) | any | — | 200, 401 |
 | GET | `/me/today` | `getMeToday` | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | EMPLOYEE | — | 200, 401, 403 |
 | GET | `/me/attendance` | `getMeAttendance` | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | EMPLOYEE | month | 200, 401, 403 |
 | GET | `/me/days/{date}` | `getMeDaysById` | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | EMPLOYEE | date | 200, 401, 403 |
@@ -26,9 +26,9 @@
 | POST | `/employees/{id}/reactivate` | `postEmployeesReactivate` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR | id | 200, 401, 403, 404, 422 |
 | POST | `/employees/{id}/terminate` | `postEmployeesTerminate` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR | id | 200, 401, 403, 404, 422, 503 |
 | DELETE | `/employees/{id}/face` | `deleteEmployeesFace` | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md) | OWNER, HR | id | 204, 401, 403, 404, 503 |
-| GET | `/departments` | `getDepartments` | [FG-ORG-001](02.approved/FG-ORG-001-phong-ban.md) | OWNER, HR, MANAGER, SECURITY | — | 200, 400, 401, 403 |
-| POST | `/departments` | `postDepartments` | [FG-ORG-001](02.approved/FG-ORG-001-phong-ban.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
-| PATCH | `/departments/{id}` | `patchDepartmentsById` | [FG-ORG-001](02.approved/FG-ORG-001-phong-ban.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 409 |
+| GET | `/departments` | `getDepartments` | [FG-ORG-001](03.archived/FG-ORG-001-phong-ban.md) | OWNER, HR, MANAGER, SECURITY | — | 200, 400, 401, 403 |
+| POST | `/departments` | `postDepartments` | [FG-ORG-001](03.archived/FG-ORG-001-phong-ban.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
+| PATCH | `/departments/{id}` | `patchDepartmentsById` | [FG-ORG-001](03.archived/FG-ORG-001-phong-ban.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 409 |
 | GET | `/users` | `getUsers` | [FG-AUTH-002](02.approved/FG-AUTH-002-tai-khoan-vai-tro-pin.md) | OWNER, HR | q, page, size | 200, 400, 401, 403 |
 | POST | `/users` | `postUsers` | [FG-AUTH-002](02.approved/FG-AUTH-002-tai-khoan-vai-tro-pin.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
 | PATCH | `/users/{id}` | `patchUsersById` | [FG-AUTH-002](02.approved/FG-AUTH-002-tai-khoan-vai-tro-pin.md) | OWNER, HR | id | 200, 400, 401, 403, 404 |
@@ -75,9 +75,9 @@
 | POST | `/events/{id}/handle` | `postEventsHandle` | [FG-MON-001](02.approved/FG-MON-001-giam-sat-canh-bao.md) | OWNER, SECURITY | id | 200, 400, 401, 403, 404, 422 |
 | GET | `/events/manual-report` | `getEventsManualReport` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY | from, to | 200, 400, 401, 403 |
 | GET | `/events/export` | `getEventsExport` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY | from_ts, to_ts, gate_id, result | 200, 400, 401, 403 |
-| GET | `/settings/recognition` | `getSettingsRecognition` | [FG-AI-004](02.approved/FG-AI-004-settings-nguong.md) | OWNER, HR | — | 200, 400, 401, 403 |
-| PUT | `/settings/recognition` | `putSettingsRecognition` | [FG-AI-004](02.approved/FG-AI-004-settings-nguong.md) | OWNER | — | 200, 400, 401, 403, 422 |
-| GET | `/models/active` | `getModelsActive` | [FG-AI-004](02.approved/FG-AI-004-settings-nguong.md) | OWNER, HR | — | 200, 400, 401, 403 |
+| GET | `/settings/recognition` | `getSettingsRecognition` | [FG-AI-004](03.archived/FG-AI-004-settings-nguong.md) | OWNER, HR | — | 200, 400, 401, 403 |
+| PUT | `/settings/recognition` | `putSettingsRecognition` | [FG-AI-004](03.archived/FG-AI-004-settings-nguong.md) | OWNER | — | 200, 400, 401, 403, 422 |
+| GET | `/models/active` | `getModelsActive` | [FG-AI-004](03.archived/FG-AI-004-settings-nguong.md) | OWNER, HR | — | 200, 400, 401, 403 |
 | GET | `/audit-logs` | `getAuditLogs` | [FG-AUDIT-001](02.approved/FG-AUDIT-001-nhat-ky.md) | OWNER | from_ts, to_ts, actor_user_id, action, page, size | 200, 400, 401, 403 |
 | GET | `/health` | `getHealth` | [FG-SYS-001](02.approved/FG-SYS-001-suc-khoe-van-hanh.md) | public | — | 200 |
 | GET | `/version` | `getVersion` | [FG-SYS-001](02.approved/FG-SYS-001-suc-khoe-van-hanh.md) | public | — | 200 |

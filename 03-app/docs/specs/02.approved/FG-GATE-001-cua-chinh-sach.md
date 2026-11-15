@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §4.4, §5.4, §6; admin.md W-07. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-07.
 - Task liên quan: T06, T07, T11 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-ORG-001](FG-ORG-001-phong-ban.md), [FG-AI-004](FG-AI-004-settings-nguong.md)
+- Liên quan/phụ thuộc: [FG-ORG-001](../03.archived/FG-ORG-001-phong-ban.md), [FG-AI-004](../03.archived/FG-AI-004-settings-nguong.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

@@ -1,12 +1,12 @@
 # FG-ORG-001 — Quản lý phòng ban
 
 - Phiên bản: 1.0 — 14/11/2026.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 15/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T03/T05/T06 và T07 `eb13891`; [báo cáo T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §6; admin.md W-05; DB §4.1. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-05 tab Phòng ban.
 - Task liên quan: T03, T06, T07 (không thay phạm vi/điều kiện dừng của task gốc).
@@ -68,4 +68,15 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-ORG-001-AC03**: Không ghi phòng ban khi thiếu quyền.
 - **FG-ORG-001-AC04**: Phạm vi MANAGER tham chiếu đúng phòng ban.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC đã đối chiếu với log thật bên dưới. Không seed giả khuôn mặt, sự kiện nhận dạng hoặc ngày công.
+
+## 9. Bằng chứng hoàn thành — 15/11/2026
+
+| AC | Bằng chứng đã chạy |
+|---|---|
+| FG-ORG-001-AC01 | T06 admin_writes; T07 thêm/sửa tên thật |
+| FG-ORG-001-AC02 | T07 test tên trùng trả 409, giữ form |
+| FG-ORG-001-AC03 | T06 non_admin_write_routes_forbidden, 403 |
+| FG-ORG-001-AC04 | T06 manager scope/role validation; T07 ảnh W05-departments và W05-users |
+
+Nguồn log: [T03](../../../ket-qua-kiem-thu/2026-11-15_T03/bao-cao.md), [T05](../../../ket-qua-kiem-thu/2026-11-15_T05/bao-cao.md), [T06](../../../ket-qua-kiem-thu/2026-11-15_T06/bao-cao.md), [T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md). T07: 33 fixture + 10 Hub thật đạt, giữ log các lượt lỗi trước đó.
