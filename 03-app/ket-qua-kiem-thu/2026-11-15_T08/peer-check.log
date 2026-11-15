@@ -1,0 +1,7 @@
+Issues with peer dependencies found
+
+✕ unmet peer typescript
+  Installed: 6.0.3
+  Wanted:
+    ^5.x:
+      openapi-typescript@7.13.0

@@ -1,0 +1,4 @@
+# Giữ đường dẫn prefab_command.bat dưới giới hạn CreateProcess trên Windows.
+packages:
+  - .
+virtualStoreDirMaxLength: 40

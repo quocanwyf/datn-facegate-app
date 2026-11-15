@@ -1,0 +1,11 @@
+$ tsc --noEmit
+src/screens/k04-result.tsx(12,18): error TS2352: Conversion of type '{ OK: { group: string; label_vi: string; }; ALREADY: { group: string; label_vi: string; }; "DENY:UNKNOWN": { group: string; label_vi: string; }; "DENY:RULE": { group: string; label_vi: string; }; "DENY:INACTIVE": { ...; }; "DENY:SPOOF": { ...; }; $comment: string; }' to type 'Record<string, { group: string; }>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property '"$comment"' is incompatible with index signature.
+    Type 'string' is not comparable to type '{ group: string; }'.
+src/screens/k05-pin.tsx(20,91): error TS2339: Property 'id' does not exist on type '{ user_id: string; name: string; }'.
+src/screens/k05-pin.tsx(20,216): error TS2339: Property 'id' does not exist on type '{ user_id: string; name: string; }'.
+src/screens/k05-pin.tsx(20,282): error TS2339: Property 'id' does not exist on type '{ user_id: string; name: string; }'.
+src/screens/k05-pin.tsx(20,327): error TS2339: Property 'id' does not exist on type '{ user_id: string; name: string; }'.
+src/ws/KioskSocket.test.ts(1,18): error TS2591: Cannot find name 'node:test'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+src/ws/KioskSocket.test.ts(2,20): error TS2591: Cannot find name 'node:assert/strict'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node` and then add 'node' to the types field in your tsconfig.
+[ELIFECYCLE] Command failed with exit code 2.

@@ -1,0 +1,22 @@
+(node:32632) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+› Installing 1 other package using pnpm
+> pnpm add --save-dev @types/node@24
+✓ Lockfile passes supply-chain policies (verified 3m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 30, reused 24, downloaded 0, added 0
+Progress: resolved 116, reused 99, downloaded 0, added 0
+Progress: resolved 287, reused 257, downloaded 2, added 0
+Progress: resolved 504, reused 475, downloaded 2, added 0
+Progress: resolved 542, reused 519, downloaded 2, added 0
+Packages: +2
+++
+Progress: resolved 542, reused 519, downloaded 2, added 2, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+devDependencies:
++ @types/node 24.19.2 (26.6.6 is available)
+
+Done in 6.6s using pnpm v11.25.0
+Install impact:
+  @types/node — JavaScript only: reload the app, the native runtime is unchanged (ships no native code and no config plugin)

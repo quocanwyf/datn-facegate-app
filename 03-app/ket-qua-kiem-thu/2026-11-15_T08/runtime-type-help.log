@@ -1,0 +1,53 @@
+
+  runtime:type — Type into the input with a testID
+
+  Usage
+    $ npx @expo/agent-cli runtime:type <text> --testID <id>
+
+  Options
+    --testID <id>             The input the text goes into (required)
+    --submit                  Call onSubmitEditing after the text
+    --index <n>               Which of several matched inputs, from 0 (default: the only one)
+    --all-screens             Look on every mounted screen, not only the focused one
+    --force                   Type into an input the app reports as disabled or not editable
+    --dev-server-url <url>    Dev server to talk to (default: the project's own, then 8081)
+    --port <number>           Dev server on this port, short for --dev-server-url
+    --ios, --android          Drive the app on this platform (default: whichever is connected)
+    --platform <name>         The same, spelled the way smoke spells it
+    --json                    Print the result as JSON
+    --no-bundle-check         Type without building the entry bundle first
+    --no-followups            Skip the "Suggested next:" section
+    -h, --help                Usage info
+
+  Examples
+    $ npx @expo/agent-cli runtime:type "a new note" --testID note-input
+      the app’s own onChangeText is called with that string
+    $ npx @expo/agent-cli runtime:type "alice@example.com" --testID email --submit
+      the same, then onSubmitEditing with the text on nativeEvent.text
+    $ npx @expo/agent-cli runtime:type "" --testID search
+      the input is cleared — that is what "delete what is in there" means here
+
+  Typically next
+    runtime:tap · runtime:tree · runtime:errors
+
+  JSON (--json)
+    stdout  one object, and nothing else
+    stderr  progress and errors
+    keys    devServerUrl, testID, matched, index, candidates, component, screen,
+            focusedScreen, screensSeen, allScreens, groupSize, handler, handlerOn,
+            handlerOutsideMatch, disabled, disabledOn, disabledComponent, forced,
+            called, threw, reason, bundle, ok, text, submitted, submitHandlerOn,
+            followups, untrusted
+
+  Notes
+    It calls a prop; it does not type. The input is never focused, no keyboard opens, and no
+    keystroke is delivered — a component that only reacts to key events is not exercised.
+    An input the app marks editable={false} or disabled is refused with exit 20; --force
+    overrides that.
+    --submit on an element with no onSubmitEditing exits 20 and still reports the text went in,
+    so "nothing happened" and "half of it happened" are told apart.
+    Exit codes: 0 the text went in · 20 nothing was typed, the handler threw, or the entry
+    bundle does not compile · 1 the app could not be read at all.
+
+  New here? npx @expo/agent-cli help workflow
+

@@ -1,0 +1,206 @@
+INFO         | Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath C:\Developer\Tools\Android\SDK\system-images\android-34\default\x86_64\
+INFO         | Increasing RAM size to 4096MB
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 308b:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 308b:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 308b:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 4891:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 4891:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 4891:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: f098:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: f098:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: f098:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 109f:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 109f:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 109f:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 28a5:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 28a5:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 28a5:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 30b0:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 30b0:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 30b0:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 50b6:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 50b6:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Ignore IPv6 address: 50b6:9dc1:3f02:0:308b:9dc1:3f02:0
+INFO         | Guest GLES Driver: Auto (ext controls)
+INFO         | emuglConfig_init: vulkan_mode_selected:host gles_mode_selected:host
+INFO         | emuglConfig_get_vulkan_hardware_gpu_support_info: Found physical GPU 'Intel(R) UHD Graphics', type: VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU, apiVersion: 1.3.205, driverVersion: 0.404.1660
+
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasCompatibleHypervisor
+INFO         |      Ok: Hypervisor compatibility to run avd: `FaceGate_PixelTablet_API34` are met
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `FaceGate_PixelTablet_API34` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU requirements to run avd: `FaceGate_PixelTablet_API34` are passed
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `FaceGate_PixelTablet_API34` are met
+INFO         | Storing crashdata in: C:\Users\NMinH\AppData\Local\Temp\\AndroidEmulator\emu-crash-37.2.13.db, detection is enabled for process: 25896
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | GPU #1
+  Make: 8086
+  Model: Intel(R) UHD Graphics
+  Device ID: 4626
+
+INFO         | Disabling implicit Vulkan layers to avoid compatibility issues. Set VK_LOADER_LAYERS_DISABLE manually to disable this behavior.
+INFO         | SharedLibrary::open for [C:\Developer\Tools\Android\SDK\emulator\qemu\windows-x86_64\lib64\vulkan\vulkan-1.dll]
+INFO         | SharedLibrary::open for [C:\Developer\Tools\Android\SDK\emulator\lib64\vulkan\vulkan-1.dll]
+INFO         | Added library: C:\Developer\Tools\Android\SDK\emulator\lib64\vulkan\vulkan-1.dll
+INFO         | Selecting Vulkan device: Intel(R) UHD Graphics, Version: 1.3.205
+INFO         | Using Vulkan externalMemoryMode: OpaqueWin32 for VkEmulation
+INFO         | Sampler Ycbcr conversion is not supported.
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Intel)
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Intel(R) UHD Graphics)
+INFO         | Graphics API Version OpenGL ES 3.0 (4.5.0 - Build 30.0.101.1660)
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Sending adb public key [QAAAAKFsOi6fiGG3gA/3t2Td4Yd2bpdu83aTty1/WLyWlPzG7O93olydqnYLHj76QzdrVNlRKeLvZ6GdeKA7gQM7xarwRLWP5w4VwqL9mN4v2IYFUVtj3F9wuhEcei2ESulwyx/EKkLoX9lg/FL+k6gLF1OQx8ekVw+6C5Vf6/BEur0GEsAjJM6ngNc4vfJBP6foSytlMqsf99lHBVye770XKCaRfXZJecWZbDKz76TafBe6qqW0Dp/n+r5Ij9gZc0hY8NSE56oIEhjZe1WioPnlVfI/Q/GSgaMsGM66RxPRxSzPynXXpV00qgxrG3ByXeiMv8IaEvly16l7ZV8HzZTfzMm7FdvF8VObBWvm4qf1ZH56jMHlkphpBSEWN71wbWDZaZbxfb6LvO0D6jKWj9G5ZwKfIq2dQdedQrNJV3/Eo3pt7w/IxRx7thqgL2qXsvyHM/LoiHddRvufPrpMcNly7Og0gfaBlQlaZs4hYCxXCByzz9s4Xe1mD4AdvP9HqT7pzctvLStAjn/BQFSRv6Eb3KBDppSAD8DtL4rEZN0XFxaGbnGx1qb1xOHYGktfFh6bdMj0/w6N46OugEXvYq4HaSJsrzmdcViXpkPa69PCE8Nn+9NU0KqcCcpUsrf+Gn5RR4053d7fZmHPHHNSJTyku6t3jfr0bU6POKV5IVkJneP8gZnejgEAAQA= @unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+INFO         |   androidboot.dalvik.vm.heapsize=576m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.debug.sf.nobootanimation=1
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196608
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAKFsOi6fiGG3gA/3t2Td4Yd2bpdu83aTty1/WLyWlPzG7O93olydqnYLHj76QzdrVNlRKeLvZ6GdeKA7gQM7xarwRLWP5w4VwqL9mN4v2IYFUVtj3F9wuhEcei2ESulwyx/EKkLoX9lg/FL+k6gLF1OQx8ekVw+6C5Vf6/BEur0GEsAjJM6ngNc4vfJBP6foSytlMqsf99lHBVye770XKCaRfXZJecWZbDKz76TafBe6qqW0Dp/n+r5Ij9gZc0hY8NSE56oIEhjZe1WioPnlVfI/Q/GSgaMsGM66RxPRxSzPynXXpV00qgxrG3ByXeiMv8IaEvly16l7ZV8HzZTfzMm7FdvF8VObBWvm4qf1ZH56jMHlkphpBSEWN71wbWDZaZbxfb6LvO0D6jKWj9G5ZwKfIq2dQdedQrNJV3/Eo3pt7w/IxRx7thqgL2qXsvyHM/LoiHddRvufPrpMcNly7Og0gfaBlQlaZs4hYCxXCByzz9s4Xe1mD4AdvP9HqT7pzctvLStAjn/BQFSRv6Eb3KBDppSAD8DtL4rEZN0XFxaGbnGx1qb1xOHYGktfFh6bdMj0/w6N46OugEXvYq4HaSJsrzmdcViXpkPa69PCE8Nn+9NU0KqcCcpUsrf+Gn5RR4053d7fZmHPHHNSJTyku6t3jfr0bU6POKV5IVkJneP8gZnejgEAAQA= @unknown
+INFO         |   androidboot.qemu.avd_name=FaceGate_PixelTablet_API34
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4206592
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=2560x1600
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X13X0
+INFO         |   androidboot.vbmeta.digest=8bee4f6105b6acd7de887b1ee6629ab07066df02ee9bbca07663adffdad97fc1
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6656
+INFO         |   androidboot.veritymode=enforcing
+WHPX on Windows 10.0.26200 detected.
+Windows Hypervisor Platform accelerator is operational
+INFO         | Monitoring duration of emulator setup.
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 2560x1600, dpi: 320x320 
+INFO         | setDisplayActiveConfig: id:0, 2560x1600
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | GPU Vendor=[Google (Intel)]
+INFO         | GPU Renderer=[Android Emulator OpenGL ES Translator (Intel(R) UHD Graphics)]
+INFO         | GPU Version=[OpenGL ES 3.0 (4.5.0 - Build 30.0.101.1660)]
+INFO         | Boot completed in 34989 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 2088:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 388e:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: e095:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 9c:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 18a2:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 20ad:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Ignore IPv6 address: 40b3:28ae:3f02:0:2088:28ae:3f02:0
+INFO         | Initialized camera with name: videofile|C:\Users\NMinH\AppData\Local/FaceGate/T08-camera/known.mp4
+INFO         | Initializing a scene with mode: videofile, argument: C:\Users\NMinH\AppData\Local/FaceGate/T08-camera/known.mp4
+INFO         | createView
+INFO         | removeView: view=0x23f849dabe0
+INFO         | removeScene: scene=0x23f814e1d10
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+ERROR        | Could not get ycbcr conversion object for VkFormat: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM [1000156002]
+INFO         | Wait for emulator (pid 25896) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+
+WARNING      | Not saving state: RAM not mapped as shared
+INFO         | Saving snapshot 'default_boot' took 14 ms
+WARNING      | Emulator client has not yet been configured.. Call configure me first!
+INFO         | removeAll
+WARNING      | Netsim Wifi dns:///localhost:49711 is gone due to Stream removed (CANCELLED)

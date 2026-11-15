@@ -1,0 +1,26 @@
+{
+  "portrait_render_matches": [],
+  "camera_file_write_matches": [],
+  "preview_locations": [
+    "03-app/kiosk/src\\camera\\CameraFeed.tsx:43:    <Camera ref={camera} style={StyleSheet.absoluteFill} device={device} isActive={active && foreground && !error} mirrorMode=\"on\" onPreviewStarted={() => setReady(true)} onPreviewStopped={() => setReady(false)} onError={() => setError('Không mở được camera. Kiểm tra quyền và thử lại.')} />",
+    "03-app/kiosk/src\\screens\\k01-pair.tsx:20:        {permission.hasPermission && device ? <Camera style={{ flex: 1 }} device={device} outputs={[barcode]} isActive={!busy} mirrorMode=\"auto\" /> : <PillButton title={permission.canRequestPermission ? 'Cho phép camera quét QR' : 'Mở cài đặt camera'} secondary onPress={() => { void (permission.canRequestPermission ? permission.requestPermission() : Linking.openSettings()); }} />}"
+  ],
+  "theme_hashes": [
+    {
+      "Path": "D:\\WorkSpace\\DATN\\datn-facegate-app\\03-app\\ui\\tokens\\kiosk-theme.json",
+      "Hash": "EF1EDE81325A291DA9DCF616CAFC38CB27E8E7E96D272224B54A1043AA4A1D80"
+    },
+    {
+      "Path": "D:\\WorkSpace\\DATN\\datn-facegate-app\\03-app\\kiosk\\src\\theme\\kiosk-theme.json",
+      "Hash": "EF1EDE81325A291DA9DCF616CAFC38CB27E8E7E96D272224B54A1043AA4A1D80"
+    },
+    {
+      "Path": "D:\\WorkSpace\\DATN\\datn-facegate-app\\03-app\\ui\\tokens\\status.json",
+      "Hash": "8334798F797511A73114C3B3E706513D30DDFACE75A920E742A334717F54E126"
+    },
+    {
+      "Path": "D:\\WorkSpace\\DATN\\datn-facegate-app\\03-app\\kiosk\\src\\theme\\status.json",
+      "Hash": "8334798F797511A73114C3B3E706513D30DDFACE75A920E742A334717F54E126"
+    }
+  ]
+}

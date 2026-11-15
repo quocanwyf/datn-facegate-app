@@ -1,0 +1,30 @@
+
+  start — expo start, plus a sync of the agent skills
+
+  Usage
+    $ npx @expo/agent-cli start
+
+  Options
+    --no-agent-skills   Skip linking agent skills from installed packages
+    --no-followups      Skip the "Suggested next:" section of suggested follow-up commands
+    -h, --help          Usage info
+
+  Examples
+    $ npx @expo/agent-cli start
+      expo start in this terminal, plus a sync of this project’s agent skills
+    $ npx @expo/agent-cli start --web --port 8082
+      the same, with --web --port 8082 forwarded to expo start untouched
+    $ npx @expo/agent-cli start -- --web --port 8082
+      the same again: everything after -- goes to the Expo CLI verbatim
+
+  Typically next
+    navigate · runtime:errors · dev
+
+  Notes
+    This is expo start: it probes nothing and plans nothing, and it holds this terminal.
+    To have the prebuild and the native build decided for you, run
+    "npx @expo/agent-cli dev --ios|--android|--web" instead; its platform flag is required.
+    It has no --json of its own; run "npx expo start --help" for the arguments it forwards.
+
+  New here? npx @expo/agent-cli help workflow
+

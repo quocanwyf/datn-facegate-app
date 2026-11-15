@@ -1,0 +1,6 @@
+T08_READY port=8000 database=facegate_t08_20261115153221
+Private test context: C:\Users\NMinH\AppData\Local\FaceGate\T08-20261115153221\test-context.json
+INFO:     Started server process [15656]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)

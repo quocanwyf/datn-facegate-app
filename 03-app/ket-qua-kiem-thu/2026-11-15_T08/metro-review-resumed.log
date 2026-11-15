@@ -1,0 +1,139 @@
+(node:8416) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Starting project at D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk
+Starting Metro Bundler
+
+Waiting on http://localhost:8081
+
+Logs for your project will appear below.
+Android Bundled 2585ms index.ts (1547 modules)
+ INFO  FACEGATE_SCENE pair
+ ERROR  [Error: java.lang.Error: Camera is disabled, probably due to a device policy!
+	at com.margelo.nitro.camera.session.ActiveCameraSessionSingle.updateCameraState(ActiveCameraSessionSingle.kt:61)
+	at com.margelo.nitro.camera.session.ActiveCameraSessionSingle.observer$lambda$0(ActiveCameraSessionSingle.kt:25)
+	at com.margelo.nitro.camera.session.ActiveCameraSessionSingle$$ExternalSyntheticLambda0.onChanged(D8$$SyntheticClass:0)
+	at androidx.lifecycle.LiveData.considerNotify(LiveData.java:134)
+	at androidx.lifecycle.LiveData.dispatchingValue(LiveData.java:152)
+	at androidx.lifecycle.LiveData.setValue(LiveData.java:310)
+	at androidx.lifecycle.MutableLiveData.setValue(MutableLiveData.java:50)
+	at androidx.lifecycle.LiveData$1.run(LiveData.java:94)
+	at android.os.Handler.handleCallback(Handler.java:958)
+	at android.os.Handler.dispatchMessage(Handler.java:99)
+	at android.os.Looper.loopOnce(Looper.java:205)
+	at android.os.Looper.loop(Looper.java:294)
+	at android.app.ActivityThread.main(ActivityThread.java:8177)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+]
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_SCENE pin
+ INFO  FACEGATE_SCENE pick
+ INFO  FACEGATE_SCENE consent
+ INFO  FACEGATE_SCENE scan
+ ERROR  [Error: Uncaught (in promise, id: 0): "Error: Call to function 'ExpoKeepAwake.deactivate' has been rejected.
+→ Caused by: The current activity is no longer available"]
+ INFO  FACEGATE_SCENE pair
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_SCENE pin
+ ERROR  [Error: Uncaught (in promise, id: 1): "Error: Call to function 'ExpoKeepAwake.deactivate' has been rejected.
+→ Caused by: The current activity is no longer available"]
+ INFO  FACEGATE_SCENE pair
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_SCENE pin
+ INFO  FACEGATE_SCENE pick
+ INFO  FACEGATE_SCENE consent
+ INFO  FACEGATE_SCENE enroll
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":0,"reason":"POSE"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":0,"reason":"POSE"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":0,"reason":"POSE"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":0,"reason":"POSE"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":0,"reason":"POSE"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":1}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":2}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":2,"reason":"TOO_SIMILAR"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":3}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":3,"reason":"TOO_SIMILAR"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":3,"reason":"TOO_SIMILAR"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":4}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":4,"reason":"TOO_SIMILAR"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":4,"reason":"TOO_SIMILAR"}
+ INFO  FACEGATE_ENROLL_PROGRESS {"accepted":4,"reason":"TOO_SIMILAR"}
+ INFO  FACEGATE_SCENE sent
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":3434,"result":"OK"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1805,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1077,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1332,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1872,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1319,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1608,"result":"OK"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1173,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1165,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1265,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1190,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":1374,"result":"ALREADY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+Android Bundled 220ms index.ts (1 module)
+ INFO  FACEGATE_SCENE pair
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2811,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":3043,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_SCENE offline
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2947,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2460,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2433,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":3227,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2858,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2078,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2093,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2042,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan
+ INFO  FACEGATE_TIMING {"elapsed_ms":2187,"result":"DENY"}
+ INFO  FACEGATE_SCENE result
+ INFO  FACEGATE_SCENE scan

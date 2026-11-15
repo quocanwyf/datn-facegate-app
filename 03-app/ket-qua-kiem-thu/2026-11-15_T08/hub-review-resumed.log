@@ -1,0 +1,4 @@
+T08_READY port=8000 database=facegate_t08_20261115153221
+Private test context: C:\Users\NMinH\AppData\Local\FaceGate\T08-20261115153221\test-context.json
+Recognition startup degraded: MODEL_NOT_VERIFIED (OperationalError)
+INFO:     127.0.0.1:49669 - "GET /api/v1/health HTTP/1.1" 200 OK

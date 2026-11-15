@@ -1,0 +1,50 @@
+
+  runtime:tree — What is on screen, ready for a tap
+
+  Usage
+    $ npx @expo/agent-cli runtime:tree
+
+  Options
+    --testID <id>             Report this element and its subtree, instead of the screen
+    --all                     Every node with a testID, a label, a role, a handler or text
+    --all-screens             Every mounted screen, not only the focused one
+    --max-nodes <n>           Report at most this many nodes (default: 200)
+    --dev-server-url <url>    Dev server to talk to (default: the project's own, then 8081)
+    --port <number>           Dev server on this port, short for --dev-server-url
+    --ios, --android          Read the app on this platform (default: whichever is connected)
+    --platform <name>         The same, spelled the way smoke spells it
+    --json                    Print the result as JSON
+    --no-bundle-check         Read the app without building the entry bundle first
+    --no-followups            Skip the "Suggested next:" section
+    -h, --help                Usage info
+
+  Examples
+    $ npx @expo/agent-cli runtime:tree
+      the focused screen’s testIDs and handlers — what a tap could find
+    $ npx @expo/agent-cli runtime:tree --all --json
+      the full projection of that screen
+    $ npx @expo/agent-cli runtime:tree --testID add-note
+      that element, its subtree, and the handler a tap on it would call
+
+  Typically next
+    runtime:tap · runtime:type · navigate
+
+  JSON (--json)
+    stdout  one object, and nothing else
+    stderr  progress and errors
+    keys    devServerUrl, testID, focusedScreen, screensSeen, allScreens, projection,
+            fibersWalked, nodes, nodeCount, nodesBeforeTruncation, truncated,
+            maxNodes, matched, matches, bundle, reason, ok, followups, untrusted
+
+  Notes
+    It reads React's component tree through the DevTools hook, not a screenshot and not the
+    native view hierarchy. It has no geometry: a button behind a modal reads like a visible one.
+    It defaults to the focused screen and to the nodes you can act on, so the answer stays a
+    fixed size as the app grows. --all-screens and --all ask for the rest.
+    One row is one element, not one fiber, which is the unit runtime:tap --index counts.
+    Exit codes: 0 the screen was read · 20 a --testID matched nothing, or the entry bundle does
+    not compile · 1 the app could not be read — no dev server, or no app connected.
+    Expo Go for Android ships no debugger: use a development build.
+
+  New here? npx @expo/agent-cli help workflow
+

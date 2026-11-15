@@ -1,0 +1,35 @@
+Downloading Android CLI...
+Unpacking embedded installation...
+
+Terms of Service and License Agreement for the Android Software Development Kit
+
+https://developer.android.com/studio/terms
+
+Google collects usage data for the Android CLI, such as commands, sub-commands, and flags used. This data does not include custom parameters or identifiable information. This information helps improve the tool and is collected in accordance with Google's Privacy Policy.
+
+https://policies.google.com/privacy
+
+Disable Android CLI metrics collection by using the --no-metrics flag.
+
+Tip: For the best experience using Android CLI with agents, we strongly recommend running android init to install the necessary skills and resources.
+Usage: android sdk [-h] [--ignore-outdated-xmls] [--platform=PARAM] [COMMAND]
+Manages the Android SDK installation. Includes commands to install, update,
+remove, and list available and installed SDK packages
+
+Options:
+  -h, --help                  Shows the help message for the specified command
+      --ignore-outdated-xmls  When installing or updating packages, do not
+                              update other packages' XML files
+      --platform=PARAM        Target platform `<os>_<arch>` (for example,
+                              `linux_x86_64`, `mac_arm64`, or `windows_x86`);
+                              defaults to the current host
+
+android options:
+      --sdk=PARAM             Path to the Android SDK
+  -v, --verbose               Enable verbose output for troubleshooting
+  -V, --version               Print version information and exit
+Commands:
+  install  Installs SDK packages
+  list     Lists installed and available SDK packages
+  remove   Removes packages from the SDK
+  update   Updates one or all packages to the latest version

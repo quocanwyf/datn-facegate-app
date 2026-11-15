@@ -1,0 +1,16 @@
+✓ Lockfile passes supply-chain policies (verified 9m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 29, reused 17, downloaded 0, added 0
+Progress: resolved 108, reused 78, downloaded 0, added 0
+Progress: resolved 206, reused 158, downloaded 0, added 0
+Progress: resolved 400, reused 318, downloaded 0, added 0
+Progress: resolved 518, reused 497, downloaded 0, added 0
+Progress: resolved 522, reused 501, downloaded 0, added 0
+Packages: -22
+----------------------
+Progress: resolved 522, reused 501, downloaded 0, added 0, done
+
+devDependencies:
+- openapi-typescript 7.13.0
+
+Done in 8.7s using pnpm v11.25.0

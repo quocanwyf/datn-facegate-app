@@ -4,14 +4,44 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "gen:api": "openapi-typescript ../openapi/openapi.yaml -o src/api/schema.d.ts",
-    "typecheck": "tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler src/api/client.ts"
+    "gen:api": "pnpm --package=openapi-typescript@7.13.0 --package=typescript@5.9.3 dlx openapi-typescript ../openapi/openapi.yaml -o src/api/schema.d.ts",
+    "typecheck": "tsc --noEmit",
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "test": "node --experimental-strip-types --test src/ws/*.test.ts"
   },
   "dependencies": {
-    "openapi-fetch": "^0.15.0"
+    "@expo-google-fonts/inter": "^0.4.2",
+    "@expo/ui": "~58.0.28",
+    "expo": "~58.0.25",
+    "expo-audio": "~58.0.12",
+    "expo-build-properties": "~58.0.12",
+    "expo-dev-client": "~58.0.20",
+    "expo-file-system": "~58.0.13",
+    "expo-font": "~58.0.12",
+    "expo-image-manipulator": "~58.0.16",
+    "expo-keep-awake": "~58.0.4",
+    "expo-linear-gradient": "~58.0.4",
+    "expo-secure-store": "~58.0.3",
+    "expo-status-bar": "~58.0.5",
+    "expo-system-ui": "~58.0.7",
+    "openapi-fetch": "^0.15.0",
+    "phosphor-react-native": "^3.0.6",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-nitro-image": "^0.15.2",
+    "react-native-nitro-modules": "^0.37.2",
+    "react-native-reanimated": "4.7.1",
+    "react-native-safe-area-context": "~5.11.1",
+    "react-native-svg": "15.16.0",
+    "react-native-vision-camera": "^5.2.4",
+    "react-native-vision-camera-barcode-scanner": "^5.2.4",
+    "react-native-worklets": "0.13.0"
   },
   "devDependencies": {
-    "openapi-typescript": "^7.10.0",
-    "typescript": "^5.9.0"
-  }
+    "@types/node": "^24.19.2",
+    "@types/react": "~19.3.0",
+    "typescript": "~6.0.3"
+  },
+  "main": "index.ts"
 }

@@ -1,0 +1,118 @@
+{
+  "kind": "authorized-photo-camera-replay",
+  "physical_actor_trials": 0,
+  "web_approved_samples": 5,
+  "known_results": [
+    {
+      "elapsed_ms": 3434,
+      "result": "OK"
+    },
+    {
+      "elapsed_ms": 1805,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1077,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1332,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1872,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1319,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1608,
+      "result": "OK"
+    },
+    {
+      "elapsed_ms": 1173,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1165,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1265,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1190,
+      "result": "ALREADY"
+    },
+    {
+      "elapsed_ms": 1374,
+      "result": "ALREADY"
+    }
+  ],
+  "unknown_results": [
+    {
+      "elapsed_ms": 2811,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 3043,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2947,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2460,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2433,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 3227,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2858,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2078,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2093,
+      "result": "DENY"
+    },
+    {
+      "elapsed_ms": 2042,
+      "result": "DENY"
+    }
+  ],
+  "timing_definition": "first valid JPEG to result; diagnostic proxy only, not person entering camera",
+  "offline_seen": true,
+  "resumed_without_pairing": true,
+  "private_videos": [
+    {
+      "file": "C:\\Users\\NMinH\\AppData\\Local\\FaceGate\\T08-evidence\\known-native.mp4",
+      "bytes": 7096280,
+      "sha256": "4516b259f6c4cb46e9bf6bb1b6522499090e4171765b52fd34d2911c27cf56c4"
+    },
+    {
+      "file": "C:\\Users\\NMinH\\AppData\\Local\\FaceGate\\T08-evidence\\pair-attempt-native.mp4",
+      "bytes": 844745,
+      "sha256": "4a43d101c81f736de6c01d2f6e84ba1764b3d2dab22fba7e4f37131b39cdc25b"
+    },
+    {
+      "file": "C:\\Users\\NMinH\\AppData\\Local\\FaceGate\\T08-evidence\\offline-recover-native.mp4",
+      "bytes": 9625627,
+      "sha256": "a88b32a9caa4536a632fec011e8f5f2508cb1dbce21c5a08232b6c422050a7fb"
+    }
+  ],
+  "video_limitations": "Segments only. Pair-attempt video precedes successful enrollment; no complete pairing-to-five-samples video yet."
+}

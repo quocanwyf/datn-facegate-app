@@ -1,0 +1,8 @@
+OS: Windows-11-10.0.26200-SP0
+CPU: Intel64 Family 6 Model 154 Stepping 3, GenuineIntel
+Python: 3.13.13
+Torch: 2.11.0+cpu
+OpenCV: 4.14.0
+v24.15.0
+Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+Copyright (C) 2006-2024 The Android Open Source Project and many others.

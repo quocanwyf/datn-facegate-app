@@ -1,0 +1,67 @@
+
+  @expo/agent-cli — get an Expo app running on a device, change it, check it, and ship it
+
+  Usage
+    $ npx @expo/agent-cli <command> [options]
+
+  New here? npx @expo/agent-cli help workflow
+    what to run in order, the exit codes, and the --json contract
+
+  Commands
+    Develop
+      dev                     Get this app onto a device: plan it, then run it
+      dev:logs                Read what the detached dev server printed
+      dev:stop                Stop this project's dev server
+      start                   expo start, plus a sync of the agent skills
+      stop                    Stop this project's dev server (alias of dev:stop)
+      install                 Install packages, and link the skills they ship
+      typecheck               Type-check with the project's own compiler
+      dev blocks this terminal; dev --detach does not, and dev:logs reads what it printed. dev --plan --ios (or --android, --web) prints a plan without running it; add --json for JSON.
+    Understand the project
+      status                  Check Expo Go support and whether to rebuild
+      doctor                  Run expo-doctor and normalize its report
+      inspect:build-log       Say what failed in a build log
+      inspect:config-plugins  What the config plugins produced [experimental]
+      status compares native changes with the last build: JS-only changes can reload; native changes need a rebuild. Nothing here runs the project.
+      experimental commands may change or vanish
+    Debug a running app
+      smoke                   Prove the app boots, on a device
+      navigate                Open a route in the app on a booted device
+      runtime:eval            Evaluate JavaScript in the running app
+      runtime:errors          Collect runtime errors over a time window
+      runtime:tree            What is on screen, ready for a tap
+      runtime:tap             Tap the element carrying a testID
+      runtime:type            Type into the input with a testID
+      runtime:reload          Reload the app onto the code on disk now
+      runtime:stop            Stop the app on the device it runs on
+    Create a project
+      new                     Create a new Expo project without a terminal
+    Deployment
+      deploy                  Ship the web app, or launch the native one
+    Agent setup
+      agents:setup            Set up Expo agents in a project or user home
+      skills:sync             Link the installed packages' skills
+      skills:list             List the skills the installed packages ship
+      skills:show             Print the SKILL.md of a package
+      skills:clean            Remove the managed skill links
+      agents:setup --yes --agent <agent> --json runs without prompting; --no-plugins skips plugin installation.
+    Learn
+      help                    Learn the workflow, or one command's help
+      docs:sync               Download the Expo docs as .md files to grep
+      docs:search             Search the local Expo docs, with file and line
+    Feedback
+      feedback                Send feedback to the Expo team
+    Account
+      login, logout, register, whoami
+      No project needed: they act on the ~/.expo session the expo and eas CLIs share.
+    Expo CLI (fallback to npx expo <command>)
+      run, run:ios, run:android, prebuild, config, export, export:web,
+      export:embed, serve, customize, lint
+
+  Options
+    --version, -v   Version number
+    --help, -h      Usage info
+
+  The options, examples and JSON keys of one command
+    $ npx @expo/agent-cli status --help
+

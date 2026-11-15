@@ -1,0 +1,13 @@
+
+  Use -camera-front <mode> to control emulation of a camera facing front.
+  Valid values for <mode> are:
+
+     emulated             -> camera will be emulated using software ('fake') camera emulation
+     webcam<N>            -> camera will be emulated using a webcamera connected to the host
+     environment          -> If the feature is enabled, camera will render a virtual scene that's defined in environment.ini file of the AVD
+     imagefile:<filename> -> Camera will render an image file.
+     videofile:<filename> -> Camera will render a video file.
+     image360:<filename>  -> Camera will render a panoramic image file.
+     none                 -> camera emulation will be disabled
+
+

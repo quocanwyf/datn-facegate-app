@@ -1,0 +1,4 @@
+T08_READY port=8000 database=facegate_t08_20261115153221
+Private test context: C:\Users\NMinH\AppData\Local\FaceGate\T08-20261115153221\test-context.json
+INFO:     Started server process [31296]
+INFO:     Waiting for application startup.

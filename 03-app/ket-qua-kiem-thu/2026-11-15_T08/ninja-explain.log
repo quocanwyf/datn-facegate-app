@@ -1,0 +1,54 @@
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/AnyMap.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/AnyMap.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/ArrayBuffer.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/ArrayBuffer.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/BoxedHybridObject.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/BoxedHybridObject.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/HybridObject.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/HybridObject.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/Promise.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/core/Promise.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/entrypoint/HybridNitroModulesProxy.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/entrypoint/HybridNitroModulesProxy.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/entrypoint/InstallNitro.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/entrypoint/InstallNitro.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/jsi/JSICache.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/jsi/JSICache.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/prototype/HybridObjectPrototype.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/prototype/HybridObjectPrototype.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/registry/HybridObjectRegistry.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/registry/HybridObjectRegistry.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/threading/Dispatcher.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/threading/Dispatcher.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/threading/ThreadPool.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/threading/ThreadPool.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/utils/CommonGlobals.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/utils/CommonGlobals.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/utils/NitroTypeInfo.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/utils/NitroTypeInfo.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/utils/PropNameIDCache.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/core/utils/PropNameIDCache.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/views/RawPropsCompat.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9/node_modules/react-native-nitro-modules/cpp/views/RawPropsCompat.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/NitroOnLoad.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/NitroOnLoad.cpp.o is dirty
+ninja: Entering directory `03-app/kiosk/node_modules/react-native-nitro-modules/android/.cxx/Debug/364u2o5n/x86_64'
+ninja: build stopped: .
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/core/JAnyMap.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/core/JAnyMap.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/core/JHybridObject.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/core/JHybridObject.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/platform/NitroLogger.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/platform/NitroLogger.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/platform/ThreadUtils.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/platform/ThreadUtils.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/threading/UIThreadDispatcher.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/threading/UIThreadDispatcher.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/core/main/cpp/utils/JHardwareBufferUtils.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/core/main/cpp/utils/JHardwareBufferUtils.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/src/main/cpp/JNIOnLoad.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/src/main/cpp/JNIOnLoad.cpp.o is dirty
+ninja explain: deps for 'CMakeFiles/NitroModules.dir/src/main/cpp/turbomodule/JNitroModules.cpp.o' are missing
+ninja explain: CMakeFiles/NitroModules.dir/src/main/cpp/turbomodule/JNitroModules.cpp.o is dirty
+ninja explain: ../../../../build/intermediates/cxx/Debug/364u2o5n/obj/x86_64/libNitroModules.so is dirty
+ninja: error: mkdir(CMakeFiles/NitroModules.dir/D_/WorkSpace/DATN/datn-facegate-app/03-app/kiosk/node_modules/.pnpm/react-native-nitro-modules@_155041afa780322bc47567bd24697ae9): No such file or directory

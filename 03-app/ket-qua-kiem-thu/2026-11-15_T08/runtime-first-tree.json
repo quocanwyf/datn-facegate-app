@@ -1,0 +1,243 @@
+{
+  "devServerUrl": "http://127.0.0.1:8081",
+  "testID": null,
+  "focusedScreen": null,
+  "screensSeen": [],
+  "allScreens": false,
+  "projection": "interactive",
+  "fibersWalked": 175,
+  "nodes": [
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "PillButton",
+      "depth": 31,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onPress"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "Button",
+      "depth": 41,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onPress"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "Field",
+      "depth": 29,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 2,
+      "handlers": [
+        "onChangeText"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": "pair-hub",
+      "text": "http://10.0.2.2:8000"
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "BasicTextFieldComponent",
+      "depth": 40,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onValueChange"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "BasicTextFieldView",
+      "depth": 41,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onValueChange"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "ViewManagerAdapter_ExpoUI_BasicTextFieldView",
+      "depth": 42,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onValueChange"
+      ],
+      "host": true,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": "Mã ghép 6 số",
+      "accessibilityRole": null,
+      "component": "TextInput",
+      "depth": 43,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onChangeText"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": "pair-code",
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "BasicTextFieldComponent",
+      "depth": 44,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onValueChange"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "BasicTextFieldView",
+      "depth": 45,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onValueChange"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "ViewManagerAdapter_ExpoUI_BasicTextFieldView",
+      "depth": 46,
+      "disabled": false,
+      "disabledOn": null,
+      "groupSize": 1,
+      "handlers": [
+        "onValueChange"
+      ],
+      "host": true,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": null,
+      "text": null
+    },
+    {
+      "accessibilityLabel": null,
+      "accessibilityRole": null,
+      "component": "PillButton",
+      "depth": 29,
+      "disabled": true,
+      "disabledOn": "disabled",
+      "groupSize": 2,
+      "handlers": [
+        "onPress"
+      ],
+      "host": false,
+      "interactive": true,
+      "placeholder": null,
+      "screen": null,
+      "testID": "pair-submit",
+      "text": null
+    }
+  ],
+  "nodeCount": 11,
+  "nodesBeforeTruncation": 11,
+  "truncated": false,
+  "maxNodes": 200,
+  "matched": 0,
+  "matches": [],
+  "bundle": {
+    "checked": true,
+    "ok": true,
+    "platform": "android",
+    "url": "http://127.0.0.1:8081/index.ts.bundle?platform=android&dev=true&hot=false&lazy=true&transform.engine=hermes&transform.bytecode=1&transform.routerRoot=app&unstable_transformProfile=hermes-stable",
+    "error": null,
+    "reason": null
+  },
+  "reason": null,
+  "ok": true,
+  "followups": [
+    {
+      "id": "type-into-input",
+      "command": "npx @expo/agent-cli runtime:type \"hello\" --testID pair-hub --android",
+      "why": "This element carries onChangeText, so it is an input: this calls that handler with a string, the way a keyboard would have."
+    },
+    {
+      "id": "runtime-errors",
+      "command": "npx @expo/agent-cli runtime:errors --android --fail-on-error",
+      "why": "Reads what the app reported while rendering this screen, which a component tree cannot show."
+    }
+  ],
+  "untrusted": [
+    "nodes",
+    "matches",
+    "focusedScreen",
+    "screensSeen"
+  ]
+}

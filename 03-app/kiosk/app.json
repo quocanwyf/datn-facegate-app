@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "FaceGate",
+    "slug": "facegate-kiosk",
+    "scheme": "facegate",
+    "version": "1.0.0",
+    "orientation": "landscape",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "vn.ptit.facegate.kiosk",
+      "permissions": [
+        "CAMERA",
+        "INTERNET"
+      ],
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ],
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-audio",
+        {
+          "microphonePermission": false,
+          "recordAudioAndroid": false
+        }
+      ]
+    ],
+    "experiments": {
+      "reactCompiler": false
+    }
+  }
+}

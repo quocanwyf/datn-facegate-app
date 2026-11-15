@@ -1,0 +1,61 @@
+✓ Lockfile passes supply-chain policies (verified 3h ago)
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +500
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 500, reused 44, downloaded 0, added 0
+Packages are hard linked from the content-addressable store to the virtual store.
+  Content-addressable store is at: D:\.pnpm-store\v11
+  Virtual store is at:             node_modules/.pnpm
+Progress: resolved 500, reused 498, downloaded 0, added 3
+Progress: resolved 500, reused 499, downloaded 0, added 14
+Progress: resolved 500, reused 499, downloaded 0, added 31
+Progress: resolved 500, reused 499, downloaded 0, added 66
+Progress: resolved 500, reused 500, downloaded 0, added 97
+Progress: resolved 500, reused 500, downloaded 0, added 142
+Progress: resolved 500, reused 500, downloaded 0, added 181
+Progress: resolved 500, reused 500, downloaded 0, added 235
+Progress: resolved 500, reused 500, downloaded 0, added 236
+Progress: resolved 500, reused 500, downloaded 0, added 293
+Progress: resolved 500, reused 500, downloaded 0, added 428
+Progress: resolved 500, reused 500, downloaded 0, added 494
+Progress: resolved 500, reused 500, downloaded 0, added 497
+Progress: resolved 500, reused 500, downloaded 0, added 498
+Progress: resolved 500, reused 500, downloaded 0, added 499
+Progress: resolved 500, reused 500, downloaded 0, added 500
+Progress: resolved 500, reused 500, downloaded 0, added 500, done
+
+dependencies:
++ @expo-google-fonts/inter 0.4.2
++ @expo/ui 58.0.28
++ expo 58.0.25
++ expo-audio 58.0.12
++ expo-build-properties 58.0.12
++ expo-dev-client 58.0.20
++ expo-file-system 58.0.13
++ expo-font 58.0.12
++ expo-image-manipulator 58.0.16
++ expo-keep-awake 58.0.4
++ expo-linear-gradient 58.0.4
++ expo-secure-store 58.0.3
++ expo-status-bar 58.0.5
++ expo-system-ui 58.0.7
++ openapi-fetch 0.15.2
++ phosphor-react-native 3.0.6
++ react 19.3.0
++ react-native 0.88.1
++ react-native-nitro-image 0.15.2
++ react-native-nitro-modules 0.37.2
++ react-native-reanimated 4.7.1
++ react-native-safe-area-context 5.11.1
++ react-native-svg 15.16.0
++ react-native-vision-camera 5.2.4
++ react-native-vision-camera-barcode-scanner 5.2.4
++ react-native-worklets 0.13.0
+
+devDependencies:
++ @types/node 24.19.2
++ @types/react 19.3.0
++ typescript 6.0.3
+
+Done in 36.6s using pnpm v11.25.0

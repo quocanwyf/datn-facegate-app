@@ -1,0 +1,32 @@
+(node:6312) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{
+  "projectRoot": "C:\\Users\\NMinH\\AppData\\Local\\FaceGate\\t08-scaffold",
+  "name": "FaceGate",
+  "created": true,
+  "installed": false,
+  "gitInitialized": false,
+  "followups": [
+    {
+      "id": "install-dependencies",
+      "command": "cd C:\\Users\\NMinH\\AppData\\Local/FaceGate/t08-scaffold && npm install",
+      "why": "--no-install skipped the dependency install, so nothing in the project can run yet."
+    },
+    {
+      "id": "status",
+      "command": "cd C:\\Users\\NMinH\\AppData\\Local/FaceGate/t08-scaffold && npx @expo/agent-cli status",
+      "why": "Prints what the new project is and what would happen next, without starting anything."
+    },
+    {
+      "id": "dev",
+      "command": "cd C:\\Users\\NMinH\\AppData\\Local/FaceGate/t08-scaffold && npx @expo/agent-cli dev --android",
+      "why": "Runs the app, deciding between Expo Go, a development build and a plain dev server from the project state."
+    }
+  ],
+  "agentsMd": {
+    "path": "AGENTS.md",
+    "action": "updated"
+  },
+  "docs": null,
+  "errors": []
+}

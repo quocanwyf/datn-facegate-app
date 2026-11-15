@@ -1,0 +1,36 @@
+{
+  "$comment": "Theme Kiosk App (React Native, phong cách Fresh Bloom). Đơn vị dp. Lime chỉ để tô nền — chữ trên lime luôn là mực #1A1A18.",
+  "color": {
+    "primary": "#A3D853", "onPrimary": "#1A1A18", "primaryStrong": "#4F7C20",
+    "inverse": "#1A1A18", "onInverse": "#FFFFFF",
+    "accent": "#F5A00A", "danger": "#B5241F", "onDanger": "#FFFFFF",
+    "bg": "#EAE8E4", "surface": "#F1F0ED", "surfaceRaised": "#FFFFFF", "border": "#DDDAD5",
+    "text": "#1A1A18", "textSecondary": "#66635E",
+    "scrim": "rgba(26,26,24,0.6)", "frameIdle": "rgba(255,255,255,0.6)", "frameTracking": "#A3D853",
+    "connOk": "#4F7C20", "connLost": "#B5241F"
+  },
+  "font": { "family": "Inter", "required": "Inter có bộ ký tự tiếng Việt (expo-font + @expo-google-fonts/inter)" },
+  "type": {
+    "resultName": { "size": 56, "weight": "600", "letterSpacing": -1.2 },
+    "resultSub": { "size": 28, "weight": "500" },
+    "screenTitle": { "size": 32, "weight": "600", "letterSpacing": -0.6 },
+    "hint": { "size": 24, "weight": "500" },
+    "clock": { "size": 40, "weight": "600", "fontVariant": ["tabular-nums"] },
+    "body": { "size": 18, "weight": "400" },
+    "label": { "size": 15, "weight": "500" },
+    "button": { "size": 18, "weight": "600" },
+    "banner": { "size": 13, "weight": "400" }
+  },
+  "space": [0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96],
+  "radius": { "sm": 12, "md": 16, "lg": 24, "xl": 32, "frame": 44, "full": 9999 },
+  "size": { "buttonHeight": 60, "pinKey": 80, "pinDot": 20, "resultIcon": 96, "frameBorder": 4 },
+  "shadow": {
+    "1": { "shadowColor": "#1A1A18", "shadowOpacity": 0.05, "shadowRadius": 2, "shadowOffset": { "width": 0, "height": 1 }, "elevation": 1 },
+    "2": { "shadowColor": "#1A1A18", "shadowOpacity": 0.08, "shadowRadius": 12, "shadowOffset": { "width": 0, "height": 6 }, "elevation": 4 }
+  },
+  "motion": {
+    "fast": 120, "base": 200, "slow": 320, "scanLoop": 1600, "resultHold": 3000,
+    "easeStandard": [0.2, 0, 0, 1], "easeEmphasized": [0.3, 0, 0, 1.2], "easeExit": [0.4, 0, 1, 1],
+    "shakeAmplitude": 12, "shakeCount": 3
+  }
+}

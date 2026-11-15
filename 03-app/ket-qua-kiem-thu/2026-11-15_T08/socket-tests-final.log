@@ -1,0 +1,23 @@
+$ node --experimental-strip-types --test src/ws/*.test.ts
+✔ auth là message đầu, token không nằm trên URL; không gửi trước config (5.2018ms)
+✔ header/binary liền nhau; chỉ một frame chờ; config/pong/seq khác không nhả khóa (0.8798ms)
+✔ tuân thủ max_fps và BUSY ít nhất 200ms sau ACK (0.5812ms)
+✔ không gửi frame trong 3s hiện kết quả, kể cả có config mới (0.8326ms)
+✔ enroll_progress nhả đúng seq; enroll_done không seq chỉ nhận khi chờ enroll (2.5576ms)
+✔ error frame giải phóng đúng seq; NO_GALLERY không biến thành DENY (0.4173ms)
+✔ gallery lỗi dừng recognize, giữ ping; config phục hồi mới cho gửi (0.5803ms)
+✔ khung gửi giữa chu kỳ không làm ping trễ tới 20s và rớt timeout Hub (0.326ms)
+✔ disconnect chưa đủ 3s không hiện offline; nối lại trước mốc không nháy K11 (0.4829ms)
+✔ disconnect kéo dài hiện offline đúng 3s (0.28ms)
+✔ im lặng 15s hiện offline ngay, không cộng thêm 3s; pong reset watchdog (0.1996ms)
+✔ retry 1/2/4/8/15/15s, một socket mỗi lượt (0.2709ms)
+✔ thu hồi token dừng mọi timer và báo xóa token; callback socket cũ bị bỏ (0.242ms)
+✔ tắt capture và restart bỏ phiên/seq cũ, không gửi khi đang thao tác form (0.2064ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 283.5627

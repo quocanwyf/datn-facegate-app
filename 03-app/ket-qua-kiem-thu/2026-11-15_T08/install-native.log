@@ -1,0 +1,97 @@
+(node:31628) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+› Installing 13 SDK 58.0.0 compatible native modules and 6 other packages using pnpm
+> pnpm add expo-dev-client@~58.0.20 expo-build-properties@~58.0.12 expo-secure-store@~58.0.3 expo-font@~58.0.12 @expo-google-fonts/inter expo-audio@~58.0.12 expo-file-system@~58.0.13 expo-image-manipulator@~58.0.16 expo-keep-awake@~58.0.4 react-native-reanimated@4.7.1 react-native-worklets@0.13.0 react-native-vision-camera react-native-vision-camera-barcode-scanner react-native-nitro-modules react-native-nitro-image react-native-svg@15.16.0 phosphor-react-native react-native-safe-area-context@~5.11.1 @expo/ui@~58.0.28
+✓ Lockfile passes supply-chain policies (verified 2m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 20, reused 10, downloaded 0, added 0
+Progress: resolved 81, reused 37, downloaded 5, added 0
+[WARN] Tarball download average speed 38 KiB/s (size 60 KiB) is below 50 KiB/s: https://registry.npmjs.org/expo-build-properties/-/expo-build-properties-58.0.12.tgz (GET)
+Progress: resolved 101, reused 80, downloaded 8, added 0
+Progress: resolved 109, reused 80, downloaded 19, added 0
+Progress: resolved 109, reused 80, downloaded 20, added 0
+Progress: resolved 109, reused 80, downloaded 24, added 0
+Progress: resolved 109, reused 80, downloaded 25, added 0
+Progress: resolved 109, reused 80, downloaded 26, added 0
+Progress: resolved 109, reused 80, downloaded 27, added 0
+Progress: resolved 110, reused 80, downloaded 27, added 0
+Progress: resolved 338, reused 266, downloaded 33, added 0
+Progress: resolved 496, reused 437, downloaded 37, added 0
+Progress: resolved 532, reused 472, downloaded 39, added 0
+Progress: resolved 533, reused 472, downloaded 40, added 0
+Progress: resolved 533, reused 472, downloaded 41, added 0
+Progress: resolved 534, reused 472, downloaded 42, added 0
+Progress: resolved 538, reused 474, downloaded 44, added 0
+Packages: +62 -16
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++----------------
+Progress: resolved 538, reused 474, downloaded 44, added 27
+Progress: resolved 538, reused 474, downloaded 44, added 42
+Progress: resolved 538, reused 474, downloaded 44, added 59
+Progress: resolved 538, reused 474, downloaded 44, added 61
+Progress: resolved 538, reused 474, downloaded 44, added 62
+Progress: resolved 538, reused 474, downloaded 44, added 62, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+dependencies:
++ @expo-google-fonts/inter 0.4.2
++ @expo/ui 58.0.28
++ expo-audio 58.0.12
++ expo-build-properties 58.0.12
++ expo-dev-client 58.0.20
++ expo-file-system 58.0.13
++ expo-font 58.0.12
++ expo-image-manipulator 58.0.16
++ expo-keep-awake 58.0.4
++ expo-secure-store 58.0.3
++ phosphor-react-native 3.0.6
++ react-native-nitro-image 0.15.2
++ react-native-nitro-modules 0.37.2
++ react-native-reanimated 4.7.1
++ react-native-safe-area-context 5.11.1
++ react-native-svg 15.16.0 (15.16.1 is available)
++ react-native-vision-camera 5.2.4
++ react-native-vision-camera-barcode-scanner 5.2.4
++ react-native-worklets 0.13.0 (0.13.1 is available)
+
+Done in 26.8s using pnpm v11.25.0
+[BABEL] Note: The code generator has deoptimised the styling of D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk\node_modules\.pnpm\phosphor-react-native@3.0.6_8b2b8e5e0a9aacb52fa91537c1584a1e\node_modules\phosphor-react-native\lib\commonjs\index.js as it exceeds the max of 500KB.
+› Added config plugins: expo-build-properties, expo-secure-store, expo-font, expo-audio
+
+D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk>LSE ( 
+'LSE' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk>node  "D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk\node_modules\.bin\\..\.pnpm\expo@58.0.25_@babel+core@7._70bde0a4df3cc721930a42d7fe796862\node_modules\expo\bin\cli" "install" "expo-dev-client" "expo-build-properties" "expo-secure-store" "expo-font" "@expo-google-fonts/inter" "expo-audio" "expo-file-system" "expo-image-manipulator" "expo-keep-awake" "react-native-reanimated" "react-native-worklets" "react-native-vision-camera" "react-native-vision-camera-barcode-scanner" "react-native-nitro-modules" "react-native-nitro-image" "react-native-svg" "phosphor-react-native" "react-native-safe-area-context" "@expo/ui" "--pnpm" 
+› Installing 13 SDK 58.0.0 compatible native modules and 6 other packages using pnpm
+> pnpm add expo-dev-client@~58.0.20 expo-build-properties@~58.0.12 expo-secure-store@~58.0.3 expo-font@~58.0.12 @expo-google-fonts/inter expo-audio@~58.0.12 expo-file-system@~58.0.13 expo-image-manipulator@~58.0.16 expo-keep-awake@~58.0.4 react-native-reanimated@4.7.1 react-native-worklets@0.13.0 react-native-vision-camera react-native-vision-camera-barcode-scanner react-native-nitro-modules react-native-nitro-image react-native-svg@15.16.0 phosphor-react-native react-native-safe-area-context@~5.11.1 @expo/ui@~58.0.28
+✓ Lockfile passes supply-chain policies (verified 5s ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 106, reused 66, downloaded 0, added 0
+Progress: resolved 282, reused 255, downloaded 0, added 0
+Progress: resolved 533, reused 510, downloaded 0, added 0
+Already up to date
+Progress: resolved 538, reused 518, downloaded 0, added 0, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+Done in 4.8s using pnpm v11.25.0
+[BABEL] Note: The code generator has deoptimised the styling of D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk\node_modules\.pnpm\phosphor-react-native@3.0.6_8b2b8e5e0a9aacb52fa91537c1584a1e\node_modules\phosphor-react-native\lib\commonjs\index.js as it exceeds the max of 500KB.
+Install impact:
+  expo-dev-client — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json, ships an app.plugin.js config plugin)
+  expo-build-properties — config plugin: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an app.plugin.js config plugin, is listed in the app.json plugins)
+  expo-secure-store — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json, ships an app.plugin.js config plugin, is listed in the app.json plugins)
+  expo-font — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json, ships an app.plugin.js config plugin, is listed in the app.json plugins)
+  @expo-google-fonts/inter — JavaScript only: reload the app, the native runtime is unchanged (ships no native code and no config plugin)
+  expo-audio — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json, ships an app.plugin.js config plugin, is listed in the app.json plugins)
+  expo-file-system — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json, ships an app.plugin.js config plugin)
+  expo-image-manipulator — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json)
+  expo-keep-awake — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json)
+  react-native-reanimated — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an android/ directory, ships a podspec)
+  react-native-worklets — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an android/ directory, ships a podspec)
+  react-native-vision-camera — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships a podspec)
+  react-native-vision-camera-barcode-scanner — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships a podspec)
+  react-native-nitro-modules — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an android/ directory, ships a podspec)
+  react-native-nitro-image — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships a podspec)
+  react-native-svg — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an android/ directory, ships a podspec)
+  phosphor-react-native — JavaScript only: reload the app, the native runtime is unchanged (ships no native code and no config plugin)
+  react-native-safe-area-context — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships a podspec)
+  @expo/ui — native module: run "npx @expo/agent-cli prebuild", then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json)

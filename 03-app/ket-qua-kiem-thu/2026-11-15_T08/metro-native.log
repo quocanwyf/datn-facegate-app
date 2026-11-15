@@ -1,0 +1,9 @@
+(node:28836) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Starting project at D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk
+Starting Metro Bundler
+
+Waiting on http://localhost:8081
+
+Logs for your project will appear below.
+Android Bundled 301607ms index.ts (4566 modules)

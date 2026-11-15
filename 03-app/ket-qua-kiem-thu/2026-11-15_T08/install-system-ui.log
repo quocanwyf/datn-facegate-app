@@ -1,0 +1,21 @@
+(node:28264) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+› Installing 1 SDK 58.0.0 compatible native module using pnpm
+> pnpm add expo-system-ui@~58.0.7
+✓ Lockfile passes supply-chain policies (verified 8m ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 28, reused 21, downloaded 0, added 0
+Progress: resolved 113, reused 87, downloaded 0, added 0
+Progress: resolved 285, reused 274, downloaded 1, added 0
+Progress: resolved 537, reused 515, downloaded 1, added 0
+Packages: +1
++
+Progress: resolved 540, reused 518, downloaded 1, added 1, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+dependencies:
++ expo-system-ui 58.0.7
+
+Done in 5.9s using pnpm v11.25.0
+Install impact:
+  expo-system-ui — native module: run pod install / gradle sync, then build and install the app again (ships an ios/ directory, ships an android/ directory, ships an expo-module.config.json, ships an app.plugin.js config plugin)

@@ -1,0 +1,87 @@
+Installing the dependencies with pnpm install in D:\WorkSpace\DATN\datn-facegate-app\03-app\kiosk
+✓ Lockfile passes supply-chain policies (verified 5h ago)
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 6, reused 2, downloaded 3, added 0
+Progress: resolved 7, reused 2, downloaded 3, added 0
+Progress: resolved 8, reused 2, downloaded 3, added 0
+Progress: resolved 21, reused 13, downloaded 4, added 0
+Progress: resolved 23, reused 13, downloaded 4, added 0
+Progress: resolved 36, reused 13, downloaded 6, added 0
+Progress: resolved 41, reused 13, downloaded 11, added 0
+[WARN] Tarball download average speed 6 KiB/s (size 8 KiB) is below 50 KiB/s: https://registry.npmjs.org/regenerator-runtime/-/regenerator-runtime-0.13.11.tgz (GET)
+Progress: resolved 44, reused 13, downloaded 15, added 0
+[WARN] Tarball download average speed 1 KiB/s (size 2 KiB) is below 50 KiB/s: https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz (GET)
+[WARN] Tarball download average speed 3 KiB/s (size 10 KiB) is below 50 KiB/s: https://registry.npmjs.org/anser/-/anser-1.4.10.tgz (GET)
+Progress: resolved 55, reused 13, downloaded 22, added 0
+[WARN] Tarball download average speed 3 KiB/s (size 13 KiB) is below 50 KiB/s: https://registry.npmjs.org/whatwg-fetch/-/whatwg-fetch-3.6.20.tgz (GET)
+Progress: resolved 56, reused 13, downloaded 24, added 0
+Progress: resolved 59, reused 13, downloaded 26, added 0
+[WARN] Tarball download average speed 48 KiB/s (size 86 KiB) is below 50 KiB/s: https://registry.npmjs.org/expo-asset/-/expo-asset-58.0.21.tgz (GET)
+[WARN] Tarball download average speed 11 KiB/s (size 28 KiB) is below 50 KiB/s: https://registry.npmjs.org/ws/-/ws-7.5.14.tgz (GET)
+Progress: resolved 59, reused 13, downloaded 33, added 0
+Progress: resolved 59, reused 13, downloaded 35, added 0
+[WARN] Tarball download average speed 7 KiB/s (size 46 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro-source-map/-/metro-source-map-0.87.3.tgz (GET)
+Progress: resolved 60, reused 13, downloaded 37, added 0
+[WARN] Tarball download average speed 5 KiB/s (size 31 KiB) is below 50 KiB/s: https://registry.npmjs.org/@expo/config/-/config-58.0.12.tgz (GET)
+[WARN] Tarball download average speed 9 KiB/s (size 41 KiB) is below 50 KiB/s: https://registry.npmjs.org/expo-modules-cli/-/expo-modules-cli-0.5.0.tgz (GET)
+Progress: resolved 61, reused 13, downloaded 39, added 0
+[WARN] Request took 12795ms: https://registry.npmjs.org/@expo%2Flocal-build-cache-provider
+[WARN] Tarball download average speed 10 KiB/s (size 57 KiB) is below 50 KiB/s: https://registry.npmjs.org/whatwg-url-minimum/-/whatwg-url-minimum-0.2.0.tgz (GET)
+Progress: resolved 62, reused 13, downloaded 41, added 0
+Progress: resolved 62, reused 13, downloaded 43, added 0
+[WARN] Tarball download average speed 29 KiB/s (size 269 KiB) is below 50 KiB/s: https://registry.npmjs.org/expo-modules-autolinking/-/expo-modules-autolinking-58.1.0.tgz (GET)
+Progress: resolved 62, reused 13, downloaded 44, added 0
+Progress: resolved 62, reused 13, downloaded 45, added 0
+[WARN] Request took 16857ms: https://registry.npmjs.org/expo-file-system
+Progress: resolved 63, reused 13, downloaded 45, added 0
+Progress: resolved 63, reused 13, downloaded 46, added 0
+Progress: resolved 63, reused 13, downloaded 47, added 0
+[WARN] Request took 21041ms: https://registry.npmjs.org/@react-native%2Fnormalize-colors
+[WARN] Request took 22352ms: https://registry.npmjs.org/yargs
+Progress: resolved 64, reused 13, downloaded 47, added 0
+[WARN] Request took 23038ms: https://registry.npmjs.org/@react-native%2Fvirtualized-lists
+Progress: resolved 65, reused 13, downloaded 48, added 0
+Progress: resolved 65, reused 13, downloaded 49, added 0
+Progress: resolved 66, reused 13, downloaded 51, added 0
+Progress: resolved 66, reused 13, downloaded 52, added 0
+Progress: resolved 66, reused 13, downloaded 53, added 0
+[WARN] GET https://registry.npmjs.org/flow-enums-runtime error (23). Will retry in 10 seconds. 2 retries left.
+[WARN] Request took 70314ms: https://registry.npmjs.org/flow-enums-runtime
+Progress: resolved 67, reused 13, downloaded 53, added 0
+Progress: resolved 121, reused 23, downloaded 72, added 0
+Progress: resolved 167, reused 28, downloaded 103, added 0
+Progress: resolved 222, reused 45, downloaded 154, added 0
+Progress: resolved 225, reused 45, downloaded 174, added 0
+[WARN] Tarball download average speed 2 KiB/s (size 8 KiB) is below 50 KiB/s: https://registry.npmjs.org/metro-core/-/metro-core-0.87.1.tgz (GET)
+Progress: resolved 227, reused 45, downloaded 181, added 0
+Progress: resolved 291, reused 65, downloaded 210, added 0
+Progress: resolved 372, reused 81, downloaded 248, added 0
+Progress: resolved 382, reused 81, downloaded 275, added 0
+Progress: resolved 385, reused 81, downloaded 276, added 0
+Progress: resolved 424, reused 85, downloaded 290, added 0
+Progress: resolved 475, reused 95, downloaded 338, added 0
+Progress: resolved 491, reused 95, downloaded 369, added 0
+Progress: resolved 492, reused 95, downloaded 369, added 0
+Packages: +439 -2
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+Progress: resolved 492, reused 95, downloaded 371, added 72
+[WARN] Tarball download average speed 39 KiB/s (size 176 KiB) is below 50 KiB/s: https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz (GET)
+Progress: resolved 492, reused 95, downloaded 373, added 177
+Progress: resolved 492, reused 95, downloaded 374, added 303
+Progress: resolved 492, reused 95, downloaded 374, added 434
+Progress: resolved 492, reused 95, downloaded 376, added 437
+Progress: resolved 492, reused 95, downloaded 377, added 439, done
+[WARN] Issues with peer dependencies found. Run "pnpm peers check" to list them.
+
+dependencies:
++ expo 58.0.25
++ expo-status-bar 58.0.5
++ react 19.3.0 (19.3.1 is available)
++ react-native 0.88.1
+
+devDependencies:
++ @types/react 19.3.0
+- typescript 5.9.3
++ typescript 6.0.3 (7.0.2 is available)
+
+Done in 1m 34.7s using pnpm v11.25.0

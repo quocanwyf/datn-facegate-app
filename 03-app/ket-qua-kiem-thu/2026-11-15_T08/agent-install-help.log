@@ -1,0 +1,41 @@
+
+  install — Install packages, and link the skills they ship
+
+  Usage
+    $ npx @expo/agent-cli install [<package>...]
+
+  Options
+    --check             Report which installed packages are out of date, and install nothing
+    --json              Print the result as JSON
+    --no-agent-skills   Skip linking agent skills from the installed packages
+    --no-skill-context  Skip printing installed skills for a detected coding agent
+    --no-impact         Skip the report of what must rerun after the install
+    --no-followups      Skip the "Suggested next:" section of suggested follow-up commands
+    -h, --help          Usage info
+
+  Examples
+    $ npx @expo/agent-cli install
+      with no package: the lockfile's dependencies, for a fresh clone or worktree
+    $ npx @expo/agent-cli install expo-sqlite
+      the version this SDK wants, installed, and any skills it ships linked
+    $ npx @expo/agent-cli install --check
+      which installed packages are out of date; nothing is installed
+    $ npx @expo/agent-cli install react -- --verbose
+      the same install, with everything after -- handed to the package manager
+
+  Typically next
+    status · dev · typecheck
+
+  JSON (--json)
+    stdout  one object, and nothing else
+    stderr  the Expo CLI’s own output, progress and errors
+    keys    projectRoot, packages, installed, exitCode, impact, skillPackages, check,
+            followups
+
+  Notes
+    The expo install flags are forwarded to the project's Expo CLI: --check, --dev, --fix,
+    --npm, --pnpm, --yarn, --bun. Run "npx expo install --help" for what they do.
+    npx @expo/agent-cli add is this same command, because expo add is expo install.
+
+  New here? npx @expo/agent-cli help workflow
+

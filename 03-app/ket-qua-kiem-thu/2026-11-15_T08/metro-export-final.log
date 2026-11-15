@@ -1,0 +1,23 @@
+(node:26884) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Bytecode makes the app startup faster, disabling bytecode is highly discouraged and should only be used for debugging purposes.
+Starting Metro Bundler
+
+Android Bundled 6663ms index.ts (4448 modules)
+
+› Assets (7):
+assets\sounds\already.wav (8KB)
+assets\sounds\deny.wav (14KB)
+assets\sounds\ok.wav (12KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\400Regular\Inter_400Regular.ttf (342KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\500Medium\Inter_500Medium.ttf (343KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\600SemiBold\Inter_600SemiBold.ttf (344KB)
+node_modules\.pnpm\@expo+ui@58.0.28_@babel+cor_325ca6889e4372d5afe7b3f6f1b6275a\node_modules\@expo\ui\assets\keyboard_arrow_down.xml (378B)
+
+› android bundles (1):
+_expo/static/js/android/index-f50f62ffd87c6606dcfccbc3d90899ed.js (7.9MB)
+
+› Files (1):
+metadata.json (596B)
+
+Exported: C:\Users\NMinH\AppData\Local/FaceGate/T08-export-final

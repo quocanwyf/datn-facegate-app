@@ -1,0 +1,42 @@
+(node:3252) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Bytecode makes the app startup faster, disabling bytecode is highly discouraged and should only be used for debugging purposes.
+Starting Metro Bundler
+
+| (node:12732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+| (node:12732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+| (Use `node --trace-warnings ...` to show where the warning was created)
+Android Bundled 106457ms index.ts (4461 modules)
+
+› Assets (22):
+assets\sounds\already.wav (8KB)
+assets\sounds\deny.wav (14KB)
+assets\sounds\ok.wav (12KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\100Thin_Italic\Inter_100Thin_Italic.ttf (347KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\100Thin\Inter_100Thin.ttf (343KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\200ExtraLight_Italic\Inter_200ExtraLight_Italic.ttf (347KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\200ExtraLight\Inter_200ExtraLight.ttf (343KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\300Light_Italic\Inter_300Light_Italic.ttf (347KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\300Light\Inter_300Light.ttf (343KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\400Regular_Italic\Inter_400Regular_Italic.ttf (346KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\400Regular\Inter_400Regular.ttf (342KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\500Medium_Italic\Inter_500Medium_Italic.ttf (346KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\500Medium\Inter_500Medium.ttf (343KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\600SemiBold_Italic\Inter_600SemiBold_Italic.ttf (347KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\600SemiBold\Inter_600SemiBold.ttf (344KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\700Bold_Italic\Inter_700Bold_Italic.ttf (348KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\700Bold\Inter_700Bold.ttf (344KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\800ExtraBold_Italic\Inter_800ExtraBold_Italic.ttf (349KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\800ExtraBold\Inter_800ExtraBold.ttf (345KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\900Black_Italic\Inter_900Black_Italic.ttf (349KB)
+node_modules\.pnpm\@expo-google-fonts+inter@0.4.2\node_modules\@expo-google-fonts\inter\900Black\Inter_900Black.ttf (345KB)
+node_modules\.pnpm\@expo+ui@58.0.28_@babel+cor_325ca6889e4372d5afe7b3f6f1b6275a\node_modules\@expo\ui\assets\keyboard_arrow_down.xml (378B)
+
+› android bundles (1):
+_expo/static/js/android/index-c669311364ec82b67af6e1ccc4b60e31.js (7.9MB)
+
+› Files (1):
+metadata.json (1.6KB)
+
+Exported: C:\Users\NMinH\AppData\Local/FaceGate/T08-export

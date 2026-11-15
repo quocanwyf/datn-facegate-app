@@ -1,0 +1,9 @@
+$ pnpm --package=openapi-typescript@7.13.0 --package=typescript@5.9.3 dlx openapi-typescript ../openapi/openapi.yaml -o src/api/schema.d.ts
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +33
++++++++++++++++++++++++++++++++++
+Progress: resolved 33, reused 32, downloaded 0, added 29
+Progress: resolved 33, reused 33, downloaded 0, added 33, done
+✨ openapi-typescript 7.13.0
+🚀 ../openapi/openapi.yaml → src/api/schema.d.ts [199.6ms]
+schema unchanged: True
