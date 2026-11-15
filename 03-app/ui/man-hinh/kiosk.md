@@ -8,7 +8,7 @@
 K-01 ─(ghép xong)→ K-02 ⇄ K-04 (tự quay lại sau 3 s)
 K-02 ─(chạm giữ góc phải trên 3 s)→ K-05 → K-06 → K-07 ─(Đồng ý)→ K-08 → K-09 → K-02
                                                     └(Không đồng ý)→ thông báo → K-02
-mọi màn ─(mất WS > 3 s)→ K-11 ─(nối lại)→ màn trước đó (đăng ký đang dở thì huỷ, về K-02)
+mọi màn ─(disconnect chưa phục hồi sau 3 s hoặc Hub im lặng 15 s)→ K-11 ─(nối lại)→ màn trước đó (đăng ký đang dở thì huỷ, về K-02)
 ```
 
 ---
@@ -17,11 +17,13 @@ mọi màn ─(mất WS > 3 s)→ K-11 ─(nối lại)→ màn trước đó (�
 - **Bố cục:** nền `bg`; thẻ trắng giữa màn rộng 560, bo 32: tiêu đề "Ghép thiết bị" (32) → mô tả 1 dòng → vùng camera nhỏ 320×240 quét QR → đường phân cách "hoặc nhập tay" → ô "Địa chỉ Hub" (vd. `http://192.168.1.10:8000`) → 6 ô mã → nút inverse "Ghép thiết bị".
 - **Thành phần:** `PillButton`, ô nhập bo 16, camera (react-native-vision-camera, chế độ đọc mã QR).
 - **Dữ liệu:** QR chứa `{"hub":"http://…","code":"123456"}` → `POST /api/v1/kiosk/pair`. Lưu `device_token`, `hub_url`, `gate` vào SecureStore.
-- **Trạng thái:** đang gửi (nút khoá + spinner) · lỗi theo `error.code`: `PAIRING_EXPIRED` "Mã đã hết hạn, vui lòng tạo mã mới trên trang quản trị" · `PAIRING_INVALID` "Mã không đúng" · `PAIRING_LOCKED` "Nhập sai quá 5 lần, mã đã bị khoá" · lỗi mạng "Không kết nối được Hub. Kiểm tra địa chỉ và Wi-Fi".
+- **Trạng thái:** đang gửi (nút khoá + spinner) · lỗi theo `error.code`: `PAIRING_EXPIRED` "Mã đã hết hạn, vui lòng tạo mã mới trên trang quản trị" · `PAIRING_INVALID` "Mã không đúng" · `PAIRING_LOCKED` "Đã nhập sai 5 lần. Lượt thử từ máy này bị khóa trong 10 phút." · lỗi mạng "Không kết nối được Hub. Kiểm tra địa chỉ và Wi-Fi".
 - **Chuyển động:** thẻ fade-in 200 ms; lỗi rung nhẹ ô mã.
 - **Ghi chú máy ảo:** địa chỉ Hub trên cùng máy là `http://10.0.2.2:8000`.
 
 ## K-02 · Chờ quét (màn chính)
+
+- **Q-006/Q-008:** state NO_GALLERY hiện “Chưa có dữ liệu khuôn mặt”, không hiện người lạ/không cảnh báo. MODEL_NOT_VERIFIED hiện “Máy chủ chưa sẵn sàng”; RECOGNITION_UNAVAILABLE hiện tạm ngưng nhận dạng, dừng frame recognize nhưng giữ ping, tiếp tục sau config phục hồi. Không ảnh kết quả trả về.
 - **Mục đích:** quét mặt liên tục, hiển thị gợi ý. **Vai trò:** mọi người qua cửa.
 - **Bố cục:** camera trước **toàn màn hình** (lật gương) → lớp phủ: `ScanFrame` oval giữa (rộng 42% chiều ngang) → `HintBar` dưới khung → góc trái trên `ClockBadge` (giờ 40 + tên cửa 18 + chấm kết nối) → góc phải trên vùng chạm giữ 3 s (vô hình, 96×96) mở K-05 → dải `ResearchBanner` góc dưới phải.
 - **Dữ liệu:** WS `/ws/kiosk`, gửi `frame` mode `recognize` theo kiểu **dừng-và-chờ** (≤ 4 khung/s, cạnh dài 640, JPEG 80); nhận `state` (cập nhật `HintBar` + màu khung + `bbox` để vẽ khung chữ nhật mảnh quanh mặt nếu có) và `result` (→ K-04). Nhận `config` lúc kết nối (tên cửa, chế độ).
@@ -53,16 +55,22 @@ mọi màn ─(mất WS > 3 s)→ K-11 ─(nối lại)→ màn trước đó (�
 - **Chuyển động:** chấm PIN bung khi nhập; sai → rung hàng chấm.
 
 ## K-06 · Chọn nhân viên
+
+- **Q-004:** Xác nhận chụp lại không xóa PENDING cũ. Hủy/hết phiên/mất mạng/lưu lỗi trước hoàn tất vẫn giữ bản chờ cũ, ACTIVE hợp lệ cũ giữ tới duyệt mới.
 - **Bố cục:** thanh trên: nút "← Thoát" + tiêu đề "Chọn nhân viên" + đồng hồ phiên còn lại ; `SearchPill` rộng ; danh sách `ListRow` (tên 18/600, mã NV + phòng ban 15, chip trạng thái hồ sơ khuôn mặt theo `face_profile.status`).
 - **Dữ liệu:** `GET /api/v1/kiosk/enroll/sessions/{id}/employees?q=` (chỉ NV `ACTIVE`).
-- **Hành động:** chọn NV có hồ sơ `PENDING_REVIEW` → hỏi "Đã có bản chờ xác nhận. Đăng ký lại sẽ thay bản này?" ; NV `MANUAL` → vẫn cho chọn (họ có thể đổi ý đồng ý).
+- **Hành động:** chọn NV có hồ sơ `PENDING_REVIEW` → hỏi "Đã có bản chờ xác nhận. Chụp lại? Bản cũ chỉ được thay khi bộ mới lưu thành công." ; NV `MANUAL` → vẫn cho chọn (họ có thể đổi ý đồng ý).
 - **Trạng thái:** trống "Không tìm thấy nhân viên".
 
 ## K-07 · Điều khoản
+
+- **Q-005/Q-006:** Không đồng ý khi từng có hồ sơ cũng xóa sinh trắc ACTIVE/PENDING/crop liên kết, NULL consent_at/by, MANUAL. Khác với hủy chụp. Đồng ý lại ghi consent mới. Nếu xóa chưa hoàn tất, hiện lỗi/Thử lại, không hiển thị đã hoàn tất hoặc khôi phục nhận dạng.
 - **Bố cục:** thẻ trắng giữa, rộng 720: tiêu đề "Đồng ý sử dụng khuôn mặt" → đoạn điều khoản ngắn cố định (≤ 6 dòng: mục đích chấm công & ra vào; lưu ảnh mẫu đã căn chỉnh và đặc trưng trên máy chủ nội bộ; xoá khi nghỉ việc hoặc rút đồng ý; có thể chấm công hộ nếu không đồng ý) → tên NV đã chọn → 2 nút: secondary "Không đồng ý", inverse "Đồng ý".
 - **Dữ liệu:** `POST /api/v1/kiosk/enroll/sessions/{id}/consent` `{employee_id, agree}`. `agree=false` → Hub đặt `attendance_method=MANUAL` → thông báo "Đã ghi nhận. Bạn sẽ chấm công tại quầy lễ tân." 4 s → K-02.
 
 ## K-08 · Chụp đăng ký
+
+- **Q-004/Q-006:** Chỉ enroll_done sau đủ 5 mẫu và lưu các bước bắt buộc thành công; lúc đó mới thay PENDING cũ. Lỗi OPERATION_INCOMPLETE có seq, dừng báo thành công, cho thử lại theo phiên hợp lệ; không dùng mẫu dở làm hồ sơ hoàn chỉnh.
 - **Bố cục:** như K-02 (camera toàn màn + `ScanFrame`) + phía trên: `ProgressDots` 5 chấm + chữ "Mẫu {i}/5" ; dưới khung: gợi ý tư thế (thẳng → hơi trái → hơi phải → hơi ngẩng → hơi cúi) ; nút "Huỷ" góc trái.
 - **Dữ liệu:** WS frame mode `enroll` kèm `enroll_session_id`, `employee_id`; nhận `enroll_progress {accepted,total,reason?}` → `enroll_done {profile_status:"PENDING_REVIEW", duplicate_warning?}`.
 - **Lý do loại mẫu (hiển thị):** theo `reason` trong ws-protocol (vd. "Có nhiều khuôn mặt trong khung", "Khuôn mặt quá nhỏ", "Nghiêng quá nhiều").
@@ -72,5 +80,7 @@ mọi màn ─(mất WS > 3 s)→ K-11 ─(nối lại)→ màn trước đó (�
 - **Bố cục:** `ResultPanel` nhóm progress: icon HourglassMedium → "Đã gửi đăng ký" → "Chờ quản trị xác nhận trước khi dùng để chấm công" ; nếu có `duplicate_warning`: dòng thứ ba "Lưu ý: khuôn mặt giống một nhân viên khác — quản trị sẽ kiểm tra". Tự về K-02 sau 5 s.
 
 ## K-11 · Mất kết nối
+
+- **Q-003:** Disconnect rõ ràng sau 3 s chưa nối lại mới hiện màn; reconnect trước đó không hiện vì lần ngắt ấy. WS còn mở nhưng không nhận gì 15 s từ lần nhận cuối thì vào màn ngay, không cộng 3 s. Khoảng chờ 1/2/4/8/15 s, trần 15 s. MODEL_NOT_VERIFIED/RECOGNITION_UNAVAILABLE dùng thông điệp máy chủ tương ứng, không mô tả sai thành lỗi Wi-Fi.
 - **Bố cục:** nền `bg`, icon WifiSlash 96, "Không kết nối được máy chủ", "Vui lòng báo lễ tân. Đang thử kết nối lại…" + bộ đếm lần thử.
-- **Hành vi:** thử nối lại lùi dần 1 → 2 → 4 → 8 s (tối đa 15 s); token bị từ chối (`DEVICE_REVOKED`) → xoá token, về K-01.
+- **Hành vi:** thử nối lại lùi dần 1 → 2 → 4 → 8 → 15 s (duy trì tối đa 15 s); token bị từ chối (`DEVICE_REVOKED`) → xoá token, về K-01.

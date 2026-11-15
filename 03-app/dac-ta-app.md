@@ -1,6 +1,6 @@
 # ĐẶC TẢ APP — HỆ THỐNG CHẤM CÔNG & KIỂM SOÁT RA VÀO BẰNG KHUÔN MẶT (GĐ4)
 > ĐATN "Mobile App tích hợp tối ưu AI cho hệ thống điểm danh và kiểm soát ra vào bằng nhận dạng khuôn mặt" — Nguyễn Quốc An, PTIT.
-> Phiên bản **1.4.3**, 14/11/2026 (1.4.3: §8 trỏ về `openapi/openapi.yaml` + `ws-protocol.md` làm hợp đồng chính thức; giao diện chi tiết ở `ui/`; 1.4.2:1.4.2: bỏ tính năng So sánh mô hình — chỉ dùng 1 mô hình V1 s3, kết quả so sánh V1/UniFace đã đo nằm trong quyển; 1.4.1: đồng bộ §1.3, §2.1, §9.2, §15 với §0a; 1.4: rút gọn cho bản DEMO — xem §0a; 1.1: sửa §2.2, §2.3, §3, §4.1, M0 theo review vòng 4; 1.2: thêm M0(4b) tái lập BLUFR trial 01 theo review vòng 5; 1.3: An quyết định (4b) chỉ là dự phòng, không chạy trong M0), session thiết kế app. **Đây là tài liệu cuối để code.** Gộp: `de-xuat-tong-the.md` (v2), `thiet-ke-gd3.md`, review `review/2026-11-14_review-thiet-ke-app.md` và `xu-ly-review.md` (vòng 1 + 2). Khi mâu thuẫn, **file này thắng**.
+> Phiên bản **1.4.4**, 14/11/2026 (1.4.4: đồng bộ Q-001–Q-013 đã được người dùng duyệt trong specs; 1.4.3: §8 trỏ về `openapi/openapi.yaml` + `ws-protocol.md` làm hợp đồng chính thức; giao diện chi tiết ở `ui/`; 1.4.2:1.4.2: bỏ tính năng So sánh mô hình — chỉ dùng 1 mô hình V1 s3, kết quả so sánh V1/UniFace đã đo nằm trong quyển; 1.4.1: đồng bộ §1.3, §2.1, §9.2, §15 với §0a; 1.4: rút gọn cho bản DEMO — xem §0a; 1.1: sửa §2.2, §2.3, §3, §4.1, M0 theo review vòng 4; 1.2: thêm M0(4b) tái lập BLUFR trial 01 theo review vòng 5; 1.3: An quyết định (4b) chỉ là dự phòng, không chạy trong M0), session thiết kế app. **Đây là tài liệu cuối để code.** Gộp: `de-xuat-tong-the.md` (v2), `thiet-ke-gd3.md`, review `review/2026-11-14_review-thiet-ke-app.md` và `xu-ly-review.md` (vòng 1 + 2). Khi mâu thuẫn, **file này thắng**.
 > Quy ước: **[khởi đầu]** = giá trị thiết kế đặt, chỉnh khi kiểm thử; **[chưa đo]** / **[mục tiêu]** = chưa có số đo; **[chờ GVHD]** / **[chờ An]** = phụ thuộc câu trả lời bên ngoài. Mọi con số mô hình đều có nguồn log (mục 4.4).
 
 ## 0a. Phạm vi bản DEMO (v1.4 — quyết định An 14/11/2026, ưu tiên hơn mọi mục khác)
@@ -164,7 +164,7 @@ Cấu hình qua `.env`: `DATABASE_URL`, `HUB_DATA_DIR`, `MODEL_PROD_PATH`, `MODE
   2. Trong `strip_map_ban_sao.json` có bản ghi với `source_sha256` = hash ở bước 1 và `dest_sha256` = `meta.sha256` của khoá tương ứng trong `ket_qua_blufr_lfw.json` (V1 s3: `120489…ef88 → b00612f5…a065`). Đây là chuỗi nối checkpoint đang nạp với đúng file đã tạo số liệu BLUFR.
   3. `load_backbone(path, cuda, row=<dòng manifest>, expected_sha=<sha gốc>)` → `verify_checkpoint` pass, `strict=True` không thiếu/thừa khoá.
   4. `meta.t_eq30` = `meta.t_eq30` trong `ket_qua_blufr_lfw.json` (sai số ≤ 1e-6).
-  Sai bất kỳ bước nào → Hub dừng khởi động (không chạy với mô hình chưa xác minh).
+  Sai bất kỳ bước nào → dừng khởi tạo phần nhận dạng, không mở cửa/ghi công bằng khuôn mặt. Giữ API `/api/v1/health` để chẩn đoán: `model_verified=false`, `status=degraded`; Kiosk hiện “Máy chủ chưa sẵn sàng”. API kiểm tra còn chạy không đồng nghĩa model ready. Không cam kết API nghiệp vụ khác hoạt động khi DB/Hub lỗi.
 - **KHÔNG** trích lại backbone ra file rồi so sha256 với `meta.sha256` ở lúc khởi động: `torch.save` không bảo đảm cho cùng từng byte khi khác phiên bản torch/môi trường, nên phép thử đó có thể hỏng dù mô hình đúng.
 - **Một lần ở M0** (session code cần được cấp quyền đọc thư mục `C:\datn-backbones-24`, nằm ngoài thư mục dự án): so **tensor** backbone nạp từ `best.pt` với bản trích sẵn ở `C:\datn-backbones-24\<id>/best.pt` bằng `torch.equal` cho mọi khoá (cùng cách `strip_backbone.strip_one` tự kiểm). Lưu log.
 - `recognition_model` lưu `source_sha256`, `stripped_sha256` (lấy từ strip_map), id manifest.
@@ -240,13 +240,17 @@ stateDiagram-v2
 
 **Tham số [khởi đầu]** (`company.settings`, Chủ DN chỉnh tại W-14): W = 5; MATCH ≥ 3; UNKNOWN ≥ 4/5; SPOOF ≥ 3; mất mặt 1,0 s; IoU 0,3; cooldown cùng NV cùng cửa 60 s (trong cooldown Kiosk hiện "Đã ghi nhận lúc …", không tạo event); cooldown cảnh báo người lạ mỗi cửa 15 s; Kiosk gửi tối đa 4 khung/s, cạnh dài 640 px, JPEG q = 80; bật/tắt chống giả mạo.
 
+**Kiểm cấu hình Q-007:** W nguyên dương; match_min/unknown_min/spoof_min nguyên trong [1,W]. Bật anti-spoof chỉ sau T13/chốt L, L trong [0,1], không NULL; thiếu/sai từ chối toàn bộ, giữ cấu hình cũ. Mặc định 5/3/4/3.
+
 **Kiểm thử bắt buộc** (`tests/test_decision_*.py`, hàm `decide(window, params)` thuần, không đụng mô hình):
 - Unit test từng luật, cả **giá trị đúng bằng ngưỡng** (`s* = τ` → match; `p_live = L` → live).
 - **Vét cạn**: mọi chuỗi độ dài 1–8 trên bảng chữ cái khung {`INVALID`, `NL` (không live), `LA` (live khớp A), `LB` (live khớp B), `LN` (live không khớp)} — cộng biến thể "mất mặt > 1 s" và "IoU < 0,3" — so kết quả `decide` với một cài đặt tham chiếu viết độc lập; kiểm (a) không bao giờ hai luật cùng đúng mà ra sai ưu tiên, (b) `INVALID` không làm đổi cửa sổ, (c) sau kết luận cửa sổ rỗng.
 
 ### 4.6 Gallery
-- Thành viên gallery: NV `status = ACTIVE` ∧ `attendance_method = FACE` ∧ consent còn hiệu lực ∧ `face_profile.status = ACTIVE` ∧ có `face_template` của mô hình đang chạy.
+- Thành viên gallery định danh: NV `status IN (ACTIVE,SUSPENDED)` ∧ `attendance_method = FACE` ∧ consent còn hiệu lực ∧ `face_profile.status = ACTIVE` ∧ có `face_template` của mô hình đang chạy.
+- Chỉ ACTIVE được xét cho phép qua cửa/tính công. SUSPENDED vẫn được định danh nhưng trả DENY/INACTIVE, ghi DENIED_INACTIVE, không mở cửa/tính công. TERMINATED, MANUAL hoặc đã rút/xóa sinh trắc không thuộc gallery.
 - `template = L2(mean(embedding các mẫu))`.
+- Chỉ báo thành công sau mọi bước bắt buộc. Đăng ký lại lỗi giữ bản cũ; rút/xóa phải ngừng dùng dữ liệu đó để nhận dạng, xóa file lỗi thì báo chưa hoàn tất và cho thử lại, không khôi phục consent/quyền nhận dạng. Gallery cập nhật lỗi thì tạm ngưng nhận dạng đến khi phục hồi. Duyệt đồng thời cùng hồ sơ chỉ một lần có hiệu lực, lần sau báo “Hồ sơ đã được xử lý”. Gallery không có hồ sơ đủ điều kiện: hiện “Chưa có dữ liệu khuôn mặt”, không tạo UNKNOWN/cảnh báo người lạ. Không giả định giao dịch file+DB nguyên tử.
 - Nạp lại ma trận lên GPU khi khởi động và khi có thay đổi liên quan (enroll duyệt, xoá, đổi trạng thái NV, rút consent). Thay đổi có hiệu lực **trước** khi API trả về thành công.
 
 ---
@@ -269,9 +273,9 @@ sequenceDiagram
   K->>H: Mở phiên đăng ký (PIN), rate-limit
   H-->>K: Phiên 5 phút gắn user_id của HR
   HR->>K: Chọn nhân viên
-  K->>NV: Hiện điều khoản phiên bản hiện hành
+  K->>NV: Hiện điều khoản ngắn cố định
   alt NV đồng ý
-    K->>H: Ghi face_consent (terms_version)
+    K->>H: Ghi employee.face_consent_at/by cho lần đồng ý mới
     loop Đến khi đủ 5 mẫu hợp lệ
       K->>H: Khung hình (chế độ enroll)
       H->>H: Khung hợp lệ, live, căn chỉnh
@@ -285,14 +289,16 @@ sequenceDiagram
     W->>H: Xác nhận (xem 5 mẫu + cảnh báo trùng nếu có)
     H->>H: face_profile = ACTIVE, nạp lại gallery, audit
   else NV không đồng ý
-    K->>H: attendance_method = MANUAL
+    K->>H: Xoá sinh trắc, NULL consent_at/by, attendance_method = MANUAL
     H-->>K: Hướng dẫn chấm công hộ tại lễ tân
   end
 ```
 - 5 mẫu, gợi ý tư thế: thẳng, hơi trái, hơi phải, hơi ngẩng, hơi cúi **[khởi đầu]**; mẫu phải là khung hợp lệ và live (nếu bật chống giả mạo).
 - Cảnh báo trùng: template mới khớp một NV khác ở mức STRICT_TEST → hiện trên W (cả hai tên), người xác nhận chọn Huỷ / Vẫn duyệt (ghi audit, lý do bắt buộc).
 - Bản demo (§0a): K-07 hiện đoạn điều khoản ngắn cố định + ô **Đồng ý** → ghi `employee.face_consent_at`, `face_consent_by`. Không có bảng/phiên bản điều khoản.
-- Đăng ký lại = tạo profile mới `PENDING_REVIEW`; profile cũ giữ `ACTIVE` đến khi profile mới được duyệt, rồi xoá mẫu cũ.
+- Đăng ký lại: hỏi xác nhận nếu có bản chờ; giữ PENDING cũ trong khi chụp, chỉ thay khi đủ 5 mẫu hợp lệ và lưu bộ mới thành công (vẫn tối đa một PENDING). Hủy/hết phiên/mất mạng/lưu lỗi trước hoàn tất giữ bản chờ cũ. ACTIVE hợp lệ cũ giữ đến khi duyệt bản mới, rồi xóa mẫu cũ. Hủy chụp khác với chọn Không đồng ý.
+- Không đồng ý hoặc rút đồng ý, kể cả khi đã có hồ sơ: xóa ACTIVE/PENDING và sinh trắc theo §5.9; face_consent_at/by cùng NULL, chuyển MANUAL. Đồng ý đăng ký lại ghi thời điểm/người thực hiện mới, giữ hồ sơ ACTIVE còn đủ điều kiện tới khi bản mới được duyệt.
+- Duyệt trùng/đồng thời và lỗi gallery theo §4.6; xử lý một lần, không báo thành công sớm.
 
 ### 5.3 Nhận dạng tại cửa (F-03, hình `so-do/v2/03-nhan-dang.png`)
 ```mermaid
@@ -351,14 +357,20 @@ sequenceDiagram
 | `LEAVE` | HR đánh dấu nghỉ |
 | `OFF` | không có ca |
 | `NOT_STARTED` | chưa tới `start`, chưa có event |
+| `WAITING_IN` | đã tới start, chưa có check_in, chưa tới thời điểm chốt; “Chưa đến — tạm thời” |
 | `IN_PROGRESS` | chưa tới thời điểm chốt (`end + 4h`), có check_in |
 | `ABSENT` | đã chốt, không có check_in |
 | `MISSING_OUT` | đã chốt, có check_in, (không có check_out **hoặc** check_out < `end − 2h` **[khởi đầu]**) — trường hợp sau gắn cờ `suspect_forgot_out` (có thể chỉ ra ăn trưa) |
-| `NORMAL` / `LATE` / `EARLY` / `LATE_EARLY` | `late = check_in > start + grace_in`; `early = end − 2h ≤ check_out < end − grace_out` |
+| `NORMAL` / `LATE` / `EARLY` / `LATE_EARLY` | chỉ kết luận khi đã chốt và đủ giờ; `late = check_in > start + grace_in`; `early = end − 2h ≤ check_out < end − grace_out` |
 
-- Kèm `late_min`, `early_min`, `worked_min` (trừ nghỉ trưa cố định).
+- Trong grace: phút muộn/sớm bằng 0. Nếu `check_in > start + grace_in`: `late_min=floor((check_in-start)/60 giây)`; với trường hợp được phân loại về sớm: `early_min=floor((end-check_out)/60 giây)`. Vượt grace tính từ giờ ca, không chỉ phần vượt grace. Giữ luật MISSING_OUT, không biến thiếu giờ ra thành EARLY.
+- So sánh bằng timestamp đầy đủ; lấy phần nguyên kết quả phút sau phép tính. Ví dụ thiết kế: start 08:30, grace 10 phút; vào 08:40 → 0 phút muộn; 08:41 → 11 phút muộn.
+- Với cặp giờ hợp lệ, `a=max(check_in,start)`, `b=min(check_out,end)`; `gross=max(0,b-a)`, `rest` là phần giao của `[a,b]` với khoảng nghỉ trong ca (0 nếu không có). `worked_min=floor(max(0,gross-rest)/60 giây)`. Không cộng ngoài ca hoặc trừ phần nghỉ không giao thời gian làm. Ví dụ ca 08:30–17:30 nghỉ 12:00–13:00, vào 08:00 ra 18:00 chỉ tính 480 phút.
+- Tổng ngày công đếm cặp `(employee_id,work_date)` duy nhất có trạng thái hiệu lực NORMAL/LATE/EARLY/LATE_EARLY, mỗi ngày 1; trạng thái khác thống kê riêng, không quy đổi nửa ngày. Giải trình APPROVED cập nhật cùng ngày rồi tính theo trạng thái, không cộng thêm ngày theo số request/event.
 - **Chốt ngày**: Scheduler chạy `finalize_day` lúc `end + 4h` (= cuối cửa sổ). Trước đó trạng thái chỉ là tạm thời; không gửi kết luận "thiếu chấm công" trước thời điểm chốt.
 - `recompute_day(employee, work_date)` idempotent: tính từ event + giải trình đã duyệt + holiday/leave. Gọi khi có event mới, khi duyệt giải trình, khi chốt.
+- Tự recompute giữ giờ đã sửa MANUAL hợp lệ và LEAVE đã đánh dấu; không ghi đè bằng job/event tự động. Event nhận muộn có occurred_at trong cửa sổ ca vẫn tính lại ngày đã chốt và giữ finalized=true. Ngoài cửa sổ chỉ ra vào, không đổi timestamp để ép vào ca; không thêm gửi bù offline Kiosk.
+- NOT_STARTED = “Chưa bắt đầu”; WAITING_IN = “Chưa đến — tạm thời”; có vào trước chốt = “Đang làm việc — tạm thời” (IN_PROGRESS), giữ ưu tiên HOLIDAY/LEAVE/OFF. Không kết luận ABSENT trước chốt.
 - Cửa `ACCESS_ONLY` **không tính công**; E-02 ghi rõ.
 
 ### 5.6 Chấm công hộ (NV `MANUAL`)
@@ -369,19 +381,19 @@ sequenceDiagram
 
 ### 5.7 Giải trình
 - Loại: `FORGOT_IN`, `FORGOT_OUT`, `NOT_RECOGNIZED`, `BUSINESS_TRIP`, `OTHER`. Trạng thái: `PENDING → APPROVED | REJECTED | CANCELLED`.
-- Người duyệt: Quản lý có `scope_department_id` = phòng ban của người gửi. **Người duyệt ≠ người gửi**: nếu người gửi là Quản lý của chính phòng đó → HR; người gửi là HR → Chủ DN; người gửi là Chủ DN → HR.
+- Xét vai trò **người gửi** theo nhánh đầu tiên phù hợp: (1) có OWNER, kể cả kiêm HR → HR khác; (2) HR không OWNER → OWNER khác; (3) MANAGER chính phòng mình, không OWNER/HR → HR khác; (4) còn lại → MANAGER đúng phòng ban người gửi, khác người gửi. MANAGER chỉ quản lý phòng khác thuộc nhánh (4). Không có người duyệt hợp lệ thì giữ PENDING, hiện cần bố trí người duyệt. Server luôn chặn tự duyệt; thứ tự chỉ dùng chọn nhóm duyệt, không loại bỏ quyền khác của tài khoản.
 - Không ai sửa trực tiếp ngày công của chính mình (API chặn). HR sửa ngày công người khác: bắt buộc lý do → `source = MANUAL`, audit.
 - Duyệt → `recompute_day` dùng giờ đề nghị, `source = ADJUSTED`, giữ event gốc.
 
 ### 5.8 Xuất bảng công
-`GET /attendance/export?month=YYYY-MM` → Excel: sheet "Tổng hợp" (mỗi NV một dòng: ngày công, số lần muộn, tổng phút muộn/về sớm, số ngày vắng, thiếu chấm công, nghỉ) + sheet "Chi tiết" (NV × ngày, giờ vào/ra, trạng thái, nguồn). Không khoá kỳ (lộ trình).
+`GET /attendance/export?month=YYYY-MM` → Excel: sheet "Tổng hợp" (mỗi NV một dòng: ngày công, số lần muộn, tổng phút muộn/về sớm, số ngày vắng, thiếu chấm công, nghỉ) + sheet "Chi tiết" (NV × ngày, giờ vào/ra, trạng thái, nguồn). Không khoá kỳ (lộ trình). OWNER/HR xuất theo quyền tổ chức; MANAGER chỉ xuất phòng ban thuộc scope (server chặn lọc ngoài scope, không có bộ lọc cũng không lộ ngoài team). Công thức tổng theo §5.5, không cộng ngày riêng cho giải trình.
 
-### 5.9 Dữ liệu khuôn mặt (bản demo: xem §0a — bỏ log đọc ảnh, retention job, xác nhận 2 bước)
-- **TERMINATED**: HR chuyển trạng thái (xác nhận 2 bước) → **xoá ngay** `face_sample` (file + dòng), `face_embedding`, `face_template`, crop của event có `event_handling.linked_employee_id` = NV; ghi `employee.biometric_deleted_at`, audit. Dữ liệu chấm công giữ.
-- **Rút đồng ý** (E-08 hoặc HR thao tác thay): như trên + `attendance_method = MANUAL`.
-- **Crop**: chỉ lưu cho `UNKNOWN`/`SPOOF`; xoá sau `retention_days` **[khởi đầu]** 30 ngày. Event `MATCH` không lưu ảnh.
-- ~~Log truy cập ảnh~~ — bỏ trong bản demo (§0a).
-- **Kiosk K-04 không hiển thị ảnh khuôn mặt**, chỉ tên + mã NV.
+### 5.9 Dữ liệu khuôn mặt (demo)
+- TERMINATED xóa ngay profile ACTIVE/PENDING, file mẫu, embedding/template và crop liên kết qua event_handling.linked_employee_id; đặt snapshot_path NULL, ghi biometric_deleted_at/audit. Giữ công và event; xác nhận một lần theo UI, không quy trình 2 bước.
+- Không đồng ý/rút đồng ý hoặc OWNER/HR xóa hành chính: cùng phạm vi xóa trên, đồng thời face_consent_at/by cùng NULL, attendance_method=MANUAL. Dùng mặt lại phải đồng ý và đăng ký/duyệt lại, không khôi phục dữ liệu cũ.
+- Xóa giữ lịch sử công/event; MATCH không lưu ảnh; chỉ UNKNOWN/SPOOF có crop. Demo không có retention job/log đọc ảnh.
+- Chỉ báo thành công sau mọi bước bắt buộc. Đăng ký lại lỗi giữ bản cũ; rút/xóa phải ngừng dùng dữ liệu đó để nhận dạng, xóa file lỗi thì báo chưa hoàn tất và cho thử lại, không khôi phục consent/quyền nhận dạng. Gallery cập nhật lỗi thì tạm ngưng nhận dạng đến khi phục hồi. Duyệt đồng thời cùng hồ sơ chỉ một lần có hiệu lực, lần sau báo “Hồ sơ đã được xử lý”. Gallery không có hồ sơ đủ điều kiện: hiện “Chưa có dữ liệu khuôn mặt”, không tạo UNKNOWN/cảnh báo người lạ. Không giả định giao dịch file+DB nguyên tử.
+- Kiosk không hiện ảnh mẫu/crop, chỉ preview trực tiếp và tên/mã khi nhận dạng.
 
 ### 5.10 ~~So sánh mô hình~~ — **bỏ ở v1.4.2** (§0a)
 
@@ -392,13 +404,17 @@ Vai trò: `OWNER`, `HR`, `MANAGER` (có `scope_department_id`), `SECURITY`, `EMP
 
 | Chức năng | OWNER | HR | MANAGER | SECURITY | EMPLOYEE |
 |---|---|---|---|---|---|
-| Công ty, cửa, thiết bị, cấu hình nhận dạng | W | R | — | R (cửa) | — |
+| Tên công ty/timezone demo (seed, không CRUD) | R | R | — | — | — |
+| Tạo/sửa thông tin cửa, mode/ngưỡng; thiết bị | W | R | — | R (cửa) | — |
+| Chính sách cửa/danh sách phòng ban | W | W (chỉ chính sách) | — | R | — |
+| Cấu hình nhận dạng | W | R | — | — | — |
 | Tài khoản, vai trò | W | W (trừ OWNER) | — | — | — |
 | Nhân viên, phòng ban | W | W | R (team) | R (tên, mã) | R (bản thân) |
 | Xác nhận hồ sơ khuôn mặt | W | W | — | — | — |
-| Xem mẫu khuôn mặt (có log) | R | R | — | — | — |
-| Ca, phân ca, ngày lễ, chính sách cửa | W | W | R (team) | R | R (ca mình) |
-| Bảng công, xuất Excel | W | W | R (team) | — | R (bản thân) |
+| Xem mẫu khuôn mặt (không log đọc ảnh trong demo) | R | R | — | — | — |
+| Ca, phân ca, ngày lễ | W | W | R (team) | R | R (ca mình) |
+| Bảng công | W | W | R (team) | — | R (bản thân) |
+| Xuất Excel tháng | R | R | R (team) | — | — |
 | Sửa ngày công (người khác, có lý do) | W | W | — | — | — |
 | Giải trình | duyệt | duyệt | duyệt (team, ≠ bản thân) | — | tạo/huỷ (của mình) |
 | Giám sát, cảnh báo, mở cửa thủ công | W | R | — | W | — |
@@ -406,12 +422,16 @@ Vai trò: `OWNER`, `HR`, `MANAGER` (có `scope_department_id`), `SECURITY`, `EMP
 | Tra cứu sự kiện | R | R | R (team) | R | R (bản thân) |
 | Nhật ký thao tác | R | — | — | — | — |
 
+Q-013: demo một công ty từ seed, timezone cố định Asia/Ho_Chi_Minh, không màn/API sửa company/timezone. HR chỉ sửa default_policy và allowed departments; không tạo cửa/đổi name, mode, ngưỡng, is_active hoặc thiết bị.
+
+Ba chỉ số nhân viên chỉ tính ACTIVE có ca hôm nay, loại HOLIDAY/LEAVE/OFF; dùng giờ công hiệu lực, đếm mỗi người một lần. Có mặt = đã có check_in; Đi muộn là tập con Có mặt có check_in > start+grace_in; Chưa đến = đã tới start mà chưa check_in. Trong ngày là số tạm thời, không đổi IN_PROGRESS thành LATE để tính KPI. Lượt người lạ = số event UNKNOWN xảy ra trong ngày theo timezone công ty, không gồm SPOOF và không phải số danh tính riêng biệt. 10 event mới nhất dùng page=1&size=10, mới nhất trước, không query limit.
+
 "team" = NV thuộc phòng ban `scope_department_id`. Mọi kiểm quyền ở tầng API (không tin client).
 
 ---
 
 ## 7. Dữ liệu
-> **Bản demo: thiết kế DB chính thức là `03-app/db/thiet-ke-db.md` + `schema.sql` (23 bảng, đã chạy thử).** Mục này giữ làm lịch sử; các bảng `consent_terms`, `face_consent` đã bỏ (xem thiet-ke-db.md mục 2).
+> **Bản demo: thiết kế DB chính thức là `03-app/db/thiet-ke-db.md` + `schema.sql` (23 bảng).** Bản bổ sung WAITING_IN đã kiểm cú pháp SQL, chưa nghiệm thu runtime PostgreSQL 16 trong đợt đồng bộ; T00/T03 vẫn phải chạy đủ kiểm DB. Mục này giữ làm lịch sử; các bảng `consent_terms`, `face_consent` đã bỏ (xem thiet-ke-db.md mục 2).
 
 Hình ERD đầy đủ: `so-do/v2/05-erd.png`. Mọi bảng nghiệp vụ có `id uuid PK`, `company_id uuid FK`, `created_at`, `updated_at` (timestamptz, UTC). `vec512` = `real[]` có CHECK độ dài 512.
 

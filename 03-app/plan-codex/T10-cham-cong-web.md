@@ -18,3 +18,6 @@ Màn W-06 (ca, phân ca, ngày lễ), W-09 (bảng công tháng), W-12 (giải t
 | 2 | Không có nút sửa ô ngày công của chính mình; không có nút duyệt giải trình của chính mình (Playwright kiểm) |
 | 3 | Lỗi `ASSIGNMENT_OVERLAP` hiện đúng câu tiếng Việt |
 | 4 | Ảnh chụp 3 màn; typecheck/lint sạch |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test WAITING_IN/tạm thời, MANAGER xuất team, công thức tổng không đếm ngày giải trình hai lần. Duyệt theo nhánh Q-011, thiếu người duyệt vẫn PENDING/thông báo.

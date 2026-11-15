@@ -17,8 +17,10 @@
 Dùng chung E-01 (`ui/man-hinh/me.md`), bản desktop: thẻ đăng nhập rộng 400 đặt giữa nền `hero-mist`.
 
 ## W-02 · Tổng quan hôm nay (OWNER, HR)
-- **Bố cục:** `PageHero` "Tổng quan · {ngày}" → hàng 4 `KpiTile`: Có mặt · Đi muộn · Chưa đến · Người lạ hôm nay → 2 cột 8/4: trái = bảng "10 sự kiện mới nhất" (giờ, cửa, người/“Người lạ”, pill kết quả) với link "Xem tất cả" → W-11; phải = thẻ "Cần xử lý": số khuôn mặt chờ xác nhận (→ W-08), số giải trình chờ (→ W-12), số cảnh báo chưa xử lý (→ W-10), thiết bị mất kết nối.
-- **Dữ liệu:** `GET /api/v1/dashboard/today`, `GET /api/v1/events?limit=10`; cập nhật trực tiếp qua WS `/ws/monitor` (sự kiện mới chèn đầu bảng).
+
+- **Định nghĩa Q-012:** Ba chỉ số nhân viên chỉ tính ACTIVE có ca hôm nay, loại HOLIDAY/LEAVE/OFF; dùng giờ công hiệu lực, đếm mỗi người một lần. Có mặt = đã có check_in; Đi muộn là tập con Có mặt có check_in > start+grace_in; Chưa đến = đã tới start mà chưa check_in. Trong ngày là số tạm thời, không đổi IN_PROGRESS thành LATE để tính KPI. Lượt người lạ = số event UNKNOWN xảy ra trong ngày theo timezone công ty, không gồm SPOOF và không phải số danh tính riêng biệt. 10 event mới nhất dùng page=1&size=10, mới nhất trước, không query limit.
+- **Bố cục:** `PageHero` "Tổng quan · {ngày}" → hàng 4 `KpiTile`: Có mặt · Đi muộn · Chưa đến · Lượt người lạ hôm nay → 2 cột 8/4: trái = bảng "10 sự kiện mới nhất" (giờ, cửa, người/“Người lạ”, pill kết quả) với link "Xem tất cả" → W-11; phải = thẻ "Cần xử lý": số khuôn mặt chờ xác nhận (→ W-08), số giải trình chờ (→ W-12), số cảnh báo chưa xử lý (→ W-10), thiết bị mất kết nối.
+- **Dữ liệu:** `GET /api/v1/dashboard/today`, `GET /api/v1/events?page=1&size=10`; cập nhật trực tiếp qua WS `/ws/monitor` (sự kiện mới chèn đầu bảng).
 - **Chuyển động:** KPI đếm từ 0 (600 ms); hàng mới trượt vào.
 
 ## W-03 · Nhân viên (OWNER, HR; MANAGER chỉ đọc team)
@@ -29,6 +31,8 @@ Dùng chung E-01 (`ui/man-hinh/me.md`), bản desktop: thẻ đăng nhập rộn
 - **Bấm dòng** → W-04.
 
 ## W-04 · Chi tiết nhân viên (OWNER, HR)
+
+- **Q-005/Q-006:** Xóa dữ liệu khuôn mặt xóa cả ACTIVE/PENDING và crop liên kết, NULL consent_at/by, MANUAL; giữ lịch sử công/event. Xóa file lỗi báo chưa hoàn tất/cho thử lại, không cho nhận dạng trở lại; không báo thành công khi gallery chưa cập nhật.
 - **Bố cục:** `PageHero` (breadcrumb "Nhân viên / {tên}") + thẻ thông tin chồng lên banner: tên (h3), mã, phòng ban, pill trạng thái, 3 ô: phương thức · hồ sơ khuôn mặt · ca hiện tại → `Tabs`:
   - **Thông tin:** form chỉ đọc + nút Sửa.
   - **Khuôn mặt:** trạng thái hồ sơ, thời điểm đồng ý + người thực hiện, lưới 5 ảnh mẫu 112×112 (phóng 2×, bo 12) kèm điểm phát hiện; nút danger "Xoá dữ liệu khuôn mặt" (`DELETE /api/v1/employees/{id}/face`, xác nhận) ; nếu chưa có: hướng dẫn "Đăng ký tại Kiosk bằng PIN HR".
@@ -51,7 +55,9 @@ Dùng chung E-01 (`ui/man-hinh/me.md`), bản desktop: thẻ đăng nhập rộn
   - **Ngày lễ:** danh sách theo năm + thêm (ngày, tên) / xoá.
 - **Dữ liệu:** `/api/v1/shifts`, `/api/v1/shift-assignments`, `/api/v1/holidays`.
 
-## W-07 · Cửa & thiết bị (OWNER)
+## W-07 · Cửa & thiết bị (OWNER; HR chỉ sửa chính sách)
+
+- **Q-001:** HR chỉ được sửa default_policy và allowed departments; khóa các trường name/mode/ngưỡng/is_active và toàn bộ tạo cửa/thiết bị/thu hồi. PATCH HR chỉ gửi default_policy, không gửi nguyên form có trường OWNER; server chặn trường ngoài quyền bằng 403. OWNER giữ quyền đầy đủ.
 - **Bố cục:** 2 cột 5/7: trái = danh sách thẻ cửa (tên, pill chế độ, pill mức ngưỡng, số thiết bị online/tổng) + nút "Thêm cửa"; phải = chi tiết cửa chọn:
   - Form: tên · chế độ (Chấm công + ra vào / Chỉ ra vào) · chính sách (Mọi nhân viên / Chỉ phòng ban được phép + chọn phòng ban) · mức ngưỡng (`Segmented`: Mặc định / Nghiêm ngặt / Tuỳ chỉnh + ô số khi Tuỳ chỉnh), hiện **số cos** của mức đang chọn kèm nhãn nguồn (từ `GET /api/v1/models/active`).
   - Bảng thiết bị: tên, pill trạng thái, lần thấy cuối, phiên bản app, nút "Thu hồi".
@@ -59,11 +65,15 @@ Dùng chung E-01 (`ui/man-hinh/me.md`), bản desktop: thẻ đăng nhập rộn
 - **Dữ liệu:** `/api/v1/gates`, `PUT /gates/{id}/allowed-departments`, `GET/POST /api/v1/devices`, `POST /devices/{id}/revoke`; trạng thái online qua WS `device_status`.
 
 ## W-08 · Hàng chờ xác nhận khuôn mặt (OWNER, HR)
+
+- **Q-004/Q-006:** PENDING cũ chỉ thay sau 5 mẫu mới lưu thành công; ACTIVE cũ giữ tới duyệt mới. Hai người duyệt cùng hồ sơ chỉ một người thành công; người còn lại thấy “Hồ sơ đã được xử lý” (409 PROFILE_ALREADY_REVIEWED). Lỗi reload gallery báo tạm ngưng nhận dạng, không báo duyệt xong sớm.
 - **Bố cục:** 2 cột 4/8: trái = danh sách hồ sơ `PENDING_REVIEW` (tên NV, phòng ban, thời gian, người đăng ký, cờ ⚠ nếu nghi trùng); phải = chi tiết: lưới 5 ảnh mẫu lớn (2× = 224 px) kèm điểm phát hiện/độ nghiêng; nếu `duplicate_of_employee_id`: khung cảnh báo vàng "Giống {tên NV khác} (cos {điểm})" ; ô ghi chú ; 2 nút: mềm "Từ chối", chính "Xác nhận" (nếu có cảnh báo trùng: phải nhập ghi chú mới bấm được Xác nhận).
 - **Dữ liệu:** `GET /api/v1/face-profiles?status=PENDING_REVIEW`, `GET /face-samples/{id}/image`, `POST /face-profiles/{id}/approve|reject`.
 - **Trống:** "Không có hồ sơ chờ xác nhận".
 
 ## W-09 · Bảng công (OWNER, HR; MANAGER chỉ đọc team)
+
+- **Q-001/Q-008–Q-010:** MANAGER được xuất Excel team, server giới hạn scope ngay cả bỏ/sửa bộ lọc. WAITING_IN hiển thị Chưa đến — tạm thời, ký hiệu C; IN_PROGRESS Đang làm việc — tạm thời. Chưa chốt không hiện vắng sớm. Tự recompute giữ sửa tay/LEAVE; event nhận muộn trong cửa sổ tính lại và giữ finalized. Tổng công đếm ngày hiệu lực duy nhất, không cộng thêm ngày giải trình. Công thức phút/định dạng Excel theo đặc tả §5.5–5.8.
 - **Bố cục:** `PageHero` "Bảng công tháng {MM/yyyy}" → thanh công cụ: chọn tháng · lọc phòng ban · tìm NV | mềm "Đánh dấu nghỉ" · chính "Xuất Excel" → **lưới NV × ngày** (cột cố định Mã, Tên; mỗi ô ngày 36×36 tô màu nền theo nhóm trạng thái + chữ tắt: ✓ Đ, M (muộn), S (sớm), V (vắng), T (thiếu giờ ra), P (phép), L (lễ), – (không ca)) → cột tổng cuối: ngày công, lần muộn, phút muộn.
 - **Bấm ô** → `Drawer` chi tiết ngày: giờ vào/ra, event, nguồn; HR/OWNER có nút "Sửa" (form giờ vào/ra + lý do bắt buộc) — **ẩn khi ô là của chính người đang đăng nhập**.
 - **Dữ liệu:** `GET /api/v1/attendance/days?from=&to=&department_id=`, `PATCH /attendance/days/{id}`, `POST /attendance/leave`, `GET /attendance/export?month=` (tải .xlsx).
@@ -81,10 +91,14 @@ Dùng chung E-01 (`ui/man-hinh/me.md`), bản desktop: thẻ đăng nhập rộn
 - **Dữ liệu:** `GET /api/v1/events?...`, `GET /events/export?format=csv&...`, `GET /api/v1/events/manual-report?from=&to=`.
 
 ## W-12 · Giải trình (OWNER, HR, MANAGER)
+
+- **Q-011:** Xét vai trò **người gửi** theo nhánh đầu tiên phù hợp: (1) có OWNER, kể cả kiêm HR → HR khác; (2) HR không OWNER → OWNER khác; (3) MANAGER chính phòng mình, không OWNER/HR → HR khác; (4) còn lại → MANAGER đúng phòng ban người gửi, khác người gửi. MANAGER chỉ quản lý phòng khác thuộc nhánh (4). Không có người duyệt hợp lệ thì giữ PENDING, hiện cần bố trí người duyệt. Server luôn chặn tự duyệt; thứ tự chỉ dùng chọn nhóm duyệt, không loại bỏ quyền khác của tài khoản.
 - **Bố cục:** `Segmented` Chờ duyệt / Đã xử lý → `Table`: NV, phòng ban, ngày, loại, giờ đề nghị, giờ đã ghi nhận, lý do, gửi lúc, (đã xử lý: người duyệt, kết quả, ghi chú) → hàng chờ có nút Duyệt / Từ chối (modal ghi chú; bắt buộc khi từ chối). Giải trình của chính người đang đăng nhập **không hiện nút duyệt** (server cũng chặn).
 - **Dữ liệu:** `GET /api/v1/attendance/requests?status=&scope=`, `POST …/{id}/approve|reject`.
 
-## W-14 · Cấu hình nhận dạng (OWNER)
+## W-14 · Cấu hình nhận dạng (OWNER sửa; HR chỉ xem)
+
+- **Q-001/Q-007/Q-008:** HR xem toàn bộ nhưng không có quyền Lưu/PUT. OWNER bật liveness chỉ sau T13/chốt L trong [0,1]; W nguyên dương, các ngưỡng đếm nguyên 1..W. Lỗi giữ cấu hình cũ, không áp một phần. Health model_verified=false hoặc gallery lỗi báo chưa sẵn sàng/tạm ngưng; không coi HTTP 200 của health là nhận dạng ready.
 - **Bố cục:** các thẻ xếp dọc:
   1. **Mô hình đang chạy** (chỉ đọc): tên, epoch, SHA-256 (rút gọn, bấm để sao chép), phiên bản runtime, trạng thái cổng kiểm tra lúc khởi động (từ `/health`).
   2. **Ngưỡng nhận dạng**: bảng 3 dòng (Mặc định 0,4233 · Nghiêm ngặt 0,4657 · b̃/s 0,3736 "chỉ tham khảo") với **nhãn nguồn bắt buộc** và **bảng đánh đổi** (FPIR / FNIR trên BLUFR, đặc tả §4.4) + ghi chú "Số đo trên BLUFR (gallery 1000 người), chưa đo tại văn phòng". Mức theo từng cửa chỉnh ở W-07.

@@ -28,3 +28,6 @@ Bật lớp chống giả mạo thụ động; chọn ngưỡng L bằng bộ th
 
 ## Điều kiện dừng
 Không xác minh được cách crop trong mã gốc · giấy phép trọng số khác Apache-2.0.
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Chỉ bật sau hiệu chỉnh/chốt L, miền [0,1]; server 422 nếu L thiếu/sai hoặc ngưỡng khung không nguyên1..W; không lưu một phần cấu hình lỗi.

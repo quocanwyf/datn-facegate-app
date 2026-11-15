@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: Hub API — Chấm công & ra vào bằng khuôn mặt (bản demo ĐATN)
-  version: 1.0.0
-  description: 'Hợp đồng API giữa Hub (FastAPI) với Web (`/admin`, `/me`) và Kiosk App. Theo `03-app/dac-ta-app.md` v1.4.2 §8 và `db/thiet-ke-db.md`.
+  version: 1.1.0
+  description: 'Hợp đồng API giữa Hub (FastAPI) với Web (`/admin`, `/me`) và Kiosk App. Theo `03-app/dac-ta-app.md` v1.4.4 §8 và `db/thiet-ke-db.md`.
 
 
     - Mọi đường dẫn có tiền tố `/api/v1`. Bản demo chạy HTTP trong LAN.
@@ -348,7 +348,10 @@ paths:
           $ref: '#/components/responses/E401'
         '403':
           $ref: '#/components/responses/E403'
+        '503':
+          $ref: '#/components/responses/E503'
       operationId: postMeFaceRevoke
+      description: "Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
   /dashboard/today:
     get:
       tags:
@@ -371,6 +374,7 @@ paths:
         '403':
           $ref: '#/components/responses/E403'
       operationId: getDashboardToday
+      description: "Q-012: ba chỉ số nhân viên chỉ ACTIVE có ca hôm nay, loại HOLIDAY/LEAVE/OFF, đếm người duy nhất. Có mặt: check_in; Đi muộn: trong Có mặt, check_in>start+grace_in; Chưa đến: đã tới start chưa check_in. Lượt người lạ: số event UNKNOWN occurred_at trong ngày timezone công ty, không SPOOF; chỉ số trong ngày tạm thời."
   /employees:
     get:
       tags:
@@ -575,7 +579,10 @@ paths:
           $ref: '#/components/responses/E404'
         '422':
           $ref: '#/components/responses/E422'
+        '503':
+          $ref: '#/components/responses/E503'
       operationId: postEmployeesTerminate
+      description: "Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
   /employees/{id}/face:
     delete:
       tags:
@@ -593,7 +600,10 @@ paths:
           $ref: '#/components/responses/E403'
         '404':
           $ref: '#/components/responses/E404'
+        '503':
+          $ref: '#/components/responses/E503'
       operationId: deleteEmployeesFace
+      description: "Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
   /departments:
     get:
       tags:
@@ -934,7 +944,12 @@ paths:
           $ref: '#/components/responses/E404'
         '422':
           $ref: '#/components/responses/E422'
+        '409':
+          $ref: '#/components/responses/E409'
+        '503':
+          $ref: '#/components/responses/E503'
       operationId: postFaceProfilesApprove
+      description: "Q-006: chỉ xử lý hồ sơ chờ một lần. Duyệt/từ chối đồng thời, lần sau trả 409 PROFILE_ALREADY_REVIEWED, message Hồ sơ đã được xử lý. Chỉ thành công sau các bước bắt buộc; reload gallery lỗi trả 503 RECOGNITION_UNAVAILABLE và tạm ngưng nhận dạng đến khi phục hồi."
   /face-profiles/{id}/reject:
     post:
       tags:
@@ -966,7 +981,12 @@ paths:
           $ref: '#/components/responses/E404'
         '422':
           $ref: '#/components/responses/E422'
+        '409':
+          $ref: '#/components/responses/E409'
+        '503':
+          $ref: '#/components/responses/E503'
       operationId: postFaceProfilesReject
+      description: "Q-006: chỉ xử lý hồ sơ chờ một lần. Duyệt/từ chối đồng thời, lần sau trả 409 PROFILE_ALREADY_REVIEWED, message Hồ sơ đã được xử lý. Chỉ thành công sau các bước bắt buộc; reload gallery lỗi trả 503 RECOGNITION_UNAVAILABLE và tạm ngưng nhận dạng đến khi phục hồi."
   /face-samples/{id}/image:
     get:
       tags:
@@ -1043,6 +1063,7 @@ paths:
         '409':
           $ref: '#/components/responses/E409'
       operationId: postGates
+      description: "Q-001: chỉ OWNER tạo cửa; HR không có quyền tạo."
   /gates/{id}:
     patch:
       tags:
@@ -1050,6 +1071,7 @@ paths:
       summary: Sửa cửa
       x-roles:
       - OWNER
+      - HR
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -1078,6 +1100,7 @@ paths:
         '422':
           $ref: '#/components/responses/E422'
       operationId: patchGatesById
+      description: "Q-001: HR chỉ được gửi default_policy. Gửi name, mode, threshold_level, custom_threshold, is_active hoặc trường ngoài quyền trả 403, không cập nhật một phần. OWNER giữ quyền sửa đầy đủ. Danh sách phòng ban dùng PUT allowed-departments."
   /gates/{id}/allowed-departments:
     put:
       tags:
@@ -1085,6 +1108,7 @@ paths:
       summary: Đặt phòng ban được phép (DEPARTMENTS_ONLY)
       x-roles:
       - OWNER
+      - HR
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -1109,6 +1133,7 @@ paths:
         '404':
           $ref: '#/components/responses/E404'
       operationId: putGatesAllowedDepartments
+      description: "Q-001: HR được sửa danh sách phòng ban được phép; không cấp quyền tạo cửa hoặc quản trị thiết bị."
   /gates/{id}/manual-open:
     post:
       tags:
@@ -1228,7 +1253,7 @@ paths:
       summary: K-01 Ghép thiết bị
       x-roles:
       - public
-      description: 'Lỗi: 422 PAIRING_EXPIRED, 404 PAIRING_INVALID, 429 PAIRING_LOCKED (5 lần sai).'
+      description: 'Lỗi: 422 PAIRING_EXPIRED, 404 PAIRING_INVALID, 429 PAIRING_LOCKED (khóa lượt thử từ IP nhập sai 5 lần trong 10 phút; không khóa mã ghép).'
       requestBody:
         required: true
         content:
@@ -1343,7 +1368,6 @@ paths:
       summary: K-07 Đồng ý / không đồng ý
       x-roles:
       - device
-      description: agree=true → ghi face_consent_at/by, attendance_method=FACE; agree=false → attendance_method=MANUAL.
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -1367,9 +1391,12 @@ paths:
           $ref: '#/components/responses/E404'
         '422':
           $ref: '#/components/responses/E422'
+        '503':
+          $ref: '#/components/responses/E503'
       security:
       - deviceToken: []
       operationId: postKioskEnrollSessionsConsent
+      description: "agree=true → ghi face_consent_at/by, attendance_method=FACE; agree=false → attendance_method=MANUAL. Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
   /shifts:
     get:
       tags:
@@ -1642,13 +1669,13 @@ paths:
         '403':
           $ref: '#/components/responses/E403'
       operationId: getAttendanceDays
+      description: "Q-008/Q-009: WAITING_IN từ start khi chưa vào/chưa chốt; IN_PROGRESS đã vào/chưa chốt; chốt không vào ABSENT. Tự recompute giữ sửa MANUAL/LEAVE; event nhận muộn trong cửa sổ tính lại ngày đã chốt, giữ finalized=true."
   /attendance/days/{id}:
     patch:
       tags:
       - Attendance
       summary: Sửa ngày công (lý do bắt buộc)
       x-roles: *id003
-      description: 403 SELF_EDIT_FORBIDDEN.
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -1675,6 +1702,7 @@ paths:
         '422':
           $ref: '#/components/responses/E422'
       operationId: patchAttendanceDaysById
+      description: "403 SELF_EDIT_FORBIDDEN. Q-009: giờ sửa MANUAL và lý do/người sửa phải giữ khi tự recompute; không tự ghi đè bằng event/job."
   /attendance/leave:
     post:
       tags:
@@ -1705,12 +1733,16 @@ paths:
         '404':
           $ref: '#/components/responses/E404'
       operationId: postAttendanceLeave
+      description: "Đánh dấu LEAVE có reason/người thực hiện; tự recompute phải bảo toàn kết quả nghỉ đã đánh dấu (Q-009)."
   /attendance/export:
     get:
       tags:
       - Attendance
       summary: Xuất Excel tháng (sheet Tổng hợp + Chi tiết)
-      x-roles: *id003
+      x-roles:
+      - OWNER
+      - HR
+      - MANAGER
       parameters:
       - $ref: '#/components/parameters/month'
       - $ref: '#/components/parameters/department_id'
@@ -1729,6 +1761,7 @@ paths:
         '403':
           $ref: '#/components/responses/E403'
       operationId: getAttendanceExport
+      description: "Q-001/Q-010: MANAGER chỉ xuất phạm vi phòng ban thuộc scope; thiếu bộ lọc vẫn giới hạn team, department_id ngoài scope trả 403. Đếm ngày công duy nhất NORMAL/LATE/EARLY/LATE_EARLY, không cộng thêm ngày giải trình; công thức phút theo đặc tả §5.5."
   /attendance/manual:
     post:
       tags:
@@ -1771,7 +1804,6 @@ paths:
       - OWNER
       - HR
       - MANAGER
-      description: '`can_review` = false với giải trình của chính người gọi. MANAGER chỉ thấy team.'
       parameters:
       - name: status
         in: query
@@ -1801,6 +1833,7 @@ paths:
         '403':
           $ref: '#/components/responses/E403'
       operationId: getAttendanceRequests
+      description: "`can_review` = false với giải trình của chính người gọi. MANAGER chỉ thấy team. Q-011: xét người gửi OWNER (kể cả HR) → HR khác; HR không OWNER → OWNER khác; MANAGER chính phòng mình không OWNER/HR → HR khác; còn lại → MANAGER đúng phòng người gửi. Luôn kiểm phạm vi và chặn tự duyệt, không có người duyệt hợp lệ giữ PENDING/hiện cần bố trí người duyệt. Thứ tự chỉ dùng giải trình."
   /attendance/requests/{id}/approve:
     post:
       tags:
@@ -1810,7 +1843,6 @@ paths:
       - OWNER
       - HR
       - MANAGER
-      description: 403 SELF_REVIEW_FORBIDDEN; 422 NOT_PENDING.
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -1837,6 +1869,7 @@ paths:
         '422':
           $ref: '#/components/responses/E422'
       operationId: postAttendanceRequestsApprove
+      description: "403 SELF_REVIEW_FORBIDDEN; 422 NOT_PENDING. Q-011: xét người gửi OWNER (kể cả HR) → HR khác; HR không OWNER → OWNER khác; MANAGER chính phòng mình không OWNER/HR → HR khác; còn lại → MANAGER đúng phòng người gửi. Luôn kiểm phạm vi và chặn tự duyệt, không có người duyệt hợp lệ giữ PENDING/hiện cần bố trí người duyệt. Thứ tự chỉ dùng giải trình."
   /attendance/requests/{id}/reject:
     post:
       tags:
@@ -1872,6 +1905,7 @@ paths:
         '422':
           $ref: '#/components/responses/E422'
       operationId: postAttendanceRequestsReject
+      description: "Q-011: xét người gửi OWNER (kể cả HR) → HR khác; HR không OWNER → OWNER khác; MANAGER chính phòng mình không OWNER/HR → HR khác; còn lại → MANAGER đúng phòng người gửi. Luôn kiểm phạm vi và chặn tự duyệt, không có người duyệt hợp lệ giữ PENDING/hiện cần bố trí người duyệt. Thứ tự chỉ dùng giải trình."
   /events:
     get:
       tags:
@@ -1927,6 +1961,7 @@ paths:
         '403':
           $ref: '#/components/responses/E403'
       operationId: getEvents
+      description: "Thứ tự mặc định occurred_at giảm dần (mới nhất trước). W-02 lấy page=1&size=10; không có tham số limit."
   /events/{id}/snapshot:
     get:
       tags:
@@ -2061,6 +2096,7 @@ paths:
       summary: Đọc cấu hình nhận dạng
       x-roles:
       - OWNER
+      - HR
       responses:
         '200':
           description: OK
@@ -2103,6 +2139,7 @@ paths:
         '422':
           $ref: '#/components/responses/E422'
       operationId: putSettingsRecognition
+      description: "Q-007: chỉ bật sau hiệu chỉnh T13 và chốt L trong [0,1]. W nguyên dương; match_min/unknown_min/spoof_min nguyên 1..W. Server trả 422 nếu trái quan hệ; giữ toàn bộ cấu hình cũ, không áp dụng một phần. Mặc định 5/3/4/3."
   /models/active:
     get:
       tags:
@@ -2175,6 +2212,7 @@ paths:
                 $ref: '#/components/schemas/Health'
       security: []
       operationId: getHealth
+      description: "Q-008: API kiểm tra vẫn phục vụ khi model chưa xác minh: status=degraded, model_verified=false; không cho nhận dạng/mở cửa/ghi công bằng mặt. Reload gallery lỗi cũng degraded và tạm ngưng nhận dạng. Không lộ đường dẫn/bí mật; gallery rỗng được phân biệt qua gallery_size=0."
   /version:
     get:
       tags:
@@ -2291,6 +2329,12 @@ components:
             $ref: '#/components/schemas/Error'
     E429:
       description: Quá số lần thử
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    E503:
+      description: Thao tác chưa hoàn tất hoặc nhận dạng chưa sẵn sàng; có thể thử lại sau khi phục hồi
       content:
         application/json:
           schema:
@@ -2713,6 +2757,8 @@ components:
       - is_active
     GateInput:
       type: object
+      additionalProperties: false
+      description: PATCH theo quyền Q-001; HR chỉ default_policy, OWNER sửa đầy đủ. Danh sách phòng ban dùng operation riêng.
       properties:
         name: *id004
         mode:
@@ -3012,6 +3058,7 @@ components:
       - LEAVE
       - 'OFF'
       - NOT_STARTED
+      - WAITING_IN
       - IN_PROGRESS
       - ABSENT
       - MISSING_OUT
@@ -3407,10 +3454,18 @@ components:
     RecognitionSettings:
       type: object
       properties:
-        window_size: *id008
-        match_min: *id008
-        unknown_min: *id008
-        spoof_min: *id008
+        window_size:
+          type: integer
+          minimum: 1
+        match_min:
+          type: integer
+          minimum: 1
+        unknown_min:
+          type: integer
+          minimum: 1
+        spoof_min:
+          type: integer
+          minimum: 1
         lost_face_sec: *id010
         iou_reset: *id010
         cooldown_employee_sec: *id008
@@ -3426,11 +3481,26 @@ components:
           type:
           - number
           - 'null'
+          minimum: 0
+          maximum: 1
         attendance_window_before_h: *id008
         attendance_window_after_h: *id008
         min_checkout_after_checkin_min: *id008
         forgot_out_before_end_h: *id008
-      description: '= company.settings (db/thiet-ke-db.md §6). Server kiểm: anti_spoof_enabled=true cần liveness_threshold ≠ null (422).'
+      description: "Q-007: 1 <= match_min,unknown_min,spoof_min <= window_size (server kiểm quan hệ). W nguyên dương. Bật chỉ sau T13/chốt L; L trong [0,1] và không NULL. Sai trả 422, giữ cấu hình cũ. Mặc định W/MATCH/UNKNOWN/SPOOF=5/3/4/3."
+      allOf:
+      - if:
+          required: [anti_spoof_enabled]
+          properties:
+            anti_spoof_enabled:
+              const: true
+        then:
+          required: [liveness_threshold]
+          properties:
+            liveness_threshold:
+              type: number
+              minimum: 0
+              maximum: 1
     AuditLog:
       type: object
       properties:

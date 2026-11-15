@@ -385,7 +385,7 @@ CREATE TABLE attendance_day (
   check_in_event_id   uuid REFERENCES recognition_event(id),
   check_out_event_id  uuid REFERENCES recognition_event(id),
   status              text NOT NULL CHECK (status IN
-                        ('HOLIDAY','LEAVE','OFF','NOT_STARTED','IN_PROGRESS','ABSENT','MISSING_OUT',
+                        ('HOLIDAY','LEAVE','OFF','NOT_STARTED','WAITING_IN','IN_PROGRESS','ABSENT','MISSING_OUT',
                          'NORMAL','LATE','EARLY','LATE_EARLY')),
   suspect_forgot_out  boolean NOT NULL DEFAULT false,
   late_min            smallint NOT NULL DEFAULT 0 CHECK (late_min >= 0),
@@ -402,7 +402,8 @@ CREATE TABLE attendance_day (
   CHECK (source <> 'MANUAL' OR (edited_by_user_id IS NOT NULL AND edit_reason IS NOT NULL)),
   CHECK (NOT suspect_forgot_out OR status = 'MISSING_OUT'),
   CHECK (status NOT IN ('NORMAL','LATE','EARLY','LATE_EARLY') OR check_out_at IS NOT NULL),
-  CHECK (status NOT IN ('IN_PROGRESS','MISSING_OUT') OR check_in_at IS NOT NULL)
+  CHECK (status NOT IN ('IN_PROGRESS','MISSING_OUT') OR check_in_at IS NOT NULL),
+  CHECK (status <> 'WAITING_IN' OR (check_in_at IS NULL AND NOT finalized))
 );
 CREATE INDEX ix_attendance_company_date ON attendance_day(company_id, work_date);
 

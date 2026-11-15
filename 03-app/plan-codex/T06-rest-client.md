@@ -26,3 +26,6 @@ Cài các endpoint quản trị (trừ nhóm chấm công — T09, sự kiện/g
 | 3 | Terminate / xoá khuôn mặt: file + dòng biến mất, gallery giảm 1, có audit |
 | 4 | `pnpm gen:api` chạy được ở cả `web/` và `kiosk/`; `tsc --noEmit` pass |
 | 5 | Chạy skill `security review` cho phần auth/RBAC/device token; ghi kết quả |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test HR GET settings nhưng không PUT; HR sửa gate policy/departments không trường OWNER; MANAGER Excel chỉ team kể cả thiếu lọc/ngoài scope. 409 duyệt hồ sơ đồng thời, 503 xóa chưa xong/gallery lỗi. Sinh client với WAITING_IN, RecognitionSettings mới.

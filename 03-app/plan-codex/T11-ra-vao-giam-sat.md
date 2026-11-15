@@ -23,3 +23,6 @@ Kênh `/ws/monitor`, API sự kiện, mở cửa thủ công, báo cáo chấm h
 | 2 | SECURITY không nhận dữ liệu ngoài phạm vi; MANAGER chỉ thấy team (test) |
 | 3 | Xử lý cảnh báo IS_EMPLOYEE không đổi số mẫu của NV (test) |
 | 4 | CSV mở bằng Excel hiện đúng tiếng Việt (ảnh chụp) |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test SUSPENDED định danh DENIED_INACTIVE không mở/công; KPI người lạ đếm UNKNOWN không SPOOF theo ngày công ty; không event giả vì gallery rỗng.

@@ -4,7 +4,7 @@ Repo này chứa phần **App** của ĐATN "Mobile App tích hợp tối ưu AI
 
 ## Đọc trước mỗi task (theo thứ tự)
 1. `03-app/plan-codex/Txx-*.md` — task đang làm (phạm vi, tiêu chí nghiệm thu, điều kiện dừng). **Chỉ làm đúng task đó.**
-2. `03-app/dac-ta-app.md` (v1.4.2) — đặc tả; §0a (bản demo) ưu tiên hơn các mục khác.
+2. `03-app/dac-ta-app.md` (v1.4.4) — đặc tả; §0a (bản demo) ưu tiên hơn các mục khác.
 3. Theo task: `03-app/db/thiet-ke-db.md` + `db/schema.sql` · `03-app/openapi/openapi.yaml` + `ws-protocol.md` · `03-app/ui/design-system.md` + `ui/man-hinh/*.md` + `ui/tokens/*`.
 4. `AGENTS.md` của thư mục con đang làm (`03-app/hub/`, `03-app/web/`, `03-app/kiosk/`) và skill trong `.agents/skills/`.
 

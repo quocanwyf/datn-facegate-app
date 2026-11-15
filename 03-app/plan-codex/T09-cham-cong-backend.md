@@ -26,3 +26,6 @@ Skill `cham-cong-vn` (bắt buộc) · đặc tả §5.5–5.8 · `openapi.yaml`
 | 2 | `recompute_day` idempotent: chạy 2 lần cho cùng ngày → không đổi (test) |
 | 3 | File Excel mẫu tháng (dữ liệu test) mở được, đúng 2 sheet + cột; đính kèm file trong thư mục kết quả |
 | 4 | Contract test phần Schedule/Attendance/Me pass |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test WAITING_IN, IN_PROGRESS trước chốt; giờ sửa/LEAVE không bị recompute tự động ghi đè; event nhận muộn tính theo occurred_at và giữ finalized. Công thức phút/giao nghỉ và ngày duy nhất Q-010. Chuyển cấp Q-011 kể cả nhiều role/không có người duyệt. MANAGER Excel scope.

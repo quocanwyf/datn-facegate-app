@@ -36,7 +36,7 @@ pytest -q
 ## Luật bắt buộc
 1. **Không chạy PyTorch trong event loop.** Mọi suy luận (YuNet, MiniFASNet, backbone) đi qua `recog/worker.py`: một thread worker + hàng đợi; endpoint/WS chỉ `await` future.
 2. **Trích feature chỉ bằng `evaltest.features.extract_features`** (vendor), input `torch.uint8 (N,3,112,112) RGB`. `norm_crop` trả `(warped_bgr, M)` → phải unpack và `cv2.cvtColor(BGR2RGB)` → `transpose(2,0,1)`. Không tự viết lại tiền xử lý.
-3. **Nạp mô hình qua cổng 4 bước** (đặc tả §4.1): sha256 file = manifest → strip_map nối tới `meta.sha256` → `load_backbone(..., row=<dòng manifest>, expected_sha=…)` → `t_eq30` khớp. Sai → Hub không khởi động (log rõ lý do).
+3. **Nạp mô hình qua cổng 4 bước** (đặc tả §4.1): sha256 file = manifest → strip_map nối tới `meta.sha256` → `load_backbone(..., row=<dòng manifest>, expected_sha=…)` → `t_eq30` khớp. Sai → dừng phần nhận dạng (log rõ lý do), giữ API health chẩn đoán degraded/model_verified=false; không mở cửa/ghi công bằng mặt.
 4. **`DATN_CODE_DIR` = `hub/vendor/code`** phải được đặt trước `import evaltest.features`.
 5. Ngưỡng lấy từ bảng `threshold_profile` / `gate.custom_threshold`, **không hard-code** 0,4233 trong code.
 6. `recognition_event` **chỉ INSERT** (DB có trigger chặn). Xử lý cảnh báo ghi vào `event_handling`.

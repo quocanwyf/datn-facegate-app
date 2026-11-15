@@ -10,8 +10,11 @@ Chi tiết đầy đủ: `03-app/openapi/ws-protocol.md`. Tóm tắt luật khô
 2. **Dừng-và-chờ:** JSON `{"type":"frame","seq":n,"mode":"recognize"|"enroll",…}` rồi **ngay sau** là binary JPEG. Không gửi khung `n+1` trước khi nhận `state`/`result` của `n`; giới hạn `max_fps` từ `config`.
 3. Ảnh gửi: cạnh dài `frame_long_side` (640), JPEG `jpeg_quality` (80), camera trước đã lật gương (embedding bất biến với lật; chỉ ảnh hưởng hướng hiển thị bbox).
 4. `result` ∈ OK / ALREADY / DENY (+ `reason` UNKNOWN|SPOOF|RULE|INACTIVE). Hiển thị theo `ui/man-hinh/kiosk.md` K-04 + `status.json` `kiosk.display`. Trong `result_display_sec` không gửi khung.
-5. `BUSY` → chờ 200 ms gửi lại. Không nhận gì 15 s → K-11, nối lại lùi dần 1→2→4→8 s (tối đa 15 s).
+5. `BUSY` → chờ 200 ms gửi lại. WS mở nhưng không nhận gì 15 s → K-11 ngay; disconnect rõ ràng 3 s chưa phục hồi mới K-11. Retry 1→2→4→8→15 s, trần 15 s.
 6. Enroll: kèm `enroll_session_id`, `employee_id`; nhận `enroll_progress` (accepted/5, `reason` loại mẫu) → `enroll_done` (`PENDING_REVIEW`, `duplicate_warning`).
 7. Hub **không bao giờ** gửi ảnh khuôn mặt về Kiosk.
 8. `/ws/monitor`: auth bằng access token ở message đầu; server lọc theo vai trò/phạm vi; message `event`, `alert`, `alert_handled`, `device_status`, `counters`.
 Kiểm: `hub/tests/test_ws_kiosk.py`, `hub/scripts/kiosk_sim.py`.
+
+9. state NO_GALLERY: không có dữ liệu định danh, không UNKNOWN/event. error RECOGNITION_UNAVAILABLE ngừng frame recognize tới config phục hồi; MODEL_NOT_VERIFIED hiện máy chủ chưa sẵn sàng. Error phản hồi frame phải có seq.
+10. Enroll giữ PENDING cũ tới bộ 5 mẫu lưu thành công; hủy/hết phiên/mạng/lưu lỗi giữ cũ, không enroll_done sớm. ACTIVE cũ giữ đến duyệt mới. agree=false là rút/xóa theo Q-005, khác hủy chụp.

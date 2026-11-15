@@ -34,3 +34,6 @@ Hub nạp đúng mô hình UniFace + V1 s3 qua **cổng kiểm 4 bước**, dùn
 
 ## Điều kiện dừng
 Chưa có checkpoint · bất kỳ bước cổng nào sai với file thật · phải sửa file vendor hoặc `02-thuc-nghiem/` mới chạy được.
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Q-008: lỗi cổng vẫn phải raise MODEL_NOT_VERIFIED đúng bước; ở tích hợp Hub giữ health chẩn đoán, không khởi tạo worker nhận dạng. Không nới điều kiện dừng do thiếu/sai checkpoint.

@@ -19,3 +19,6 @@ E-01 … E-10 (trừ E-07, E-09) đúng `ui/man-hinh/me.md`, dùng tốt trên �
 | 3 | E-10 không hiện giải trình của chính người duyệt |
 | 4 | Rút đồng ý (E-08) → NV chuyển MANUAL, dữ liệu khuôn mặt bị xoá (kiểm DB) |
 | 5 | Mở được từ máy ảo Android bằng trình duyệt tới `http://10.0.2.2:5173/me` (ảnh chụp) |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test WAITING_IN/IN_PROGRESS tạm thời, tổng ngày duy nhất; revoke xóa ACTIVE/PENDING/consent NULL/MANUAL, xóa lỗi vẫn ngừng dùng mặt và báo thử lại. E-10 theo Q-011.

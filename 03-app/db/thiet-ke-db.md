@@ -233,7 +233,7 @@ Ký hiệu: **PK** khoá chính · **FK→** khoá ngoại · **U** duy nhất �
 | company_id, gate_id | uuid | FK, NN | một thiết bị gắn một cửa |
 | name | text | NN | |
 | status | text | NN, CK `PENDING/ACTIVE/REVOKED`; ACTIVE ⇒ có token | |
-| pairing_code_hash, pairing_expires_at, pairing_attempts | | | mã ghép 6 số, 10 phút, khoá sau 5 lần |
+| pairing_code_hash, pairing_expires_at, pairing_attempts | | | mã ghép 6 số, hết hạn 10 phút; khóa lượt thử theo IP 10 phút sau 5 lần sai (chốt 15/11/2026), không khóa từng mã; pairing_attempts giữ để tương thích, không dùng làm bộ đếm IP |
 | token_hash, token_expires_at | text, timestamptz | U | device token 30 ngày (bản demo không refresh) |
 | last_seen_at, app_version | | | |
 
@@ -313,7 +313,7 @@ EXCLUDE (btree_gist): `ex_assign_employee` (employee_id =, weekday =, effective 
 | shift_id | uuid | FK→shift | NULL khi OFF/HOLIDAY không ca |
 | check_in_at, check_out_at | timestamptz | CK out ≥ in; out ⇒ có in | |
 | check_in_event_id, check_out_event_id | uuid | FK→recognition_event | truy vết event gốc |
-| status | text | NN, CK 11 giá trị (§5.5 đặc tả) | NORMAL/LATE/EARLY/LATE_EARLY ⇒ có giờ ra; IN_PROGRESS/MISSING_OUT ⇒ có giờ vào |
+| status | text | NN, CK 12 giá trị (thêm WAITING_IN theo Q-009) (§5.5 đặc tả) | NORMAL/LATE/EARLY/LATE_EARLY ⇒ có giờ ra; IN_PROGRESS/MISSING_OUT ⇒ có giờ vào |
 | suspect_forgot_out | boolean | NN; CK chỉ khi MISSING_OUT | |
 | late_min, early_min, worked_min | smallint | NN, ≥ 0 | |
 | source | text | NN, CK `AUTO/ADJUSTED/MANUAL`; MANUAL ⇒ có người sửa + lý do | |
@@ -355,7 +355,7 @@ EXCLUDE (btree_gist): `ex_assign_employee` (employee_id =, weekday =, effective 
 | Không ai sửa ngày công của chính mình | Cần đối chiếu user ↔ employee |
 | Chấm hộ: người chấm ≠ người được chấm, chỉ NV `MANUAL` | Cần đối chiếu user ↔ employee và trạng thái NV |
 | Xoá dữ liệu khuôn mặt (TERMINATED / bấm xoá): xoá file ảnh + `face_profile` (dây chuyền xoá sample/embedding/template) + đặt `snapshot_path = NULL` cho event UNKNOWN/SPOOF có `event_handling.linked_employee_id` = NV + ghi `biometric_deleted_at` | Gồm cả thao tác file |
-| Gallery: NV ACTIVE ∧ FACE ∧ có `face_consent_at` ∧ hồ sơ ACTIVE ∧ có template của mô hình | Truy vấn, nạp lên GPU |
+| Gallery định danh: NV ACTIVE/SUSPENDED ∧ FACE ∧ có `face_consent_at` ∧ hồ sơ ACTIVE ∧ có template của mô hình | Truy vấn, nạp lên GPU; chỉ ACTIVE được xét cho qua cửa, SUSPENDED ghi DENIED_INACTIVE |
 
 ## 6. Khoá `company.settings` (giá trị seed)
 | Khoá | Giá trị seed | Nguồn |
@@ -391,3 +391,17 @@ Khi code Hub: viết model SQLAlchemy 2 + Alembic migration đầu tiên **tươ
 ---
 ## Phụ lục A — Mermaid ERD chi tiết theo nhóm
 Xem các khối Mermaid trong `erd/*.mmd` (nguồn của `erd/*.png`).
+
+## 9. Đồng bộ Q-001–Q-013 ngày 14/11/2026
+- Demo company từ seed, timezone cố định Asia/Ho_Chi_Minh; không CRUD công ty/timezone.
+- WAITING_IN (“Chưa đến — tạm thời”) là giá trị thứ 12 của attendance_day.status: từ start tới trước chốt, chưa vào; CHECK check_in_at NULL và finalized=false. NOT_STARTED trước start, IN_PROGRESS đã vào/chưa chốt, ABSENT sau chốt/chưa vào; ưu tiên HOLIDAY/LEAVE/OFF.
+- Không thêm bảng/cột cho chụp lại: thu mẫu mới tạm riêng, chỉ thay PENDING cũ sau đủ 5 mẫu và lưu thành công, vẫn giữ partial unique. Duyệt đồng thời một hồ sơ chỉ một lần có hiệu lực.
+- Xóa/rút/từ chối consent, kể cả xóa hành chính: xóa profile/mẫu/vector/crop liên kết, NULL consent_at/by cùng nhau, MANUAL, biometric_deleted_at/audit; giữ event/công. Chưa xóa xong file không báo thành công hoặc cho nhận dạng lại.
+- Gallery định danh gồm ACTIVE/SUSPENDED đủ FACE/consent/profile/template; SUSPENDED chỉ để từ chối. Reload lỗi tạm ngưng nhận dạng; rỗng không tạo UNKNOWN.
+- LEAVE đánh dấu và giờ sửa MANUAL là dữ liệu hiệu lực phải được bảo toàn khi tự recompute. Event nhận muộn vẫn dùng occurred_at, trong cửa sổ tính lại và giữ finalized=true nếu đã chốt; không thêm queue offline Kiosk.
+- Xét vai trò **người gửi** theo nhánh đầu tiên phù hợp: (1) có OWNER, kể cả kiêm HR → HR khác; (2) HR không OWNER → OWNER khác; (3) MANAGER chính phòng mình, không OWNER/HR → HR khác; (4) còn lại → MANAGER đúng phòng ban người gửi, khác người gửi. MANAGER chỉ quản lý phòng khác thuộc nhánh (4). Không có người duyệt hợp lệ thì giữ PENDING, hiện cần bố trí người duyệt. Server luôn chặn tự duyệt; thứ tự chỉ dùng chọn nhóm duyệt, không loại bỏ quyền khác của tài khoản.
+- Trong grace: phút muộn/sớm bằng 0. Nếu `check_in > start + grace_in`: `late_min=floor((check_in-start)/60 giây)`; với trường hợp được phân loại về sớm: `early_min=floor((end-check_out)/60 giây)`. Vượt grace tính từ giờ ca, không chỉ phần vượt grace. Giữ luật MISSING_OUT, không biến thiếu giờ ra thành EARLY.
+- So sánh bằng timestamp đầy đủ; lấy phần nguyên kết quả phút sau phép tính. Ví dụ thiết kế: start 08:30, grace 10 phút; vào 08:40 → 0 phút muộn; 08:41 → 11 phút muộn.
+- Với cặp giờ hợp lệ, `a=max(check_in,start)`, `b=min(check_out,end)`; `gross=max(0,b-a)`, `rest` là phần giao của `[a,b]` với khoảng nghỉ trong ca (0 nếu không có). `worked_min=floor(max(0,gross-rest)/60 giây)`. Không cộng ngoài ca hoặc trừ phần nghỉ không giao thời gian làm. Ví dụ ca 08:30–17:30 nghỉ 12:00–13:00, vào 08:00 ra 18:00 chỉ tính 480 phút.
+- Tổng ngày công đếm cặp `(employee_id,work_date)` duy nhất có trạng thái hiệu lực NORMAL/LATE/EARLY/LATE_EARLY, mỗi ngày 1; trạng thái khác thống kê riêng, không quy đổi nửa ngày. Giải trình APPROVED cập nhật cùng ngày rồi tính theo trạng thái, không cộng thêm ngày theo số request/event.
+- Ba chỉ số nhân viên chỉ tính ACTIVE có ca hôm nay, loại HOLIDAY/LEAVE/OFF; dùng giờ công hiệu lực, đếm mỗi người một lần. Có mặt = đã có check_in; Đi muộn là tập con Có mặt có check_in > start+grace_in; Chưa đến = đã tới start mà chưa check_in. Trong ngày là số tạm thời, không đổi IN_PROGRESS thành LATE để tính KPI. Lượt người lạ = số event UNKNOWN xảy ra trong ngày theo timezone công ty, không gồm SPOOF và không phải số danh tính riêng biệt. 10 event mới nhất dùng page=1&size=10, mới nhất trước, không query limit.

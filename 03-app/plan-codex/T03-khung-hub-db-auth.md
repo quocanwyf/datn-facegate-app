@@ -30,3 +30,6 @@ Hub FastAPI chạy được với DB tạo bằng Alembic (tương đương `sch
 
 ## Điều kiện dừng
 Không diễn tả được ràng buộc nào của `schema.sql` → dừng, báo (không bỏ ràng buộc).
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Schema có WAITING_IN; vẫn chạy 44/44 ca gốc và thêm kiểm riêng WAITING_IN không check_in/finalized=false bằng transaction rollback. Health vẫn phục vụ khi model chưa xác minh, model_verified=false/degraded, không nhận dạng.

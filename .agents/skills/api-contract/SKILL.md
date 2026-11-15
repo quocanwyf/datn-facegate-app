@@ -13,3 +13,9 @@ description: Quy ước hợp đồng API giữa Hub, Web và Kiosk — dùng kh
 6. **Thời gian:** ISO-8601 có offset; ngày `YYYY-MM-DD`; giờ ca `HH:mm`.
 7. **Quyền:** `x-roles` trong yaml là danh sách vai trò được gọi; server vẫn kiểm phạm vi phòng ban (MANAGER) và các luật "không tự duyệt / không tự sửa / không tự chấm hộ".
 8. Lint sau khi sửa yaml: `npx @redocly/cli lint 03-app/openapi/openapi.yaml` (0 lỗi).
+
+## Quyền và trạng thái sau đồng bộ 14/11/2026
+- HR PATCH gate chỉ default_policy, PUT allowed-departments được phép; trường khác 403. OWNER giữ tạo/sửa cửa/thiết bị. HR GET settings được, PUT chỉ OWNER. MANAGER export chỉ team.
+- WAITING_IN bổ sung AttendanceStatus, đồng bộ CHECK DB và status.json.
+- Q-006: 409 PROFILE_ALREADY_REVIEWED; 503 BIOMETRIC_DELETE_INCOMPLETE/RECOGNITION_UNAVAILABLE khi thao tác chưa xong; không báo thành công sớm hoặc mở quyền bằng client.
+- RecognitionSettings: L [0,1], true cần L không NULL và đã chốt T13; W nguyên dương, ngưỡng đếm 1..W (kiểm quan hệ tại server), cấu hình lỗi giữ toàn bộ cũ.

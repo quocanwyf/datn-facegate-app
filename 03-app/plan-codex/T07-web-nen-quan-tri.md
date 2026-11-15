@@ -27,3 +27,6 @@ Web Admin chạy được với theme Canopy, đăng nhập, phân quyền route
 | 3 | Chữ tiếng Việt có dấu hiển thị đúng font (ảnh chụp chữ "Đăng nhập, Nhân viên, Bảng công, Giải trình, Xác nhận khuôn mặt") |
 | 4 | Không có mã màu hex ngoài thư mục `theme/` (`rg "#[0-9A-Fa-f]{6}" src --glob '!src/theme/**'` rỗng) |
 | 5 | Chạy skill `web-design-guidelines` rà các màn; ghi điểm đã sửa |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test HR W-07 chỉ policy/departments, W-14 chỉ xem; W-02 KPI đúng định nghĩa và page=1/size=10, ngày/timezone công ty. Không thêm màn company/timezone.

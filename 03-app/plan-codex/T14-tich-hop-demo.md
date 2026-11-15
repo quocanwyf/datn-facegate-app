@@ -22,3 +22,6 @@ Hub + PostgreSQL + web build tĩnh trên **laptop An** (GPU) · Kiosk = máy ả
 | 2 | Mọi kịch bản bước 3 chạy được — mỗi kịch bản có ảnh/video |
 | 3 | `kich-ban-demo.md` đủ |
 | 4 | Danh sách lỗi còn lại (nếu có) + mức ảnh hưởng tới demo |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Chạy các kịch bản Q-001–Q-013 và ca nghiệm thu bổ sung trong nguồn đã đồng bộ; giữ log thật, không đổi mục tiêu hoặc báo hoàn thành app khi chỉ kiểm tài liệu.

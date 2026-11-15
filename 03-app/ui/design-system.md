@@ -2,7 +2,7 @@
 > 14/11/2026, session thiết kế app. Nguồn phong cách: hai UI kit An chọn (`design-ui-kit/`, bản giải nén ở `ui/kit-goc/`):
 > **Canopy** (teal) → Web (`/admin` + `/me`) · **Fresh Bloom** (lime) → Kiosk App. Chỉ dùng **phong cách**, không dùng logo/ảnh/nội dung của sản phẩm gốc (như kit đã ghi).
 > Đi kèm: `ui/tokens/web-antd-theme.json`, `ui/tokens/web-css-vars.css`, `ui/tokens/kiosk-theme.json`, `ui/tokens/status.json`, `ui/man-hinh/{kiosk,me,admin}.md`.
-> Đặc tả màn hình: `dac-ta-app.md` §9 (v1.4.2). **Không thêm màn ngoài §9.**
+> Đặc tả màn hình: `dac-ta-app.md` §9 (v1.4.4). **Không thêm màn ngoài §9.**
 
 ---
 
@@ -70,7 +70,7 @@ Mỗi trạng thái có **pill** (web, nền nhạt + chữ đậm) và **khối
 | `warning` | `#FFF1E0` / `#9A4A00` | — | `EARLY`, `LATE_EARLY`, `MISSING_OUT` (+ cờ nghi quên quét) · event `UNKNOWN` |
 | `error` | `#FDECEB` / `#B42318` | `#B5241F` / `#FFFFFF` | Kiosk DENY · `ABSENT` · hồ sơ `REJECTED` · giải trình `REJECTED` · event `DENIED_RULE`, `DENIED_INACTIVE` · NV `TERMINATED` · thiết bị `REVOKED` |
 | `danger-strong` | `#FDECEB` / `#B42318` + icon khiên | `#1A1A18` / `#FFFFFF` + viền đỏ 6 px | event / kết quả **SPOOF** (nghi giả mạo) |
-| `info` | `#E3F2FD` / `#1767AD` | — | `IN_PROGRESS` · `NOT_STARTED` |
+| `info` | `#E3F2FD` / `#1767AD` | — | `IN_PROGRESS` · `NOT_STARTED` · `WAITING_IN` |
 | `new` | `#DFF5F8` / `#0A6670` | — | `LEAVE` · event `MANUAL_ATTENDANCE`, `MANUAL_OPEN` · NV `MANUAL` |
 | `neutral` | `#EDEFEE` / `#46504D` | — | `OFF`, `HOLIDAY` · NV `SUSPENDED` · giải trình `CANCELLED` · hồ sơ "chưa có" |
 
@@ -149,3 +149,6 @@ Bật **giảm chuyển động** của hệ điều hành → bỏ rung/phóng,
 
 ## 9. Mẫu mô tả một màn hình (`ui/man-hinh/*.md`)
 Mỗi màn có đúng các mục: **Mục đích · Vai trò · Bố cục (vùng từ trên xuống / trái sang phải) · Thành phần · Dữ liệu (endpoint/WS) · Hành động · Trạng thái (đang tải / trống / lỗi / không có quyền) · Chuyển động · Chữ hiển thị chính (tiếng Việt)**.
+
+## 10. Nhãn bổ sung theo Q-006/Q-009/Q-012
+WAITING_IN: Chưa đến — tạm thời (info); NOT_STARTED: Chưa bắt đầu; IN_PROGRESS: Đang làm việc — tạm thời. Kiosk NO_GALLERY không đồng nghĩa UNKNOWN; nhãn lỗi máy chủ từ status.json. Dashboard dùng “Lượt người lạ”, đếm event. Demo một company/timezone Asia/Ho_Chi_Minh, không thêm màn cấu hình công ty.

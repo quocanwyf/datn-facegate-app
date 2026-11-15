@@ -26,3 +26,6 @@ Kiosk App chạy trên máy ảo: ghép, quét, hiện kết quả, đăng ký k
 | 2 | Video luồng đầy đủ (bước 6) trong thư mục kết quả |
 | 3 | Đo thời gian từ lúc đứng vào khung tới màn kết quả trên máy Hy (CPU) cho 10 lượt — ghi số thật (mục tiêu < 2 s là mục tiêu cho laptop GPU, ở đây chỉ ghi nhận) |
 | 4 | Không màn nào hiện ảnh khuôn mặt (kiểm bằng rà code + video) |
+
+## Bổ sung nghiệm thu theo Q-001–Q-013 (14/11/2026)
+Test disconnect3s, im lặng15s không cộng3s; retry1/2/4/8/15s; NO_GALLERY/máy chủ chưa sẵn sàng, hủy enroll giữ bản cũ. Nhãn/status theo token mới.
