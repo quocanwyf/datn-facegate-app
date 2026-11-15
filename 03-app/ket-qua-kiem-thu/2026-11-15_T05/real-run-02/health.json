@@ -1,0 +1,8 @@
+{
+  "status": "ok",
+  "db": true,
+  "gpu": false,
+  "model_verified": true,
+  "gallery_size": 1,
+  "version": "0.1.0"
+}

@@ -1,0 +1,55 @@
+--- a/03-app/openapi/openapi.yaml
++++ b/03-app/openapi/openapi.yaml
+@@ -1253,7 +1253,7 @@
+       summary: K-01 Ghép thiết bị
+       x-roles:
+       - public
+-      description: 'Lỗi: 422 PAIRING_EXPIRED, 404 PAIRING_INVALID, 429 PAIRING_LOCKED (5 lần sai).'
++      description: 'Lỗi: 422 PAIRING_EXPIRED, 404 PAIRING_INVALID, 429 PAIRING_LOCKED (khóa lượt thử từ IP nhập sai 5 lần trong 10 phút; không khóa mã ghép).'
+       requestBody:
+         required: true
+         content:
+--- a/03-app/ui/man-hinh/kiosk.md
++++ b/03-app/ui/man-hinh/kiosk.md
+@@ -17,7 +17,7 @@
+ - **Bố cục:** nền `bg`; thẻ trắng giữa màn rộng 560, bo 32: tiêu đề "Ghép thiết bị" (32) → mô tả 1 dòng → vùng camera nhỏ 320×240 quét QR → đường phân cách "hoặc nhập tay" → ô "Địa chỉ Hub" (vd. `http://192.168.1.10:8000`) → 6 ô mã → nút inverse "Ghép thiết bị".
+ - **Thành phần:** `PillButton`, ô nhập bo 16, camera (react-native-vision-camera, chế độ đọc mã QR).
+ - **Dữ liệu:** QR chứa `{"hub":"http://…","code":"123456"}` → `POST /api/v1/kiosk/pair`. Lưu `device_token`, `hub_url`, `gate` vào SecureStore.
+-- **Trạng thái:** đang gửi (nút khoá + spinner) · lỗi theo `error.code`: `PAIRING_EXPIRED` "Mã đã hết hạn, vui lòng tạo mã mới trên trang quản trị" · `PAIRING_INVALID` "Mã không đúng" · `PAIRING_LOCKED` "Nhập sai quá 5 lần, mã đã bị khoá" · lỗi mạng "Không kết nối được Hub. Kiểm tra địa chỉ và Wi-Fi".
++- **Trạng thái:** đang gửi (nút khoá + spinner) · lỗi theo `error.code`: `PAIRING_EXPIRED` "Mã đã hết hạn, vui lòng tạo mã mới trên trang quản trị" · `PAIRING_INVALID` "Mã không đúng" · `PAIRING_LOCKED` "Đã nhập sai 5 lần. Lượt thử từ máy này bị khóa trong 10 phút." · lỗi mạng "Không kết nối được Hub. Kiểm tra địa chỉ và Wi-Fi".
+ - **Chuyển động:** thẻ fade-in 200 ms; lỗi rung nhẹ ô mã.
+ - **Ghi chú máy ảo:** địa chỉ Hub trên cùng máy là `http://10.0.2.2:8000`.
+ 
+--- a/03-app/db/thiet-ke-db.md
++++ b/03-app/db/thiet-ke-db.md
+@@ -233,7 +233,7 @@
+ | company_id, gate_id | uuid | FK, NN | một thiết bị gắn một cửa |
+ | name | text | NN | |
+ | status | text | NN, CK `PENDING/ACTIVE/REVOKED`; ACTIVE ⇒ có token | |
+-| pairing_code_hash, pairing_expires_at, pairing_attempts | | | mã ghép 6 số, 10 phút, khoá sau 5 lần |
++| pairing_code_hash, pairing_expires_at, pairing_attempts | | | mã ghép 6 số, hết hạn 10 phút; khóa lượt thử theo IP 10 phút sau 5 lần sai (chốt 15/11/2026), không khóa từng mã; pairing_attempts giữ để tương thích, không dùng làm bộ đếm IP |
+ | token_hash, token_expires_at | text, timestamptz | U | device token 30 ngày (bản demo không refresh) |
+ | last_seen_at, app_version | | | |
+ 
+--- a/03-app/plan-codex/T05-ws-kiosk-dang-ky.md
++++ b/03-app/plan-codex/T05-ws-kiosk-dang-ky.md
+@@ -12,7 +12,7 @@
+ `03-app/hub/` · `03-app/ket-qua-kiem-thu/<ngày>_T05/`.
+ 
+ ## Các bước
+-1. `POST /devices` (mã 6 số băm, hết hạn 10 phút, `qr_payload`), `POST /devices/{id}/revoke`, `POST /kiosk/pair` (khoá sau 5 lần sai), device token 30 ngày (băm trong DB).
++1. `POST /devices` (mã 6 số băm, hết hạn 10 phút, `qr_payload`), `POST /devices/{id}/revoke`, `POST /kiosk/pair` (khóa lượt thử theo IP 10 phút sau 5 lần sai, chốt 15/11/2026; giữ request mã 6 số), device token 30 ngày (băm trong DB).
+ 2. `GET /kiosk/enrollers`, `POST /kiosk/enroll/sessions` (PIN cá nhân, khoá 15 phút sau 5 lần sai), `GET …/employees`, `POST …/consent`.
+ 3. `ws_kiosk.py` đúng ws-protocol: auth, `config`, dừng-và-chờ theo `seq`, `BUSY`, ping/pong, mã lỗi.
+ 4. Chế độ `recognize`: khung → worker → `DeviceSession` → kết luận → `biz/access.py` (status NV, `default_policy`, phòng ban được phép) → ghi `recognition_event` (MATCH/UNKNOWN/SPOOF/DENIED_*), crop cho UNKNOWN/SPOOF, cooldown → `result`. Trường `attendance` để `{kind:"NONE"}` cho tới T09 (T09 nối `recompute_day`).
+--- a/03-app/docs/specs/02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md
++++ b/03-app/docs/specs/02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md
+@@ -59,7 +59,7 @@
+ 
+ ## 7. Nhánh lỗi và trạng thái UI
+ 
+-- PAIRING_EXPIRED422, PAIRING_INVALID404, PAIRING_LOCKED429 sau5 lần sai
++- PAIRING_EXPIRED422, PAIRING_INVALID404, PAIRING_LOCKED429 sau 5 lần sai: khóa lượt thử từ IP đó trong 10 phút, không khóa mã ghép; giữ request mã 6 số (người dùng chốt 15/11/2026)
+ - Lỗi mạng nhắc kiểm Hub/Wi-Fi
+ - DEVICE_REVOKED/TOKEN_INVALID xóa token
+ 

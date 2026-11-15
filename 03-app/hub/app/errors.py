@@ -18,7 +18,7 @@ def install_error_handlers(app: FastAPI):
     @app.exception_handler(RequestValidationError)
     async def validation_error(request: Request, error: RequestValidationError):
         # Không echo input: có thể chứa mật khẩu hoặc refresh token.
-        status = 400 if request.url.path.endswith('/auth/login') else 422
+        status = 400 if request.url.path.endswith(('/auth/login', '/kiosk/pair', '/devices', '/kiosk/enroll/sessions')) else 422
         return JSONResponse(status_code=status, content={'error': {'code': 'VALIDATION_ERROR', 'message': 'Dữ liệu không hợp lệ.'}})
 
     @app.exception_handler(HTTPException)

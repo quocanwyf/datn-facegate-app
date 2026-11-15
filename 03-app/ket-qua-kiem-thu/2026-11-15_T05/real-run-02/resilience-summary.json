@@ -1,0 +1,10 @@
+{
+  "too_similar_rejected_old_pending_preserved": true,
+  "disconnect_after_four_preserves_old_pending": true,
+  "file_write_failure_preserves_old_pending_and_samples": true,
+  "new_five_replace_pending_keep_active": true,
+  "suspended_denied_no_open": true,
+  "delete_failure_keeps_consent_revoked_no_gallery": true,
+  "delete_retry_completes": true,
+  "no_attendance_before_T09": true
+}

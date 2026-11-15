@@ -1,0 +1,8 @@
+Using Python 3.13.13 environment at: 03-app\hub\.venv
+Resolved 3 packages in 1.47s
+Downloading pillow-heif (6.3MiB)
+ Downloaded pillow-heif
+Prepared 2 packages in 4.96s
+Installed 2 packages in 140ms
+ + pillow-heif==1.8.1
+ + websockets==17.4

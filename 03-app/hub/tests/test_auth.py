@@ -33,8 +33,12 @@ async def runtime():
         factory = async_sessionmaker(connection, expire_on_commit=False, join_transaction_mode='create_savepoint')
         async def override():
             async with factory() as session:
-                async with session.begin():
+                try:
                     yield session
+                    await session.commit()
+                except Exception:
+                    await session.rollback()
+                    raise
         app = create_app()
         app.dependency_overrides[get_session] = override
         async with httpx.AsyncClient(transport=httpx.ASGITransport(app=app), base_url='http://test') as client:

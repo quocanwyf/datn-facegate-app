@@ -1,0 +1,77 @@
+{"type": "config", "gate": {"id": "4e3ed065-b487-518a-ac94-31b21d23e1d8", "name": "Cửa chính", "mode": "ATTENDANCE_ACCESS"}, "research_banner": "Bản trình diễn nghiên cứu – không dùng thương mại", "max_fps": 4, "frame_long_side": 640, "jpeg_quality": 80, "result_display_sec": 3, "server_time": "2026-11-15T02:02:07.917048+00:00"}
+{"type": "state", "state": "NO_GALLERY", "seq": 1}
+{"type": "state", "state": "NO_GALLERY", "seq": 2}
+{"type": "state", "state": "NO_GALLERY", "seq": 3}
+{"type": "state", "state": "NO_GALLERY", "seq": 4}
+{"type": "state", "state": "NO_GALLERY", "seq": 5}
+{"type": "state", "state": "NO_GALLERY", "seq": 6}
+{"type": "state", "state": "NO_GALLERY", "seq": 7}
+{"type": "state", "state": "NO_GALLERY", "seq": 8}
+{"type": "state", "state": "NO_GALLERY", "seq": 9}
+{"type": "state", "state": "NO_GALLERY", "seq": 10}
+{"type": "state", "state": "NO_GALLERY", "seq": 11}
+{"type": "state", "state": "NO_GALLERY", "seq": 12}
+{"type": "state", "state": "NO_GALLERY", "seq": 13}
+{"type": "state", "state": "NO_GALLERY", "seq": 14}
+{"type": "state", "state": "NO_GALLERY", "seq": 15}
+{"type": "state", "state": "NO_GALLERY", "seq": 16}
+{"type": "state", "state": "NO_GALLERY", "seq": 17}
+{"type": "config", "gate": {"id": "4e3ed065-b487-518a-ac94-31b21d23e1d8", "name": "Cửa chính", "mode": "ATTENDANCE_ACCESS"}, "research_banner": "Bản trình diễn nghiên cứu – không dùng thương mại", "max_fps": 4, "frame_long_side": 640, "jpeg_quality": 80, "result_display_sec": 3, "server_time": "2026-11-15T02:02:12.931717+00:00"}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "eb1cb7e0-59d0-4764-9eb8-0a6fa4b730a1", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "config", "gate": {"id": "4e3ed065-b487-518a-ac94-31b21d23e1d8", "name": "Cửa chính", "mode": "ATTENDANCE_ACCESS"}, "research_banner": "Bản trình diễn nghiên cứu – không dùng thương mại", "max_fps": 4, "frame_long_side": 640, "jpeg_quality": 80, "result_display_sec": 3, "server_time": "2026-11-15T02:02:23.788806+00:00"}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 1}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 2}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 3}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 4}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 5}
+{"type": "state", "state": "CHECKING", "bbox": [112.00846862792969, 119.64369201660156, 252.79705810546875, 315.8983459472656], "frames_in_window": 1, "seq": 6}
+{"type": "state", "state": "CHECKING", "bbox": [137.10800170898438, 113.85174560546875, 255.2260284423828, 316.0657958984375], "frames_in_window": 1, "seq": 7}
+{"type": "state", "state": "CHECKING", "bbox": [97.91209411621094, 146.23793029785156, 230.0203857421875, 310.8901062011719], "frames_in_window": 2, "seq": 8}
+{"type": "result", "result": "OK", "door": "OPEN", "attendance": {"kind": "NONE"}, "message": "Đã nhận diện.", "employee": {"name": "Võ Thanh Tùng", "code": "NV006"}, "seq": 9}
+{"type": "state", "state": "CHECKING", "bbox": [93.62002563476562, 159.32965087890625, 255.81854248046875, 358.12274169921875], "frames_in_window": 1, "seq": 10}
+{"type": "state", "state": "CHECKING", "bbox": [111.18102264404297, 165.32528686523438, 246.54786682128906, 357.73968505859375], "frames_in_window": 2, "seq": 11}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 12}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 13}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 14}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 15}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 16}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 17}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 18}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 19}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 20}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 21}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 22}
+{"type": "state", "state": "CHECKING", "bbox": [112.00846862792969, 119.64369201660156, 252.79705810546875, 315.8983459472656], "frames_in_window": 1, "seq": 23}
+{"type": "state", "state": "CHECKING", "bbox": [137.10800170898438, 113.85174560546875, 255.2260284423828, 316.0657958984375], "frames_in_window": 2, "seq": 24}
+{"type": "result", "result": "ALREADY", "door": "OPEN", "attendance": {"kind": "NONE", "time": "2026-11-15T02:02:27.075465+00:00"}, "message": "Đã ghi nhận trước đó.", "employee": {"name": "Võ Thanh Tùng", "code": "NV006"}, "seq": 25}
+{"type": "state", "state": "CHECKING", "bbox": [71.43480682373047, 149.41799926757812, 241.65455627441406, 317.42254638671875], "frames_in_window": 1, "seq": 26}
+{"type": "state", "state": "CHECKING", "bbox": [93.62002563476562, 159.32965087890625, 255.81854248046875, 358.12274169921875], "frames_in_window": 2, "seq": 27}
+{"type": "result", "result": "ALREADY", "door": "OPEN", "attendance": {"kind": "NONE", "time": "2026-11-15T02:02:27.075465+00:00"}, "message": "Đã ghi nhận trước đó.", "employee": {"name": "Võ Thanh Tùng", "code": "NV006"}, "seq": 28}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 29}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 30}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 31}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 32}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 33}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 34}
+{"type": "config", "gate": {"id": "4e3ed065-b487-518a-ac94-31b21d23e1d8", "name": "Cửa chính", "mode": "ATTENDANCE_ACCESS"}, "research_banner": "Bản trình diễn nghiên cứu – không dùng thương mại", "max_fps": 4, "frame_long_side": 640, "jpeg_quality": 80, "result_display_sec": 3, "server_time": "2026-11-15T02:02:42.509413+00:00"}
+{"type": "state", "state": "CHECKING", "bbox": [135.82278442382812, 134.4202117919922, 226.43443298339844, 302.2041320800781], "frames_in_window": 1, "seq": 1}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 2}
+{"type": "state", "state": "CHECKING", "bbox": [162.96937561035156, 118.1063003540039, 195.48391723632812, 238.51512145996094], "frames_in_window": 2, "seq": 3}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 4}
+{"type": "state", "state": "CHECKING", "bbox": [137.80099487304688, 134.87547302246094, 210.35906982421875, 273.1927185058594], "frames_in_window": 3, "seq": 5}
+{"type": "state", "state": "CHECKING", "bbox": [147.59217834472656, 205.87014770507812, 179.1927490234375, 252.9295196533203], "frames_in_window": 4, "seq": 6}
+{"type": "result", "result": "DENY", "door": "DENY", "attendance": {"kind": "NONE"}, "message": "Không nhận diện được khuôn mặt.", "reason": "UNKNOWN", "seq": 7}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 8}
+{"type": "state", "state": "CHECKING", "bbox": [162.96937561035156, 118.1063003540039, 195.48391723632812, 238.51512145996094], "frames_in_window": 1, "seq": 9}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 10}
+{"type": "state", "state": "CHECKING", "bbox": [137.80099487304688, 134.87547302246094, 210.35906982421875, 273.1927185058594], "frames_in_window": 2, "seq": 11}
+{"type": "state", "state": "CHECKING", "bbox": [147.59217834472656, 205.87014770507812, 179.1927490234375, 252.9295196533203], "frames_in_window": 3, "seq": 12}

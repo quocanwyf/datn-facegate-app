@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     hub_data_dir: Path = Path('C:/facegate-data')
     infer_device: str = 'cpu'
     log_level: str = 'INFO'
+    enroll_max_cos_similarity: float = 0.98
 
 
 @lru_cache

@@ -1,0 +1,20 @@
+[
+  {
+    "result": "MATCH",
+    "model_id": "66d009af-8874-5f1f-af18-255856066f01",
+    "top1_score": 0.8180371,
+    "threshold_used": 0.42327544,
+    "threshold_level": "DEFAULT_VAL",
+    "n_frames": 3,
+    "has_snapshot": false
+  },
+  {
+    "result": "UNKNOWN",
+    "model_id": "66d009af-8874-5f1f-af18-255856066f01",
+    "top1_score": null,
+    "threshold_used": 0.42327544,
+    "threshold_level": "DEFAULT_VAL",
+    "n_frames": 5,
+    "has_snapshot": true
+  }
+]

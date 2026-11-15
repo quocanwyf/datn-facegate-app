@@ -21,8 +21,9 @@ class Detector:
         self.detector = YuNetDetector(score_threshold=0.6)
         self.min_face_px, self.max_abs_yaw_ratio = min_face_px, max_abs_yaw_ratio
 
-    def observe(self, img_bgr: np.ndarray) -> FrameObs:
-        faces = self.detector.detect(img_bgr)
+    def observe(self, img_bgr: np.ndarray, faces=None) -> FrameObs:
+        if faces is None:
+            faces = self.detector.detect(img_bgr)
         if not faces:
             return FrameObs(False, 'NO_FACE')
         face = max(faces, key=lambda item: item['box'][2] * item['box'][3])

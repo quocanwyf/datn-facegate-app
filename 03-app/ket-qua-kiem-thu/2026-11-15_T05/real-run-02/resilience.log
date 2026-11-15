@@ -1,0 +1,66 @@
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "cb50316b-2869-4f0c-9af6-e20b71e174e5", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 1}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "reason": "TOO_SIMILAR", "seq": 2}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "reason": "TOO_SIMILAR", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "error", "seq": 10, "code": "OPERATION_INCOMPLETE", "message": "Chưa hoàn tất thao tác. Vui lòng thử lại."}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "e5ef887d-1620-4947-8d61-46af7e6998c5", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 1}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 2}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 3}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 4}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 5}
+{"type": "state", "state": "CHECKING", "bbox": [112.00846862792969, 119.64369201660156, 252.79705810546875, 315.8983459472656], "frames_in_window": 1, "seq": 6}
+{"type": "state", "state": "CHECKING", "bbox": [137.10800170898438, 113.85174560546875, 255.2260284423828, 316.0657958984375], "frames_in_window": 2, "seq": 7}
+{"type": "result", "result": "DENY", "door": "DENY", "attendance": {"kind": "NONE"}, "message": "Không được phép qua cửa.", "employee": {"name": "Võ Thanh Tùng", "code": "NV006"}, "reason": "INACTIVE", "seq": 8}
+{
+  "too_similar_rejected_old_pending_preserved": true,
+  "disconnect_after_four_preserves_old_pending": true,
+  "file_write_failure_preserves_old_pending_and_samples": true,
+  "new_five_replace_pending_keep_active": true,
+  "suspended_denied_no_open": true,
+  "delete_failure_keeps_consent_revoked_no_gallery": true,
+  "delete_retry_completes": true,
+  "no_attendance_before_T09": true
+}
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):

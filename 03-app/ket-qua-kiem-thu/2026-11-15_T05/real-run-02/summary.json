@@ -1,0 +1,9 @@
+{
+  "real_enrollment_samples": 5,
+  "no_gallery_frames": 17,
+  "known_ok": 1,
+  "known_already": 0,
+  "unknown_denied": 1,
+  "events": 2,
+  "all_checks_passed": true
+}
