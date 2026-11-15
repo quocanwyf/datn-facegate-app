@@ -1,0 +1,11 @@
+{
+  "source_links_moved": 990,
+  "remaining_regular_files": [],
+  "source_exists": true,
+  "empty_directory_locks": [
+    {
+      "path": "C:\\Users\\NMinH\\OneDrive\\Desktop\\code\\datn-facegate-app",
+      "error": "[WinError 32] The process cannot access the file because it is being used by another process: 'C:\\\\Users\\\\NMinH\\\\OneDrive\\\\Desktop\\\\code\\\\datn-facegate-app'"
+    }
+  ]
+}
