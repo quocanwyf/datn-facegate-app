@@ -1,0 +1,142 @@
+[
+  {
+    "file": "change-password.png",
+    "bytes": 56833,
+    "sha256": "249be740cc1cd3e61df14eaa1910bec413159ed17f42c111ad34b5f56eda481a"
+  },
+  {
+    "file": "choose.png",
+    "bytes": 46292,
+    "sha256": "4c055e83dcf0d0d6429855603eae1f65d3d4d22e22d344d02a05f4434b6a4464"
+  },
+  {
+    "file": "employee-create.png",
+    "bytes": 155242,
+    "sha256": "49bc790f0c663102ff9b1b5285752e172ec7d68481b2ee0315fe6d3bebd25b71"
+  },
+  {
+    "file": "employee-terminate-error.png",
+    "bytes": 183716,
+    "sha256": "a85bddf670aa332c8dca7859dfe3dd7d938a9fa823b5c8e3018b34a603737287"
+  },
+  {
+    "file": "employees-desktop.png",
+    "bytes": 261335,
+    "sha256": "14357dafd4e6ae03d8f809fd51212b87381fac54259a99c73f9096e466d904e8"
+  },
+  {
+    "file": "employees-empty.png",
+    "bytes": 73572,
+    "sha256": "e563eed2cab2dea85d8e96d32356233def5dba6993249abd8621d0d923b5d8b4"
+  },
+  {
+    "file": "employees-manager.png",
+    "bytes": 174149,
+    "sha256": "b3888f582b0e49dadc5b1c1005491e70bde239daac859e735fb2b82d3c5cb6a6"
+  },
+  {
+    "file": "employees-navigation-tablet.png",
+    "bytes": 179589,
+    "sha256": "6ffd5f4a9507fb7cb0f4797bfb3dce06c60804c1aecd439e91efbfcf0132ecb7"
+  },
+  {
+    "file": "login-360.png",
+    "bytes": 40189,
+    "sha256": "e518839c5e145a5b6e41207dc3fd6f100c397f1f051ea3c639afa503a8cc358c"
+  },
+  {
+    "file": "login-390.png",
+    "bytes": 41227,
+    "sha256": "6c4c627bd7aa7d49d484456566003734aef9243814aaf07db63811f948a166c0"
+  },
+  {
+    "file": "login-430.png",
+    "bytes": 41277,
+    "sha256": "9640b1be49c916b20f69eead3077ec2b14eb058aa4f056627a0c3aeb9d0d70fc"
+  },
+  {
+    "file": "login-desktop.png",
+    "bytes": 51351,
+    "sha256": "0a2dbe08f1d184c2cd76bb808c1ae9bcd9b1f637031fa38216f218aae0d86631"
+  },
+  {
+    "file": "login-error.png",
+    "bytes": 56031,
+    "sha256": "fab0a21276e04e49331f72352e7560be6a3b0f4313e36e5a280e8478ae91e39c"
+  },
+  {
+    "file": "login-filled.png",
+    "bytes": 55400,
+    "sha256": "b47d55bfa3b20a9e48cb41bdbe2a566cecdd7d43cb18612951494562b0003135"
+  },
+  {
+    "file": "W02-dashboard.png",
+    "bytes": 8766,
+    "sha256": "3f6b865a2ce8ca66570a0bcd7206375deb9c04c995da50211116759cbc4d12ac"
+  },
+  {
+    "file": "W03-employees.png",
+    "bytes": 258237,
+    "sha256": "039fd1e81444deafa1772a625a089fd0ec98a51939c05207b35a4f57613bc04d"
+  },
+  {
+    "file": "W04-face-masked.png",
+    "bytes": 81257,
+    "sha256": "2791cf05dbb928e4cac5a3efa979d3e3629d2e018812f0fa973bba629e54e5a5"
+  },
+  {
+    "file": "W04-info.png",
+    "bytes": 74709,
+    "sha256": "f972b4c677bd3ff04acd26ab63a774ee51d91188eb588a6a5c754de69a6f602f"
+  },
+  {
+    "file": "W05-departments.png",
+    "bytes": 101964,
+    "sha256": "a50e6b9432e2e5d66e398545366e444aab081cf573e44111fabf72a3b133c54f"
+  },
+  {
+    "file": "W05-users.png",
+    "bytes": 274307,
+    "sha256": "31194f851549029e06f43a34ebf78d763279759a8573d5d2435e76848cd3d259"
+  },
+  {
+    "file": "W07-gates.png",
+    "bytes": 121778,
+    "sha256": "5571ab4ee0f54f2d05e804f0e28079f8efd681d06259de7ad09b201566dda2b2"
+  },
+  {
+    "file": "W07-HR-policy.png",
+    "bytes": 112378,
+    "sha256": "d44b60e9370bef9977e2875c6832845ec895b3740803e1029ad3dee25c7ad38a"
+  },
+  {
+    "file": "W07-pairing.png",
+    "bytes": 155746,
+    "sha256": "83abdc9d5507a2f7f6eaf4230c3ca83d06aaffb3af780c156fd6895372c031a2"
+  },
+  {
+    "file": "W08-approved-empty.png",
+    "bytes": 68689,
+    "sha256": "9ebe8f5e5d663fd2ac46f991168757f9d4e4e9b4598d3d940aa2c5896170df90"
+  },
+  {
+    "file": "W08-pending-masked.png",
+    "bytes": 90546,
+    "sha256": "1f11e196208b5314f8633779f87bf505e28872740efb237e36ffe3c85f2f6759"
+  },
+  {
+    "file": "W14-HR-readonly.png",
+    "bytes": 222814,
+    "sha256": "290d46f2710c98a089e950235d42a79278613d2de44fd5f808870e25497d0f9d"
+  },
+  {
+    "file": "W14-settings.png",
+    "bytes": 220149,
+    "sha256": "7271779c36ce09f9545846711014e504ea65220f7c895087ebfd09a90084736f"
+  },
+  {
+    "file": "W16-audit.png",
+    "bytes": 101048,
+    "sha256": "7077d52eedf6b7979d60d538cf5d725e98e72278d172103ec4216a27a0c5b62f"
+  }
+]

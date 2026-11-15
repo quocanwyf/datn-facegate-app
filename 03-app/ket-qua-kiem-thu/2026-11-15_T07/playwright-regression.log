@@ -1,0 +1,133 @@
+$ playwright test
+[WebServer] (node:25568) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 33 tests using 1 worker
+
+(node:32076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\auth.spec.ts:5:1 › Desktop: font tiếng Việt, nhãn, validation và hiện mật khẩu (24.8s)
+  ok  2 tests\auth.spec.ts:33:3 › Mobile 360px: không cuộn ngang, nút đăng nhập nhìn thấy (14.2s)
+  ok  3 tests\auth.spec.ts:33:3 › Mobile 390px: không cuộn ngang, nút đăng nhập nhìn thấy (19.0s)
+  ok  4 tests\auth.spec.ts:33:3 › Mobile 430px: không cuộn ngang, nút đăng nhập nhìn thấy (12.5s)
+  ok  5 tests\auth.spec.ts:43:3 › API 401: thông báo lỗi và cho thử lại (19.4s)
+  ok  6 tests\auth.spec.ts:43:3 › API 429: thông báo lỗi và cho thử lại (8.0s)
+  ok  7 tests\auth.spec.ts:43:3 › API 503: thông báo lỗi và cho thử lại (7.6s)
+  ok  8 tests\auth.spec.ts:52:1 › Lỗi mạng: không báo đăng nhập thành công (13.5s)
+  x   9 tests\auth.spec.ts:59:1 › Đang gửi: khóa biểu mẫu và chỉ gửi một request (31.5s)
+(node:29288) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] 10:24:45 AM [vite] http proxy error: /api/v1/dashboard/today
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[WebServer] 10:24:45 AM [vite] http proxy error: /api/v1/events?page=1&size=10
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[WebServer] 10:24:45 AM [vite] http proxy error: /api/v1/health
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+  ok 10 tests\auth.spec.ts:71:3 › Đăng nhập OWNER: lựa chọn đúng quyền (8.7s)
+[WebServer] 10:24:55 AM [vite] http proxy error: /api/v1/dashboard/today
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[WebServer] 10:24:55 AM [vite] http proxy error: /api/v1/events?page=1&size=10
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[WebServer] 10:24:55 AM [vite] http proxy error: /api/v1/health
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+  ok 11 tests\auth.spec.ts:71:3 › Đăng nhập HR: lựa chọn đúng quyền (10.0s)
+[WebServer] 10:24:58 AM [vite] http proxy error: /api/v1/health
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+  ok 12 tests\auth.spec.ts:71:3 › Đăng nhập SECURITY: lựa chọn đúng quyền (3.1s)
+[WebServer] 10:25:00 AM [vite] http proxy error: /api/v1/health
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+  ok 13 tests\auth.spec.ts:71:3 › Đăng nhập MANAGER: lựa chọn đúng quyền (2.0s)
+  ok 14 tests\auth.spec.ts:71:3 › Đăng nhập EMPLOYEE: lựa chọn đúng quyền (4.4s)
+[WebServer] 10:25:07 AM [vite] http proxy error: /api/v1/dashboard/today
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[WebServer] 10:25:07 AM [vite] http proxy error: /api/v1/events?page=1&size=10
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+[WebServer] 10:25:07 AM [vite] http proxy error: /api/v1/health
+[WebServer] Error: connect ECONNREFUSED 127.0.0.1:8000
+[WebServer]     at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1705:16)
+  ok 15 tests\auth.spec.ts:87:1 › Quản trị không gắn nhân viên: vào admin, không vào /me (2.2s)
+  ok 16 tests\auth.spec.ts:94:1 › Đổi mật khẩu lần đầu: bắt buộc, kiểm xác nhận và đăng nhập lại (2.3s)
+  ok 17 tests\auth.spec.ts:115:1 › Đăng xuất: gửi refresh token, xóa phiên và chặn trang riêng (2.6s)
+  ok 18 tests\employees.spec.ts:23:1 › W-03: 24 nhân viên từ seed, 20/trang, ngày và trạng thái tiếng Việt (4.7s)
+  x  19 tests\employees.spec.ts:38:1 › Tìm kiếm và kết hợp bộ lọc gửi đúng hợp đồng, đổi lọc về trang 1 (16.8s)
+(node:1860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 20 tests\employees.spec.ts:55:1 › Phòng ban và hồ sơ khuôn mặt lọc tại API; không giả hồ sơ ACTIVE (8.9s)
+  ok 21 tests\employees.spec.ts:66:1 › Thêm: validation, trùng mã giữ form, tạo tài khoản/mật khẩu tạm một lần (16.7s)
+  ok 22 tests\employees.spec.ts:91:1 › Sửa: mã khóa và PATCH không chứa code/trạng thái (5.8s)
+  ok 23 tests\employees.spec.ts:102:1 › Tạm khóa/mở khóa: không gửi thao tác xóa khuôn mặt (3.8s)
+  ok 24 tests\employees.spec.ts:109:1 › Nghỉ việc: hủy không gửi; lỗi 503 giữ hộp thoại; thử lại mới báo thành công (6.5s)
+  ok 25 tests\employees.spec.ts:126:1 › MANAGER: chỉ đọc team, không có nút thêm/menu ghi (8.6s)
+  ok 26 tests\employees.spec.ts:139:1 › Lỗi danh sách: thử lại; 403 không hiển thị bảng cũ (10.5s)
+  ok 27 tests\employees.spec.ts:151:1 › Dưới 1024px: Drawer điều hướng và bảng cuộn trong panel (7.0s)
+  ok 28 tests\employees.spec.ts:160:1 › Đang lưu: chặn gửi lặp và đóng Drawer (4.6s)
+  ok 29 tests\employees.spec.ts:171:1 › SECURITY: ẩn menu nhân viên và chặn URL trực tiếp trước khi gọi API (1.8s)
+  ok 30 tests\employees.spec.ts:180:1 › Danh sách trống: trạng thái riêng và vẫn có hành động thêm (1.8s)
+  ok 31 tests\employees.spec.ts:189:1 › HR: có thao tác ghi, không có Nhật ký chỉ dành OWNER (2.7s)
+  ok 32 tests\session.spec.ts:3:1 › 401 đồng thời chỉ xoay refresh một lần, retry với access mới (3.2s)
+  ok 33 tests\session.spec.ts:18:1 › Refresh bị thu hồi: xóa phiên và chặn trang riêng (1.6s)
+
+
+  1) tests\auth.spec.ts:59:1 › Đang gửi: khóa biểu mẫu và chỉ gửi một request ──────────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Email', { exact: true })
+
+
+       at fixtures.ts:14
+
+      12 | }
+      13 | export async function fillLogin(page: Page, email = 'review@example.test') {
+    > 14 |   await page.getByLabel('Email', { exact: true }).fill(email);
+         |                                                   ^
+      15 |   await page.getByLabel('Mật khẩu', { exact: true }).fill('Review123!');
+      16 | }
+      17 | export async function mockLogin(page: Page, value = token()) {
+        at fillLogin (C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\web\tests\fixtures.ts:14:51)
+        at C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\web\tests\auth.spec.ts:64:36
+
+    Error Context: test-results\auth-Đang-gửi-khóa-biểu-mẫu-và-chỉ-gửi-một-request\error-context.md
+
+  2) tests\employees.spec.ts:38:1 › Tìm kiếm và kết hợp bộ lọc gửi đúng hợp đồng, đổi lọc về trang 1 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('NV024', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('NV024', { exact: true }) with timeout 5000ms
+      - waiting for getByText('NV024', { exact: true })
+
+
+      38 | test('Tìm kiếm và kết hợp bộ lọc gửi đúng hợp đồng, đổi lọc về trang 1', async ({ page }) => {
+      39 |   const state = await employeeApi(page); await openEmployees(page);
+    > 40 |   await page.getByTitle('2', { exact: true }).click(); await expect(page.getByText('NV024', { exact: true })).toBeVisible();
+         |                                                                                                               ^
+      41 |   await page.getByRole('combobox', { name: 'Lọc trạng thái', exact: true }).click();
+      42 |   await page.getByText('Tạm khoá', { exact: true }).last().click();
+      43 |   await expect(page.getByText('1–1 / 1 nhân viên')).toBeVisible();
+        at C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\web\tests\employees.spec.ts:40:111
+
+    Error Context: test-results\employees-Tìm-kiếm-và-kết--9ff63-hợp-đồng-đổi-lọc-về-trang-1\error-context.md
+
+  2 failed
+    tests\auth.spec.ts:59:1 › Đang gửi: khóa biểu mẫu và chỉ gửi một request ───────────────────────
+    tests\employees.spec.ts:38:1 › Tìm kiếm và kết hợp bộ lọc gửi đúng hợp đồng, đổi lọc về trang 1 
+  31 passed (6.5m)
+[ELIFECYCLE] Command failed with exit code 1.

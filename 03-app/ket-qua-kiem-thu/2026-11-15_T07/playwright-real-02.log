@@ -1,0 +1,65 @@
+[WebServer] (node:12704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:25260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\admin-real.spec.ts:12:3 › Hub thật: menu và route OWNER (25.6s)
+  ok 2 tests\admin-real.spec.ts:12:3 › Hub thật: menu và route HR (13.8s)
+  ok 3 tests\admin-real.spec.ts:12:3 › Hub thật: menu và route SECURITY (19.7s)
+  ok 4 tests\admin-real.spec.ts:12:3 › Hub thật: menu và route MANAGER (17.8s)
+  ok 5 tests\admin-real.spec.ts:12:3 › Hub thật: menu và route EMPLOYEE (22.1s)
+  x  6 tests\admin-real.spec.ts:18:1 › Hub thật: các màn lõi, font tiếng Việt, tạo phòng ban và QR ghép (27.3s)
+(node:33268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  7 tests\admin-real.spec.ts:30:1 › Hub thật: HR chỉ gửi policy/departments, W14 chỉ xem (6.3s)
+(node:28572) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 8 tests\admin-real.spec.ts:37:1 › Hub thật: duyệt bộ 5 ảnh U03, gallery thực sự thay đổi (13.1s)
+
+
+  1) tests\admin-real.spec.ts:18:1 › Hub thật: các màn lõi, font tiếng Việt, tạo phòng ban và QR ghép 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('NV001', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('NV001', { exact: true }) with timeout 5000ms
+      - waiting for getByText('NV001', { exact: true })
+
+
+      18 | test('Hub thật: các màn lõi, font tiếng Việt, tạo phòng ban và QR ghép', async ({ page }) => {
+      19 |   await login(page, 1); await screenshot(page, 'W02-dashboard');
+    > 20 |   await route(page, '/admin/employees'); await expect(page.getByText('NV001', { exact: true })).toBeVisible(); await screenshot(page, 'W03-employees');
+         |                                                                                                 ^
+      21 |   await route(page, `/admin/employees/${inputs.employee_id}`); await expect(page.getByRole('tab', { name: 'Thông tin', exact: true })).toBeVisible(); await screenshot(page, 'W04-info');
+      22 |   await page.getByRole('tab', { name: 'Khuôn mặt', exact: true }).click(); await expect(page.getByAltText('Ảnh mẫu đăng ký khuôn mặt')).toHaveCount(5); await screenshot(page, 'W04-face-masked');
+      23 |   await route(page, '/admin/organization'); await page.getByRole('button', { name: 'Thêm phòng ban', exact: true }).click(); await page.getByLabel('Tên phòng ban', { exact: true }).fill('Nghiệm thu T07'); await page.getByRole('button', { name: 'Lưu phòng ban', exact: true }).click(); await expect(page.getByRole('dialog')).toHaveCount(0); await screenshot(page, 'W05-departments');
+        at C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\web\tests\admin-real.spec.ts:20:97
+
+    Error Context: test-results\admin-real-Hub-thật-các-mà-d048d-ệt-tạo-phòng-ban-và-QR-ghép\error-context.md
+
+  2) tests\admin-real.spec.ts:30:1 › Hub thật: HR chỉ gửi policy/departments, W14 chỉ xem ──────────
+
+    TypeError: Cannot convert undefined or null to object
+
+      31 |   await login(page, 2); await route(page, '/admin/gates'); await expect(page.getByLabel('Tên cửa', { exact: true })).toBeDisabled(); await expect(page.getByRole('button', { name: 'Thêm cửa', exact: true })).toHaveCount(0);
+      32 |   const request = page.waitForRequest(request => request.method() === 'PATCH' && request.url().includes('/gates/'));
+    > 33 |   await page.getByRole('button', { name: 'Lưu cửa', exact: true }).click(); expect(Object.keys((await request).postDataJSON())).toEqual(['default_policy']); await expect(page.getByRole('status').filter({ hasText: 'Đã lưu cửa' })).toBeVisible(); await screenshot(page, 'W07-HR-policy');
+         |                                                                                           ^
+      34 |   await route(page, '/admin/settings'); await expect(page.getByText('Bạn chỉ có quyền xem cấu hình.')).toBeVisible(); await expect(page.getByRole('button', { name: 'Lưu cấu hình' })).toHaveCount(0); await screenshot(page, 'W14-HR-readonly');
+      35 |   await route(page, '/admin/organization'); await page.getByRole('tab', { name: 'Tài khoản', exact: true }).click(); await expect(page.getByRole('button', { name: 'Sửa tài khoản nv001@demo.local', exact: true })).toHaveCount(0);
+      36 | });
+        at C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\web\tests\admin-real.spec.ts:33:91
+
+    Error Context: test-results\admin-real-Hub-thật-HR-chỉ-de014-icy-departments-W14-chỉ-xem\error-context.md
+
+  2 failed
+    tests\admin-real.spec.ts:18:1 › Hub thật: các màn lõi, font tiếng Việt, tạo phòng ban và QR ghép 
+    tests\admin-real.spec.ts:30:1 › Hub thật: HR chỉ gửi policy/departments, W14 chỉ xem ───────────
+  6 passed (5.2m)

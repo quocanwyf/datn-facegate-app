@@ -1,0 +1,257 @@
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "b3ecc814-6048-45a7-9352-f27c4919e6e8", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+T07_READY port=8007 database=facegate_t07_20261115101641
+INFO:     Started server process [26440]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8007 (Press CTRL+C to quit)
+INFO:     127.0.0.1:64241 - "POST /api/v1/auth/login HTTP/1.1" 500 Internal Server Error
+Exception terminating connection <AdaptedConnection <asyncpg.connection.Connection object at 0x000001FD62C06150>>
+Traceback (most recent call last):
+  File "asyncpg/protocol/protocol.pyx", line 585, in asyncpg.protocol.protocol.BaseProtocol.close
+  File "asyncpg/protocol/protocol.pyx", line 677, in _drain_cancels
+    self._request_cancel()
+  File "asyncpg/protocol/protocol.pyx", line 624, in asyncpg.protocol.protocol.BaseProtocol._request_cancel
+    con._cancel_current_command(
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\asyncpg\connection.py", line 1712, in _cancel_current_command
+    self._cancellations.add(self._loop.create_task(
+                            ~~~~~~~~~~~~~~~~~~~~~~^
+        self._cancel(waiter, cancel_waiter)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py", line 466, in create_task
+    self._check_closed()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py", line 556, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 370, in _close_connection
+    self._dialect.do_terminate(connection)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 1175, in do_terminate
+    dbapi_connection.terminate()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\connectors\asyncio.py", line 440, in terminate
+    await_(asyncio.shield(self._terminate_graceful_close()))
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\util\concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\util\concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 940, in _terminate_graceful_close
+    await self._connection.close(timeout=2)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\asyncpg\connection.py", line 1536, in close
+    await self._protocol.close(timeout)
+  File "asyncpg/protocol/protocol.pyx", line 614, in close
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 424, in abort
+    self._force_close(None)
+    ~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 152, in _force_close
+    self._loop.call_soon(self._call_connection_lost, exc)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py", line 833, in call_soon
+    self._check_closed()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py", line 556, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py", line 833, in call_soon
+    self._check_closed()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py", line 556, in _check_closed
+    raise RuntimeError('Event loop is closed')
+RuntimeError: Event loop is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\uvicorn\protocols\http\h11_impl.py", line 411, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\applications.py", line 1194, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\telemetry\_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\middleware\cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\middleware\cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 1839, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 2894, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 1865, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 1328, in handle
+    await effective_context.app(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\app\api\auth.py", line 38, in login
+    account = await session.scalar(select(UserAccount).where(func.lower(UserAccount.email) == str(body.email).lower()).with_for_update())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 721, in scalar
+    return await greenlet_spawn(
+           ^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\util\concurrency.py", line 210, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2616, in scalar
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        **kw,
+        ^^^^^
+    )
+    ^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2432, in _execute_internal
+    conn = self._connection_for_bind(bind)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2255, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._connection_for_bind>", line 2, in _connection_for_bind
+    return target(fn, self, bind, execution_options)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1282, in _connection_for_bind
+    conn = bind.connect()
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3279, in connect
+    return self._connection_cls(self)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 154, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 3303, in raw_connection
+    return self.pool.connect()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 445, in connect
+    return _ConnectionFairy._checkout(self)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1439, in _checkout
+    with util.safe_reraise():
+         ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\pool\base.py", line 1377, in _checkout
+    result = pool._dialect._do_ping_w_event(
+        fairy.dbapi_connection
+    )
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 968, in _do_ping_w_event
+    return self.do_ping(dbapi_connection)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 1208, in do_ping
+    dbapi_connection.ping()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 864, in ping
+    self._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 847, in _handle_exception
+    super()._handle_exception(error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\connectors\asyncio.py", line 412, in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 841, in _handle_exception_no_connection
+    super()._handle_exception_no_connection(dbapi, error)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\connectors\asyncio.py", line 409, in _handle_exception_no_connection
+    raise error.with_traceback(exc_info[2])
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 862, in ping
+    _ = await_(self._async_ping())
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\util\concurrency.py", line 167, in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\util\concurrency.py", line 205, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 871, in _async_ping
+    await tr.start()
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\asyncpg\transaction.py", line 146, in start
+    await self._connection.execute(query)
+  File "C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\asyncpg\connection.py", line 377, in execute
+    result = await self._protocol.query(query, timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 341, in query
+    return await waiter
+  File "asyncpg/protocol/protocol.pyx", line 334, in asyncpg.protocol.protocol.BaseProtocol.query
+    self._simple_query(query)  # network op
+  File "asyncpg/protocol/coreproto.pyx", line 1180, in asyncpg.protocol.protocol.CoreProtocol._simple_query
+  File "asyncpg/protocol/protocol.pyx", line 980, in asyncpg.protocol.protocol.BaseProtocol._write
+    self.transport.write(memoryview(buf))
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 366, in write
+    self._loop_writing(data=bytes(data))
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\proactor_events.py", line 402, in _loop_writing
+    self._write_fut = self._loop._proactor.send(self._sock, data)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send'
+C:\Users\NMinH\AppData\Roaming\uv\python\cpython-3.13-windows-x86_64-none\Lib\asyncio\base_events.py:1063: RuntimeWarning: coroutine 'Connection._cancel' was never awaited
+  async def create_connection(
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     127.0.0.1:64265 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64270 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64271 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64269 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64281 - "POST /api/v1/auth/login HTTP/1.1" 200 OK

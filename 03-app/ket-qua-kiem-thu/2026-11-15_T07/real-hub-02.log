@@ -1,0 +1,62 @@
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "2354a2c2-2529-47a5-8515-953af7cf8eac", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+T07_READY port=8007 database=facegate_t07_20261115101911
+INFO:     Started server process [10472]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8007 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59712 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59719 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59720 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59718 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56683 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56690 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56691 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56689 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56715 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56718 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56731 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56740 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50251 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51824 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51830 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:51831 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51829 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51843 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51842 - "GET /api/v1/employees?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57708 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57709 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57707 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57712 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57710 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57713 - "GET /api/v1/models/active HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57716 - "PATCH /api/v1/gates/4e3ed065-b487-518a-ac94-31b21d23e1d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57718 - "PUT /api/v1/gates/4e3ed065-b487-518a-ac94-31b21d23e1d8/allowed-departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57734 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57736 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57737 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57735 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57740 - "GET /api/v1/face-profiles?status=PENDING_REVIEW&page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57746 - "GET /api/v1/face-samples/0c9d11bd-7946-4f40-9b4c-349e105c93cf/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57752 - "GET /api/v1/face-samples/71e0c488-1f79-471c-bb9c-b0f75e07883a/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57750 - "GET /api/v1/face-samples/549917d0-6df3-4ce2-8c09-ae8b1196af93/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57754 - "GET /api/v1/face-samples/fd40bf83-6be2-4160-81ce-84396d32e54d/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57753 - "GET /api/v1/face-samples/abbff5d2-c423-44b1-b1fd-ee6a688d29ec/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57761 - "POST /api/v1/face-profiles/2354a2c2-2529-47a5-8515-953af7cf8eac/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57763 - "GET /api/v1/face-profiles?status=PENDING_REVIEW&page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57770 - "GET /api/v1/health HTTP/1.1" 200 OK

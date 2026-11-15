@@ -1,0 +1,30 @@
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--c-text); font-family: var(--font-body); background: var(--c-bg); }
+button, input { font: inherit; }
+.auth-page { min-height: 100svh; background: var(--g-hero-mist); display: flex; flex-direction: column; align-items: center; padding: 48px 24px 24px; }
+.brand { display: flex; align-items: center; gap: 10px; font: 600 22px var(--font-heading); letter-spacing: -.7px; margin-bottom: auto; color: var(--c-on-primary-soft); }
+.brand-icon { width: 40px; height: 40px; border-radius: var(--r-lg); background: var(--c-surface); display: grid; place-items: center; }
+.auth-card { width: 100%; max-width: 400px; padding: 32px; margin: 48px 0; border-radius: var(--r-2xl); background: var(--c-surface); }
+.card-emblem { width: 48px; height: 48px; border-radius: var(--r-xl); color: var(--c-primary); background: var(--c-primary-soft); display: grid; place-items: center; margin-bottom: 24px; }
+.section-kicker { font-size: 11px; font-weight: 600; letter-spacing: 1.3px; color: var(--c-text-2); margin-bottom: 8px; }
+.auth-card h2.ant-typography { font: 500 28px/1.35 var(--font-heading); letter-spacing: -.8px; margin: 0 0 12px; }
+.intro { margin-bottom: 28px !important; }
+.inset-field { position: relative; }
+.inset-field .ant-form-item-label { position: absolute; top: 6px; left: 12px; z-index: 2; padding: 0; pointer-events: none; }
+.inset-field .ant-form-item-label > label { height: auto; font-size: 11px; color: var(--c-text-2); }
+.inset-field .ant-input { height: 56px; padding: 23px 12px 7px; }
+.password-field .ant-input-affix-wrapper { height: 56px; padding: 23px 12px 7px; }
+.password-field .ant-input-affix-wrapper input.ant-input { height: auto; padding: 0; }
+.auth-card button.ant-input-password-icon { display: grid; place-items: center; padding: 4px; border: 0; background: transparent; color: var(--c-text-2); cursor: pointer; }
+.auth-card button.ant-input-password-icon:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; border-radius: var(--r-sm); }
+.ant-form-item { margin-bottom: 20px; }
+.auth-card .ant-btn-primary { margin-top: 4px; }
+.card-footer { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--c-border); font-size: 11px; color: var(--c-text-2); }
+.footer-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--c-primary); }
+.page-footer { margin-top: auto; text-align: center; display: flex; flex-direction: column; gap: 6px; font-size: 11px; color: var(--c-text-2); }
+.page-footer .ant-typography { font-size: 12px; }
+.feedback { margin-bottom: 20px; }
+.actions { display: grid; gap: 12px; }
+.auth-card > .ant-btn { margin-top: 12px; }
+.logout-button { color: var(--c-text-2); }
+@media (max-width: 480px) { .auth-page { padding: 28px 16px 20px; } .auth-card { padding: 28px 24px; margin: 32px 0; } }

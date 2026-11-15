@@ -1,0 +1,119 @@
+D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "0a2a7349-b842-4c5c-880a-eaafce37b7ef", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+T07_READY port=8007 database=facegate_t07_20261115141502
+INFO:     Started server process [32992]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8007 (Press CTRL+C to quit)
+INFO:     127.0.0.1:54703 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54707 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54708 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54706 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54717 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54720 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54721 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54719 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54729 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54730 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54738 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54740 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54756 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54759 - "GET /api/v1/events?page=1&size=10 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54760 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54758 - "GET /api/v1/dashboard/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54762 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54761 - "GET /api/v1/employees?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54764 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54766 - "GET /api/v1/employees/194b8035-f397-526e-8680-e269b02863fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54767 - "GET /api/v1/face-profiles?employee_id=194b8035-f397-526e-8680-e269b02863fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54772 - "GET /api/v1/face-samples/2b1aa400-fbf2-46b5-8782-dfab2190ea83/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54775 - "GET /api/v1/face-samples/4790ee87-b1a7-44fe-996f-e8f282fee941/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54776 - "GET /api/v1/face-samples/4da181b1-85cd-4890-bc78-d798c60bbec8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54778 - "GET /api/v1/face-samples/8e968285-a820-422a-a655-227f3d90589b/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54777 - "GET /api/v1/face-samples/635aead7-5758-4eb2-a5a9-f1a40e635783/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54786 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54783 - "GET /api/v1/users?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54785 - "GET /api/v1/users?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54788 - "POST /api/v1/departments HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54793 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54794 - "GET /api/v1/users?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54791 - "GET /api/v1/users?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54800 - "GET /api/v1/models/active HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54799 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54797 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54802 - "GET /api/v1/devices?gate_id=4e3ed065-b487-518a-ac94-31b21d23e1d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54804 - "POST /api/v1/devices HTTP/1.1" 201 Created
+INFO:     127.0.0.1:54808 - "GET /api/v1/devices?gate_id=4e3ed065-b487-518a-ac94-31b21d23e1d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54807 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54814 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54812 - "GET /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54813 - "GET /api/v1/models/active HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54818 - "GET /api/v1/audit-logs?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54817 - "GET /api/v1/users?size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54826 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54831 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54830 - "GET /api/v1/models/active HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54828 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54829 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54832 - "PATCH /api/v1/gates/4e3ed065-b487-518a-ac94-31b21d23e1d8 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54833 - "PUT /api/v1/gates/4e3ed065-b487-518a-ac94-31b21d23e1d8/allowed-departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54837 - "GET /api/v1/devices?gate_id=4e3ed065-b487-518a-ac94-31b21d23e1d8 HTTP/1.1" 403 Forbidden
+INFO:     127.0.0.1:54836 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54843 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54840 - "GET /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54842 - "GET /api/v1/models/active HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54849 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54846 - "GET /api/v1/users?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54848 - "GET /api/v1/users?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54857 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54860 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54859 - "GET /api/v1/face-profiles?status=PENDING_REVIEW&page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54863 - "GET /api/v1/face-samples/4790ee87-b1a7-44fe-996f-e8f282fee941/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54864 - "GET /api/v1/face-samples/4da181b1-85cd-4890-bc78-d798c60bbec8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54861 - "GET /api/v1/face-samples/2b1aa400-fbf2-46b5-8782-dfab2190ea83/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54865 - "GET /api/v1/face-samples/635aead7-5758-4eb2-a5a9-f1a40e635783/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54866 - "GET /api/v1/face-samples/8e968285-a820-422a-a655-227f3d90589b/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54868 - "POST /api/v1/face-profiles/0a2a7349-b842-4c5c-880a-eaafce37b7ef/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54870 - "GET /api/v1/face-profiles?status=PENDING_REVIEW&page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54872 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49162 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49164 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49166 - "POST /api/v1/devices HTTP/1.1" 201 Created
+INFO:     127.0.0.1:49168 - "POST /api/v1/kiosk/pair HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49171 - "WebSocket /api/v1/ws/kiosk" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49179 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49183 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49181 - "GET /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49182 - "GET /api/v1/models/active HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49185 - "GET /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49186 - "PUT /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49187 - "GET /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49189 - "PUT /api/v1/settings/recognition HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49191 - "POST /api/v1/devices/6f662818-ea6e-4403-80e3-4f9bfe73db00/revoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49199 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49204 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49203 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49201 - "GET /api/v1/users?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49202 - "GET /api/v1/users?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49205 - "PATCH /api/v1/departments/b131e312-b5a7-44d9-ab86-79c15ae611bb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49209 - "GET /api/v1/departments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49206 - "GET /api/v1/users?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49210 - "GET /api/v1/users?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49212 - "POST /api/v1/departments HTTP/1.1" 409 Conflict

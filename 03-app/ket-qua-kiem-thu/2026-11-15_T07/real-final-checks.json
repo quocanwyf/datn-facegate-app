@@ -1,0 +1,66 @@
+{
+  "invalid_settings": [
+    {
+      "input": {
+        "window_size": 1.5
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    },
+    {
+      "input": {
+        "match_min": 2.5
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    },
+    {
+      "input": {
+        "spoof_min": 0
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    },
+    {
+      "input": {
+        "unknown_min": 6
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    },
+    {
+      "input": {
+        "anti_spoof_enabled": true,
+        "liveness_threshold": -0.1
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    },
+    {
+      "input": {
+        "anti_spoof_enabled": true,
+        "liveness_threshold": 1.1
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    },
+    {
+      "input": {
+        "anti_spoof_enabled": true,
+        "liveness_threshold": null
+      },
+      "status": 422,
+      "configuration_unchanged": true
+    }
+  ],
+  "default_window_counts": [
+    5,
+    3,
+    4,
+    3
+  ],
+  "screenshot_pairing_codes_revoked": [
+    "5779858e-3ca8-4518-823e-a19677ca1efb"
+  ],
+  "gallery_after_approval": 1
+}

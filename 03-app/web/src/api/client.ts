@@ -1,9 +1,10 @@
 import createClient from 'openapi-fetch';
 import type { components, paths } from './schema';
+import { authenticatedFetch } from '../shared/session';
 
 export type Session = components['schemas']['TokenPair'];
 export type User = components['schemas']['UserMe'];
-export const api = createClient<paths>({ baseUrl: '/api/v1' });
+export const api = createClient<paths>({ baseUrl: '/api/v1', fetch: authenticatedFetch });
 let accessToken: (() => string | undefined) = () => undefined;
 export function configureAccessToken(provider: () => string | undefined) {
   accessToken = provider;

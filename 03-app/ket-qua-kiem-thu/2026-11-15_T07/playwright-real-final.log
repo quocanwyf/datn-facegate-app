@@ -1,0 +1,19 @@
+[WebServer] (node:7220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:7356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\admin-real.spec.ts:16:3 › Hub thật: menu và route OWNER (3.7s)
+  ok  2 tests\admin-real.spec.ts:16:3 › Hub thật: menu và route HR (1.2s)
+  ok  3 tests\admin-real.spec.ts:16:3 › Hub thật: menu và route SECURITY (1.2s)
+  ok  4 tests\admin-real.spec.ts:16:3 › Hub thật: menu và route MANAGER (1.1s)
+  ok  5 tests\admin-real.spec.ts:16:3 › Hub thật: menu và route EMPLOYEE (889ms)
+  ok  6 tests\admin-real.spec.ts:22:1 › Hub thật: các màn lõi, font tiếng Việt, tạo phòng ban và QR ghép (7.3s)
+  ok  7 tests\admin-real.spec.ts:34:1 › Hub thật: HR chỉ gửi policy/departments, W14 chỉ xem (2.6s)
+  ok  8 tests\admin-real.spec.ts:41:1 › Hub thật: duyệt bộ 5 ảnh U03, gallery thực sự thay đổi (1.6s)
+  ok  9 tests\admin-real.spec.ts:55:1 › Hub thật: OWNER lưu cấu hình nguyên khối và Kiosk nhận config (2.5s)
+  ok 10 tests\admin-real.spec.ts:86:1 › Hub thật: sửa phòng ban và chặn tên trùng, giữ biểu mẫu (3.4s)
+
+  10 passed (28.8s)
