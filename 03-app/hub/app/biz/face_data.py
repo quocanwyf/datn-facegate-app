@@ -6,11 +6,14 @@ from app.biz.files import delete_private
 from app.db.models import AuditLog, EventHandling, FaceProfile, FaceSample, RecognitionEvent
 
 
-async def withdraw_consent(app, session, employee, user_id):
+async def withdraw_consent(app, session, employee, user_id, action='FACE_CONSENT_WITHDRAW'):
     from app.api.kiosk import employee_view
     runtime = getattr(app.state, 'recognition', None)
+    completion=None
     if runtime:
-        runtime.paused.set()
+        # Xóa toàn bộ sinh trắc hoàn tất được cả cleanup review cũ của nhân viên.
+        prefix=f'employee/{employee.id}/'
+        completion=runtime.mutations.begin(prefix+'delete',supersede_prefix=prefix)
     profile_ids = list((await session.scalars(select(FaceProfile.id).where(FaceProfile.employee_id == employee.id))).all())
     paths = list((await session.scalars(select(FaceSample.image_path).where(FaceSample.profile_id.in_(profile_ids)))).all()) if profile_ids else []
     events = (await session.execute(select(RecognitionEvent.id, RecognitionEvent.snapshot_path).join(EventHandling, EventHandling.event_id == RecognitionEvent.id)
@@ -18,7 +21,7 @@ async def withdraw_consent(app, session, employee, user_id):
     paths.extend(path for _, path in events)
     employee.face_consent_at = employee.face_consent_by = None
     employee.attendance_method, employee.biometric_deleted_at = 'MANUAL', utcnow()
-    session.add(AuditLog(company_id=employee.company_id, actor_user_id=user_id, action='FACE_CONSENT_WITHDRAW', entity='employee', entity_id=str(employee.id)))
+    session.add(AuditLog(company_id=employee.company_id, actor_user_id=user_id, action=action, entity='employee', entity_id=str(employee.id)))
     await session.commit()  # Từ đây không được rollback consent để khôi phục quyền nhận dạng.
     if runtime:
         await asyncio.wrap_future(runtime.worker.submit('discard_employee',employee.id))
@@ -36,7 +39,7 @@ async def withdraw_consent(app, session, employee, user_id):
     reload_error = False
     if runtime:
         try:
-            await app.state.kiosk_service.reload()
+            await app.state.kiosk_service.reload(completed=completion if not deletion_error else None)
         except Exception:
             reload_error = True
     if deletion_error or reload_error:

@@ -11,6 +11,7 @@ from app.auth.security import token_hash, utcnow
 from app.config import get_settings
 from app.db.models import Device, Gate
 from app.errors import ApiError
+from app.biz.admin import audit
 
 router = APIRouter(prefix='/api/v1', tags=['Gates'])
 Owner = Annotated[Principal, Depends(require_roles('OWNER'))]
@@ -76,6 +77,7 @@ async def create_device(body: DeviceCreate, session: Database, owner: Owner, req
                     pairing_code_hash=digest, pairing_expires_at=expires)
     session.add(device)
     await session.flush()
+    audit(session,owner,'DEVICE_CREATE','device',device.id)
     return DevicePairing(device=device_view(device, request.app), pairing_code=code, expires_at=expires,
                          qr_payload=json.dumps({'hub': get_settings().hub_public_url, 'code': code}))
 
@@ -86,6 +88,7 @@ async def revoke_device(id: UUID, session: Database, owner: Owner, request: Requ
     if device is None:
         raise ApiError(404, 'HTTP_404', 'Không tìm thấy thiết bị.')
     device.status, device.pairing_code_hash = 'REVOKED', None
+    audit(session,owner,'DEVICE_REVOKE','device',device.id)
     await session.commit()
     channels = list(request.app.state.kiosk_connections.pop(device.id,{}).values())
     for channel in channels:

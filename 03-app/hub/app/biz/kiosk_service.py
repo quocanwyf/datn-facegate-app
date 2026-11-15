@@ -75,8 +75,10 @@ class KioskService:
     async def discard(self, connection_id):
         await asyncio.wrap_future(self.runtime.worker.submit('discard', connection_id))
 
-    async def reload(self):
-        count = await asyncio.wrap_future(self.runtime.worker.submit('reload', None))
+    async def reload(self,completed=None):
+        count = await asyncio.wrap_future(self.runtime.worker.submit('reload', {'complete':completed or {}}))
+        if not self.runtime.ready:
+            raise FrameError('RECOGNITION_UNAVAILABLE','Một thao tác cập nhật dữ liệu khuôn mặt chưa hoàn tất.')
         for connections in list(self.app.state.kiosk_connections.values()):
             for channel in list(connections.values()):
                 try:

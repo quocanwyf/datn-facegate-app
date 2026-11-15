@@ -1,0 +1,19 @@
+{
+  "hr_reads_five_authorized_samples": true,
+  "concurrent_approval_one_success_one_409": [
+    [
+      "OWNER",
+      200
+    ],
+    [
+      "HR",
+      409
+    ]
+  ],
+  "owner_hr_both_review_and_reject_keeps_active": true,
+  "administrative_delete_failure_keeps_consent_revoked": true,
+  "delete_retry_removes_files_rows_gallery_and_audits": true,
+  "gallery_failure_pauses_and_processed_retry_recovers": true,
+  "terminate_removes_files_rows_gallery_and_audits": true,
+  "employee_withdraws_only_own_biometrics": true
+}

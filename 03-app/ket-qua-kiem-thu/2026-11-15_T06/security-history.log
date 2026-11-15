@@ -1,0 +1,32 @@
+ed90ab6 T05: connect kiosk pairing enrollment and recognition
+ce1e5f1 T03: implement database migrations and JWT authentication
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 12) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 13) Database = Annotated[AsyncSession, Depends(get_session, scope='function')]
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 14) bearer = HTTPBearer(auto_error=False)
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 15) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 16) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 17) @dataclass
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 18) class Principal:
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 19)     account: UserAccount
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 20)     roles: list[UserRole]
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 21) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 22) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 23) async def current_user(session: Database, credentials: Annotated[HTTPAuthorizationCredentials | None, Depends(bearer)]) -> Principal:
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 24)     if credentials is None:
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 25)         raise ApiError(401, 'UNAUTHORIZED', 'Vui lòng đăng nhập.')
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 26)     user_id = decode_token(credentials.credentials, 'access')
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 27)     account = await session.get(UserAccount, user_id)
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 28)     if account is None or account.status != 'ACTIVE':
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 29)         raise ApiError(401, 'UNAUTHORIZED', 'Tài khoản không khả dụng.')
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 30)     roles = list((await session.scalars(select(UserRole).where(UserRole.user_id == user_id))).all())
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 31)     return Principal(account, roles)
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 32) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 33) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 34) CurrentUser = Annotated[Principal, Depends(current_user)]
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 35) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 36) 
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 37) def require_roles(*allowed: str):
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 38)     async def dependency(principal: CurrentUser) -> Principal:
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 39)         if not any(grant.role in allowed for grant in principal.roles):
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 40)             raise ApiError(403, 'FORBIDDEN', 'Bạn không có quyền thực hiện thao tác này.')
+ce1e5f1b (Nguyen Minh Hy 2026-11-15 00:26:05 +0700 41)         return principal

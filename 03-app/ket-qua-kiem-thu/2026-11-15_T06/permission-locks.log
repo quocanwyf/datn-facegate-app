@@ -1,0 +1,6 @@
+device SELECT device.id 
+FROM device FOR NO KEY UPDATE
+gate SELECT gate.id 
+FROM gate FOR NO KEY UPDATE
+employee SELECT employee.id 
+FROM employee FOR NO KEY UPDATE

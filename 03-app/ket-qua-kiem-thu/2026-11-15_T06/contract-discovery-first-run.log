@@ -1,0 +1,20 @@
+F
+================================== FAILURES ===================================
+____ test_all_operations_in_scope_have_real_routes_and_canonical_contract _____
+
+    def test_all_operations_in_scope_have_real_routes_and_canonical_contract():
+        app=create_app();document=app.openapi();source=source_contract()
+        real={(method.lower(),route.path) for route in app.routes if hasattr(route,'methods') for method in route.methods}
+        implemented=[]
+        for path,operations in source['paths'].items():
+            for method,operation in operations.items():
+                if (method,path) in DEFERRED:continue
+                full='/api/v1'+path
+>               assert (method,full) in real,(method,path,'thiếu route thật')
+E               AssertionError: ('post', '/auth/login', 'thiếu route thật')
+E               assert ('post', '/api/v1/auth/login') in {('get', '/api/v1/health'), ('get', '/api/v1/version'), ('get', '/docs'), ('get', '/docs/oauth2-redirect'), ('get', '/openapi.json'), ('get', '/redoc'), ...}
+
+tests\test_openapi_contract.py:23: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_openapi_contract.py::test_all_operations_in_scope_have_real_routes_and_canonical_contract
+1 failed in 2.84s

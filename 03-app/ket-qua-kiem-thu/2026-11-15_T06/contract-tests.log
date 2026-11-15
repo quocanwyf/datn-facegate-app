@@ -1,0 +1,32 @@
+implemented_operations=48; deferred_T09_T11=29
+DEFERRED DELETE /holidays/{date}
+DEFERRED DELETE /shift-assignments/{id}
+DEFERRED GET /attendance/days
+DEFERRED GET /attendance/export
+DEFERRED GET /attendance/requests
+DEFERRED GET /events
+DEFERRED GET /events/export
+DEFERRED GET /events/manual-report
+DEFERRED GET /events/{id}/snapshot
+DEFERRED GET /holidays
+DEFERRED GET /me/attendance
+DEFERRED GET /me/days/{date}
+DEFERRED GET /me/requests
+DEFERRED GET /me/today
+DEFERRED GET /shift-assignments
+DEFERRED GET /shifts
+DEFERRED PATCH /attendance/days/{id}
+DEFERRED PATCH /shifts/{id}
+DEFERRED POST /attendance/leave
+DEFERRED POST /attendance/manual
+DEFERRED POST /attendance/requests/{id}/approve
+DEFERRED POST /attendance/requests/{id}/reject
+DEFERRED POST /events/{id}/handle
+DEFERRED POST /gates/{id}/manual-open
+DEFERRED POST /holidays
+DEFERRED POST /me/requests
+DEFERRED POST /me/requests/{id}/cancel
+DEFERRED POST /shift-assignments
+DEFERRED POST /shifts
+.
+1 passed in 1.81s

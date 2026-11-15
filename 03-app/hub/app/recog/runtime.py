@@ -1,8 +1,9 @@
 """Pipeline T05: toàn bộ mô hình, OpenCV và tensor chỉ chạy trong worker."""
 from datetime import datetime, timezone
 from threading import Event
+import sys
 import numpy as np
-from sqlalchemy import create_engine, select
+from sqlalchemy import create_engine, select,update
 import torch
 from app.config import get_settings
 from app.db.models import Company, RecognitionModel
@@ -12,6 +13,7 @@ from app.recog.embedder import Embedder
 from app.recog.gallery import Gallery, RecognitionUnavailable, gallery_query
 from app.recog.model_loader import load_verified
 from app.recog.worker import InferenceWorker
+from app.recog.mutations import MutationBarrier
 
 
 class FrameError(RuntimeError):
@@ -25,7 +27,8 @@ class RecognitionRuntime:
         self.model_verified = False
         self.error_code = 'MODEL_NOT_VERIFIED'
         self.gallery = None
-        self.paused = Event()
+        self.mutations=MutationBarrier()
+        self.paused = self.mutations.paused
         self.sessions, self.samples = {}, {}
         self.cooldowns = Cooldowns()
         self.engine = None
@@ -45,6 +48,13 @@ class RecognitionRuntime:
             self.device = torch.device(device)
             backbone, self.meta, self.verify_report = load_verified(self.model, self.device)
             self.model_verified = True
+            import cv2
+            runtime_info={'python':sys.version.split()[0],'torch':str(torch.__version__),'opencv':cv2.__version__,
+                          'numpy':np.__version__,'device':str(self.device),'cuda':torch.version.cuda,'amp':self.meta['amp'],
+                          'verified_at':datetime.now(timezone.utc).isoformat()}
+            with self.engine.begin() as connection:
+                connection.execute(update(RecognitionModel).where(RecognitionModel.id==self.model['id']).values(runtime=runtime_info))
+            self.model['runtime']=runtime_info
             self.embedder = Embedder(backbone, self.device)
             self.detector = Detector(initial_settings['min_face_px'], initial_settings['max_abs_yaw_ratio'])
             self.gallery = Gallery(self.device)
@@ -69,16 +79,18 @@ class RecognitionRuntime:
     def ready(self):
         return self.model_verified and self.gallery is not None and self.gallery.ready and not self.paused.is_set()
 
-    def reload(self, _):
+    def reload(self, payload):
         if not self.model_verified or self.gallery is None:
             raise FrameError('MODEL_NOT_VERIFIED', 'Máy chủ chưa sẵn sàng.')
         def rows():
             with self.engine.connect() as connection:
                 return connection.execute(gallery_query(self.model['id'], self.company_id)).all()
         try:
+            generation=self.mutations.snapshot()
             count = self.gallery.reload(rows)
             self.sessions.clear()
-            self.paused.clear()
+            completed=(payload or {}).get('complete',{})
+            self.mutations.finish_reload(generation,completed)
             return count
         except Exception:
             self.paused.set()

@@ -1,0 +1,19 @@
+..............................s......................................... [ 81%]
+................                                                         [100%]
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/test_embed_smoke.py::test_actual_private_webcam_image_matches_vendor
+  C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+    tform.estimate(lmk, dst)
+
+tests/test_embed_smoke.py::test_actual_private_webcam_image_matches_vendor
+  C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+    with torch.cuda.amp.autocast(self.fp16):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_color_order.py:11: Chưa cung cấp LFW thật qua T02_LFW_ROOT
+87 passed, 1 skipped, 3 warnings in 101.84s (0:01:41)

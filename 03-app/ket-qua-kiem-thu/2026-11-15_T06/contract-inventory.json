@@ -1,0 +1,1615 @@
+{
+  "/me/face": {
+    "get": {
+      "tags": [
+        "Me"
+      ],
+      "summary": "E-08 Trạng thái dữ liệu khuôn mặt",
+      "x-roles": [
+        "EMPLOYEE"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MeFace"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getMeFace"
+    }
+  },
+  "/me/face/revoke": {
+    "post": {
+      "tags": [
+        "Me"
+      ],
+      "summary": "Rút đồng ý: xoá dữ liệu khuôn mặt, chuyển sang chấm công hộ",
+      "x-roles": [
+        "EMPLOYEE"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MeFace"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "503": {
+          "$ref": "#/components/responses/E503"
+        }
+      },
+      "operationId": "postMeFaceRevoke",
+      "description": "Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
+    }
+  },
+  "/dashboard/today": {
+    "get": {
+      "tags": [
+        "Dashboard"
+      ],
+      "summary": "W-02 Số liệu hôm nay",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dashboard"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getDashboardToday",
+      "description": "Q-012: ba chỉ số nhân viên chỉ ACTIVE có ca hôm nay, loại HOLIDAY/LEAVE/OFF, đếm người duy nhất. Có mặt: check_in; Đi muộn: trong Có mặt, check_in>start+grace_in; Chưa đến: đã tới start chưa check_in. Lượt người lạ: số event UNKNOWN occurred_at trong ngày timezone công ty, không SPOOF; chỉ số trong ngày tạm thời."
+    }
+  },
+  "/employees": {
+    "get": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Danh sách nhân viên",
+      "x-roles": [
+        "OWNER",
+        "HR",
+        "MANAGER"
+      ],
+      "description": "MANAGER chỉ thấy NV thuộc phòng ban mình quản lý.",
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "schema": {
+            "type": "string"
+          },
+          "description": "tên hoặc mã"
+        },
+        {
+          "$ref": "#/components/parameters/department_id"
+        },
+        {
+          "name": "status",
+          "in": "query",
+          "schema": {
+            "$ref": "#/components/schemas/EmployeeStatus"
+          }
+        },
+        {
+          "name": "attendance_method",
+          "in": "query",
+          "schema": {
+            "$ref": "#/components/schemas/AttendanceMethod"
+          }
+        },
+        {
+          "name": "face_profile_status",
+          "in": "query",
+          "schema": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "PENDING_REVIEW",
+              "ACTIVE",
+              "REJECTED"
+            ]
+          }
+        },
+        {
+          "$ref": "#/components/parameters/page"
+        },
+        {
+          "$ref": "#/components/parameters/size"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PageEmployee"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getEmployees"
+    },
+    "post": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Thêm nhân viên",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EmployeeCreate"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmployeeCreated"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        }
+      },
+      "operationId": "postEmployees"
+    }
+  },
+  "/employees/{id}": {
+    "get": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Chi tiết nhân viên",
+      "x-roles": [
+        "OWNER",
+        "HR",
+        "MANAGER"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "getEmployeesById"
+    },
+    "patch": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Sửa nhân viên",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/EmployeeUpdate"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        }
+      },
+      "operationId": "patchEmployeesById"
+    }
+  },
+  "/employees/{id}/suspend": {
+    "post": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Tạm khoá",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        }
+      },
+      "operationId": "postEmployeesSuspend"
+    }
+  },
+  "/employees/{id}/reactivate": {
+    "post": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Mở khoá",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        }
+      },
+      "operationId": "postEmployeesReactivate"
+    }
+  },
+  "/employees/{id}/terminate": {
+    "post": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Nghỉ việc: xoá ngay dữ liệu khuôn mặt, giữ dữ liệu chấm công",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Employee"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        },
+        "503": {
+          "$ref": "#/components/responses/E503"
+        }
+      },
+      "operationId": "postEmployeesTerminate",
+      "description": "Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
+    }
+  },
+  "/employees/{id}/face": {
+    "delete": {
+      "tags": [
+        "Employees"
+      ],
+      "summary": "Xoá dữ liệu khuôn mặt (ảnh mẫu, embedding, template, crop liên quan)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "204": {
+          "description": "Không có nội dung"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "503": {
+          "$ref": "#/components/responses/E503"
+        }
+      },
+      "operationId": "deleteEmployeesFace",
+      "description": "Q-005/Q-006: từ chối consent (agree=false), rút hoặc xóa hành chính xóa ACTIVE/PENDING, mẫu/vector/crop liên kết, NULL face_consent_at/by cùng nhau và chuyển MANUAL; TERMINATED xóa sinh trắc, giữ trạng thái nghỉ việc. Giữ công/event; ngừng nhận dạng dữ liệu đã rút/xóa. File xóa lỗi: 503 BIOMETRIC_DELETE_INCOMPLETE, báo chưa hoàn tất và cho thử lại, không khôi phục nhận dạng; gallery reload lỗi: 503 RECOGNITION_UNAVAILABLE. Đồng ý lại ghi consent mới, không thay hồ sơ ACTIVE trước khi duyệt mới."
+    }
+  },
+  "/departments": {
+    "get": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Danh sách phòng ban",
+      "x-roles": [
+        "OWNER",
+        "HR",
+        "MANAGER",
+        "SECURITY"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Department"
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getDepartments"
+    },
+    "post": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Thêm phòng ban",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DepartmentInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Department"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        }
+      },
+      "operationId": "postDepartments"
+    }
+  },
+  "/departments/{id}": {
+    "patch": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Đổi tên phòng ban",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DepartmentInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Department"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        }
+      },
+      "operationId": "patchDepartmentsById"
+    }
+  },
+  "/users": {
+    "get": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Danh sách tài khoản",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "name": "q",
+          "in": "query",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/parameters/page"
+        },
+        {
+          "$ref": "#/components/parameters/size"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PageUser"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getUsers"
+    },
+    "post": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Tạo tài khoản (trả mật khẩu tạm 1 lần)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "description": "HR không được cấp vai trò OWNER.",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UserCreate"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "$ref": "#/components/schemas/User"
+                  },
+                  "temporary_password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "user",
+                  "temporary_password"
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        }
+      },
+      "operationId": "postUsers"
+    }
+  },
+  "/users/{id}": {
+    "patch": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Sửa tài khoản",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "description": "HR không sửa được tài khoản có vai trò OWNER.",
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UserUpdate"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "patchUsersById"
+    }
+  },
+  "/users/{id}/roles": {
+    "put": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Đặt toàn bộ vai trò",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RolesInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        }
+      },
+      "operationId": "putUsersRoles"
+    }
+  },
+  "/users/{id}/kiosk-pin": {
+    "put": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Đặt PIN Kiosk (chỉ tài khoản có vai trò OWNER/HR)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/PinInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "204": {
+          "description": "Không có nội dung"
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        }
+      },
+      "operationId": "putUsersKioskPin"
+    }
+  },
+  "/users/{id}/reset-password": {
+    "post": {
+      "tags": [
+        "Organization"
+      ],
+      "summary": "Đặt lại mật khẩu (mật khẩu tạm 1 lần)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TempPassword"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "postUsersResetPassword"
+    }
+  },
+  "/face-profiles": {
+    "get": {
+      "tags": [
+        "Faces"
+      ],
+      "summary": "W-08 Hồ sơ khuôn mặt",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "name": "status",
+          "in": "query",
+          "schema": {
+            "$ref": "#/components/schemas/FaceProfileStatus"
+          }
+        },
+        {
+          "$ref": "#/components/parameters/employee_id"
+        },
+        {
+          "$ref": "#/components/parameters/page"
+        },
+        {
+          "$ref": "#/components/parameters/size"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PageFaceProfile"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getFaceProfiles"
+    }
+  },
+  "/face-profiles/{id}": {
+    "get": {
+      "tags": [
+        "Faces"
+      ],
+      "summary": "Chi tiết hồ sơ (kèm mẫu)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaceProfile"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "getFaceProfilesById"
+    }
+  },
+  "/face-profiles/{id}/approve": {
+    "post": {
+      "tags": [
+        "Faces"
+      ],
+      "summary": "Xác nhận hồ sơ → ACTIVE, nạp lại gallery trước khi trả về",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReviewInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaceProfile"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        },
+        "503": {
+          "$ref": "#/components/responses/E503"
+        }
+      },
+      "operationId": "postFaceProfilesApprove",
+      "description": "Q-006: chỉ xử lý hồ sơ chờ một lần. Duyệt/từ chối đồng thời, lần sau trả 409 PROFILE_ALREADY_REVIEWED, message Hồ sơ đã được xử lý. Chỉ thành công sau các bước bắt buộc; reload gallery lỗi trả 503 RECOGNITION_UNAVAILABLE và tạm ngưng nhận dạng đến khi phục hồi."
+    }
+  },
+  "/face-profiles/{id}/reject": {
+    "post": {
+      "tags": [
+        "Faces"
+      ],
+      "summary": "Từ chối hồ sơ",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ReviewInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FaceProfile"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        },
+        "503": {
+          "$ref": "#/components/responses/E503"
+        }
+      },
+      "operationId": "postFaceProfilesReject",
+      "description": "Q-006: chỉ xử lý hồ sơ chờ một lần. Duyệt/từ chối đồng thời, lần sau trả 409 PROFILE_ALREADY_REVIEWED, message Hồ sơ đã được xử lý. Chỉ thành công sau các bước bắt buộc; reload gallery lỗi trả 503 RECOGNITION_UNAVAILABLE và tạm ngưng nhận dạng đến khi phục hồi."
+    }
+  },
+  "/face-samples/{id}/image": {
+    "get": {
+      "tags": [
+        "Faces"
+      ],
+      "summary": "Ảnh mẫu 112×112 (PNG)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "image/png": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "getFaceSamplesImage"
+    }
+  },
+  "/gates": {
+    "get": {
+      "tags": [
+        "Gates"
+      ],
+      "summary": "Danh sách cửa",
+      "x-roles": [
+        "OWNER",
+        "HR",
+        "SECURITY"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Gate"
+                }
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getGates"
+    },
+    "post": {
+      "tags": [
+        "Gates"
+      ],
+      "summary": "Thêm cửa",
+      "x-roles": [
+        "OWNER"
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GateInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Gate"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        }
+      },
+      "operationId": "postGates",
+      "description": "Q-001: chỉ OWNER tạo cửa; HR không có quyền tạo."
+    }
+  },
+  "/gates/{id}": {
+    "patch": {
+      "tags": [
+        "Gates"
+      ],
+      "summary": "Sửa cửa",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/GateInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Gate"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        },
+        "409": {
+          "$ref": "#/components/responses/E409"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        }
+      },
+      "operationId": "patchGatesById",
+      "description": "Q-001: HR chỉ được gửi default_policy. Gửi name, mode, threshold_level, custom_threshold, is_active hoặc trường ngoài quyền trả 403, không cập nhật một phần. OWNER giữ quyền sửa đầy đủ. Danh sách phòng ban dùng PUT allowed-departments."
+    }
+  },
+  "/gates/{id}/allowed-departments": {
+    "put": {
+      "tags": [
+        "Gates"
+      ],
+      "summary": "Đặt phòng ban được phép (DEPARTMENTS_ONLY)",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/IdList"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Gate"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "putGatesAllowedDepartments",
+      "description": "Q-001: HR được sửa danh sách phòng ban được phép; không cấp quyền tạo cửa hoặc quản trị thiết bị."
+    }
+  },
+  "/gates/{id}/manual-open": {
+    "post": {
+      "tags": [
+        "Gates"
+      ],
+      "summary": "Mở cửa thủ công (mô phỏng) → event MANUAL_OPEN",
+      "x-roles": [
+        "OWNER",
+        "SECURITY"
+      ],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/id"
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ManualOpenInput"
+            }
+          }
+        }
+      },
+      "responses": {
+        "201": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "404": {
+          "$ref": "#/components/responses/E404"
+        }
+      },
+      "operationId": "postGatesManualOpen"
+    }
+  },
+  "/settings/recognition": {
+    "get": {
+      "tags": [
+        "Settings"
+      ],
+      "summary": "Đọc cấu hình nhận dạng",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecognitionSettings"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getSettingsRecognition"
+    },
+    "put": {
+      "tags": [
+        "Settings"
+      ],
+      "summary": "Lưu cấu hình nhận dạng",
+      "x-roles": [
+        "OWNER"
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/RecognitionSettings"
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecognitionSettings"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        },
+        "422": {
+          "$ref": "#/components/responses/E422"
+        }
+      },
+      "operationId": "putSettingsRecognition",
+      "description": "Q-007: chỉ bật sau hiệu chỉnh T13 và chốt L trong [0,1]. W nguyên dương; match_min/unknown_min/spoof_min nguyên 1..W. Server trả 422 nếu trái quan hệ; giữ toàn bộ cấu hình cũ, không áp dụng một phần. Mặc định 5/3/4/3."
+    }
+  },
+  "/models/active": {
+    "get": {
+      "tags": [
+        "Settings"
+      ],
+      "summary": "Mô hình đang chạy + ngưỡng có nguồn",
+      "x-roles": [
+        "OWNER",
+        "HR"
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModelActive"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getModelsActive"
+    }
+  },
+  "/audit-logs": {
+    "get": {
+      "tags": [
+        "Settings"
+      ],
+      "summary": "W-16 Nhật ký thao tác",
+      "x-roles": [
+        "OWNER"
+      ],
+      "parameters": [
+        {
+          "name": "from_ts",
+          "in": "query",
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        {
+          "name": "to_ts",
+          "in": "query",
+          "schema": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        {
+          "name": "actor_user_id",
+          "in": "query",
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        {
+          "name": "action",
+          "in": "query",
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "$ref": "#/components/parameters/page"
+        },
+        {
+          "$ref": "#/components/parameters/size"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PageAuditLog"
+              }
+            }
+          }
+        },
+        "400": {
+          "$ref": "#/components/responses/E400"
+        },
+        "401": {
+          "$ref": "#/components/responses/E401"
+        },
+        "403": {
+          "$ref": "#/components/responses/E403"
+        }
+      },
+      "operationId": "getAuditLogs"
+    }
+  }
+}

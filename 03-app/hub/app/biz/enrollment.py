@@ -2,7 +2,7 @@ import asyncio
 from uuid import uuid4
 from sqlalchemy import select, delete
 from app.biz.files import write_private, delete_private
-from app.db.models import Employee, FaceProfile, FaceSample, FaceEmbedding, FaceTemplate, AuditLog
+from app.db.models import Employee, FaceProfile, FaceSample, FaceEmbedding, FaceTemplate, AuditLog,Device,UserAccount,UserRole
 from app.errors import ApiError
 from app.auth.security import utcnow
 
@@ -22,6 +22,11 @@ async def persist_enrollment(factory, device, enrollment, employee_id, prepared)
         async with factory() as session, session.begin():
             if enrollment.expires_at <= utcnow():
                 raise ApiError(422, 'SESSION_EXPIRED', 'Phiên đăng ký đã hết hạn.')
+            current_device=await session.get(Device,device.id)
+            actor=await session.scalar(select(UserAccount.id).where(UserAccount.id==enrollment.user_id,UserAccount.status=='ACTIVE',
+                select(UserRole.id).where(UserRole.user_id==UserAccount.id,UserRole.role.in_(('OWNER','HR'))).exists()))
+            if current_device is None or current_device.status!='ACTIVE' or actor is None:
+                raise ApiError(422,'SESSION_EXPIRED','Thiết bị hoặc người đăng ký không còn quyền.')
             employee = await session.scalar(select(Employee).where(Employee.id == employee_id, Employee.company_id == device.company_id).with_for_update())
             if (employee is None or employee.status != 'ACTIVE' or employee.attendance_method != 'FACE'
                     or employee.face_consent_at != enrollment.consent.get(employee_id) or employee.face_consent_by != enrollment.user_id):

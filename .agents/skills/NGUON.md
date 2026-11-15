@@ -16,3 +16,9 @@ Theo SKILLS-NGOAI.md: bỏ qua nhóm openai/skills (playwright, screenshot, secu
 react-native-skills là thư mục upstream của bộ Vercel React Native nêu trong kế hoạch; không đổi tên skill hoặc tìm bộ thay thế. GSAP và Expo được cài theo các thư mục hiện có trong bộ chính thức, không cài skill nội bộ .claude/experiments.
 
 Log discovery/cài đặt: 03-app/ket-qua-kiem-thu/2026-11-14_T00/skill-sources.json, skill-install-results.json và install-*.log. Không sửa hướng dẫn/nguồn chuẩn khi cài.
+
+## Bổ sung theo T06 — rà soát bảo mật
+
+- trailofbits/skills, commit 149d7b21f4067765b82e67029730b42d228ef4b4, thư mục plugins/differential-review/skills/differential-review → .agents/skills/differential-review.
+- License CC-BY-SA-4.0, giữ LICENSE/NGUON.md và toàn bộ hướng dẫn upstream. Dùng cho tiêu chí security review T06; không thay các skill bị bỏ qua theo quyết định T00.
+- Log: 03-app/ket-qua-kiem-thu/2026-11-15_T06/security-skill-install.log; báo cáo SECURITY-REVIEW.md.

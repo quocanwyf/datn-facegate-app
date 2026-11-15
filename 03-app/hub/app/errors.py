@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.exc import IntegrityError
 from starlette.exceptions import HTTPException
 
 
@@ -28,6 +29,14 @@ def install_error_handlers(app: FastAPI):
     @app.exception_handler(SQLAlchemyError)
     async def database_error(request: Request, error: SQLAlchemyError):
         return JSONResponse(status_code=503, content={'error': {'code': 'SERVICE_UNAVAILABLE', 'message': 'Không thể kết nối cơ sở dữ liệu. Vui lòng thử lại.'}})
+
+    @app.exception_handler(IntegrityError)
+    async def integrity_error(request:Request,error:IntegrityError):
+        cause=error.orig
+        state=getattr(cause,'sqlstate',None) or getattr(getattr(cause,'__cause__',None),'sqlstate',None)
+        duplicate=state=='23505'
+        return JSONResponse(status_code=409 if duplicate else 422,content={'error':{'code':'CONFLICT' if duplicate else 'VALIDATION_ERROR',
+                'message':'Dữ liệu bị trùng.' if duplicate else 'Dữ liệu vi phạm ràng buộc nghiệp vụ.'}})
 
     @app.exception_handler(Exception)
     async def unexpected_error(request: Request, error: Exception):

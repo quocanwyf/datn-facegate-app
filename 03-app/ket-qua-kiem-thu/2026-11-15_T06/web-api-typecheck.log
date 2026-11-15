@@ -1,0 +1,1 @@
+$ tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler src/api/client.ts

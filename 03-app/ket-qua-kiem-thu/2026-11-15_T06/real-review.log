@@ -1,0 +1,79 @@
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "e28ab9fb-c496-4e6c-8f20-a9e96d1300b3", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+C:\Users\NMinH\OneDrive\Desktop\code\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "4074b7ec-8466-4462-9f6b-366bd9dea8cb", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "2e697dfc-cb23-4d1b-a410-3fb63c33796e", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "493ba948-d3b5-47f0-bb99-0f9e5902e53f", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 1}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 2}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 3}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 4}
+{"type": "enroll_progress", "accepted": 0, "total": 5, "reason": "POSE", "seq": 5}
+{"type": "enroll_progress", "accepted": 1, "total": 5, "seq": 6}
+{"type": "enroll_progress", "accepted": 2, "total": 5, "seq": 7}
+{"type": "enroll_progress", "accepted": 3, "total": 5, "seq": 8}
+{"type": "enroll_progress", "accepted": 4, "total": 5, "seq": 9}
+{"type": "enroll_done", "profile_id": "b0d003d6-3338-4d94-b5a7-ce1c43ec5028", "profile_status": "PENDING_REVIEW", "duplicate_warning": false}
+{
+  "hr_reads_five_authorized_samples": true,
+  "concurrent_approval_one_success_one_409": [
+    [
+      "OWNER",
+      200
+    ],
+    [
+      "HR",
+      409
+    ]
+  ],
+  "owner_hr_both_review_and_reject_keeps_active": true,
+  "administrative_delete_failure_keeps_consent_revoked": true,
+  "delete_retry_removes_files_rows_gallery_and_audits": true,
+  "gallery_failure_pauses_and_processed_retry_recovers": true,
+  "terminate_removes_files_rows_gallery_and_audits": true,
+  "employee_withdraws_only_own_biometrics": true
+}

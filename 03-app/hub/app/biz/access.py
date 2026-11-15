@@ -4,6 +4,7 @@ from uuid import uuid4
 from sqlalchemy import select
 from app.biz.files import write_private, delete_private
 from app.db.models import Device, Employee, Gate, RecognitionEvent, t_gate_allowed_department
+from app.auth.security import utcnow
 from app.errors import ApiError
 
 
@@ -12,11 +13,16 @@ async def record_decision(factory, device, payload, inferred):
     relative = None
     try:
         async with factory() as session, session.begin():
-            current = await session.get(Device, device.id)
+            # NO KEY UPDATE chặn thay quyền nhưng không chặn FK KEY SHARE.
+            # Thứ tự cố định device → gate → employee, giữ tới event commit.
+            current = await session.scalar(select(Device).where(Device.id==device.id).with_for_update(key_share=True))
             if current is None or current.status != 'ACTIVE':
                 raise ApiError(401, 'DEVICE_REVOKED', 'Thiết bị đã bị thu hồi.')
-            gate = await session.get(Gate, device.gate_id)
-            employee = await session.get(Employee, decision.employee_id) if decision.employee_id else None
+            if current.token_expires_at is None or current.token_expires_at<=utcnow():
+                raise ApiError(401,'TOKEN_INVALID','Phiên thiết bị đã hết hạn.')
+            gate = await session.scalar(select(Gate).where(Gate.id==device.gate_id).with_for_update(key_share=True))
+            employee = await session.scalar(select(Employee).where(Employee.id==decision.employee_id,Employee.company_id==device.company_id)
+                                           .with_for_update(key_share=True)) if decision.employee_id else None
             allowed, reason, event_result = False, None, decision.result
             if employee:
                 if employee.status != 'ACTIVE':

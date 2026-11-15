@@ -1,0 +1,17 @@
+{
+  "name": "facegate-kiosk",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "gen:api": "openapi-typescript ../openapi/openapi.yaml -o src/api/schema.d.ts",
+    "typecheck": "tsc --noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler src/api/client.ts"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.15.0"
+  },
+  "devDependencies": {
+    "openapi-typescript": "^7.10.0",
+    "typescript": "^5.9.0"
+  }
+}
