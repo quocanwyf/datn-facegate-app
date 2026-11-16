@@ -35,6 +35,8 @@ def install_error_handlers(app: FastAPI):
         cause=error.orig
         state=getattr(cause,'sqlstate',None) or getattr(getattr(cause,'__cause__',None),'sqlstate',None)
         duplicate=state=='23505'
+        if state == '23P01':
+            return JSONResponse(status_code=409, content={'error': {'code': 'ASSIGNMENT_OVERLAP', 'message': 'Phân ca trùng khoảng hiệu lực.'}})
         return JSONResponse(status_code=409 if duplicate else 422,content={'error':{'code':'CONFLICT' if duplicate else 'VALIDATION_ERROR',
                 'message':'Dữ liệu bị trùng.' if duplicate else 'Dữ liệu vi phạm ràng buộc nghiệp vụ.'}})
 

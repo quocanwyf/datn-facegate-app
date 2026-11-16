@@ -53,7 +53,8 @@ class FakeService:
 
 @pytest.fixture
 def service_client():
-    app, service = create_app(), FakeService()
+    # Double giao thức không dùng DB; không khởi động job chấm công thật.
+    app, service = create_app(attendance_factory=None), FakeService()
     app.state.kiosk_service = service
     with TestClient(app) as client:
         yield service, client

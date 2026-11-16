@@ -3,13 +3,10 @@ from app.main import create_app
 
 # Chỉ các operation được plan cho phép để T09/T11; không bỏ qua tùy ý theo tag.
 DEFERRED={
-    ('get','/me/today'),('get','/me/attendance'),('get','/me/days/{date}'),('get','/me/requests'),('post','/me/requests'),('post','/me/requests/{id}/cancel'),
-    ('post','/gates/{id}/manual-open'),('get','/shifts'),('post','/shifts'),('patch','/shifts/{id}'),
-    ('get','/shift-assignments'),('post','/shift-assignments'),('delete','/shift-assignments/{id}'),
-    ('get','/holidays'),('post','/holidays'),('delete','/holidays/{date}'),
-    ('get','/attendance/days'),('patch','/attendance/days/{id}'),('post','/attendance/leave'),('get','/attendance/export'),('post','/attendance/manual'),
-    ('get','/attendance/requests'),('post','/attendance/requests/{id}/approve'),('post','/attendance/requests/{id}/reject'),
-    ('get','/events'),('get','/events/{id}/snapshot'),('post','/events/{id}/handle'),('get','/events/manual-report'),('get','/events/export')}
+    ('post','/gates/{id}/manual-open'),
+    ('get','/events'),('get','/events/{id}/snapshot'),('post','/events/{id}/handle'),
+    ('get','/events/manual-report'),('get','/events/export')}
+
 
 
 def test_all_operations_in_scope_have_real_routes_and_canonical_contract():

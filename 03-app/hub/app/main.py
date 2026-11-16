@@ -18,6 +18,8 @@ from app.api.gates import router as gates_router
 from app.api.settings import router as settings_router
 from app.api.dashboard import router as dashboard_router
 from app.api.contract import install_contract_docs
+from app.api.schedule import router as schedule_router
+from app.api.attendance import router as attendance_router
 from app.config import get_settings
 from app.db.session import Session
 from app.errors import install_error_handlers
@@ -25,10 +27,12 @@ from app.errors import install_error_handlers
 VERSION = '0.1.0'
 
 
-def create_app() -> FastAPI:
+def create_app(*, attendance_factory=Session) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app):
         runtime = None
+        from app.biz.attendance_scheduler import AttendanceScheduler
+        scheduler = AttendanceScheduler(attendance_factory) if attendance_factory else None
         if app.state.kiosk_service is None:
             from app.recog.runtime import RecognitionRuntime
             from app.biz.kiosk_service import KioskService
@@ -37,8 +41,12 @@ def create_app() -> FastAPI:
             await asyncio.wrap_future(runtime.worker.ready)
             app.state.kiosk_service = KioskService(app,runtime)
         try:
+            if scheduler:
+                await scheduler.start()
             yield
         finally:
+            if scheduler:
+                scheduler.stop()
             if runtime:
                 await asyncio.to_thread(runtime.close)
     app = FastAPI(title='FaceGate Hub', version=VERSION, lifespan=lifespan)
@@ -50,7 +58,7 @@ def create_app() -> FastAPI:
     app.include_router(devices_router)
     app.include_router(kiosk_router)
     app.include_router(ws_router)
-    for router in (organization_router,employees_router,faces_router,gates_router,settings_router,dashboard_router):
+    for router in (organization_router,employees_router,faces_router,gates_router,settings_router,dashboard_router,schedule_router,attendance_router):
         app.include_router(router)
     app.state.pairing_attempts = PairingAttempts()
     app.state.kiosk_connections = {}

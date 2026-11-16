@@ -1,0 +1,428 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.13, pytest-9.2.0, pluggy-1.7.0 -- D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\WorkSpace\DATN\datn-facegate-app\03-app\hub
+configfile: pyproject.toml
+plugins: anyio-4.16.0, asyncio-1.5.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 40 items
+
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[08:29:59-None-None-NOT_STARTED-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[08:30-None-None-WAITING_IN-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:29:59-None-None-WAITING_IN-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-None-None-ABSENT-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[17:30-08:30-17:30-IN_PROGRESS-0-0-480-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:40-17:20-NORMAL-0-0-460-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:40:01-17:30-LATE-10-0-469-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:41-17:30-LATE-11-0-469-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-17:19:59-EARLY-0-10-469-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:41-17:00-LATE_EARLY-11-30-439-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:00-18:00-NORMAL-0-0-480-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-None-MISSING_OUT-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-12:00-MISSING_OUT-0-0-210-True] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-15:29:59-MISSING_OUT-0-0-359-True] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-15:30-EARLY-0-120-360-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-13:00-17:30-LATE-270-0-270-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-12:30-17:30-LATE-240-0-270-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-12:30-MISSING_OUT-0-0-210-True] PASSED
+tests/test_attendance_rules.py::test_priority[shift0-True-True-HOLIDAY] PASSED
+tests/test_attendance_rules.py::test_priority[None-False-True-LEAVE] PASSED
+tests/test_attendance_rules.py::test_priority[None-False-False-OFF] PASSED
+tests/test_attendance_rules.py::test_priority[None-True-False-HOLIDAY] PASSED
+tests/test_attendance_rules.py::test_finalized_never_reverts_and_timezone_required PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles0-HR] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles1-OWNER] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles2-HR] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles3-MANAGER] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles4-MANAGER] PASSED
+tests/test_attendance_rules.py::test_unique_workday_summary PASSED
+tests/test_attendance_api.py::test_recompute_idempotent_late_event_and_window PASSED
+tests/test_attendance_api.py::test_holiday_manual_and_leave_survive_recompute PASSED
+tests/test_attendance_api.py::test_schedule_contract_and_overlap PASSED
+tests/test_attendance_api.py::test_requests_approve_reject_cancel_and_self_protection PASSED
+tests/test_attendance_api.py::test_manual_self_edit_scope_and_me_contracts PASSED
+tests/test_attendance_api.py::test_excel_two_sheets_unique_day_dates_and_manager_scope FAILED
+tests/test_attendance_api.py::test_access_only_match_does_not_count PASSED
+tests/test_attendance_api.py::test_match_result_in_out_is_committed_with_event FAILED
+tests/test_attendance_api.py::test_scheduler_uses_shift_closing_time_and_finalizes PASSED
+tests/test_attendance_api.py::test_invalid_request_empty_reason_and_manual_gate_are_rejected PASSED
+tests/test_openapi_contract.py::test_all_operations_in_scope_have_real_routes_and_canonical_contract implemented_operations=71; deferred_T09_T11=6
+DEFERRED GET /events
+DEFERRED GET /events/export
+DEFERRED GET /events/manual-report
+DEFERRED GET /events/{id}/snapshot
+DEFERRED POST /events/{id}/handle
+DEFERRED POST /gates/{id}/manual-open
+PASSED
+
+================================== FAILURES ===================================
+__________ test_excel_two_sheets_unique_day_dates_and_manager_scope ___________
+
+runtime = (<httpx.AsyncClient object at 0x000001C95D7145F0>, async_sessionmaker(class_='AsyncSession', join_transaction_mode='cr...00001C95D6D7C00>, autoflush=True, expire_on_commit=False), <fastapi.applications.FastAPI object at 0x000001C95D6682D0>)
+
+    async def test_excel_two_sheets_unique_day_dates_and_manager_scope(runtime):
+        client, factory, _ = runtime
+        async with factory() as session, session.begin():
+            employee, owner, gate, _ = await setup(session)
+            employee.full_name = '=FORMULA_TEST'
+            await add_event(session, employee, owner, gate, '08:41')
+            await add_event(session, employee, owner, gate, '17:30')
+            day = await recompute_day(session, employee.id, DAY, now=at('22:00'))
+            assert day.status == 'LATE'
+        response = await client.get('/api/v1/attendance/export?month=2026-11', headers=await auth(factory, 5))
+        assert response.status_code == 200, response.text
+        workbook = load_workbook(BytesIO(response.content))
+        assert workbook.sheetnames == ['Tổng hợp', 'Chi tiết']
+        assert [cell.value for cell in workbook['Tổng hợp'][1]] == TOTAL_COLUMNS
+        assert [cell.value for cell in workbook['Chi tiết'][1]] == DETAIL_COLUMNS
+        total = next(row for row in workbook['Tổng hợp'].iter_rows(min_row=2, values_only=True) if row[0] == 'NV006')
+        assert total[1] == "'=FORMULA_TEST" and total[3:6] == (1, 1, 11)
+        assert {row[2].value for row in workbook['Tổng hợp'].iter_rows(min_row=2)} == {'Kỹ thuật'}
+        detail = workbook['Chi tiết']
+        assert detail['C2'].number_format == 'dd/mm/yyyy' and detail['E2'].number_format == 'hh:mm'
+>       assert detail['G2'].value == 'Đi muộn' and detail['I2'].value == 11
+E       AssertionError: assert ('Không có ca' == 'Đi muộn'
+E         
+E         - Đi muộn
+E         + Không có ca)
+
+tests\test_attendance_api.py:216: AssertionError
+______________ test_match_result_in_out_is_committed_with_event _______________
+
+self = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_cursor object at 0x000001C95DCF2A40>
+operation = 'UPDATE employee SET face_consent_at=$1::TIMESTAMP WITH TIME ZONE WHERE employee.id = $2::UUID'
+parameters = (datetime.datetime(2026, 11, 16, 1, 40, 10, 592451, tzinfo=datetime.timezone.utc), UUID('194b8035-f397-526e-8680-e269b02863fa'))
+
+    async def _prepare_and_execute(self, operation, parameters):
+        adapt_connection = self._adapt_connection
+    
+        async with adapt_connection._execute_mutex:
+            if adapt_connection._transaction is None:
+                await adapt_connection._start_transaction()
+    
+            if parameters is None:
+                parameters = ()
+    
+            try:
+                prepared_stmt, attributes = await adapt_connection._prepare(
+                    operation, self._invalidate_schema_cache_asof
+                )
+    
+                if attributes:
+                    self._description = [
+                        (
+                            attr.name,
+                            attr.type.oid,
+                            None,
+                            None,
+                            None,
+                            None,
+                            None,
+                        )
+                        for attr in attributes
+                    ]
+                else:
+                    self._description = None
+    
+                if self.server_side:
+                    self._cursor = await prepared_stmt.cursor(*parameters)
+                    self._rowcount = -1
+                else:
+>                   self._rows = deque(await prepared_stmt.fetch(*parameters))
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:605: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\asyncpg\prepared_stmt.py:177: in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\asyncpg\prepared_stmt.py:268: in __bind_execute
+    data, status, _ = await self.__do_execute(
+.venv\Lib\site-packages\asyncpg\prepared_stmt.py:257: in __do_execute
+    return await executor(protocol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+>   return await waiter
+E   asyncpg.exceptions.CheckViolationError: new row for relation "employee" violates check constraint "employee_check1"
+E   DETAIL:  Failing row contains (194b8035-f397-526e-8680-e269b02863fa, 2733b8d2-8552-5c16-802d-0a98e75597f1, 1e898405-1b0a-5d9f-832e-05ab4736cc6a, NV006, Võ Thanh Tùng, nv006@demo.local, null, ACTIVE, FACE, 2026-01-05, null, 2026-11-16 08:40:10.592451+07, null, null, 2026-11-16 08:36:22.44296+07, 2026-11-16 08:40:10.552942+07).
+
+asyncpg/protocol/protocol.pyx:197: CheckViolationError
+
+The above exception was the direct cause of the following exception:
+
+self = <sqlalchemy.engine.base.Connection object at 0x000001C95DADFA00>
+dialect = <sqlalchemy.dialects.postgresql.asyncpg.PGDialect_asyncpg object at 0x000001C95D4D8050>
+context = <sqlalchemy.dialects.postgresql.asyncpg.PGExecutionContext_asyncpg object at 0x000001C95DB24270>
+statement = <sqlalchemy.dialects.postgresql.asyncpg.PGCompiler_asyncpg object at 0x000001C95D4DA350>
+parameters = [(datetime.datetime(2026, 11, 16, 1, 40, 10, 592451, tzinfo=datetime.timezone.utc), UUID('194b8035-f397-526e-8680-e269b02863fa'))]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Unpack[TupleAny]]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        evt_handled: bool = False
+        try:
+            if self._has_events or self.engine._has_events:
+                for fn in self.dispatch.before_cursor_execute:
+                    str_statement, effective_parameters = fn(
+                        self,
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                        context.executemany,
+                    )
+    
+            if self._echo:
+                self._log_info(str_statement)
+    
+                stats = context._get_cache_stats()
+    
+                self._log_parameters(
+                    effective_parameters, stats, ismulti=context.executemany
+                )
+    
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1977: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:1192: in do_execute
+    cursor.execute(statement, parameters)
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:656: in execute
+    await_(self._prepare_and_execute(operation, parameters))
+.venv\Lib\site-packages\sqlalchemy\util\concurrency.py:167: in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\concurrency.py:205: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:618: in _prepare_and_execute
+    self._handle_exception(error)
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:568: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:847: in _handle_exception
+    super()._handle_exception(error)
+.venv\Lib\site-packages\sqlalchemy\connectors\asyncio.py:412: in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cls = <class 'sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_connection'>
+dbapi = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi object at 0x000001C95C299D50>
+error = CheckViolationError('new row for relation "employee" violates check constraint "employee_check1"')
+
+    @classmethod
+    def _handle_exception_no_connection(
+        cls, dbapi: Any, error: Exception
+    ) -> NoReturn:
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    message = error.args[0]
+                    translated_error = exception_mapping[super_](
+                        message, error
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.CheckViolationError: new row for relation "employee" violates check constraint "employee_check1"
+
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:840: CheckViolationError
+
+The above exception was the direct cause of the following exception:
+
+runtime = (<httpx.AsyncClient object at 0x000001C95DB26140>, async_sessionmaker(class_='AsyncSession', join_transaction_mode='cr...00001C95D606A80>, autoflush=True, expire_on_commit=False), <fastapi.applications.FastAPI object at 0x000001C95D4D9A90>)
+
+    async def test_match_result_in_out_is_committed_with_event(runtime):
+        _, factory, _ = runtime
+        async with factory() as session, session.begin():
+            employee, _, gate, _ = await setup(session)
+            employee.face_consent_at = utcnow()
+            gate.default_policy = 'ALLOW_ALL_ACTIVE'
+>           model = await session.scalar(select(RecognitionModel).where(RecognitionModel.is_active.is_(True)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_attendance_api.py:247: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py:721: in scalar
+    return await greenlet_spawn(
+.venv\Lib\site-packages\sqlalchemy\util\concurrency.py:212: in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2616: in scalar
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2418: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:597: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3282: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3271: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4626: in flush
+    self._flush(objects)
+<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>:2: in _flush
+    return target(fn, self, objects=objects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\deprecations.py:281: in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4769: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:166: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4730: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:467: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:643: in execute
+    util.preloaded.orm_persistence._save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:84: in _save_obj
+    _emit_update_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:929: in _emit_update_statements
+    c = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1494: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:534: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1714: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1868: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1996: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2351: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1977: in _exec_single_context
+    self.dialect.do_execute(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:1192: in do_execute
+    cursor.execute(statement, parameters)
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:656: in execute
+    await_(self._prepare_and_execute(operation, parameters))
+.venv\Lib\site-packages\sqlalchemy\util\concurrency.py:167: in await_
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\concurrency.py:205: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:618: in _prepare_and_execute
+    self._handle_exception(error)
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:568: in _handle_exception
+    self._adapt_connection._handle_exception(error)
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:847: in _handle_exception
+    super()._handle_exception(error)
+.venv\Lib\site-packages\sqlalchemy\connectors\asyncio.py:412: in _handle_exception
+    self._handle_exception_no_connection(self.dbapi, error)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cls = <class 'sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_connection'>
+dbapi = <sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi object at 0x000001C95C299D50>
+error = CheckViolationError('new row for relation "employee" violates check constraint "employee_check1"')
+
+    @classmethod
+    def _handle_exception_no_connection(
+        cls, dbapi: Any, error: Exception
+    ) -> NoReturn:
+        if not isinstance(error, AsyncAdapt_asyncpg_dbapi.Error):
+            exception_mapping = dbapi._asyncpg_error_translate
+    
+            for super_ in type(error).__mro__:
+                if super_ in exception_mapping:
+                    message = error.args[0]
+                    translated_error = exception_mapping[super_](
+                        message, error
+                    )
+>                   raise translated_error from error
+E                   sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E                   (sqlalchemy.dialects.postgresql.asyncpg.CheckViolationError) new row for relation "employee" violates check constraint "employee_check1"
+E                   [SQL: UPDATE employee SET face_consent_at=$1::TIMESTAMP WITH TIME ZONE WHERE employee.id = $2::UUID]
+E                   [SQL parameters hidden due to hide_parameters=True]
+E                   (Background on this error at: https://sqlalche.me/e/21/gkpj)
+
+.venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py:840: IntegrityError
+=========================== short test summary info ===========================
+FAILED tests/test_attendance_api.py::test_excel_two_sheets_unique_day_dates_and_manager_scope
+FAILED tests/test_attendance_api.py::test_match_result_in_out_is_committed_with_event
+======================== 2 failed, 38 passed in 7.40s =========================

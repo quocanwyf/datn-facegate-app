@@ -1,0 +1,222 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.13, pytest-9.2.0, pluggy-1.7.0 -- D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\WorkSpace\DATN\datn-facegate-app\03-app\hub
+configfile: pyproject.toml
+testpaths: tests
+plugins: anyio-4.16.0, asyncio-1.5.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 127 items
+
+tests/test_admin_api.py::test_permission_matrix_reads[1-OWNER] permission_read_role=OWNER; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[2-HR] permission_read_role=HR; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[5-MANAGER] permission_read_role=MANAGER; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[20-SECURITY] permission_read_role=SECURITY; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[6-EMPLOYEE] permission_read_role=EMPLOYEE; cases=10
+PASSED
+tests/test_admin_api.py::test_manager_scope_cannot_be_bypassed PASSED
+tests/test_admin_api.py::test_admin_writes_and_password_never_stored_plaintext[1] admin_write_role=1; employee_create_update_audit=true
+PASSED
+tests/test_admin_api.py::test_admin_writes_and_password_never_stored_plaintext[2] admin_write_role=2; employee_create_update_audit=true
+PASSED
+tests/test_admin_api.py::test_hr_cannot_manage_owner_or_gate_owner_fields PASSED
+tests/test_admin_api.py::test_owner_user_roles_reset_and_scope_validation PASSED
+tests/test_admin_api.py::test_settings_reject_atomically_and_preserve_old_configuration PASSED
+tests/test_admin_api.py::test_non_admin_write_routes_forbidden PASSED
+tests/test_admin_api.py::test_owner_and_hr_manage_non_owner_roles_pin_and_disable[1] PASSED
+tests/test_admin_api.py::test_owner_and_hr_manage_non_owner_roles_pin_and_disable[2] PASSED
+tests/test_admin_api.py::test_owner_creates_and_changes_gate_threshold PASSED
+tests/test_attendance_api.py::test_recompute_idempotent_late_event_and_window PASSED
+tests/test_attendance_api.py::test_holiday_manual_and_leave_survive_recompute PASSED
+tests/test_attendance_api.py::test_schedule_contract_and_overlap PASSED
+tests/test_attendance_api.py::test_requests_approve_reject_cancel_and_self_protection PASSED
+tests/test_attendance_api.py::test_manual_self_edit_scope_and_me_contracts PASSED
+tests/test_attendance_api.py::test_excel_two_sheets_unique_day_dates_and_manager_scope PASSED
+tests/test_attendance_api.py::test_access_only_match_does_not_count PASSED
+tests/test_attendance_api.py::test_match_result_in_out_is_committed_with_event PASSED
+tests/test_attendance_api.py::test_scheduler_uses_shift_closing_time_and_finalizes PASSED
+tests/test_attendance_api.py::test_invalid_request_empty_reason_and_manual_gate_are_rejected PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[08:29:59-None-None-NOT_STARTED-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[08:30-None-None-WAITING_IN-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:29:59-None-None-WAITING_IN-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-None-None-ABSENT-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[17:30-08:30-17:30-IN_PROGRESS-0-0-480-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:40-17:20-NORMAL-0-0-460-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:40:01-17:30-LATE-10-0-469-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:41-17:30-LATE-11-0-469-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-17:19:59-EARLY-0-10-469-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:41-17:00-LATE_EARLY-11-30-439-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:00-18:00-NORMAL-0-0-480-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-None-MISSING_OUT-0-0-0-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-12:00-MISSING_OUT-0-0-210-True] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-15:29:59-MISSING_OUT-0-0-359-True] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-15:30-EARLY-0-120-360-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-13:00-17:30-LATE-270-0-270-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-12:30-17:30-LATE-240-0-270-False] PASSED
+tests/test_attendance_rules.py::test_status_grace_rounding_and_break_overlap[21:30-08:30-12:30-MISSING_OUT-0-0-210-True] PASSED
+tests/test_attendance_rules.py::test_priority[shift0-True-True-HOLIDAY] PASSED
+tests/test_attendance_rules.py::test_priority[None-False-True-LEAVE] PASSED
+tests/test_attendance_rules.py::test_priority[None-False-False-OFF] PASSED
+tests/test_attendance_rules.py::test_priority[None-True-False-HOLIDAY] PASSED
+tests/test_attendance_rules.py::test_finalized_never_reverts_and_timezone_required PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles0-HR] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles1-OWNER] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles2-HR] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles3-MANAGER] PASSED
+tests/test_attendance_rules.py::test_review_escalation_multiple_roles[roles4-MANAGER] PASSED
+tests/test_attendance_rules.py::test_unique_workday_summary PASSED
+tests/test_auth.py::test_login_identity_and_contract PASSED
+tests/test_auth.py::test_must_change_password_reflects_database PASSED
+tests/test_auth.py::test_concurrent_refresh_only_one_rotation PASSED
+tests/test_auth.py::test_wrong_password_and_validation_do_not_leak PASSED
+tests/test_auth.py::test_rotation_logout_and_replay PASSED
+tests/test_auth.py::test_expired_and_database_revoked_tokens PASSED
+tests/test_auth.py::test_change_password_revokes_all_refresh PASSED
+tests/test_auth.py::test_role_dependencies_reject_missing_permission[1-OWNER-HR] PASSED
+tests/test_auth.py::test_role_dependencies_reject_missing_permission[2-HR-SECURITY] PASSED
+tests/test_auth.py::test_role_dependencies_reject_missing_permission[5-MANAGER-OWNER] PASSED
+tests/test_auth.py::test_role_dependencies_reject_missing_permission[20-SECURITY-HR] PASSED
+tests/test_auth.py::test_role_dependencies_reject_missing_permission[6-EMPLOYEE-OWNER] PASSED
+tests/test_auth.py::test_roles_and_disabled_account_are_reread PASSED
+tests/test_auth.py::test_manager_scope_and_waiting_in PASSED
+tests/test_auth.py::test_health_version_cors_and_operation_contract PASSED
+tests/test_color_order.py::test_color_order SKIPPED (Chưa cung cấp L...)
+tests/test_decision_exhaustive.py::test_all_sequences_length_1_to_8[normal] variant=normal; sequences=488280; max_length=8
+PASSED
+tests/test_decision_exhaustive.py::test_all_sequences_length_1_to_8[lost_face] variant=lost_face; sequences=488280; max_length=8
+PASSED
+tests/test_decision_exhaustive.py::test_all_sequences_length_1_to_8[iou_reset] variant=iou_reset; sequences=488280; max_length=8
+PASSED
+tests/test_decision_exhaustive.py::test_priorities_boundaries_invalid_and_cooldown PASSED
+tests/test_decision_exhaustive.py::test_invalid_parameters_rejected[changes0] PASSED
+tests/test_decision_exhaustive.py::test_invalid_parameters_rejected[changes1] PASSED
+tests/test_decision_exhaustive.py::test_invalid_parameters_rejected[changes2] PASSED
+tests/test_decision_exhaustive.py::test_invalid_parameters_rejected[changes3] PASSED
+tests/test_decision_exhaustive.py::test_invalid_parameters_rejected[changes4] PASSED
+tests/test_embed_smoke.py::test_actual_private_webcam_image_matches_vendor SKIPPED
+tests/test_feature_boundary.py::test_boundary_sends_rgb_uint8_to_the_single_vendor_extractor PASSED
+tests/test_feature_boundary.py::test_invalid_alignment_input_rejected[None] PASSED
+tests/test_feature_boundary.py::test_invalid_alignment_input_rejected[invalid1] PASSED
+tests/test_feature_boundary.py::test_invalid_alignment_input_rejected[invalid2] PASSED
+tests/test_gallery.py::test_failed_reload_disables_recognition_and_empty_is_distinct PASSED
+tests/test_gallery.py::test_gallery_loads_real_seed_database_without_fabricated_templates gallery_real_db_rows=0; ready=True; no_demo_templates_created=true
+PASSED
+tests/test_kiosk_rest.py::test_pin_lock_commits_and_unlocks_after_expiry PASSED
+tests/test_kiosk_rest.py::test_active_employee_filter_consent_and_session_expiry PASSED
+tests/test_model_gate.py::test_real_checkpoint_passes_four_steps_on_cpu {
+  "verify_report": {
+    "manifest_id": "r18_uniface_v1_lam0.6_m0.45_s3_e28:best",
+    "device": "cpu",
+    "steps": [
+      {
+        "step": 1,
+        "ok": true,
+        "sha256": "120489621accefd7e78da9bd83fe3c6360ad94877e8ac4b9cdfa1038ec8eef88"
+      },
+      {
+        "step": 2,
+        "ok": true,
+        "stripped_sha256": "b00612f58a5a3d6be9055ce6ff073fdafd3d8071c85ebdaa5462b198f2b1a065"
+      },
+      {
+        "step": 3,
+        "ok": true,
+        "epoch": 18,
+        "amp": false,
+        "missing_keys": [],
+        "unexpected_keys": []
+      },
+      {
+        "step": 4,
+        "ok": true,
+        "t_eq30": 0.3736472427845001,
+        "reference_t_eq30": 0.3736472427845001
+      }
+    ]
+  },
+  "meta": {
+    "sha256": "120489621accefd7e78da9bd83fe3c6360ad94877e8ac4b9cdfa1038ec8eef88",
+    "epoch": 18,
+    "global_step": 16416,
+    "head_name": "uniface_v1",
+    "backbone": "r18",
+    "amp": false,
+    "head_keys_ignored": [
+      "bias",
+      "proto",
+      "proto_seen",
+      "weight",
+      "weight_mom"
+    ],
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "is_stripped": false,
+    "t_eq30": 0.3736472427845001
+  }
+}
+PASSED
+tests/test_model_gate.py::test_wrong_sha_blocked_at_step_1 PASSED
+tests/test_model_gate.py::test_missing_strip_link_blocked_at_step_2 PASSED
+tests/test_model_gate.py::test_manifest_config_mismatch_converted_to_step_3_error PASSED
+tests/test_model_gate.py::test_learned_threshold_mismatch_blocked_at_step_4 PASSED
+tests/test_mutation_barrier.py::test_unrelated_reload_cannot_resume_unfinished_operation PASSED
+tests/test_mutation_barrier.py::test_old_completion_cannot_clear_newer_operation_on_same_employee PASSED
+tests/test_mutation_barrier.py::test_failed_cleanup_stays_paused_across_independent_reloads PASSED
+tests/test_mutation_barrier.py::test_suspend_same_employee_cannot_complete_approval_cleanup PASSED
+tests/test_mutation_barrier.py::test_full_delete_only_completes_captured_operations_after_success PASSED
+tests/test_openapi_contract.py::test_all_operations_in_scope_have_real_routes_and_canonical_contract implemented_operations=71; deferred_T09_T11=6
+DEFERRED GET /events
+DEFERRED GET /events/export
+DEFERRED GET /events/manual-report
+DEFERRED GET /events/{id}/snapshot
+DEFERRED POST /events/{id}/handle
+DEFERRED POST /gates/{id}/manual-open
+PASSED
+tests/test_pairing.py::test_ip_lock_exact_expiry_and_isolation PASSED
+tests/test_pairing.py::test_failures_are_atomic_without_extending_lock PASSED
+tests/test_pairing.py::test_pair_token_hash_expiry_and_revoke PASSED
+tests/test_pairing.py::test_wrong_code_locks_ip_not_device_and_recovers PASSED
+tests/test_pairing.py::test_expired_code_and_owner_permissions PASSED
+tests/test_threshold_sources.py::test_real_sources_match_seed PASSED
+tests/test_threshold_sources.py::test_changed_seed_is_rejected PASSED
+tests/test_vendor_hash.py::test_vendor_matches_manifest_and_original_sources Vendor: 33 file khớp manifest và nguồn.
+PASSED
+tests/test_vendor_hash.py::test_research_code_and_code_v1_critical_modules_equal backbones/eval/align/utils của code và code-v1: byte-equal.
+PASSED
+tests/test_vendor_hash.py::test_vendor_has_no_unmanifested_payload PASSED
+tests/test_vendor_isolated.py::test_import_uses_only_vendor_without_research_on_sys_path {"features": "D:\\WorkSpace\\DATN\\datn-facegate-app\\03-app\\hub\\vendor\\evaltest\\features.py", "backbones": "D:\\WorkSpace\\DATN\\datn-facegate-app\\03-app\\hub\\vendor\\code\\fr\\backbones\\__init__.py", "research_on_sys_path": false}
+
+PASSED
+tests/test_worker.py::test_busy_queue_and_event_loop_latency endpoint_latency_ms=1.802800; worker_busy=true
+PASSED
+tests/test_worker.py::test_initializer_error_and_shutdown PASSED
+tests/test_ws_kiosk.py::test_auth_invalid_or_missing[first0] PASSED
+tests/test_ws_kiosk.py::test_auth_invalid_or_missing[first1] PASSED
+tests/test_ws_kiosk.py::test_auth_invalid_or_missing[first2] PASSED
+tests/test_ws_kiosk.py::test_auth_timeout PASSED
+tests/test_ws_kiosk.py::test_stop_wait_result_and_duplicate_seq PASSED
+tests/test_ws_kiosk.py::test_overlapping_frame_busy PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[busy] PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[MODEL_NOT_VERIFIED] PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[RECOGNITION_UNAVAILABLE] PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[FRAME_DECODE_FAILED] PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[SESSION_EXPIRED] PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[OPERATION_INCOMPLETE] PASSED
+tests/test_ws_kiosk.py::test_frame_error_frees_seq_and_no_gallery_creates_no_event[NO_GALLERY] PASSED
+tests/test_ws_kiosk.py::test_enroll_five_frames_protocol_done_without_images PASSED
+tests/test_ws_kiosk.py::test_revoked_mid_connection PASSED
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [1] tests\test_color_order.py:11: Chưa cung cấp LFW thật qua T02_LFW_ROOT
+SKIPPED [1] tests\test_embed_smoke.py:12: Chưa cung cấp ảnh webcam riêng qua TEST_FACES_DIR
+================= 125 passed, 2 skipped, 1 warning in 56.40s ==================

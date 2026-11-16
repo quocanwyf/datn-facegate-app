@@ -1,0 +1,8 @@
+Windows-11-10.0.26200-SP0
+3.13.13
+fastapi 0.163.0
+SQLAlchemy 2.1.8
+asyncpg 0.32.0
+APScheduler 3.11.3
+openpyxl 3.1.5
+pytest 9.2.0

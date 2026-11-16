@@ -54,11 +54,18 @@ async def record_decision(factory, device, payload, inferred):
             if 'crop' in inferred:
                 relative = f'snapshots/{event_id}.png'
                 await asyncio.to_thread(write_private, relative, inferred['crop'])
-            session.add(RecognitionEvent(id=event_id, company_id=device.company_id, gate_id=gate.id, device_id=device.id,
+            event = RecognitionEvent(id=event_id, company_id=device.company_id, gate_id=gate.id, device_id=device.id,
                          occurred_at=inferred['occurred_at'], result=event_result, employee_id=employee.id if employee else None,
                          model_id=inferred['model_id'], top1_score=decision.score, threshold_used=payload['tau'],
                          threshold_level=payload['threshold_level'], p_live_min=decision.p_live_min, n_frames=decision.n_frames,
-                         door_action='OPEN' if allowed else 'NONE', snapshot_path=relative))
+                         door_action='OPEN' if allowed else 'NONE', snapshot_path=relative)
+            session.add(event)
+            await session.flush()
+            from app.biz.attendance import apply_event
+            day = await apply_event(session, event)
+            if day is not None:
+                kind = 'OUT' if day.check_out_event_id == event.id else 'IN' if day.check_in_event_id == event.id else 'NONE'
+                result['attendance'] = {'kind': kind, 'time': event.occurred_at.isoformat(), 'status': day.status}
         return result
     except Exception:
         if relative:
