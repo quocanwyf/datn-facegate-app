@@ -17,6 +17,9 @@ import { GatesPage } from './gates/GatesPage';
 import { SettingsPage } from './settings/SettingsPage';
 import { AuditPage } from './audit/AuditPage';
 import { DashboardPage } from './dashboard/DashboardPage';
+import { SchedulesPage } from './schedules/SchedulesPage';
+import { AttendancePage } from './attendance/AttendancePage';
+import { RequestsPage } from './attendance/RequestsPage';
 import '../admin.css';
 
 gsap.registerPlugin(useGSAP);
@@ -65,7 +68,7 @@ function AdminShell({ session, busy, error, onLogout }: { session: Session; busy
       </header>
       <main className="admin-content" id="main-content" tabIndex={-1}>
         {error && <Alert className="feedback" type="error" role="alert" message={error} showIcon />}
-        {!allowed ? <Result status="403" title="403" subTitle="Bạn không có quyền xem trang này" /> : pathname === '/admin/employees' ? <EmployeesPage session={session} /> : pathname.startsWith('/admin/employees/') ? <EmployeeDetail session={session} /> : pathname === '/admin/faces' ? <FacesPage /> : pathname === '/admin/organization' ? <OrganizationPage session={session} /> : pathname === '/admin/gates' ? <GatesPage session={session} /> : pathname === '/admin/settings' ? <SettingsPage session={session} /> : pathname === '/admin/audit' ? <AuditPage /> : pathname === '/admin' ? <DashboardPage /> : <><PageHero title={active.label} description="Không gian quản trị FaceGate" /><section className="content-panel"><Alert type="info" showIcon message="Bạn đã đăng nhập thành công" description="Nội dung trang này sẽ được triển khai ở chức năng tiếp theo." /><Button className="start-employees" type="primary" onClick={() => navigate('/admin/employees')} disabled={!visible.some(entry => entry.path === '/admin/employees')}>Mở danh sách nhân viên</Button></section></>}
+        {!allowed ? <Result status="403" title="403" subTitle="Bạn không có quyền xem trang này" /> : pathname === '/admin/employees' ? <EmployeesPage session={session} /> : pathname.startsWith('/admin/employees/') ? <EmployeeDetail session={session} /> : pathname === '/admin/faces' ? <FacesPage /> : pathname === '/admin/organization' ? <OrganizationPage session={session} /> : pathname === '/admin/gates' ? <GatesPage session={session} /> : pathname === '/admin/settings' ? <SettingsPage session={session} /> : pathname === '/admin/audit' ? <AuditPage /> : pathname === '/admin/schedules' ? <SchedulesPage /> : pathname === '/admin/attendance' ? <AttendancePage session={session} /> : pathname === '/admin/requests' ? <RequestsPage session={session} /> : pathname === '/admin' ? <DashboardPage /> : <><PageHero title={active.label} description="Không gian quản trị FaceGate" /><section className="content-panel"><Alert type="info" showIcon message="Bạn đã đăng nhập thành công" description="Nội dung trang này sẽ được triển khai ở chức năng tiếp theo." /><Button className="start-employees" type="primary" onClick={() => navigate('/admin/employees')} disabled={!visible.some(entry => entry.path === '/admin/employees')}>Mở danh sách nhân viên</Button></section></>}
       </main>
       <footer className="admin-footer">Bản trình diễn nghiên cứu – không dùng thương mại</footer>
     </div>

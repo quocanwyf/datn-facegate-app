@@ -79,3 +79,13 @@ pre, dd { white-space: pre-wrap; overflow-wrap: anywhere; }
 .ant-modal-body, .ant-drawer-body { overscroll-behavior: contain; }
 @media (max-width: 1023px) { .split-layout { grid-template-columns: 1fr; } .settings-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .kpi-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
 .rail-item { text-decoration: none; } .loading-page { padding: 48px; text-align: center; } h1,h2 { text-wrap: balance; } .admin-main,.content-panel { min-width: 0; }
+
+.week-grid { display: grid; grid-template-columns: repeat(7,minmax(140px,1fr)); gap: 12px; overflow-x: auto; padding: 12px 0; }
+.week-column { background: var(--c-surface-muted); border-radius: var(--r-lg); padding: 12px; min-height: 220px; }
+.week-column h3 { margin-top: 0; } .assignment-card { background: var(--c-surface); border-radius: var(--r-md); padding: 12px; margin-top: 12px; }
+.assignment-card p { font-size: 12px; color: var(--c-text-2); overflow-wrap: anywhere; }
+.attendance-table .ant-table-cell { padding: 6px 2px !important; text-align: center; } .attendance-table .ant-table-cell-fix-left { text-align: left; padding: 8px !important; }
+.attendance-cell { width: 36px; height: 36px; border: 0; border-radius: var(--r-sm); cursor: pointer; font: 500 12px var(--font-body); }
+.attendance-cell:disabled { cursor: default; } .attendance-cell:focus-visible { outline: 2px solid var(--c-primary); outline-offset: 2px; }
+.attendance-legend { display: flex; flex-wrap: wrap; gap: 12px 20px; padding-top: 24px; font-size: 12px; }
+.attendance-legend span { display: inline-flex; align-items: center; gap: 6px; } .attendance-legend i { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: var(--r-sm); font-style: normal; }

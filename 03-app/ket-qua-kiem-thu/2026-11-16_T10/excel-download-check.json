@@ -1,0 +1,33 @@
+{
+  "file": "bang-cong-2026-11.xlsx",
+  "sheets": [
+    "Tổng hợp",
+    "Chi tiết"
+  ],
+  "total_columns": [
+    "Mã NV",
+    "Họ tên",
+    "Phòng ban",
+    "Ngày công",
+    "Số lần muộn",
+    "Tổng phút muộn",
+    "Tổng phút về sớm",
+    "Số ngày vắng",
+    "Số ngày thiếu giờ ra",
+    "Số ngày nghỉ phép"
+  ],
+  "detail_columns": [
+    "Mã NV",
+    "Họ tên",
+    "Ngày",
+    "Ca",
+    "Giờ vào",
+    "Giờ ra",
+    "Trạng thái",
+    "Nguồn",
+    "Phút muộn",
+    "Phút về sớm",
+    "Ghi chú"
+  ],
+  "source": "Browser download from real T10 isolated Hub; seeded demo employees and derived attendance, no biometric events."
+}
