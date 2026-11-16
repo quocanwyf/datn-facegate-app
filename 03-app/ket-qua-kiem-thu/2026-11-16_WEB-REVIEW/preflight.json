@@ -1,0 +1,216 @@
+{
+  "health": {
+    "status": "ok",
+    "db": true,
+    "gpu": false,
+    "model_verified": true,
+    "gallery_size": 1,
+    "version": "0.1.0"
+  },
+  "accounts": [
+    {
+      "email": "nv001@demo.local",
+      "employee": {
+        "id": "d4cfbfb9-d466-5b09-a65b-1dc4bc34fda7",
+        "code": "NV001",
+        "full_name": "Trần Minh Khoa",
+        "department_id": "3b3a2d70-1ba4-55e5-bd36-3f50b8bd97db",
+        "department_name": "Ban Giám đốc"
+      },
+      "roles": [
+        {
+          "role": "EMPLOYEE",
+          "scope_department_id": null
+        },
+        {
+          "role": "OWNER",
+          "scope_department_id": null
+        }
+      ]
+    },
+    {
+      "email": "nv002@demo.local",
+      "employee": {
+        "id": "17f119e7-72ef-5bb6-aabf-780fdb08a9a5",
+        "code": "NV002",
+        "full_name": "Nguyễn Thị Thu Hà",
+        "department_id": "18bf5012-0ea4-533a-ab32-c81f80ca2364",
+        "department_name": "Hành chính – Nhân sự"
+      },
+      "roles": [
+        {
+          "role": "EMPLOYEE",
+          "scope_department_id": null
+        },
+        {
+          "role": "HR",
+          "scope_department_id": null
+        }
+      ]
+    },
+    {
+      "email": "nv005@demo.local",
+      "employee": {
+        "id": "f9eb707d-39ce-5f44-b2fb-c8af8023fa6b",
+        "code": "NV005",
+        "full_name": "Đỗ Quang Huy",
+        "department_id": "1e898405-1b0a-5d9f-832e-05ab4736cc6a",
+        "department_name": "Kỹ thuật"
+      },
+      "roles": [
+        {
+          "role": "EMPLOYEE",
+          "scope_department_id": null
+        },
+        {
+          "role": "MANAGER",
+          "scope_department_id": "1e898405-1b0a-5d9f-832e-05ab4736cc6a"
+        }
+      ],
+      "today": {
+        "date": "2026-11-16",
+        "shift": {
+          "id": "d01b0d9b-b663-524b-8f98-c01969a4825e",
+          "name": "Hành chính",
+          "start_time": "08:30",
+          "end_time": "17:30"
+        },
+        "holiday": null,
+        "attendance_method": "FACE",
+        "day": {
+          "work_date": "2026-11-16",
+          "check_in_at": null,
+          "check_out_at": null,
+          "status": "WAITING_IN",
+          "suspect_forgot_out": false,
+          "late_min": 0,
+          "early_min": 0,
+          "worked_min": 0,
+          "source": "AUTO",
+          "finalized": false,
+          "edit_reason": null,
+          "id": "610558d4-ee0a-49af-9742-8313d7b9a539",
+          "employee": {
+            "id": "f9eb707d-39ce-5f44-b2fb-c8af8023fa6b",
+            "code": "NV005",
+            "full_name": "Đỗ Quang Huy",
+            "department_id": "1e898405-1b0a-5d9f-832e-05ab4736cc6a",
+            "department_name": "Kỹ thuật"
+          },
+          "shift": {
+            "id": "d01b0d9b-b663-524b-8f98-c01969a4825e",
+            "name": "Hành chính",
+            "start_time": "08:30",
+            "end_time": "17:30"
+          }
+        },
+        "passes": []
+      }
+    },
+    {
+      "email": "nv006@demo.local",
+      "employee": {
+        "id": "194b8035-f397-526e-8680-e269b02863fa",
+        "code": "NV006",
+        "full_name": "Võ Thanh Tùng",
+        "department_id": "1e898405-1b0a-5d9f-832e-05ab4736cc6a",
+        "department_name": "Kỹ thuật"
+      },
+      "roles": [
+        {
+          "role": "EMPLOYEE",
+          "scope_department_id": null
+        }
+      ],
+      "today": {
+        "date": "2026-11-16",
+        "shift": {
+          "id": "d01b0d9b-b663-524b-8f98-c01969a4825e",
+          "name": "Hành chính",
+          "start_time": "08:30",
+          "end_time": "17:30"
+        },
+        "holiday": null,
+        "attendance_method": "FACE",
+        "day": {
+          "work_date": "2026-11-16",
+          "check_in_at": null,
+          "check_out_at": null,
+          "status": "WAITING_IN",
+          "suspect_forgot_out": false,
+          "late_min": 0,
+          "early_min": 0,
+          "worked_min": 0,
+          "source": "AUTO",
+          "finalized": false,
+          "edit_reason": null,
+          "id": "f3cebf70-1ca1-42b0-b4cb-95331046d171",
+          "employee": {
+            "id": "194b8035-f397-526e-8680-e269b02863fa",
+            "code": "NV006",
+            "full_name": "Võ Thanh Tùng",
+            "department_id": "1e898405-1b0a-5d9f-832e-05ab4736cc6a",
+            "department_name": "Kỹ thuật"
+          },
+          "shift": {
+            "id": "d01b0d9b-b663-524b-8f98-c01969a4825e",
+            "name": "Hành chính",
+            "start_time": "08:30",
+            "end_time": "17:30"
+          }
+        },
+        "passes": [
+          {
+            "occurred_at": "2026-11-16T03:03:50.530970+00:00",
+            "gate_name": "T08 review",
+            "gate_mode": "ACCESS_ONLY",
+            "result": "MATCH"
+          },
+          {
+            "occurred_at": "2026-11-16T03:10:05.777331+00:00",
+            "gate_name": "T08 review",
+            "gate_mode": "ACCESS_ONLY",
+            "result": "MATCH"
+          },
+          {
+            "occurred_at": "2026-11-16T03:10:27.690609+00:00",
+            "gate_name": "T08 review",
+            "gate_mode": "ACCESS_ONLY",
+            "result": "DENIED_INACTIVE"
+          }
+        ]
+      }
+    },
+    {
+      "email": "nv020@demo.local",
+      "employee": {
+        "id": "26b08a4d-4cd1-5b59-aa52-1150162a8496",
+        "code": "NV020",
+        "full_name": "Kiều Thị Mai",
+        "department_id": "b51f4fc4-c883-5d36-bdb5-649567dfd743",
+        "department_name": "Lễ tân – Bảo vệ"
+      },
+      "roles": [
+        {
+          "role": "EMPLOYEE",
+          "scope_department_id": null
+        },
+        {
+          "role": "SECURITY",
+          "scope_department_id": null
+        }
+      ],
+      "manual_candidate": [
+        {
+          "id": "c8779274-18f6-5fd0-ac65-12de40b5fb9f",
+          "department_id": "82521451-c881-5fe7-aadc-41a71c6b9ce6",
+          "code": "NV022",
+          "full_name": "Cao Nhật Minh",
+          "department_name": "Kinh doanh",
+          "status": "ACTIVE",
+          "attendance_method": "MANUAL"
+        }
+      ]
+    }
+  ]
+}

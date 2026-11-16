@@ -20,7 +20,7 @@ $env:FACEGATE_HUB_URL='http://127.0.0.1:8012'
 
 Mở `http://127.0.0.1:5173/me`. Tài khoản demo `nv006@demo.local` / `Demo@123`. Phiên nằm trong bộ nhớ: refresh trang sẽ yêu cầu đăng nhập lại.
 
-`--resume` chỉ dùng trên máy đã có context T12. Muốn thử lại xóa từ đầu, dừng Hub T12 và mọi Hub dùng DB T08 rồi chạy helper không có `--resume`: tạo DB/kho T12 mới từ T08, không xóa clone cũ. Không chạy thao tác revoke trên DB T08 gốc. Clone T12 hiện tại đã rút consent NV006 thành công nên sẽ hiện MANUAL/chưa đồng ý.
+`--resume` chỉ dùng trên máy đã có context T12. Muốn thử lại xóa từ đầu, dừng Hub T12 và mọi Hub dùng DB T08 rồi chạy helper không có `--resume`: tạo DB/kho T12 mới từ T08, không xóa clone cũ. Không chạy thao tác revoke trên DB T08 gốc. Phiên kiểm tự động trước đó đã rút consent NV006 thành công. Khi người dùng yêu cầu mở web review, Codex đã tạo clone mới có hồ sơ FACE/5 mẫu; `--resume` tiếp tục clone mới này. Xem [kịch bản test web](../../KICH-BAN-TEST-WEB.md).
 
 ## Kịch bản từng chức năng
 
