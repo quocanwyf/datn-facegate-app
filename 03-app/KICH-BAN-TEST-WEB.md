@@ -91,7 +91,7 @@ Kết quả: ☐ Đạt ☐ Lỗi ☐ Chưa thử. Ghi chú: …
 
 1. NV001 → Trang quản trị → Nhân viên: tìm `NV006`, mở chi tiết và các tab.
 2. Kiểm hồ sơ khuôn mặt đang ACTIVE, 5 mẫu; xem bảng công/lịch sử liên quan.
-3. Tạo một nhân viên thử có mã **REVIEW001**, tên **Nhân viên thử web**, điền các trường bắt buộc, chọn phương thức **Chấm công hộ**. Nếu mã đã tồn tại, dùng REVIEW002.
+3. Tạo một nhân viên thử có mã **REVIEW001**, tên **Nhân viên thử web**, điền các trường bắt buộc rồi lưu. Nếu mã đã tồn tại, dùng REVIEW002. **Form Thêm/Sửa hiện không có ô chọn phương thức**; theo hợp đồng hiện tại, nhân viên mới mặc định FACE (Khuôn mặt). FACE chưa có hồ sơ được duyệt vẫn chưa nhận diện được. Phương thức chuyển MANUAL qua luồng không đồng ý/rút đồng ý hoặc xóa sinh trắc theo đặc tả; mục 10 dùng sẵn NV022 để thử chấm hộ, không yêu cầu REVIEW001 là MANUAL.
 4. Tìm lại mã vừa tạo, sửa tên/lưu, tải lại trang và đăng nhập lại: thông tin sửa phải còn.
 5. Thử tạm khóa rồi mở khóa chính nhân viên REVIEW vừa tạo; kiểm trạng thái thay đổi đúng.
 6. Vào Phòng ban: thử tạo phòng **Phòng thử web**, sửa tên. Không cần đổi phòng ban của dữ liệu NV006/NV005 đang dùng cho các ca trên.
