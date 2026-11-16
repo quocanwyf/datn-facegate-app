@@ -1,7 +1,7 @@
 # Báo cáo T09 — Chấm công backend
 
 - Trạng thái: **XONG** phần backend T09; giao diện quản trị ở T10, giao diện cá nhân ở T12.
-- Commit: ghi trong lịch sử Git của thư mục này.
+- Commit: `469e2e2` (backend); archive ghi ở commit sau.
 - Máy: Windows, PostgreSQL 16; phiên bản Python/thư viện ở `environment.log`.
 
 ## Tiêu chí nghiệm thu

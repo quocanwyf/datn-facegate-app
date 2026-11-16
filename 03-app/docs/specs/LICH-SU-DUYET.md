@@ -122,3 +122,8 @@ Người dùng chọn trực tiếp trong chat: “Khóa IP nhập sai trong 10 
 ## Hoàn thành FG-AI-003 — 15/11/2026
 
 Chuyển archived sau T04 c110df6/T05 ed90ab6: 1.464.840 chuỗi và cooldown thật 1 OK + 2 ALREADY chỉ 1 MATCH. Metadata/AC/báo cáo và các liên kết đã cập nhật. Các spec khác giữ approved khi chưa đủ AC.
+
+## Nghiệm thu backend T09 — 16/11/2026
+
+- Chuyển FG-ATT-002 sang archived theo ủy quyền làm xong chức năng thì archive; commit 469e2e2, báo cáo T09 và 129 test backend pass.
+- Các spec ca/bảng công/giải trình/cá nhân còn phần UI ở T10/T12 nên giữ approved. T08 vẫn thiếu video liền luồng và 10 lượt người thật, không archive.

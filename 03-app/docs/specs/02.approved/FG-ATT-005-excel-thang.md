@@ -48,7 +48,7 @@ Hub/DB và dữ liệu tham chiếu phải sẵn sàng. Tài khoản/thiết b�
 - Theo Q-010, tổng ngày công đếm cặp NV/ngày duy nhất thuộc NORMAL/LATE/EARLY/LATE_EARLY; mỗi ngày 1, không cộng thêm ngày cho giải trình APPROVED. Các trạng thái khác thống kê riêng, không quy đổi nửa ngày.
 - Không khóa kỳ
 
-Công thức chi tiết và ví dụ theo Q-010 tại [FG-ATT-002](FG-ATT-002-tinh-chot-cong.md#công-thức-theo-q-010); không cộng ngày riêng chỉ vì có giải trình.
+Công thức chi tiết và ví dụ theo Q-010 tại [FG-ATT-002](../03.archived/FG-ATT-002-tinh-chot-cong.md#công-thức-theo-q-010); không cộng ngày riêng chỉ vì có giải trình.
 
 ## 6. REST / tích hợp
 

@@ -12,7 +12,7 @@ Giữ mã màn từ UI, không thêm màn mới.
 | W-06 | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) |
 | W-07 | [FG-GATE-001](02.approved/FG-GATE-001-cua-chinh-sach.md), [FG-DEV-001](02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md) |
 | W-08 | [FG-FACE-003](02.approved/FG-FACE-003-duyet-ho-so-gallery.md) |
-| W-09 | [FG-ATT-002](02.approved/FG-ATT-002-tinh-chot-cong.md), [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md), [FG-ATT-005](02.approved/FG-ATT-005-excel-thang.md) |
+| W-09 | [FG-ATT-002](03.archived/FG-ATT-002-tinh-chot-cong.md), [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md), [FG-ATT-005](02.approved/FG-ATT-005-excel-thang.md) |
 | W-10 | [FG-MON-001](02.approved/FG-MON-001-giam-sat-canh-bao.md), [FG-ACCESS-002](02.approved/FG-ACCESS-002-mo-cua-thu-cong.md), [FG-ATT-004](02.approved/FG-ATT-004-cham-cong-ho.md) |
 | W-11 | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) |
 | W-12 | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) |

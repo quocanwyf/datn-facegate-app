@@ -7,4 +7,6 @@
 | [FG-ORG-001-phong-ban](FG-ORG-001-phong-ban.md) | 12d8581, eb13891 | [T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md), chi tiết AC trong spec |
 | [FG-AI-004-settings-nguong](FG-AI-004-settings-nguong.md) | 12d8581, eb13891 | [T07](../../../ket-qua-kiem-thu/2026-11-15_T07/bao-cao.md), chi tiết AC trong spec |
 
+| [FG-ATT-002 — Tính và chốt ngày công](FG-ATT-002-tinh-chot-cong.md) | 469e2e2 | [T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), AC01–AC14 backend |
+
 Khi đổi yêu cầu, tạo spec thay đổi mã mới trong 01.draft, tham chiếu hồ sơ archived. Xem [quy trình](../README.md).

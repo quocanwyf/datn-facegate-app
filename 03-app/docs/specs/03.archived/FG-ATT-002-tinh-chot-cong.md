@@ -1,16 +1,16 @@
 # FG-ATT-002 — Tính lại và chốt ngày công
 
 - Phiên bản: 1.3 — 14/11/2026; bổ sung quyết định Q-010 của người dùng, giữ các quyết định trước đó.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu backend xong ngày 16/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T09 `469e2e2`; [báo cáo](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), 129 test backend pass. Giao diện bảng công tiếp tục T10/T12.
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.5; skill cham-cong-vn; DB §5–6. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-09; E-02/E-03/E-04; K-04.
 - Task liên quan: T09, T10, T12 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-ATT-001](FG-ATT-001-ca-phan-ca-ngay-le.md), [FG-ACCESS-001](FG-ACCESS-001-quyet-dinh-ra-vao.md), [FG-ATT-004](FG-ATT-004-cham-cong-ho.md)
+- Liên quan/phụ thuộc: [FG-ATT-001](../02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md), [FG-ACCESS-001](../02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md), [FG-ATT-004](../02.approved/FG-ATT-004-cham-cong-ho.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -104,4 +104,4 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-ATT-002-AC13**: Phút làm việc không cộng phần ngoài ca và chỉ trừ phần giao thực tế với giờ nghỉ; lấy phần nguyên sau khi tính.
 - **FG-ATT-002-AC14**: Một ngày đủ điều kiện có giải trình được duyệt chỉ tính 1 ngày công; trạng thái khác không tự quy đổi thành nửa ngày.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC01–AC14 **đạt ở lớp backend**: idempotence/cửa sổ/checkout đúng 30 phút, grace và giờ nghỉ, trạng thái trước/sau chốt, lễ/LEAVE, giữ giờ sửa, event muộn, giải trình và đếm ngày duy nhất. Log: `2026-11-16_T09/pytest.log`; các test `test_attendance_rules.py`, `test_attendance_api.py`. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.

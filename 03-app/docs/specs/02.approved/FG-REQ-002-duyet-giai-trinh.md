@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.7, §6; admin.md W-12; me.md E-10. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-12, E-10.
 - Task liên quan: T06, T09, T10, T12 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-REQ-001](FG-REQ-001-tao-huy-giai-trinh.md), [FG-ATT-002](FG-ATT-002-tinh-chot-cong.md)
+- Liên quan/phụ thuộc: [FG-REQ-001](FG-REQ-001-tao-huy-giai-trinh.md), [FG-ATT-002](../03.archived/FG-ATT-002-tinh-chot-cong.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
