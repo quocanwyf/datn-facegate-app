@@ -1,0 +1,10 @@
+Demo chung: web http://127.0.0.1:8000/login, kiosk http://10.0.2.2:8000; DB/kho T14 riêng. device=cpu
+CPU chưa đạt tiêu chí GPU T14; chống giả mạo chỉ hoạt động sau phê duyệt và bật cấu hình.
+INFO:     Started server process [25232]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:64308 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64309 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64310 - "GET /api/v1/employees HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64311 - "GET /api/v1/not-a-route HTTP/1.1" 404 Not Found

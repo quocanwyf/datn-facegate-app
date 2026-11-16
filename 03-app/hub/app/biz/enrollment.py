@@ -20,6 +20,9 @@ async def persist_enrollment(factory, device, enrollment, employee_id, prepared)
             written.append(relative)
             await asyncio.to_thread(write_private, relative, sample['png'])
         async with factory() as session, session.begin():
+            if 'recognition_settings' in prepared:
+                from app.biz.recognition_policy import lock_recognition_policy
+                await lock_recognition_policy(session, device.company_id, prepared['recognition_settings'])
             if enrollment.expires_at <= utcnow():
                 raise ApiError(422, 'SESSION_EXPIRED', 'Phiên đăng ký đã hết hạn.')
             current_device=await session.get(Device,device.id)

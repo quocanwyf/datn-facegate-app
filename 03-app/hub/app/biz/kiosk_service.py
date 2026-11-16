@@ -63,6 +63,7 @@ class KioskService:
             inferred = await asyncio.wrap_future(self.runtime.worker.submit('frame', payload, device_id=device.id))
             if 'samples' in inferred:
                 # Không gửi ảnh/vector nội bộ ra WS, chỉ gửi kết quả sau DB + file hoàn tất.
+                inferred['recognition_settings'] = payload['settings']
                 return await persist_enrollment(self.factory, device, enrollment, payload['employee_id'], inferred)
             if 'decision' in inferred:
                 try:

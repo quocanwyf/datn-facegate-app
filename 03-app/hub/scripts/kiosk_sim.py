@@ -30,7 +30,7 @@ def jpeg_frame(path, long_side, quality):
     return data.tobytes()
 
 
-async def simulate(hub, token, images, *, mode='recognize', enrollment=None, employee_id=None, repeat=1, limit=None, emit=print):
+async def simulate(hub, token, images, *, mode='recognize', enrollment=None, employee_id=None, repeat=1, limit=None, emit=print, observe=None):
     url = hub.rstrip('/').replace('https://','wss://').replace('http://','ws://') + '/api/v1/ws/kiosk'
     paths = sorted(path for path in Path(images).iterdir() if path.suffix.lower() in EXTENSIONS)
     if not paths:
@@ -61,6 +61,7 @@ async def simulate(hub, token, images, *, mode='recognize', enrollment=None, emp
             header = {'type':'frame','seq':seq,'mode':mode}
             if mode == 'enroll':
                 header.update(enroll_session_id=enrollment,employee_id=employee_id)
+            request_started = time.perf_counter()
             await socket.send(json.dumps(header))
             await socket.send(data)
             last_sent = time.monotonic()
@@ -74,6 +75,9 @@ async def simulate(hub, token, images, *, mode='recognize', enrollment=None, emp
                     continue
                 break
             messages.append(response)
+            if observe:
+                observe({'seq': seq, 'roundtrip_ms': (time.perf_counter()-request_started)*1000,
+                         'type': response.get('type'), 'result': response.get('result'), 'state': response.get('state')})
             if response.get('type') == 'enroll_done':
                 break
             if response.get('type') == 'result':

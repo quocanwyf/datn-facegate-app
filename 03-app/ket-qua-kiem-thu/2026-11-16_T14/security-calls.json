@@ -1,0 +1,33 @@
+{
+  "baseline": "4aceb59",
+  "strategy": "MEDIUM/FOCUSED; settings/inference commits and liveness assets HIGH risk review scope",
+  "direct_syntactic_call_sites": {
+    "persist_enrollment": [
+      "03-app/hub/app/biz/kiosk_service.py:67"
+    ],
+    "require_approval": [
+      "03-app/hub/app/api/settings.py:35",
+      "03-app/hub/app/biz/recognition_policy.py:17",
+      "03-app/hub/app/recog/runtime.py:146"
+    ],
+    "verify_bundle": [
+      "03-app/hub/app/api/settings.py:36",
+      "03-app/hub/app/recog/liveness.py:68"
+    ],
+    "lock_recognition_policy": [
+      "03-app/hub/app/biz/access.py:18",
+      "03-app/hub/app/biz/enrollment.py:25"
+    ],
+    "live_score": [
+      "03-app/hub/app/recog/runtime.py:224",
+      "03-app/hub/app/recog/runtime.py:180"
+    ],
+    "FrameTiming": [
+      "03-app/hub/app/recog/runtime.py:128"
+    ],
+    "record_decision": [
+      "03-app/hub/app/biz/kiosk_service.py:70"
+    ]
+  },
+  "limits": "Static references, not dynamic execution counts; no claim of whole-project audit."
+}

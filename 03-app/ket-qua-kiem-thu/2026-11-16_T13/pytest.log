@@ -1,0 +1,42 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.13, pytest-9.2.0, pluggy-1.7.0 -- D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\WorkSpace\DATN\datn-facegate-app\03-app\hub
+configfile: pyproject.toml
+plugins: anyio-4.16.0, asyncio-1.5.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 23 items
+
+tests/test_liveness.py::test_preprocessing_and_ensemble_match_pinned_upstream PASSED
+tests/test_liveness.py::test_approval_requires_real_workflow_marker_and_matching_policy PASSED
+tests/test_liveness.py::test_spoof_has_priority_and_enrollment_does_not_accept_fake PASSED
+tests/test_liveness.py::test_disabled_flag_preserves_match_without_loading_liveness PASSED
+tests/test_liveness.py::test_unapproved_enabled_settings_fail_closed PASSED
+tests/test_liveness.py::test_opt_in_timings_preserve_result_and_report_executed_stages_only PASSED
+tests/test_liveness_settings.py::test_enable_requires_matching_approval_and_failed_change_preserves_all_settings PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[1-OWNER] permission_read_role=OWNER; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[2-HR] permission_read_role=HR; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[5-MANAGER] permission_read_role=MANAGER; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[20-SECURITY] permission_read_role=SECURITY; cases=10
+PASSED
+tests/test_admin_api.py::test_permission_matrix_reads[6-EMPLOYEE] permission_read_role=EMPLOYEE; cases=10
+PASSED
+tests/test_admin_api.py::test_manager_scope_cannot_be_bypassed PASSED
+tests/test_admin_api.py::test_admin_writes_and_password_never_stored_plaintext[1] admin_write_role=1; employee_create_update_audit=true
+PASSED
+tests/test_admin_api.py::test_admin_writes_and_password_never_stored_plaintext[2] admin_write_role=2; employee_create_update_audit=true
+PASSED
+tests/test_admin_api.py::test_hr_cannot_manage_owner_or_gate_owner_fields PASSED
+tests/test_admin_api.py::test_owner_user_roles_reset_and_scope_validation PASSED
+tests/test_admin_api.py::test_settings_reject_atomically_and_preserve_old_configuration PASSED
+tests/test_admin_api.py::test_non_admin_write_routes_forbidden PASSED
+tests/test_admin_api.py::test_owner_and_hr_manage_non_owner_roles_pin_and_disable[1] PASSED
+tests/test_admin_api.py::test_owner_and_hr_manage_non_owner_roles_pin_and_disable[2] PASSED
+tests/test_admin_api.py::test_owner_creates_and_changes_gate_threshold PASSED
+tests/test_openapi_contract.py::test_all_operations_in_scope_have_real_routes_and_canonical_contract implemented_operations=77; deferred_T09_T11=0
+PASSED
+
+============================= 23 passed in 19.56s =============================

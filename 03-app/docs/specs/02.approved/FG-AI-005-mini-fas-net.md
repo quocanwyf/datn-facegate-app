@@ -73,3 +73,7 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-AI-005-AC07**: Giá trị L tại biên 0 hoặc 1 hợp lệ về miền sau khi đáp ứng điều kiện hiệu chỉnh; kiểm live vẫn dùng p_live>=L.
 
 Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+
+## Tiến độ triển khai T13/T14 — 16/11/2026
+
+Đã tích hợp hai MiniFASNet ghim nguồn/LICENSE/hash, nối quyết định/đăng ký, cổng phê duyệt L và công cụ quay/hiệu chỉnh. Xem [báo cáo T13](../../../ket-qua-kiem-thu/2026-11-16_T13/bao-cao.md), [RUN-T13](../../../ket-qua-kiem-thu/2026-11-16_T13/RUN-T13.md). Chưa có dữ liệu thật 4 nhóm, L được người dùng chốt và video DENY/SPOOF; giữ APPROVED, không archive và không bật cờ chỉ vì test fixture đạt. Máy hiện chưa có CUDA, không ghi số đo CPU thành nghiệm thu GPU T14.

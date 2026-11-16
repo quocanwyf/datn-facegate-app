@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "purpose": "T14 benchmark nhận dạng từ ảnh được đồng ý, không phải đo người thật đứng vào kiosk",
+  "created_at": "2026-11-16T08:54:08.939427+00:00",
+  "smoke": true,
+  "device": "cpu",
+  "versions": {
+    "python": "3.13.13",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.5.4"
+  },
+  "configurations": [
+    {
+      "clients": 1,
+      "measured_frames": 20,
+      "warmup_frames": 5,
+      "elapsed_seconds": 23.14513230000739,
+      "pipeline_total": {
+        "n": 20,
+        "p50_ms": 63.13734999275766,
+        "p95_ms": 801.020955019346
+      },
+      "stages": {
+        "decode": {
+          "n": 20,
+          "p50_ms": 1.7254999984288588,
+          "p95_ms": 3.016155005025212
+        },
+        "yunet": {
+          "n": 20,
+          "p50_ms": 42.43879999557976,
+          "p95_ms": 64.32294498808915
+        },
+        "liveness": null,
+        "embed": {
+          "n": 9,
+          "p50_ms": 212.8558999975212,
+          "p95_ms": 5824.323919997547
+        },
+        "top1": {
+          "n": 9,
+          "p50_ms": 0.13729999773204327,
+          "p95_ms": 7.465519988909359
+        },
+        "decision": {
+          "n": 9,
+          "p50_ms": 0.057999975979328156,
+          "p95_ms": 0.5535799951758233
+        }
+      },
+      "websocket_roundtrip": {
+        "n": 20,
+        "p50_ms": 91.54740000667516,
+        "p95_ms": 832.6470300031426
+      },
+      "response_counts": {
+        "LOOK_STRAIGHT": 16,
+        "CHECKING": 7,
+        "OK": 1,
+        "ALREADY": 1
+      },
+      "errors": 0,
+      "memory": {
+        "process_rss_bytes": 459005952,
+        "process_peak_rss_bytes": 577028096
+      }
+    },
+    {
+      "clients": 3,
+      "measured_frames": 60,
+      "warmup_frames": 15,
+      "elapsed_seconds": 20.104500299989013,
+      "pipeline_total": {
+        "n": 60,
+        "p50_ms": 68.45859999884851,
+        "p95_ms": 290.1082900207257
+      },
+      "stages": {
+        "decode": {
+          "n": 60,
+          "p50_ms": 1.9323999877087772,
+          "p95_ms": 2.9781000164803113
+        },
+        "yunet": {
+          "n": 60,
+          "p50_ms": 49.215750012081116,
+          "p95_ms": 66.60598000162281
+        },
+        "liveness": null,
+        "embed": {
+          "n": 27,
+          "p50_ms": 214.61860000272281,
+          "p95_ms": 245.9022099908907
+        },
+        "top1": {
+          "n": 27,
+          "p50_ms": 0.1286999904550612,
+          "p95_ms": 0.2159500028938055
+        },
+        "decision": {
+          "n": 27,
+          "p50_ms": 0.050700007705017924,
+          "p95_ms": 0.08507000457029788
+        }
+      },
+      "websocket_roundtrip": {
+        "n": 60,
+        "p50_ms": 291.4302500139456,
+        "p95_ms": 818.260994987213
+      },
+      "response_counts": {
+        "LOOK_STRAIGHT": 48,
+        "CHECKING": 18,
+        "OK": 3,
+        "ALREADY": 6
+      },
+      "errors": 0,
+      "memory": {
+        "process_rss_bytes": 275767296,
+        "process_peak_rss_bytes": 577028096
+      }
+    }
+  ],
+  "settings": {
+    "window_size": 5,
+    "match_min": 3,
+    "unknown_min": 4,
+    "spoof_min": 3,
+    "lost_face_sec": 1.0,
+    "iou_reset": 0.3,
+    "cooldown_employee_sec": 60,
+    "cooldown_alert_sec": 15,
+    "result_display_sec": 3,
+    "max_fps": 4,
+    "frame_long_side": 640,
+    "jpeg_quality": 80,
+    "min_face_px": 80,
+    "max_abs_yaw_ratio": 0.35,
+    "anti_spoof_enabled": false,
+    "liveness_threshold": null,
+    "attendance_window_before_h": 3,
+    "attendance_window_after_h": 4,
+    "min_checkout_after_checkin_min": 30,
+    "forgot_out_before_end_h": 2
+  },
+  "gpu_name": null,
+  "gpu_benchmark_criteria_met": false,
+  "limitations": "Pipeline stage timing đồng bộ CUDA khi bật; RTT gồm WS/DB/queue. RAM peak là peak của process; VRAM PyTorch allocator, không phải toàn VRAM hệ thống. Khung không hợp lệ/bị giữ kết quả có thể không chạy mọi stage, n của từng stage được ghi riêng. Độ trễ đứng-vào→kết quả 20 lượt phải đo riêng bằng video kiosk thật."
+}

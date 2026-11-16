@@ -9,7 +9,7 @@
 - T09/T10/T11 đã có triển khai và báo cáo nghiệm thu; T11 push `5b8b7af`, archive `7ac3bdc`.
 - T12 đã có các màn cá nhân và kiểm thử web/Hub/PostgreSQL. AC5 ảnh Chrome Android chờ người dùng kiểm tra sau theo phản hồi trong chat; không coi T12 đã nghiệm thu toàn bộ. [Báo cáo](../ket-qua-kiem-thu/2026-11-16_T12/bao-cao.md), [mở và review thủ công](../ket-qua-kiem-thu/2026-11-16_T12/RUN-T12.md).
 - T02 chạy trên laptop riêng khi người dùng rảnh; không chặn các task phần mềm theo chỉ đạo đã chốt. T08 còn video toàn luồng và phép đo CPU thiết bị.
-- T13 (quay thử/hiệu chỉnh chống giả mạo) và T14 (demo) cần làm cùng người dùng; chưa bật chống giả mạo hoặc chốt ngưỡng L.
+- T13/T14 đã có phần mềm tích hợp, script quay/hiệu chỉnh/phê duyệt/benchmark và launcher web+app chung, [kịch bản demo](../kich-ban-demo.md). Backend150pass, web cấu hình2pass; tiền kiểm CPU WS1/3 đã chạy. **Chưa nghiệm thu**: người dùng chưa có 4 nhóm video; chưa L/SPOOF video, chưa20lượt/300khungGPU. Máy hiện chỉ báo Intel UHD/PyTorchCPU, CUDAfalse. Chưa bật chống giả mạo hoặc tự chốt L. Xem [RUN-T13](../ket-qua-kiem-thu/2026-11-16_T13/RUN-T13.md), [RUN-T14](../ket-qua-kiem-thu/2026-11-16_T14/RUN-T14.md).
 
 Mở Codex ở thư mục gốc repo, dán:
 ```

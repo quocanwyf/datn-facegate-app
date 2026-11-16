@@ -1,0 +1,18 @@
+{
+  "upstream": "https://github.com/minivision-ai/Silent-Face-Anti-Spoofing",
+  "commit": "b6d5f04ad78778917853b25c778acef6d5626d15",
+  "license": "Apache-2.0",
+  "retrieved_on": "2026-11-16",
+  "sha256": {
+    "LICENSE": "daf94bf1dc9cc5700fe5af2c7c0cbd1836e70d509ed78fd0bebef7432edee6fb",
+    "test.py": "a6a6f053ac899b22607e7e9220742ce882aa4474e0395eebd5a502f3956b233b",
+    "src/model_lib/MiniFASNet.py": "e498c4ec5e1ddfaba62b941a126c19d65aa564999f3309661fe43ee8bf38acd7",
+    "src/generate_patches.py": "cd33552d5ca920088143daafceba3c19b7a64bf9aac125241803e1b4af698d65",
+    "src/anti_spoof_predict.py": "ce95918e5a19895781877a1ac5c8d3b2d753579c1709664a0ea8f9259ce43f93",
+    "src/data_io/functional.py": "8f779a775e01485800368e8a11104c49c8ba602629927e19ea223b74ff946898",
+    "src/data_io/transform.py": "f63c85790708e7017bbb24ed2d1a834076719fdd19c3fdd8633ed858c55e586f",
+    "src/utility.py": "cff329a47f4f284465126b19adb080343942a2f2014e862dc85e1e7c2f9d1421",
+    "resources/anti_spoof_models/2.7_80x80_MiniFASNetV2.pth": "a5eb02e1843f19b5386b953cc4c9f011c3f985d0ee2bb9819eea9a142099bec0",
+    "resources/anti_spoof_models/4_0_0_80x80_MiniFASNetV1SE.pth": "84ee1d37d96894d5e82de5a57df044ef80a58be2b218b5ed7cdfd875ec2f5990"
+  }
+}

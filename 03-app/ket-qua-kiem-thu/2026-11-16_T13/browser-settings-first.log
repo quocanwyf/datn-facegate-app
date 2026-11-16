@@ -1,0 +1,41 @@
+[WebServer] (node:23296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:16812) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\liveness.spec.ts:5:46 › OWNER: cấu hình chống giả mạo giữ cổng phê duyệt server (13.6s)
+(node:5924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 tests\liveness.spec.ts:5:46 › HR: cấu hình chống giả mạo giữ cổng phê duyệt server (1.7s)
+
+
+  1) tests\liveness.spec.ts:5:46 › OWNER: cấu hình chống giả mạo giữ cổng phê duyệt server ─────────
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByLabel('Ngưỡng L', { exact: true })
+    Expected: enabled
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByLabel('Ngưỡng L', { exact: true }) with timeout 10000ms
+      - waiting for getByLabel('Ngưỡng L', { exact: true })
+
+
+      21 |   const level = page.getByLabel('Ngưỡng L', { exact: true });
+      22 |   if (role === 'HR') { await expect(level).toBeDisabled(); await expect(page.getByRole('button', { name: 'Lưu cấu hình', exact: true })).toHaveCount(0); return; }
+    > 23 |   await expect(level).toBeEnabled(); await level.fill('0.7'); await page.getByRole('switch', { name: 'Bật chống giả mạo', exact: true }).click();
+         |                       ^
+      24 |   await page.getByRole('button', { name: 'Lưu cấu hình', exact: true }).click(); await page.getByRole('button', { name: 'Xác nhận lưu', exact: true }).click();
+      25 |   await expect(page.getByRole('dialog')).toContainText('Chống giả mạo chưa được hiệu chỉnh và chốt L.'); expect(writes).toHaveLength(1); expect(writes[0]).toMatchObject({ anti_spoof_enabled: true, liveness_threshold: .7 }); await expect(level).toHaveValue('0.7');
+      26 | });
+        at D:\WorkSpace\DATN\datn-facegate-app\03-app\web\tests\liveness.spec.ts:23:23
+
+    Error Context: test-results-liveness\liveness-OWNER-cấu-hình-ch-d31e3-o-giữ-cổng-phê-duyệt-server\error-context.md
+
+  1 failed
+    tests\liveness.spec.ts:5:46 › OWNER: cấu hình chống giả mạo giữ cổng phê duyệt server ──────────
+  1 passed (19.4s)

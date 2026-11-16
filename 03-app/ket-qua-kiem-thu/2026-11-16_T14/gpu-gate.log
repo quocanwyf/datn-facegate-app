@@ -1,0 +1,1 @@
+CUDA chưa có: PyTorch=2.11.0+cpu. Không chạy CPU thay cho nghiệm thu GPU.

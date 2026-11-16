@@ -32,5 +32,14 @@ def test_research_code_and_code_v1_critical_modules_equal():
 def test_vendor_has_no_unmanifested_payload():
     records = json.loads((VENDOR / 'MANIFEST.sha256').read_text(encoding='utf-8'))['files']
     expected = {record['path'] for record in records} | {'MANIFEST.sha256', '.gitattributes'}
-    actual = {file.relative_to(VENDOR).as_posix() for file in VENDOR.rglob('*') if file.is_file()}
+    # T13 được phép thêm đúng subtree silentface; 33 file T01 vẫn so byte với nguồn.
+    actual = {file.relative_to(VENDOR).as_posix() for file in VENDOR.rglob('*') if file.is_file() and file.relative_to(VENDOR).parts[0] != 'silentface'}
+    assert actual == expected
+
+
+def test_t13_vendor_has_exact_manifested_payload():
+    from app.recog.liveness import BUNDLE, verify_bundle
+    manifest = verify_bundle()
+    expected = set(manifest['sha256']) | {'manifest.json', 'NGUON.md'}
+    actual = {file.relative_to(BUNDLE).as_posix() for file in BUNDLE.rglob('*') if file.is_file() and '__pycache__' not in file.parts and file.suffix != '.pyc'}
     assert actual == expected

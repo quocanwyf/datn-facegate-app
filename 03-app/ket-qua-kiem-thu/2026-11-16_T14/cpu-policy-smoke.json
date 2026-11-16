@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "purpose": "T14 benchmark nhận dạng từ ảnh được đồng ý, không phải đo người thật đứng vào kiosk",
+  "created_at": "2026-11-16T09:09:58.113076+00:00",
+  "smoke": true,
+  "device": "cpu",
+  "versions": {
+    "python": "3.13.13",
+    "torch": "2.11.0+cpu",
+    "numpy": "2.5.4"
+  },
+  "configurations": [
+    {
+      "clients": 1,
+      "measured_frames": 5,
+      "warmup_frames": 5,
+      "elapsed_seconds": 9.99111279999488,
+      "pipeline_total": {
+        "n": 5,
+        "p50_ms": 281.70399999362417,
+        "p95_ms": 2763.8068800035394
+      },
+      "stages": {
+        "decode": {
+          "n": 5,
+          "p50_ms": 2.044299995759502,
+          "p95_ms": 4.239960014820099
+        },
+        "yunet": {
+          "n": 5,
+          "p50_ms": 49.15500001516193,
+          "p95_ms": 81.32667999598198
+        },
+        "liveness": null,
+        "embed": {
+          "n": 5,
+          "p50_ms": 234.99609998543747,
+          "p95_ms": 2675.4967399872835
+        },
+        "top1": {
+          "n": 5,
+          "p50_ms": 0.13160001253709197,
+          "p95_ms": 6.8144199904054386
+        },
+        "decision": {
+          "n": 5,
+          "p50_ms": 0.059200014220550656,
+          "p95_ms": 0.1895800000056624
+        }
+      },
+      "websocket_roundtrip": {
+        "n": 5,
+        "p50_ms": 301.6004000091925,
+        "p95_ms": 2817.74737999076
+      },
+      "response_counts": {
+        "LOOK_STRAIGHT": 5,
+        "CHECKING": 4,
+        "OK": 1
+      },
+      "errors": 0,
+      "memory": {
+        "process_rss_bytes": 422445056,
+        "process_peak_rss_bytes": 600231936
+      }
+    }
+  ],
+  "settings": {
+    "window_size": 5,
+    "match_min": 3,
+    "unknown_min": 4,
+    "spoof_min": 3,
+    "lost_face_sec": 1.0,
+    "iou_reset": 0.3,
+    "cooldown_employee_sec": 60,
+    "cooldown_alert_sec": 15,
+    "result_display_sec": 3,
+    "max_fps": 4,
+    "frame_long_side": 640,
+    "jpeg_quality": 80,
+    "min_face_px": 80,
+    "max_abs_yaw_ratio": 0.35,
+    "anti_spoof_enabled": false,
+    "liveness_threshold": null,
+    "attendance_window_before_h": 3,
+    "attendance_window_after_h": 4,
+    "min_checkout_after_checkin_min": 30,
+    "forgot_out_before_end_h": 2
+  },
+  "gpu_name": null,
+  "gpu_benchmark_criteria_met": false,
+  "limitations": "Pipeline stage timing đồng bộ CUDA khi bật; RTT gồm WS/DB/queue. RAM peak là peak của process; VRAM PyTorch allocator, không phải toàn VRAM hệ thống. Khung không hợp lệ/bị giữ kết quả có thể không chạy mọi stage, n của từng stage được ghi riêng. Độ trễ đứng-vào→kết quả 20 lượt phải đo riêng bằng video kiosk thật."
+}

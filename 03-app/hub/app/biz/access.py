@@ -13,8 +13,11 @@ async def record_decision(factory, device, payload, inferred, notify=None):
     relative = None
     try:
         async with factory() as session, session.begin():
+            if 'settings' in payload:
+                from app.biz.recognition_policy import lock_recognition_policy
+                await lock_recognition_policy(session, device.company_id, payload['settings'])
             # NO KEY UPDATE chặn thay quyền nhưng không chặn FK KEY SHARE.
-            # Thứ tự cố định device → gate → employee, giữ tới event commit.
+            # Sau Company FOR SHARE: device → gate → employee, giữ tới event commit.
             current = await session.scalar(select(Device).where(Device.id==device.id).with_for_update(key_share=True))
             if current is None or current.status != 'ACTIVE':
                 raise ApiError(401, 'DEVICE_REVOKED', 'Thiết bị đã bị thu hồi.')

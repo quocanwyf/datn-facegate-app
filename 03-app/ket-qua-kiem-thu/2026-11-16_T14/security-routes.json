@@ -1,0 +1,683 @@
+{
+  "python_app_files": 55,
+  "strategy": "MEDIUM/FOCUSED; auth/RBAC HIGH",
+  "direct_syntactic_calls": {
+    "validate_roles": [
+      "app/api/organization.py:88",
+      "app/api/organization.py:119"
+    ],
+    "body_contract": [
+      "app/api/attendance.py:77",
+      "app/api/attendance.py:96",
+      "app/api/attendance.py:114",
+      "app/api/attendance.py:176",
+      "app/api/attendance.py:181",
+      "app/api/attendance.py:198",
+      "app/api/employees.py:60",
+      "app/api/employees.py:81",
+      "app/api/events.py:128",
+      "app/api/events.py:153",
+      "app/api/faces.py:119",
+      "app/api/faces.py:124",
+      "app/api/gates.py:44",
+      "app/api/gates.py:54",
+      "app/api/gates.py:67",
+      "app/api/organization.py:33",
+      "app/api/organization.py:41",
+      "app/api/organization.py:87",
+      "app/api/organization.py:102",
+      "app/api/organization.py:117",
+      "app/api/organization.py:128",
+      "app/api/schedule.py:44",
+      "app/api/schedule.py:53",
+      "app/api/schedule.py:88",
+      "app/api/schedule.py:126",
+      "app/api/settings.py:29"
+    ],
+    "withdraw_consent": [
+      "app/api/employees.py:123",
+      "app/api/employees.py:131",
+      "app/api/faces.py:156",
+      "app/api/kiosk.py:111"
+    ],
+    "review_profile": [
+      "app/api/faces.py:120",
+      "app/api/faces.py:125"
+    ],
+    "require_roles": [
+      "app/api/attendance.py:19",
+      "app/api/attendance.py:20",
+      "app/api/attendance.py:21",
+      "app/api/attendance.py:22",
+      "app/api/dashboard.py:10",
+      "app/api/devices.py:17",
+      "app/api/employees.py:16",
+      "app/api/employees.py:17",
+      "app/api/employees.py:18",
+      "app/api/events.py:22",
+      "app/api/events.py:23",
+      "app/api/events.py:24",
+      "app/api/faces.py:18",
+      "app/api/faces.py:19",
+      "app/api/gates.py:12",
+      "app/api/gates.py:13",
+      "app/api/gates.py:14",
+      "app/api/organization.py:15",
+      "app/api/organization.py:16",
+      "app/api/schedule.py:14",
+      "app/api/schedule.py:15",
+      "app/api/settings.py:14",
+      "app/api/settings.py:15"
+    ],
+    "find_device": [
+      "app/auth/device.py:23",
+      "app/biz/kiosk_service.py:21"
+    ],
+    "manageable_user": [
+      "app/api/organization.py:103",
+      "app/api/organization.py:118",
+      "app/api/organization.py:129",
+      "app/api/organization.py:140"
+    ],
+    "current_user": [
+      "app/api/ws_monitor.py:40"
+    ],
+    "scoped": [
+      "app/api/attendance.py:78",
+      "app/api/attendance.py:82",
+      "app/api/attendance.py:83",
+      "app/api/attendance.py:97",
+      "app/api/attendance.py:115",
+      "app/api/attendance.py:116",
+      "app/api/attendance.py:151",
+      "app/api/attendance.py:154",
+      "app/api/attendance.py:221",
+      "app/api/attendance.py:53",
+      "app/api/employees.py:54",
+      "app/api/employees.py:82",
+      "app/api/employees.py:92",
+      "app/api/employees.py:119",
+      "app/api/employees.py:130",
+      "app/api/events.py:118",
+      "app/api/events.py:130",
+      "app/api/events.py:155",
+      "app/api/events.py:48",
+      "app/api/events.py:51",
+      "app/api/events.py:56",
+      "app/api/events.py:137",
+      "app/api/faces.py:71",
+      "app/api/faces.py:73",
+      "app/api/faces.py:74",
+      "app/api/faces.py:140",
+      "app/api/faces.py:57",
+      "app/api/gates.py:57",
+      "app/api/gates.py:68",
+      "app/api/gates.py:70",
+      "app/api/organization.py:42",
+      "app/api/organization.py:53",
+      "app/api/organization.py:90",
+      "app/api/organization.py:68",
+      "app/api/organization.py:106",
+      "app/api/schedule.py:54",
+      "app/api/schedule.py:89",
+      "app/api/schedule.py:93",
+      "app/api/schedule.py:110",
+      "app/api/schedule.py:73",
+      "app/api/schedule.py:77",
+      "app/biz/admin.py:26"
+    ]
+  },
+  "fastapi_dependencies_by_route": {
+    "get_session": [
+      "/api/v1/auth/login",
+      "/api/v1/auth/refresh",
+      "/api/v1/auth/logout",
+      "/api/v1/auth/change-password",
+      "/api/v1/me",
+      "/api/v1/devices",
+      "/api/v1/devices",
+      "/api/v1/devices/{id}/revoke",
+      "/api/v1/kiosk/pair",
+      "/api/v1/kiosk/enrollers",
+      "/api/v1/kiosk/enroll/sessions",
+      "/api/v1/kiosk/enroll/sessions/{id}/employees",
+      "/api/v1/kiosk/enroll/sessions/{id}/consent",
+      "/api/v1/departments",
+      "/api/v1/departments",
+      "/api/v1/departments/{id}",
+      "/api/v1/users",
+      "/api/v1/users",
+      "/api/v1/users/{id}",
+      "/api/v1/users/{id}/roles",
+      "/api/v1/users/{id}/kiosk-pin",
+      "/api/v1/users/{id}/reset-password",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees/{id}/suspend",
+      "/api/v1/employees/{id}/reactivate",
+      "/api/v1/employees/{id}/terminate",
+      "/api/v1/employees/{id}/face",
+      "/api/v1/face-profiles",
+      "/api/v1/face-profiles/{id}",
+      "/api/v1/face-profiles/{id}/approve",
+      "/api/v1/face-profiles/{id}/reject",
+      "/api/v1/face-samples/{id}/image",
+      "/api/v1/me/face",
+      "/api/v1/me/face/revoke",
+      "/api/v1/gates",
+      "/api/v1/gates",
+      "/api/v1/gates/{id}",
+      "/api/v1/gates/{id}/allowed-departments",
+      "/api/v1/settings/recognition",
+      "/api/v1/settings/recognition",
+      "/api/v1/models/active",
+      "/api/v1/audit-logs",
+      "/api/v1/dashboard/today",
+      "/api/v1/shifts",
+      "/api/v1/shifts",
+      "/api/v1/shifts/{id}",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments/{id}",
+      "/api/v1/holidays",
+      "/api/v1/holidays",
+      "/api/v1/holidays/{date}",
+      "/api/v1/attendance/days",
+      "/api/v1/attendance/days/{id}",
+      "/api/v1/attendance/leave",
+      "/api/v1/attendance/manual",
+      "/api/v1/attendance/requests",
+      "/api/v1/attendance/requests/{id}/approve",
+      "/api/v1/attendance/requests/{id}/reject",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests/{id}/cancel",
+      "/api/v1/me/today",
+      "/api/v1/me/attendance",
+      "/api/v1/me/days/{date}",
+      "/api/v1/attendance/export",
+      "/api/v1/events",
+      "/api/v1/events/manual-report",
+      "/api/v1/events/export",
+      "/api/v1/events/{id}/snapshot",
+      "/api/v1/events/{id}/handle",
+      "/api/v1/gates/{id}/manual-open"
+    ],
+    "login": [
+      "/api/v1/auth/login"
+    ],
+    "refresh": [
+      "/api/v1/auth/refresh"
+    ],
+    "logout": [
+      "/api/v1/auth/logout"
+    ],
+    "HTTPBearer": [
+      "/api/v1/auth/logout",
+      "/api/v1/auth/change-password",
+      "/api/v1/me",
+      "/api/v1/devices",
+      "/api/v1/devices",
+      "/api/v1/devices/{id}/revoke",
+      "/api/v1/kiosk/enrollers",
+      "/api/v1/kiosk/enroll/sessions",
+      "/api/v1/kiosk/enroll/sessions/{id}/employees",
+      "/api/v1/kiosk/enroll/sessions/{id}/consent",
+      "/api/v1/departments",
+      "/api/v1/departments",
+      "/api/v1/departments/{id}",
+      "/api/v1/users",
+      "/api/v1/users",
+      "/api/v1/users/{id}",
+      "/api/v1/users/{id}/roles",
+      "/api/v1/users/{id}/kiosk-pin",
+      "/api/v1/users/{id}/reset-password",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees/{id}/suspend",
+      "/api/v1/employees/{id}/reactivate",
+      "/api/v1/employees/{id}/terminate",
+      "/api/v1/employees/{id}/face",
+      "/api/v1/face-profiles",
+      "/api/v1/face-profiles/{id}",
+      "/api/v1/face-profiles/{id}/approve",
+      "/api/v1/face-profiles/{id}/reject",
+      "/api/v1/face-samples/{id}/image",
+      "/api/v1/me/face",
+      "/api/v1/me/face/revoke",
+      "/api/v1/gates",
+      "/api/v1/gates",
+      "/api/v1/gates/{id}",
+      "/api/v1/gates/{id}/allowed-departments",
+      "/api/v1/settings/recognition",
+      "/api/v1/settings/recognition",
+      "/api/v1/models/active",
+      "/api/v1/audit-logs",
+      "/api/v1/dashboard/today",
+      "/api/v1/shifts",
+      "/api/v1/shifts",
+      "/api/v1/shifts/{id}",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments/{id}",
+      "/api/v1/holidays",
+      "/api/v1/holidays",
+      "/api/v1/holidays/{date}",
+      "/api/v1/attendance/days",
+      "/api/v1/attendance/days/{id}",
+      "/api/v1/attendance/leave",
+      "/api/v1/attendance/manual",
+      "/api/v1/attendance/requests",
+      "/api/v1/attendance/requests/{id}/approve",
+      "/api/v1/attendance/requests/{id}/reject",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests/{id}/cancel",
+      "/api/v1/me/today",
+      "/api/v1/me/attendance",
+      "/api/v1/me/days/{date}",
+      "/api/v1/attendance/export",
+      "/api/v1/events",
+      "/api/v1/events/manual-report",
+      "/api/v1/events/export",
+      "/api/v1/events/{id}/snapshot",
+      "/api/v1/events/{id}/handle",
+      "/api/v1/gates/{id}/manual-open"
+    ],
+    "current_user": [
+      "/api/v1/auth/logout",
+      "/api/v1/auth/change-password",
+      "/api/v1/me",
+      "/api/v1/devices",
+      "/api/v1/devices",
+      "/api/v1/devices/{id}/revoke",
+      "/api/v1/departments",
+      "/api/v1/departments",
+      "/api/v1/departments/{id}",
+      "/api/v1/users",
+      "/api/v1/users",
+      "/api/v1/users/{id}",
+      "/api/v1/users/{id}/roles",
+      "/api/v1/users/{id}/kiosk-pin",
+      "/api/v1/users/{id}/reset-password",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees/{id}/suspend",
+      "/api/v1/employees/{id}/reactivate",
+      "/api/v1/employees/{id}/terminate",
+      "/api/v1/employees/{id}/face",
+      "/api/v1/face-profiles",
+      "/api/v1/face-profiles/{id}",
+      "/api/v1/face-profiles/{id}/approve",
+      "/api/v1/face-profiles/{id}/reject",
+      "/api/v1/face-samples/{id}/image",
+      "/api/v1/me/face",
+      "/api/v1/me/face/revoke",
+      "/api/v1/gates",
+      "/api/v1/gates",
+      "/api/v1/gates/{id}",
+      "/api/v1/gates/{id}/allowed-departments",
+      "/api/v1/settings/recognition",
+      "/api/v1/settings/recognition",
+      "/api/v1/models/active",
+      "/api/v1/audit-logs",
+      "/api/v1/dashboard/today",
+      "/api/v1/shifts",
+      "/api/v1/shifts",
+      "/api/v1/shifts/{id}",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments/{id}",
+      "/api/v1/holidays",
+      "/api/v1/holidays",
+      "/api/v1/holidays/{date}",
+      "/api/v1/attendance/days",
+      "/api/v1/attendance/days/{id}",
+      "/api/v1/attendance/leave",
+      "/api/v1/attendance/manual",
+      "/api/v1/attendance/requests",
+      "/api/v1/attendance/requests/{id}/approve",
+      "/api/v1/attendance/requests/{id}/reject",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests/{id}/cancel",
+      "/api/v1/me/today",
+      "/api/v1/me/attendance",
+      "/api/v1/me/days/{date}",
+      "/api/v1/attendance/export",
+      "/api/v1/events",
+      "/api/v1/events/manual-report",
+      "/api/v1/events/export",
+      "/api/v1/events/{id}/snapshot",
+      "/api/v1/events/{id}/handle",
+      "/api/v1/gates/{id}/manual-open"
+    ],
+    "change_password": [
+      "/api/v1/auth/change-password"
+    ],
+    "me": [
+      "/api/v1/me"
+    ],
+    "require_roles.<locals>.dependency": [
+      "/api/v1/devices",
+      "/api/v1/devices",
+      "/api/v1/devices/{id}/revoke",
+      "/api/v1/departments",
+      "/api/v1/departments",
+      "/api/v1/departments/{id}",
+      "/api/v1/users",
+      "/api/v1/users",
+      "/api/v1/users/{id}",
+      "/api/v1/users/{id}/roles",
+      "/api/v1/users/{id}/kiosk-pin",
+      "/api/v1/users/{id}/reset-password",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/employees/{id}/suspend",
+      "/api/v1/employees/{id}/reactivate",
+      "/api/v1/employees/{id}/terminate",
+      "/api/v1/employees/{id}/face",
+      "/api/v1/face-profiles",
+      "/api/v1/face-profiles/{id}",
+      "/api/v1/face-profiles/{id}/approve",
+      "/api/v1/face-profiles/{id}/reject",
+      "/api/v1/face-samples/{id}/image",
+      "/api/v1/me/face",
+      "/api/v1/me/face/revoke",
+      "/api/v1/gates",
+      "/api/v1/gates",
+      "/api/v1/gates/{id}",
+      "/api/v1/gates/{id}/allowed-departments",
+      "/api/v1/settings/recognition",
+      "/api/v1/settings/recognition",
+      "/api/v1/models/active",
+      "/api/v1/audit-logs",
+      "/api/v1/dashboard/today",
+      "/api/v1/shifts",
+      "/api/v1/shifts",
+      "/api/v1/shifts/{id}",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments",
+      "/api/v1/shift-assignments/{id}",
+      "/api/v1/holidays",
+      "/api/v1/holidays/{date}",
+      "/api/v1/attendance/days",
+      "/api/v1/attendance/days/{id}",
+      "/api/v1/attendance/leave",
+      "/api/v1/attendance/manual",
+      "/api/v1/attendance/requests",
+      "/api/v1/attendance/requests/{id}/approve",
+      "/api/v1/attendance/requests/{id}/reject",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests",
+      "/api/v1/me/requests/{id}/cancel",
+      "/api/v1/me/today",
+      "/api/v1/me/attendance",
+      "/api/v1/me/days/{date}",
+      "/api/v1/attendance/export",
+      "/api/v1/events",
+      "/api/v1/events/manual-report",
+      "/api/v1/events/export",
+      "/api/v1/events/{id}/snapshot",
+      "/api/v1/events/{id}/handle",
+      "/api/v1/gates/{id}/manual-open"
+    ],
+    "list_devices": [
+      "/api/v1/devices"
+    ],
+    "create_device": [
+      "/api/v1/devices"
+    ],
+    "revoke_device": [
+      "/api/v1/devices/{id}/revoke"
+    ],
+    "pair_device": [
+      "/api/v1/kiosk/pair"
+    ],
+    "list_enrollers": [
+      "/api/v1/kiosk/enrollers"
+    ],
+    "current_device": [
+      "/api/v1/kiosk/enrollers",
+      "/api/v1/kiosk/enroll/sessions",
+      "/api/v1/kiosk/enroll/sessions/{id}/employees",
+      "/api/v1/kiosk/enroll/sessions/{id}/consent"
+    ],
+    "create_session": [
+      "/api/v1/kiosk/enroll/sessions"
+    ],
+    "list_employees": [
+      "/api/v1/kiosk/enroll/sessions/{id}/employees"
+    ],
+    "consent": [
+      "/api/v1/kiosk/enroll/sessions/{id}/consent"
+    ],
+    "kiosk_socket": [
+      "/api/v1/ws/kiosk"
+    ],
+    "monitor_socket": [
+      "/api/v1/ws/monitor"
+    ],
+    "departments": [
+      "/api/v1/departments"
+    ],
+    "body_contract.<locals>.dependency": [
+      "/api/v1/departments",
+      "/api/v1/departments/{id}",
+      "/api/v1/users",
+      "/api/v1/users/{id}",
+      "/api/v1/users/{id}/roles",
+      "/api/v1/users/{id}/kiosk-pin",
+      "/api/v1/employees",
+      "/api/v1/employees/{id}",
+      "/api/v1/face-profiles/{id}/approve",
+      "/api/v1/face-profiles/{id}/reject",
+      "/api/v1/gates",
+      "/api/v1/gates/{id}",
+      "/api/v1/gates/{id}/allowed-departments",
+      "/api/v1/settings/recognition",
+      "/api/v1/shifts",
+      "/api/v1/shifts/{id}",
+      "/api/v1/shift-assignments",
+      "/api/v1/holidays",
+      "/api/v1/attendance/days/{id}",
+      "/api/v1/attendance/leave",
+      "/api/v1/attendance/manual",
+      "/api/v1/attendance/requests/{id}/approve",
+      "/api/v1/attendance/requests/{id}/reject",
+      "/api/v1/me/requests",
+      "/api/v1/events/{id}/handle",
+      "/api/v1/gates/{id}/manual-open"
+    ],
+    "create_department": [
+      "/api/v1/departments"
+    ],
+    "patch_department": [
+      "/api/v1/departments/{id}"
+    ],
+    "users": [
+      "/api/v1/users"
+    ],
+    "create_user": [
+      "/api/v1/users"
+    ],
+    "patch_user": [
+      "/api/v1/users/{id}"
+    ],
+    "put_roles": [
+      "/api/v1/users/{id}/roles"
+    ],
+    "put_pin": [
+      "/api/v1/users/{id}/kiosk-pin"
+    ],
+    "reset_password": [
+      "/api/v1/users/{id}/reset-password"
+    ],
+    "employees": [
+      "/api/v1/employees"
+    ],
+    "get_employee": [
+      "/api/v1/employees/{id}"
+    ],
+    "create_employee": [
+      "/api/v1/employees"
+    ],
+    "patch_employee": [
+      "/api/v1/employees/{id}"
+    ],
+    "suspend_employee": [
+      "/api/v1/employees/{id}/suspend"
+    ],
+    "reactivate_employee": [
+      "/api/v1/employees/{id}/reactivate"
+    ],
+    "terminate_employee": [
+      "/api/v1/employees/{id}/terminate"
+    ],
+    "delete_face": [
+      "/api/v1/employees/{id}/face"
+    ],
+    "profiles": [
+      "/api/v1/face-profiles"
+    ],
+    "profile": [
+      "/api/v1/face-profiles/{id}"
+    ],
+    "approve": [
+      "/api/v1/face-profiles/{id}/approve",
+      "/api/v1/attendance/requests/{id}/approve"
+    ],
+    "reject": [
+      "/api/v1/face-profiles/{id}/reject",
+      "/api/v1/attendance/requests/{id}/reject"
+    ],
+    "sample_image": [
+      "/api/v1/face-samples/{id}/image"
+    ],
+    "me_face": [
+      "/api/v1/me/face"
+    ],
+    "me_revoke": [
+      "/api/v1/me/face/revoke"
+    ],
+    "gates": [
+      "/api/v1/gates"
+    ],
+    "create_gate": [
+      "/api/v1/gates"
+    ],
+    "patch_gate": [
+      "/api/v1/gates/{id}"
+    ],
+    "allowed_departments": [
+      "/api/v1/gates/{id}/allowed-departments"
+    ],
+    "settings": [
+      "/api/v1/settings/recognition"
+    ],
+    "put_settings": [
+      "/api/v1/settings/recognition"
+    ],
+    "active_model": [
+      "/api/v1/models/active"
+    ],
+    "audit_logs": [
+      "/api/v1/audit-logs"
+    ],
+    "today": [
+      "/api/v1/dashboard/today",
+      "/api/v1/me/today"
+    ],
+    "shifts": [
+      "/api/v1/shifts"
+    ],
+    "create_shift": [
+      "/api/v1/shifts"
+    ],
+    "update_shift": [
+      "/api/v1/shifts/{id}"
+    ],
+    "assignments": [
+      "/api/v1/shift-assignments"
+    ],
+    "create_assignment": [
+      "/api/v1/shift-assignments"
+    ],
+    "delete_assignment": [
+      "/api/v1/shift-assignments/{id}"
+    ],
+    "holidays": [
+      "/api/v1/holidays"
+    ],
+    "create_holiday": [
+      "/api/v1/holidays"
+    ],
+    "delete_holiday": [
+      "/api/v1/holidays/{date}"
+    ],
+    "days": [
+      "/api/v1/attendance/days"
+    ],
+    "edit_day": [
+      "/api/v1/attendance/days/{id}"
+    ],
+    "leave": [
+      "/api/v1/attendance/leave"
+    ],
+    "manual": [
+      "/api/v1/attendance/manual"
+    ],
+    "requests": [
+      "/api/v1/attendance/requests"
+    ],
+    "my_requests": [
+      "/api/v1/me/requests"
+    ],
+    "create_request": [
+      "/api/v1/me/requests"
+    ],
+    "cancel_request": [
+      "/api/v1/me/requests/{id}/cancel"
+    ],
+    "my_month": [
+      "/api/v1/me/attendance"
+    ],
+    "my_day": [
+      "/api/v1/me/days/{date}"
+    ],
+    "export": [
+      "/api/v1/attendance/export",
+      "/api/v1/events/export"
+    ],
+    "events": [
+      "/api/v1/events"
+    ],
+    "manual_report": [
+      "/api/v1/events/manual-report"
+    ],
+    "snapshot": [
+      "/api/v1/events/{id}/snapshot"
+    ],
+    "handle": [
+      "/api/v1/events/{id}/handle"
+    ],
+    "manual_open": [
+      "/api/v1/gates/{id}/manual-open"
+    ],
+    "create_app.<locals>.health": [
+      "/api/v1/health"
+    ],
+    "create_app.<locals>.version": [
+      "/api/v1/version"
+    ]
+  },
+  "limits": "Static counts are references, not dynamic execution counts or line coverage."
+}

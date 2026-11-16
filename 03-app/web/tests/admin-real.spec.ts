@@ -65,7 +65,7 @@ test('Hub thật: OWNER lưu cấu hình nguyên khối và Kiosk nhận config'
   socket.send(JSON.stringify({ type: 'auth', device_token: paired.device_token })); await first;
   try {
     await login(page, 1); await route(page, '/admin/settings');
-    await expect(page.getByLabel('Ngưỡng L', { exact: true })).toBeDisabled();
+    await expect(page.getByLabel('Ngưỡng L', { exact: true })).toBeEnabled();
     await page.getByLabel('Cửa sổ W (khung)', { exact: true }).fill('2');
     await page.getByRole('button', { name: 'Lưu cấu hình', exact: true }).click();
     await expect(page.getByText('Ngưỡng đếm không được lớn hơn W').first()).toBeVisible();
