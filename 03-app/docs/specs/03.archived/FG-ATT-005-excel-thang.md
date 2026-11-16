@@ -1,16 +1,16 @@
 # FG-ATT-005 — Xuất Excel bảng công tháng
 
 - Phiên bản: 1.2 — 14/11/2026; bổ sung quyết định Q-010 của người dùng, giữ các quyết định trước đó.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 16/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T09 `469e2e2`, T10 `9e28f9f`; [báo cáo T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), [báo cáo T10](../../../ket-qua-kiem-thu/2026-11-16_T10/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.8, §6; skill cham-cong-vn. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-09.
 - Task liên quan: T06, T09, T10 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-ATT-003](FG-ATT-003-bang-cong-sua-nghi.md)
+- Liên quan/phụ thuộc: [FG-ATT-003](../02.approved/FG-ATT-003-bang-cong-sua-nghi.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -48,7 +48,7 @@ Hub/DB và dữ liệu tham chiếu phải sẵn sàng. Tài khoản/thiết b�
 - Theo Q-010, tổng ngày công đếm cặp NV/ngày duy nhất thuộc NORMAL/LATE/EARLY/LATE_EARLY; mỗi ngày 1, không cộng thêm ngày cho giải trình APPROVED. Các trạng thái khác thống kê riêng, không quy đổi nửa ngày.
 - Không khóa kỳ
 
-Công thức chi tiết và ví dụ theo Q-010 tại [FG-ATT-002](../03.archived/FG-ATT-002-tinh-chot-cong.md#công-thức-theo-q-010); không cộng ngày riêng chỉ vì có giải trình.
+Công thức chi tiết và ví dụ theo Q-010 tại [FG-ATT-002](FG-ATT-002-tinh-chot-cong.md#công-thức-theo-q-010); không cộng ngày riêng chỉ vì có giải trình.
 
 ## 6. REST / tích hợp
 
@@ -79,4 +79,4 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-ATT-005-AC07**: Ngày có giải trình APPROVED được tính theo trạng thái hiệu lực, tối đa 1 ngày công, không cộng theo số request/event.
 - **FG-ATT-005-AC08**: Sheet tổng hợp đối chiếu chi tiết theo công thức Q-010, phút muộn/sớm theo grace và worked_min chỉ trong ca trừ phần giao nghỉ.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC **đạt** qua test PostgreSQL T09 và UI T10: kiểm ràng buộc/quyền/phạm vi, phân ca cá nhân, lễ, các thao tác ca/phân ca/ngày lễ và Excel hai sheet/tổng ngày duy nhất. Log thật tại báo cáo liên kết bên trên; UI fixture và Hub thật được ghi riêng. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.

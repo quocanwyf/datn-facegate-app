@@ -9,4 +9,7 @@
 
 | [FG-ATT-002 — Tính và chốt ngày công](FG-ATT-002-tinh-chot-cong.md) | 469e2e2 | [T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), AC01–AC14 backend |
 
+| [FG-ATT-001-ca-phan-ca-ngay-le](FG-ATT-001-ca-phan-ca-ngay-le.md) | 469e2e2, 9e28f9f | [T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), [T10](../../../ket-qua-kiem-thu/2026-11-16_T10/bao-cao.md) |
+| [FG-ATT-005-excel-thang](FG-ATT-005-excel-thang.md) | 469e2e2, 9e28f9f | [T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), [T10](../../../ket-qua-kiem-thu/2026-11-16_T10/bao-cao.md) |
+
 Khi đổi yêu cầu, tạo spec thay đổi mã mới trong 01.draft, tham chiếu hồ sơ archived. Xem [quy trình](../README.md).

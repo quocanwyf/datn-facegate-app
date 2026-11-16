@@ -53,19 +53,19 @@
 | POST | `/kiosk/enroll/sessions` | `postKioskEnrollSessions` | [FG-KIOSK-002](02.approved/FG-KIOSK-002-phien-dang-ky-pin.md) | device | — | 201, 400, 401, 403, 429 |
 | GET | `/kiosk/enroll/sessions/{id}/employees` | `getKioskEnrollSessionsEmployees` | [FG-KIOSK-002](02.approved/FG-KIOSK-002-phien-dang-ky-pin.md) | device | id, q | 200, 401, 404, 422 |
 | POST | `/kiosk/enroll/sessions/{id}/consent` | `postKioskEnrollSessionsConsent` | [FG-FACE-001](02.approved/FG-FACE-001-dong-y-sinh-trac.md) | device | id | 200, 400, 401, 404, 422, 503 |
-| GET | `/shifts` | `getShifts` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR, MANAGER | — | 200, 400, 401, 403 |
-| POST | `/shifts` | `postShifts` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409, 422 |
-| PATCH | `/shifts/{id}` | `patchShiftsById` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 422 |
-| GET | `/shift-assignments` | `getShiftAssignments` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR, MANAGER | employee_id, department_id | 200, 400, 401, 403 |
-| POST | `/shift-assignments` | `postShiftAssignments` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
-| DELETE | `/shift-assignments/{id}` | `deleteShiftAssignmentsById` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | id | 204, 401, 403, 404 |
-| GET | `/holidays` | `getHolidays` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | any | year | 200, 400, 401, 403 |
-| POST | `/holidays` | `postHolidays` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
-| DELETE | `/holidays/{date}` | `deleteHolidaysById` | [FG-ATT-001](02.approved/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | date | 204, 401, 403, 404 |
+| GET | `/shifts` | `getShifts` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR, MANAGER | — | 200, 400, 401, 403 |
+| POST | `/shifts` | `postShifts` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409, 422 |
+| PATCH | `/shifts/{id}` | `patchShiftsById` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 422 |
+| GET | `/shift-assignments` | `getShiftAssignments` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR, MANAGER | employee_id, department_id | 200, 400, 401, 403 |
+| POST | `/shift-assignments` | `postShiftAssignments` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
+| DELETE | `/shift-assignments/{id}` | `deleteShiftAssignmentsById` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | id | 204, 401, 403, 404 |
+| GET | `/holidays` | `getHolidays` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | any | year | 200, 400, 401, 403 |
+| POST | `/holidays` | `postHolidays` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
+| DELETE | `/holidays/{date}` | `deleteHolidaysById` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | date | 204, 401, 403, 404 |
 | GET | `/attendance/days` | `getAttendanceDays` | [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR, MANAGER | from, to, department_id, employee_id, status, page, size | 200, 400, 401, 403 |
 | PATCH | `/attendance/days/{id}` | `patchAttendanceDaysById` | [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 422 |
 | POST | `/attendance/leave` | `postAttendanceLeave` | [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | — | 200, 400, 401, 403, 404 |
-| GET | `/attendance/export` | `getAttendanceExport` | [FG-ATT-005](02.approved/FG-ATT-005-excel-thang.md) | OWNER, HR, MANAGER | month, department_id | 200, 400, 401, 403 |
+| GET | `/attendance/export` | `getAttendanceExport` | [FG-ATT-005](03.archived/FG-ATT-005-excel-thang.md) | OWNER, HR, MANAGER | month, department_id | 200, 400, 401, 403 |
 | POST | `/attendance/manual` | `postAttendanceManual` | [FG-ATT-004](02.approved/FG-ATT-004-cham-cong-ho.md) | OWNER, HR, SECURITY | — | 201, 400, 401, 403, 404, 422 |
 | GET | `/attendance/requests` | `getAttendanceRequests` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | status, scope, page, size | 200, 400, 401, 403 |
 | POST | `/attendance/requests/{id}/approve` | `postAttendanceRequestsApprove` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |

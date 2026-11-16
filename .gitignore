@@ -46,6 +46,7 @@ build/
 *.aab
 playwright-report/
 test-results/
+test-results-*/
 
 # === Hệ điều hành / IDE ===
 .DS_Store

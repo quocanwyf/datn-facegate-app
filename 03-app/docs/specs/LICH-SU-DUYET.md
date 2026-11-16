@@ -127,3 +127,8 @@ Chuyển archived sau T04 c110df6/T05 ed90ab6: 1.464.840 chuỗi và cooldown th
 
 - Chuyển FG-ATT-002 sang archived theo ủy quyền làm xong chức năng thì archive; commit 469e2e2, báo cáo T09 và 129 test backend pass.
 - Các spec ca/bảng công/giải trình/cá nhân còn phần UI ở T10/T12 nên giữ approved. T08 vẫn thiếu video liền luồng và 10 lượt người thật, không archive.
+
+## Nghiệm thu T10 — 16/11/2026
+
+- Archive FG-ATT-001 và FG-ATT-005 theo T09/T10, commit 469e2e2 và 9e28f9f; 129 test backend, 4 UI fixture và 2 UI Hub thật qua.
+- FG-ATT-003 giữ approved tới liên kết W11 (T11); FG-REQ-002 giữ approved tới E10 (T12). Không đánh dấu phần chưa nghiệm thu.

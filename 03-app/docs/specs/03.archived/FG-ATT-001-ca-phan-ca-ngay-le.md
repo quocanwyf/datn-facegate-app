@@ -1,16 +1,16 @@
 # FG-ATT-001 — Ca, phân ca và ngày lễ
 
 - Phiên bản: 1.0 — 14/11/2026.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 16/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T09 `469e2e2`, T10 `9e28f9f`; [báo cáo T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), [báo cáo T10](../../../ket-qua-kiem-thu/2026-11-16_T10/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.5, §6; DB shift/shift_assignment/holiday. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-06; W-04 tab Ca; E-02.
 - Task liên quan: T06, T07, T09 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-EMP-001](FG-EMP-001-nhan-vien.md), [FG-ORG-001](../03.archived/FG-ORG-001-phong-ban.md)
+- Liên quan/phụ thuộc: [FG-EMP-001](../02.approved/FG-EMP-001-nhan-vien.md), [FG-ORG-001](FG-ORG-001-phong-ban.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -79,4 +79,4 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-ATT-001-AC04**: Ngày lễ ra HOLIDAY.
 - **FG-ATT-001-AC05**: Đọc ca đúng quyền/phạm vi.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC **đạt** qua test PostgreSQL T09 và UI T10: kiểm ràng buộc/quyền/phạm vi, phân ca cá nhân, lễ, các thao tác ca/phân ca/ngày lễ và Excel hai sheet/tổng ngày duy nhất. Log thật tại báo cáo liên kết bên trên; UI fixture và Hub thật được ghi riêng. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.

@@ -1,7 +1,7 @@
 # Báo cáo T10 — Chấm công web quản trị
 
 - Trạng thái: **XONG các tiêu chí T10**. W-11 lịch sử sự kiện là phần T11; trang cá nhân E-10 là T12.
-- Commit: xem lịch sử Git của thư mục này.
+- Commit: `9e28f9f` (web); archive ở commit kế tiếp.
 
 | # | Tiêu chí | Kết quả / bằng chứng |
 |---|---|---|
