@@ -18,3 +18,6 @@ Khi đổi yêu cầu, tạo spec thay đổi mã mới trong 01.draft, tham chi
 | [FG-ATT-004-cham-cong-ho](FG-ATT-004-cham-cong-ho.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |
 | [FG-MON-001-giam-sat-canh-bao](FG-MON-001-giam-sat-canh-bao.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |
 | [FG-ACCESS-002-mo-cua-thu-cong](FG-ACCESS-002-mo-cua-thu-cong.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |
+
+| [FG-REQ-001-tao-huy-giai-trinh](FG-REQ-001-tao-huy-giai-trinh.md) | 2318a1f | [T12](../../../ket-qua-kiem-thu/2026-11-16_T12/bao-cao.md), cùng backend T09/UI T10 |
+| [FG-REQ-002-duyet-giai-trinh](FG-REQ-002-duyet-giai-trinh.md) | 2318a1f | [T12](../../../ket-qua-kiem-thu/2026-11-16_T12/bao-cao.md), cùng backend T09/UI T10 |

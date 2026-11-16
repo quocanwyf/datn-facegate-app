@@ -141,3 +141,7 @@ Chuyển archived sau T04 c110df6/T05 ed90ab6: 1.464.840 chuỗi và cooldown th
 ## Archived T11 — 16/11/2026
 
 Commit 5b8b7af hoàn thành giám sát/cảnh báo, mở cửa mô phỏng, chấm hộ và phần lịch sử W11 nối W09. Chuyển FG-MON-001, FG-ACCESS-002, FG-ATT-003, FG-ATT-004 sang archived; bằng chứng trong báo cáo T11. Các spec chưa đủ toàn bộ AC tiếp tục approved.
+
+## Archived giải trình T12 — 16/11/2026
+
+Commit 2318a1f hoàn thành E05/E06/E10; chuyển FG-REQ-001 và FG-REQ-002 sang archived sau API T09, W12 T10 và UI/luồng Hub thật T12. Toàn task T12 chưa nghiệm thu AC5 Chrome Android vì người dùng chọn kiểm sau; FG-ME-001 tiếp tục approved.

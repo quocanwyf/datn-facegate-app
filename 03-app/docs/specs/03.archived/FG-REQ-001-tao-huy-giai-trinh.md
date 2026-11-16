@@ -1,16 +1,16 @@
 # FG-REQ-001 — Gửi, xem và hủy giải trình cá nhân
 
 - Phiên bản: 1.0 — 14/11/2026.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 16/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T09/T10 backend/quản trị và T12 `2318a1f`; [báo cáo T12](../../../ket-qua-kiem-thu/2026-11-16_T12/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.7; me.md E-04/E-05/E-06; DB attendance_request. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: E-04, E-05, E-06.
 - Task liên quan: T06, T09, T12 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AUTH-001](../03.archived/FG-AUTH-001-xac-thuc-phien.md), [FG-ATT-002](../03.archived/FG-ATT-002-tinh-chot-cong.md)
+- Liên quan/phụ thuộc: [FG-AUTH-001](FG-AUTH-001-xac-thuc-phien.md), [FG-ATT-002](FG-ATT-002-tinh-chot-cong.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -74,4 +74,4 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-REQ-001-AC04**: Không hủy người khác.
 - **FG-REQ-001-AC05**: Hủy không thay event công.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC đã đạt bằng test API/PostgreSQL T09, giao diện W12 T10 và E05/E06/E10 T12. Luồng gửi/hủy chạy qua Hub thật trên clone riêng; Q011 được kiểm tại server và UI chặn bản thân. Riêng ảnh Chrome Android của toàn task T12 vẫn chờ người dùng, không thay kết luận các AC giải trình này.

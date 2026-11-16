@@ -69,8 +69,8 @@ Giữ mã khi đổi tiêu đề, không tái sử dụng mã đã bỏ. W/E/K l
 | [FG-ATT-002](03.archived/FG-ATT-002-tinh-chot-cong.md) | Tính lại và chốt ngày công | W-09; E-02/E-03/E-04; K-04 | T09, T10, T12 | Q-008 đã chốt (đã đồng bộ), Q-009 đã chốt (đã đồng bộ), Q-010 đã chốt (đã đồng bộ) |
 | [FG-ATT-003](03.archived/FG-ATT-003-bang-cong-sua-nghi.md) | Bảng công, sửa ngày công và đánh dấu nghỉ | W-09, W-04 tab Công | T06, T09, T10 | Q-009 đã chốt (đã đồng bộ) |
 | [FG-ATT-004](03.archived/FG-ATT-004-cham-cong-ho.md) | Chấm công hộ hiện tại | W-10 | T06, T09, T11 | — |
-| [FG-REQ-001](02.approved/FG-REQ-001-tao-huy-giai-trinh.md) | Gửi, xem và hủy giải trình cá nhân | E-04, E-05, E-06 | T06, T09, T12 | — |
-| [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | Duyệt hoặc từ chối giải trình | W-12, E-10 | T06, T09, T10, T12 | Q-011 đã chốt (đã đồng bộ) |
+| [FG-REQ-001](03.archived/FG-REQ-001-tao-huy-giai-trinh.md) | Gửi, xem và hủy giải trình cá nhân | E-04, E-05, E-06 | T06, T09, T12 | — |
+| [FG-REQ-002](03.archived/FG-REQ-002-duyet-giai-trinh.md) | Duyệt hoặc từ chối giải trình | W-12, E-10 | T06, T09, T10, T12 | Q-011 đã chốt (đã đồng bộ) |
 | [FG-ATT-005](03.archived/FG-ATT-005-excel-thang.md) | Xuất Excel bảng công tháng | W-09 | T06, T09, T10 | Q-001 đã chốt (đã đồng bộ), Q-010 đã chốt (đã đồng bộ) |
 | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | Hôm nay, công tháng và chi tiết cá nhân | E-02, E-03, E-04; shell /me | T06, T12 | — |
 | [FG-DASH-001](02.approved/FG-DASH-001-tong-quan.md) | Tổng quan hôm nay và điều hướng quản trị | W-02; shell /admin | T06, T07, T11 | Q-012 đã chốt (đã đồng bộ) |

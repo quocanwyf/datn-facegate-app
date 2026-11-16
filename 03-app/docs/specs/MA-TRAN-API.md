@@ -12,9 +12,9 @@
 | GET | `/me/today` | `getMeToday` | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | EMPLOYEE | — | 200, 401, 403 |
 | GET | `/me/attendance` | `getMeAttendance` | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | EMPLOYEE | month | 200, 401, 403 |
 | GET | `/me/days/{date}` | `getMeDaysById` | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | EMPLOYEE | date | 200, 401, 403 |
-| GET | `/me/requests` | `getMeRequests` | [FG-REQ-001](02.approved/FG-REQ-001-tao-huy-giai-trinh.md) | EMPLOYEE | status, page, size | 200, 401, 403 |
-| POST | `/me/requests` | `postMeRequests` | [FG-REQ-001](02.approved/FG-REQ-001-tao-huy-giai-trinh.md) | EMPLOYEE | — | 201, 400, 401, 403, 409, 422 |
-| POST | `/me/requests/{id}/cancel` | `postMeRequestsCancel` | [FG-REQ-001](02.approved/FG-REQ-001-tao-huy-giai-trinh.md) | EMPLOYEE | id | 200, 401, 403, 404, 422 |
+| GET | `/me/requests` | `getMeRequests` | [FG-REQ-001](03.archived/FG-REQ-001-tao-huy-giai-trinh.md) | EMPLOYEE | status, page, size | 200, 401, 403 |
+| POST | `/me/requests` | `postMeRequests` | [FG-REQ-001](03.archived/FG-REQ-001-tao-huy-giai-trinh.md) | EMPLOYEE | — | 201, 400, 401, 403, 409, 422 |
+| POST | `/me/requests/{id}/cancel` | `postMeRequestsCancel` | [FG-REQ-001](03.archived/FG-REQ-001-tao-huy-giai-trinh.md) | EMPLOYEE | id | 200, 401, 403, 404, 422 |
 | GET | `/me/face` | `getMeFace` | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md) | EMPLOYEE | — | 200, 401, 403 |
 | POST | `/me/face/revoke` | `postMeFaceRevoke` | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md) | EMPLOYEE | — | 200, 401, 403, 503 |
 | GET | `/dashboard/today` | `getDashboardToday` | [FG-DASH-001](02.approved/FG-DASH-001-tong-quan.md) | OWNER, HR | — | 200, 400, 401, 403 |
@@ -67,9 +67,9 @@
 | POST | `/attendance/leave` | `postAttendanceLeave` | [FG-ATT-003](03.archived/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | — | 200, 400, 401, 403, 404 |
 | GET | `/attendance/export` | `getAttendanceExport` | [FG-ATT-005](03.archived/FG-ATT-005-excel-thang.md) | OWNER, HR, MANAGER | month, department_id | 200, 400, 401, 403 |
 | POST | `/attendance/manual` | `postAttendanceManual` | [FG-ATT-004](03.archived/FG-ATT-004-cham-cong-ho.md) | OWNER, HR, SECURITY | — | 201, 400, 401, 403, 404, 422 |
-| GET | `/attendance/requests` | `getAttendanceRequests` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | status, scope, page, size | 200, 400, 401, 403 |
-| POST | `/attendance/requests/{id}/approve` | `postAttendanceRequestsApprove` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |
-| POST | `/attendance/requests/{id}/reject` | `postAttendanceRequestsReject` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |
+| GET | `/attendance/requests` | `getAttendanceRequests` | [FG-REQ-002](03.archived/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | status, scope, page, size | 200, 400, 401, 403 |
+| POST | `/attendance/requests/{id}/approve` | `postAttendanceRequestsApprove` | [FG-REQ-002](03.archived/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |
+| POST | `/attendance/requests/{id}/reject` | `postAttendanceRequestsReject` | [FG-REQ-002](03.archived/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |
 | GET | `/events` | `getEvents` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY, MANAGER | from_ts, to_ts, gate_id, result, employee_id, performed_by, handled, limit, page, size | 200, 400, 401, 403 |
 | GET | `/events/{id}/snapshot` | `getEventsSnapshot` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY | id | 200, 401, 403, 404 |
 | POST | `/events/{id}/handle` | `postEventsHandle` | [FG-MON-001](03.archived/FG-MON-001-giam-sat-canh-bao.md) | OWNER, SECURITY | id | 200, 400, 401, 403, 404, 422 |
