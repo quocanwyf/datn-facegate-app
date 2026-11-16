@@ -64,17 +64,17 @@ Giữ mã khi đổi tiêu đề, không tái sử dụng mã đã bỏ. W/E/K l
 | [FG-AI-004](03.archived/FG-AI-004-settings-nguong.md) | Cấu hình nhận dạng và nguồn ngưỡng | W-14, W-07 | T02, T04, T06, T07 | Q-001 đã chốt (đã đồng bộ), Q-007 đã chốt (đã đồng bộ) |
 | [FG-AI-005](02.approved/FG-AI-005-mini-fas-net.md) | Chống giả mạo MiniFASNet và hiệu chỉnh L | W-14, K-04 DENY/SPOOF | T13 | Q-007 đã chốt (đã đồng bộ) |
 | [FG-ACCESS-001](02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md) | Cho phép hoặc từ chối ra vào | K-04; F-03 | T04, T05, T11 | Q-002 đã chốt (đã đồng bộ) |
-| [FG-ACCESS-002](02.approved/FG-ACCESS-002-mo-cua-thu-cong.md) | Mở cửa thủ công mô phỏng | W-10 Thao tác nhanh | T06, T11 | — |
+| [FG-ACCESS-002](03.archived/FG-ACCESS-002-mo-cua-thu-cong.md) | Mở cửa thủ công mô phỏng | W-10 Thao tác nhanh | T06, T11 | — |
 | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | Ca, phân ca và ngày lễ | W-06; W-04 tab Ca; E-02 | T06, T07, T09 | — |
 | [FG-ATT-002](03.archived/FG-ATT-002-tinh-chot-cong.md) | Tính lại và chốt ngày công | W-09; E-02/E-03/E-04; K-04 | T09, T10, T12 | Q-008 đã chốt (đã đồng bộ), Q-009 đã chốt (đã đồng bộ), Q-010 đã chốt (đã đồng bộ) |
-| [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | Bảng công, sửa ngày công và đánh dấu nghỉ | W-09, W-04 tab Công | T06, T09, T10 | Q-009 đã chốt (đã đồng bộ) |
-| [FG-ATT-004](02.approved/FG-ATT-004-cham-cong-ho.md) | Chấm công hộ hiện tại | W-10 | T06, T09, T11 | — |
+| [FG-ATT-003](03.archived/FG-ATT-003-bang-cong-sua-nghi.md) | Bảng công, sửa ngày công và đánh dấu nghỉ | W-09, W-04 tab Công | T06, T09, T10 | Q-009 đã chốt (đã đồng bộ) |
+| [FG-ATT-004](03.archived/FG-ATT-004-cham-cong-ho.md) | Chấm công hộ hiện tại | W-10 | T06, T09, T11 | — |
 | [FG-REQ-001](02.approved/FG-REQ-001-tao-huy-giai-trinh.md) | Gửi, xem và hủy giải trình cá nhân | E-04, E-05, E-06 | T06, T09, T12 | — |
 | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | Duyệt hoặc từ chối giải trình | W-12, E-10 | T06, T09, T10, T12 | Q-011 đã chốt (đã đồng bộ) |
 | [FG-ATT-005](03.archived/FG-ATT-005-excel-thang.md) | Xuất Excel bảng công tháng | W-09 | T06, T09, T10 | Q-001 đã chốt (đã đồng bộ), Q-010 đã chốt (đã đồng bộ) |
 | [FG-ME-001](02.approved/FG-ME-001-cong-ca-ca-nhan.md) | Hôm nay, công tháng và chi tiết cá nhân | E-02, E-03, E-04; shell /me | T06, T12 | — |
 | [FG-DASH-001](02.approved/FG-DASH-001-tong-quan.md) | Tổng quan hôm nay và điều hướng quản trị | W-02; shell /admin | T06, T07, T11 | Q-012 đã chốt (đã đồng bộ) |
-| [FG-MON-001](02.approved/FG-MON-001-giam-sat-canh-bao.md) | Giám sát realtime và xử lý cảnh báo | W-10; W-02/W-07 nhận WS | T05, T07, T11 | — |
+| [FG-MON-001](03.archived/FG-MON-001-giam-sat-canh-bao.md) | Giám sát realtime và xử lý cảnh báo | W-10; W-02/W-07 nhận WS | T05, T07, T11 | — |
 | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | Tra cứu sự kiện, CSV và báo cáo chấm hộ | W-11; W-04 tab Sự kiện | T06, T07, T11 | — |
 | [FG-AUDIT-001](02.approved/FG-AUDIT-001-nhat-ky.md) | Nhật ký thao tác | W-16 | T03, T06, T07 | — |
 | [FG-SYS-001](02.approved/FG-SYS-001-suc-khoe-van-hanh.md) | Sức khỏe Hub, phiên bản và giới hạn vận hành | Header /admin, W-14, K-11 | T03, T14 | Q-008 đã chốt (đã đồng bộ), Q-013 đã chốt phạm vi |

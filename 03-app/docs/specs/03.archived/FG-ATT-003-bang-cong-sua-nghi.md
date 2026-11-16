@@ -1,16 +1,16 @@
 # FG-ATT-003 — Bảng công, sửa ngày công và đánh dấu nghỉ
 
 - Phiên bản: 1.1 — 14/11/2026; bổ sung quyết định Q-009 của người dùng, giữ các quyết định trước đó.
-- Trạng thái: **APPROVED — đã review và được người dùng duyệt**.
+- Trạng thái: **ARCHIVED — triển khai và nghiệm thu xong ngày 16/11/2026**.
 - Người review: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Người approved: người dùng giao việc trong chat này; xác nhận ngày 14/11/2026 (Asia/Bangkok).
 - Căn cứ duyệt: [lịch sử duyệt](../LICH-SU-DUYET.md#approved-2026-11-14), áp dụng toàn bộ specs trong draft.
 - Đồng bộ nguồn: hoàn tất theo Q-001–Q-013 ngày 14/11/2026; đặc tả v1.4.4, OpenAPI v1.1.0 và các nguồn liên quan. Xem CAN-CHOT và lịch sử duyệt.
-- Hoàn thành/nghiệm thu: chưa xác nhận, chưa có bằng chứng.
+- Hoàn thành/nghiệm thu: T09/T10 và T11 `5b8b7af`; [báo cáo T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md).
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.5/5.7, §6; admin.md W-09; skill cham-cong-vn. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-09, W-04 tab Công.
 - Task liên quan: T06, T09, T10 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-ATT-002](../03.archived/FG-ATT-002-tinh-chot-cong.md)
+- Liên quan/phụ thuộc: [FG-ATT-002](FG-ATT-002-tinh-chot-cong.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi
@@ -77,4 +77,4 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-ATT-003-AC06**: Giờ sửa MANUAL/lý do/audit không bị mất hoặc bị event tự động ghi đè khi recompute.
 - **FG-ATT-003-AC07**: LEAVE đã đánh dấu còn giữ khi có event mới hoặc chạy job tự tính lại.
 
-Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+Các AC đã đạt qua kiểm thử T09/T10/T11; xem báo cáo T11 và log liên quan. Fixture chỉ kiểm logic trong DB riêng; phép quét/đo realtime dùng ảnh thật đã đồng ý ngoài repo.

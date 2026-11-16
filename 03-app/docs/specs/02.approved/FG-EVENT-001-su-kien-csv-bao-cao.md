@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.6, §6; admin.md W-11; DB event. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-11; W-04 tab Sự kiện.
 - Task liên quan: T06, T07, T11 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-AUTH-001](../03.archived/FG-AUTH-001-xac-thuc-phien.md), [FG-ATT-004](FG-ATT-004-cham-cong-ho.md)
+- Liên quan/phụ thuộc: [FG-AUTH-001](../03.archived/FG-AUTH-001-xac-thuc-phien.md), [FG-ATT-004](../03.archived/FG-ATT-004-cham-cong-ho.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

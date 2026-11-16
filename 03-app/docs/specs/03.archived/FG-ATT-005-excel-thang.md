@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.8, §6; skill cham-cong-vn. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-09.
 - Task liên quan: T06, T09, T10 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-ATT-003](../02.approved/FG-ATT-003-bang-cong-sua-nghi.md)
+- Liên quan/phụ thuộc: [FG-ATT-003](FG-ATT-003-bang-cong-sua-nghi.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

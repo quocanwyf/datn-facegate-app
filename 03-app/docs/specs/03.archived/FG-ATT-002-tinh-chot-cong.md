@@ -10,7 +10,7 @@
 - Nguồn: [đặc tả v1.4.4](../../../dac-ta-app.md) §5.5; skill cham-cong-vn; DB §5–6. Xem [quy tắc chung](../QUY-UOC-CHUNG.md) và các tài liệu gốc được liên kết ở đó.
 - Màn hình/luồng: W-09; E-02/E-03/E-04; K-04.
 - Task liên quan: T09, T10, T12 (không thay phạm vi/điều kiện dừng của task gốc).
-- Liên quan/phụ thuộc: [FG-ATT-001](FG-ATT-001-ca-phan-ca-ngay-le.md), [FG-ACCESS-001](../02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md), [FG-ATT-004](../02.approved/FG-ATT-004-cham-cong-ho.md)
+- Liên quan/phụ thuộc: [FG-ATT-001](FG-ATT-001-ca-phan-ca-ngay-le.md), [FG-ACCESS-001](../02.approved/FG-ACCESS-001-quyet-dinh-ra-vao.md), [FG-ATT-004](FG-ATT-004-cham-cong-ho.md)
 - Quyết định / đồng bộ nguồn: các mục Q liên quan đã chốt và đồng bộ; không còn chờ sửa nguồn cho 13 quyết định này — [sổ quyết định](../CAN-CHOT.md).
 
 ## 1. Mục tiêu và phạm vi

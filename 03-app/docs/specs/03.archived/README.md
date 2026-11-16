@@ -13,3 +13,8 @@
 | [FG-ATT-005-excel-thang](FG-ATT-005-excel-thang.md) | 469e2e2, 9e28f9f | [T09](../../../ket-qua-kiem-thu/2026-11-16_T09/bao-cao.md), [T10](../../../ket-qua-kiem-thu/2026-11-16_T10/bao-cao.md) |
 
 Khi đổi yêu cầu, tạo spec thay đổi mã mới trong 01.draft, tham chiếu hồ sơ archived. Xem [quy trình](../README.md).
+
+| [FG-ATT-003-bang-cong-sua-nghi](FG-ATT-003-bang-cong-sua-nghi.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |
+| [FG-ATT-004-cham-cong-ho](FG-ATT-004-cham-cong-ho.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |
+| [FG-MON-001-giam-sat-canh-bao](FG-MON-001-giam-sat-canh-bao.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |
+| [FG-ACCESS-002-mo-cua-thu-cong](FG-ACCESS-002-mo-cua-thu-cong.md) | 5b8b7af | [T11](../../../ket-qua-kiem-thu/2026-11-16_T11/bao-cao.md) |

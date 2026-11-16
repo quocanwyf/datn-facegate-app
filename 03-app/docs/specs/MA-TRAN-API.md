@@ -44,7 +44,7 @@
 | POST | `/gates` | `postGates` | [FG-GATE-001](02.approved/FG-GATE-001-cua-chinh-sach.md) | OWNER | — | 201, 400, 401, 403, 409 |
 | PATCH | `/gates/{id}` | `patchGatesById` | [FG-GATE-001](02.approved/FG-GATE-001-cua-chinh-sach.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 409, 422 |
 | PUT | `/gates/{id}/allowed-departments` | `putGatesAllowedDepartments` | [FG-GATE-001](02.approved/FG-GATE-001-cua-chinh-sach.md) | OWNER, HR | id | 200, 400, 401, 403, 404 |
-| POST | `/gates/{id}/manual-open` | `postGatesManualOpen` | [FG-ACCESS-002](02.approved/FG-ACCESS-002-mo-cua-thu-cong.md) | OWNER, SECURITY | id | 201, 400, 401, 403, 404 |
+| POST | `/gates/{id}/manual-open` | `postGatesManualOpen` | [FG-ACCESS-002](03.archived/FG-ACCESS-002-mo-cua-thu-cong.md) | OWNER, SECURITY | id | 201, 400, 401, 403, 404 |
 | GET | `/devices` | `getDevices` | [FG-DEV-001](02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md) | OWNER | gate_id | 200, 400, 401, 403 |
 | POST | `/devices` | `postDevices` | [FG-DEV-001](02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md) | OWNER | — | 201, 400, 401, 403, 404 |
 | POST | `/devices/{id}/revoke` | `postDevicesRevoke` | [FG-DEV-001](02.approved/FG-DEV-001-thiet-bi-ghep-thu-hoi.md) | OWNER | id | 200, 401, 403, 404 |
@@ -62,17 +62,17 @@
 | GET | `/holidays` | `getHolidays` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | any | year | 200, 400, 401, 403 |
 | POST | `/holidays` | `postHolidays` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
 | DELETE | `/holidays/{date}` | `deleteHolidaysById` | [FG-ATT-001](03.archived/FG-ATT-001-ca-phan-ca-ngay-le.md) | OWNER, HR | date | 204, 401, 403, 404 |
-| GET | `/attendance/days` | `getAttendanceDays` | [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR, MANAGER | from, to, department_id, employee_id, status, page, size | 200, 400, 401, 403 |
-| PATCH | `/attendance/days/{id}` | `patchAttendanceDaysById` | [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 422 |
-| POST | `/attendance/leave` | `postAttendanceLeave` | [FG-ATT-003](02.approved/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | — | 200, 400, 401, 403, 404 |
+| GET | `/attendance/days` | `getAttendanceDays` | [FG-ATT-003](03.archived/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR, MANAGER | from, to, department_id, employee_id, status, page, size | 200, 400, 401, 403 |
+| PATCH | `/attendance/days/{id}` | `patchAttendanceDaysById` | [FG-ATT-003](03.archived/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 422 |
+| POST | `/attendance/leave` | `postAttendanceLeave` | [FG-ATT-003](03.archived/FG-ATT-003-bang-cong-sua-nghi.md) | OWNER, HR | — | 200, 400, 401, 403, 404 |
 | GET | `/attendance/export` | `getAttendanceExport` | [FG-ATT-005](03.archived/FG-ATT-005-excel-thang.md) | OWNER, HR, MANAGER | month, department_id | 200, 400, 401, 403 |
-| POST | `/attendance/manual` | `postAttendanceManual` | [FG-ATT-004](02.approved/FG-ATT-004-cham-cong-ho.md) | OWNER, HR, SECURITY | — | 201, 400, 401, 403, 404, 422 |
+| POST | `/attendance/manual` | `postAttendanceManual` | [FG-ATT-004](03.archived/FG-ATT-004-cham-cong-ho.md) | OWNER, HR, SECURITY | — | 201, 400, 401, 403, 404, 422 |
 | GET | `/attendance/requests` | `getAttendanceRequests` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | status, scope, page, size | 200, 400, 401, 403 |
 | POST | `/attendance/requests/{id}/approve` | `postAttendanceRequestsApprove` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |
 | POST | `/attendance/requests/{id}/reject` | `postAttendanceRequestsReject` | [FG-REQ-002](02.approved/FG-REQ-002-duyet-giai-trinh.md) | OWNER, HR, MANAGER | id | 200, 400, 401, 403, 404, 422 |
 | GET | `/events` | `getEvents` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY, MANAGER | from_ts, to_ts, gate_id, result, employee_id, performed_by, handled, limit, page, size | 200, 400, 401, 403 |
 | GET | `/events/{id}/snapshot` | `getEventsSnapshot` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY | id | 200, 401, 403, 404 |
-| POST | `/events/{id}/handle` | `postEventsHandle` | [FG-MON-001](02.approved/FG-MON-001-giam-sat-canh-bao.md) | OWNER, SECURITY | id | 200, 400, 401, 403, 404, 422 |
+| POST | `/events/{id}/handle` | `postEventsHandle` | [FG-MON-001](03.archived/FG-MON-001-giam-sat-canh-bao.md) | OWNER, SECURITY | id | 200, 400, 401, 403, 404, 422 |
 | GET | `/events/manual-report` | `getEventsManualReport` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY | from, to | 200, 400, 401, 403 |
 | GET | `/events/export` | `getEventsExport` | [FG-EVENT-001](02.approved/FG-EVENT-001-su-kien-csv-bao-cao.md) | OWNER, HR, SECURITY | from_ts, to_ts, gate_id, result | 200, 400, 401, 403 |
 | GET | `/settings/recognition` | `getSettingsRecognition` | [FG-AI-004](03.archived/FG-AI-004-settings-nguong.md) | OWNER, HR | — | 200, 400, 401, 403 |
