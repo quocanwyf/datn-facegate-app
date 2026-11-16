@@ -1,0 +1,40 @@
+{
+  "clone": {
+    "method": "FACE",
+    "consent_at_null": false,
+    "consent_by_null": false,
+    "profiles": 1,
+    "samples": 5,
+    "templates": 1,
+    "embeddings": 5,
+    "events": 5,
+    "days": 16,
+    "sample_files_present": 5,
+    "sample_paths": [
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/1.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/2.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/3.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/4.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/5.png"
+    ]
+  },
+  "source": {
+    "method": "FACE",
+    "consent_at_null": false,
+    "consent_by_null": false,
+    "profiles": 1,
+    "samples": 5,
+    "templates": 1,
+    "embeddings": 5,
+    "events": 5,
+    "days": 16,
+    "sample_files_present": 5,
+    "sample_paths": [
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/1.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/2.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/3.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/4.png",
+      "faces/4ae2f81f-8f16-4202-ad77-55a7a1eb46f1/5.png"
+    ]
+  }
+}

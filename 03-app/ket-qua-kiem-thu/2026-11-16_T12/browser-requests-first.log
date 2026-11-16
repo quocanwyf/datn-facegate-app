@@ -1,0 +1,32 @@
+[WebServer] (node:7080) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:16752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\me-real.spec.ts:9:1 › Gửi và hủy giải trình qua Hub thật trên clone T12 (1.5m)
+
+
+  1) tests\me-real.spec.ts:9:1 › Gửi và hủy giải trình qua Hub thật trên clone T12 ─────────────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.click: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for locator('.ant-select-dropdown:visible').getByText('Khác', { exact: true })
+
+
+      10 |   await page.goto('/login'); await page.getByLabel('Email', { exact: true }).fill('nv006@demo.local'); await page.getByLabel('Mật khẩu', { exact: true }).fill('Demo@123'); await page.getByRole('button', { name: 'Đăng nhập', exact: true }).click();
+      11 |   await page.getByRole('link', { name: 'Giải trình', exact: true }).click(); await page.getByRole('link', { name: 'Gửi mới', exact: true }).click();
+    > 12 |   await page.getByRole('combobox', { name: 'Loại giải trình', exact: true }).press('ArrowDown'); await page.locator('.ant-select-dropdown:visible').getByText('Lý do khác', { exact: true }).click();
+         |                                                                                                                                                                                        ^
+      13 |   const reason = `Review T12 gửi/hủy ${Date.now()}`; await page.getByLabel('Lý do', { exact: true }).fill(reason); await page.getByRole('button', { name: 'Gửi giải trình', exact: true }).click();
+      14 |   await expect(page.getByRole('heading', { name: 'Giải trình của tôi' })).toBeVisible(); const card = page.locator('.me-card').filter({ has: page.getByText(reason, { exact: true }) }); await expect(card).toBeVisible(); await page.screenshot({ path: `${screens}/E06-real-pending.png`, fullPage: true });
+      15 |   await card.getByRole('button', { name: 'Hủy giải trình', exact: true }).click(); await page.getByRole('button', { name: 'Xác nhận hủy', exact: true }).click(); await expect(page.getByText(reason, { exact: true })).toHaveCount(0);
+        at D:\WorkSpace\DATN\datn-facegate-app\03-app\web\tests\me-real.spec.ts:12:184
+
+    Error Context: test-results-me-real\me-real-Gửi-và-hủy-giải-trình-qua-Hub-thật-trên-clone-T12\error-context.md
+
+  1 failed
+    tests\me-real.spec.ts:9:1 › Gửi và hủy giải trình qua Hub thật trên clone T12 ──────────────────

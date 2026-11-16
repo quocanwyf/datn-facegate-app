@@ -88,7 +88,7 @@ test('Quản trị không gắn nhân viên: vào admin, không vào /me', async
   await mockLogin(page, token('OWNER', false)); await page.goto('/login'); await fillLogin(page);
   await page.getByRole('button', { name: 'Đăng nhập', exact: true }).click(); await expect(page).toHaveURL(/\/admin$/);
   await page.evaluate(() => { history.pushState({}, '', '/me'); window.dispatchEvent(new PopStateEvent('popstate')); });
-  await expect(page.getByText('Bạn không có quyền xem trang này')).toBeVisible();
+  await expect(page).toHaveURL(/\/admin$/);
 });
 
 test('Đổi mật khẩu lần đầu: bắt buộc, kiểm xác nhận và đăng nhập lại', async ({ page }) => {
@@ -118,6 +118,6 @@ test('Đăng xuất: gửi refresh token, xóa phiên và chặn trang riêng', 
     expect(route.request().postDataJSON()).toEqual({ refresh_token: 'review-refresh' }); await route.fulfill({ status: 204 });
   });
   await page.goto('/login'); await fillLogin(page); await page.getByRole('button', { name: 'Đăng nhập', exact: true }).click();
-  await page.getByRole('button', { name: 'Đăng xuất' }).click(); await expect(page).toHaveURL(/\/login$/);
+  await page.getByRole('button', { name: 'Menu tài khoản' }).click(); await page.getByRole('menuitem', { name: 'Đăng xuất', exact: true }).click(); await expect(page).toHaveURL(/\/login$/);
   await page.goto('/me'); await expect(page).toHaveURL(/\/login$/);
 });

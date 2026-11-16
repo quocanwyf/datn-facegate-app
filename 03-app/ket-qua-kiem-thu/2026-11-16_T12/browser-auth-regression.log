@@ -1,0 +1,26 @@
+
+Running 19 tests using 1 worker
+
+(node:15708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\auth.spec.ts:5:1 › Desktop: font tiếng Việt, nhãn, validation và hiện mật khẩu (3.8s)
+  ok  2 tests\auth.spec.ts:33:3 › Mobile 360px: không cuộn ngang, nút đăng nhập nhìn thấy (938ms)
+  ok  3 tests\auth.spec.ts:33:3 › Mobile 390px: không cuộn ngang, nút đăng nhập nhìn thấy (693ms)
+  ok  4 tests\auth.spec.ts:33:3 › Mobile 430px: không cuộn ngang, nút đăng nhập nhìn thấy (717ms)
+  ok  5 tests\auth.spec.ts:43:3 › API 401: thông báo lỗi và cho thử lại (925ms)
+  ok  6 tests\auth.spec.ts:43:3 › API 429: thông báo lỗi và cho thử lại (794ms)
+  ok  7 tests\auth.spec.ts:43:3 › API 503: thông báo lỗi và cho thử lại (803ms)
+  ok  8 tests\auth.spec.ts:52:1 › Lỗi mạng: không báo đăng nhập thành công (799ms)
+  ok  9 tests\auth.spec.ts:59:1 › Đang gửi: khóa biểu mẫu và chỉ gửi một request (867ms)
+  ok 10 tests\auth.spec.ts:71:3 › Đăng nhập OWNER: lựa chọn đúng quyền (1.2s)
+  ok 11 tests\auth.spec.ts:71:3 › Đăng nhập HR: lựa chọn đúng quyền (1.5s)
+  ok 12 tests\auth.spec.ts:71:3 › Đăng nhập SECURITY: lựa chọn đúng quyền (995ms)
+  ok 13 tests\auth.spec.ts:71:3 › Đăng nhập MANAGER: lựa chọn đúng quyền (1.0s)
+  ok 14 tests\auth.spec.ts:71:3 › Đăng nhập EMPLOYEE: lựa chọn đúng quyền (953ms)
+  ok 15 tests\auth.spec.ts:87:1 › Quản trị không gắn nhân viên: vào admin, không vào /me (923ms)
+  ok 16 tests\auth.spec.ts:94:1 › Đổi mật khẩu lần đầu: bắt buộc, kiểm xác nhận và đăng nhập lại (1.2s)
+  ok 17 tests\auth.spec.ts:115:1 › Đăng xuất: gửi refresh token, xóa phiên và chặn trang riêng (1.7s)
+  ok 18 tests\session.spec.ts:3:1 › 401 đồng thời chỉ xoay refresh một lần, retry với access mới (2.3s)
+  ok 19 tests\session.spec.ts:19:1 › Refresh bị thu hồi: xóa phiên và chặn trang riêng (978ms)
+
+  19 passed (34.6s)

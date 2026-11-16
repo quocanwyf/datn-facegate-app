@@ -1,0 +1,25 @@
+T12 CPU Hub port 8012; clone T08 riêng, nguồn T08 giữ nguyên.
+INFO:     Started server process [20820]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8012 (Press CTRL+C to quit)
+INFO:     127.0.0.1:61359 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61361 - "GET /api/v1/me/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61362 - "GET /api/v1/me/attendance?month=2026-11 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61363 - "GET /api/v1/me/requests?status=PENDING&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61364 - "GET /api/v1/me/face HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61366 - "POST /api/v1/me/face/revoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61367 - "GET /api/v1/me/face HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57185 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57187 - "GET /api/v1/me/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57188 - "GET /api/v1/me/requests?status=PENDING&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59540 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59542 - "GET /api/v1/me/today HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59543 - "GET /api/v1/me/requests?status=PENDING&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59544 - "POST /api/v1/me/requests HTTP/1.1" 201 Created
+INFO:     127.0.0.1:59545 - "GET /api/v1/me/requests?status=PENDING&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59546 - "POST /api/v1/me/requests/168fbb71-18d2-46ca-86e8-6aee34f12945/cancel HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59547 - "GET /api/v1/me/requests?status=PENDING&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59551 - "GET /api/v1/me/requests?status=APPROVED&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59552 - "GET /api/v1/me/requests?status=REJECTED&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59553 - "GET /api/v1/me/requests?status=CANCELLED&page=1&size=100 HTTP/1.1" 200 OK

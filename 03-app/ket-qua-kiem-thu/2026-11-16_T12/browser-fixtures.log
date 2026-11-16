@@ -1,0 +1,14 @@
+[WebServer] (node:5632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\me.spec.ts:39:1 › 390×844: hôm nay 3 trạng thái, tháng/ngày và footer không tràn (2.6s)
+  ok 2 tests\me.spec.ts:47:1 › E05/E06: validation, giờ có offset, 409 giữ lý do, hủy giải trình (1.8s)
+  ok 3 tests\me.spec.ts:52:1 › E08: không ảnh mẫu; lỗi xóa vẫn MANUAL và thử lại, chỉ báo thành công sau 204 (1.6s)
+  ok 4 tests\me.spec.ts:56:1 › E10: không hiển thị bản thân dù can_review sai; từ chối bắt buộc ghi chú (2.0s)
+  ok 5 tests\me.spec.ts:61:1 › E02: ngày lễ ưu tiên, không ca và MANUAL đúng thông điệp (1.3s)
+
+  5 passed (11.9s)

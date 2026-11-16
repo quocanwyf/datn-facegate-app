@@ -7,6 +7,7 @@ import { api, connectionError, errorMessage, type Session } from './api/client';
 import type { components } from './api/schema';
 import { adminHome, canAdmin } from './shared/access';
 const AdminArea = lazy(() => import('./admin/AdminArea').then(module => ({ default: module.AdminArea })));
+const MeArea = lazy(() => import('./me/MeArea').then(module => ({ default: module.MeArea })));
 
 const { Title, Paragraph, Text } = Typography;
 const passwordIcon = (visible: boolean) => <button type="button" aria-label={visible ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'} aria-pressed={visible}>{visible ? <EyeOff size={18} /> : <Eye size={18} />}</button>;
@@ -72,6 +73,10 @@ export function App() {
   if (!session && location.pathname !== '/login') return <Navigate to="/login" replace />;
   if (session?.must_change_password && location.pathname !== '/change-password') return <Navigate to="/change-password" replace />;
   if (session && !session.must_change_password && location.pathname.startsWith('/admin') && canAdmin(session.user)) return <Suspense fallback={<main className="loading-page" role="status">Đang tải giao diện…</main>}><AdminArea key={session.user.id} session={session} busy={busy} error={error} onLogout={() => void logout()} /></Suspense>;
+  if (session && !session.must_change_password && /^\/me(?:\/|$)/.test(location.pathname)) {
+    if (!session.user.employee) return <Navigate to={canAdmin(session.user) ? adminHome(session.user) : '/choose'} replace />;
+    return <Suspense fallback={<main className="loading-page" role="status">Đang tải giao diện…</main>}><MeArea key={`${session.user.id}:${JSON.stringify(session.user.roles)}`} session={session} busy={busy} error={error} onLogout={() => void logout()} /></Suspense>;
+  }
 
   if (!session) {
     content = <>

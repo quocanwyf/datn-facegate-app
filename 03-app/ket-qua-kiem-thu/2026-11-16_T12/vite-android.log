@@ -1,0 +1,10 @@
+$ vite --host 127.0.0.1 "--port" "5173"
+
+  VITE v6.4.6  ready in 627 ms
+
+  ➜  Local:   http://127.0.0.1:5173/
+1:26:07 PM [vite] (client) hmr update /src/me/Requests.tsx
+1:26:07 PM [vite] (client) hmr update /src/me/me.css
+1:27:34 PM [vite] (client) hmr update /src/admin/monitor/MonitorPage.tsx
+1:27:34 PM [vite] (client) hmr update /src/admin/dashboard/DashboardPage.tsx
+1:33:35 PM [vite] (client) hmr update /src/me/Pages.tsx

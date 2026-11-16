@@ -1,0 +1,14 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.13, pytest-9.2.0, pluggy-1.7.0 -- D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\WorkSpace\DATN\datn-facegate-app\03-app\hub
+configfile: pyproject.toml
+plugins: anyio-4.16.0, asyncio-1.5.0, typeguard-4.6.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=function, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+::test_today_matches_db_for_zero_one_two_events[times0-WAITING_IN] PASSED [ 33%]
+::test_today_matches_db_for_zero_one_two_events[times1-IN_PROGRESS] PASSED [ 66%]
+::test_today_matches_db_for_zero_one_two_events[times2-IN_PROGRESS] PASSED [100%]
+
+============================= 3 passed in 10.33s ==============================

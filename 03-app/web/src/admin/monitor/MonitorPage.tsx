@@ -32,7 +32,7 @@ export function MonitorPage({ session }: { session: Session }) {
   const roles = session.user.roles.map(role => role.role); const operate = roles.some(role => ['OWNER', 'SECURITY'].includes(role));
   const gates = useQuery({ queryKey: ['gates'], queryFn: async ({ signal }) => readResult(await api.GET('/gates', { signal })) });
   const people = useQuery({ queryKey: ['monitor-employees', session.user.id], queryFn: ({ signal }) => allEmployees(signal) });
-  const recent = useQuery({ queryKey: ['recent-events'], queryFn: async ({ signal }) => readResult(await api.GET('/events', { params: { query: { page: 1, size: 20 } }, signal })) });
+  const recent = useQuery({ queryKey: ['recent-events', 20], queryFn: async ({ signal }) => readResult(await api.GET('/events', { params: { query: { page: 1, size: 20 } }, signal })) });
   const pending = useQuery({ queryKey: ['monitor-alerts'], queryFn: async ({ signal }) => {
     const items: Event[] = [];
     for (let page = 1; ; page++) { const result = readResult(await api.GET('/events', { params: { query: { result: ['UNKNOWN', 'SPOOF'], handled: false, page, size: 100 } }, signal })); items.push(...result.items); if (items.length >= result.total || !result.items.length) return items; }
