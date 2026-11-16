@@ -8,7 +8,7 @@ from app.auth.security import utcnow
 from app.errors import ApiError
 
 
-async def record_decision(factory, device, payload, inferred):
+async def record_decision(factory, device, payload, inferred, notify=None):
     decision = inferred['decision']
     relative = None
     try:
@@ -66,8 +66,10 @@ async def record_decision(factory, device, payload, inferred):
             if day is not None:
                 kind = 'OUT' if day.check_out_event_id == event.id else 'IN' if day.check_in_event_id == event.id else 'NONE'
                 result['attendance'] = {'kind': kind, 'time': event.occurred_at.isoformat(), 'status': day.status}
-        return result
     except Exception:
         if relative:
             await asyncio.to_thread(delete_private, [relative])
         raise
+    if notify:
+        notify('event', event_id)  # Sau commit; chỉ enqueue ID, không chờ client giám sát.
+    return result

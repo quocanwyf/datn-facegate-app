@@ -244,7 +244,7 @@ export interface paths {
         };
         /**
          * Danh sách nhân viên
-         * @description MANAGER chỉ thấy NV thuộc phòng ban mình quản lý.
+         * @description MANAGER chỉ thấy NV thuộc phòng ban mình quản lý. Q-014 SECURITY chỉ tra cứu ACTIVE/MANUAL với id, code, full_name, department_id, department_name, status, attendance_method; vai trò khác giữ quyền riêng. GET chi tiết không mở cho SECURITY.
          */
         get: operations["getEmployees"];
         put?: never;

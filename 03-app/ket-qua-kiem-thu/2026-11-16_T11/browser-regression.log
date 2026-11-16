@@ -1,0 +1,72 @@
+[WebServer] (node:32552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 33 tests using 1 worker
+
+(node:29712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\auth.spec.ts:5:1 › Desktop: font tiếng Việt, nhãn, validation và hiện mật khẩu (6.4s)
+  ok  2 tests\auth.spec.ts:33:3 › Mobile 360px: không cuộn ngang, nút đăng nhập nhìn thấy (2.2s)
+  ok  3 tests\auth.spec.ts:33:3 › Mobile 390px: không cuộn ngang, nút đăng nhập nhìn thấy (2.0s)
+  ok  4 tests\auth.spec.ts:33:3 › Mobile 430px: không cuộn ngang, nút đăng nhập nhìn thấy (1.9s)
+  ok  5 tests\auth.spec.ts:43:3 › API 401: thông báo lỗi và cho thử lại (2.4s)
+  ok  6 tests\auth.spec.ts:43:3 › API 429: thông báo lỗi và cho thử lại (1.6s)
+  ok  7 tests\auth.spec.ts:43:3 › API 503: thông báo lỗi và cho thử lại (1.3s)
+  ok  8 tests\auth.spec.ts:52:1 › Lỗi mạng: không báo đăng nhập thành công (1.3s)
+  ok  9 tests\auth.spec.ts:59:1 › Đang gửi: khóa biểu mẫu và chỉ gửi một request (1.3s)
+  ok 10 tests\auth.spec.ts:71:3 › Đăng nhập OWNER: lựa chọn đúng quyền (1.7s)
+  ok 11 tests\auth.spec.ts:71:3 › Đăng nhập HR: lựa chọn đúng quyền (2.0s)
+  ok 12 tests\auth.spec.ts:71:3 › Đăng nhập SECURITY: lựa chọn đúng quyền (1.5s)
+  ok 13 tests\auth.spec.ts:71:3 › Đăng nhập MANAGER: lựa chọn đúng quyền (1.8s)
+  ok 14 tests\auth.spec.ts:71:3 › Đăng nhập EMPLOYEE: lựa chọn đúng quyền (1.7s)
+  ok 15 tests\auth.spec.ts:87:1 › Quản trị không gắn nhân viên: vào admin, không vào /me (1.9s)
+  ok 16 tests\auth.spec.ts:94:1 › Đổi mật khẩu lần đầu: bắt buộc, kiểm xác nhận và đăng nhập lại (2.8s)
+  ok 17 tests\auth.spec.ts:115:1 › Đăng xuất: gửi refresh token, xóa phiên và chặn trang riêng (3.0s)
+  ok 18 tests\employees.spec.ts:23:1 › W-03: 24 nhân viên từ seed, 20/trang, ngày và trạng thái tiếng Việt (3.6s)
+  ok 19 tests\employees.spec.ts:38:1 › Tìm kiếm và kết hợp bộ lọc gửi đúng hợp đồng, đổi lọc về trang 1 (6.5s)
+  ok 20 tests\employees.spec.ts:55:1 › Phòng ban và hồ sơ khuôn mặt lọc tại API; không giả hồ sơ ACTIVE (4.9s)
+  ok 21 tests\employees.spec.ts:66:1 › Thêm: validation, trùng mã giữ form, tạo tài khoản/mật khẩu tạm một lần (10.0s)
+  ok 22 tests\employees.spec.ts:91:1 › Sửa: mã khóa và PATCH không chứa code/trạng thái (5.5s)
+  ok 23 tests\employees.spec.ts:102:1 › Tạm khóa/mở khóa: không gửi thao tác xóa khuôn mặt (5.5s)
+  ok 24 tests\employees.spec.ts:109:1 › Nghỉ việc: hủy không gửi; lỗi 503 giữ hộp thoại; thử lại mới báo thành công (6.6s)
+  ok 25 tests\employees.spec.ts:126:1 › MANAGER: chỉ đọc team, không có nút thêm/menu ghi (3.2s)
+  ok 26 tests\employees.spec.ts:139:1 › Lỗi danh sách: thử lại; 403 không hiển thị bảng cũ (3.2s)
+  ok 27 tests\employees.spec.ts:151:1 › Dưới 1024px: Drawer điều hướng và bảng cuộn trong panel (5.5s)
+  ok 28 tests\employees.spec.ts:160:1 › Đang lưu: chặn gửi lặp và đóng Drawer (7.1s)
+  ok 29 tests\employees.spec.ts:171:1 › SECURITY: ẩn menu nhân viên và chặn URL trực tiếp trước khi gọi API (1.9s)
+  ok 30 tests\employees.spec.ts:180:1 › Danh sách trống: trạng thái riêng và vẫn có hành động thêm (2.2s)
+  ok 31 tests\employees.spec.ts:189:1 › HR: có thao tác ghi, không có Nhật ký chỉ dành OWNER (2.1s)
+  x  32 tests\session.spec.ts:3:1 › 401 đồng thời chỉ xoay refresh một lần, retry với access mới (16.3s)
+(node:32072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 33 tests\session.spec.ts:18:1 › Refresh bị thu hồi: xóa phiên và chặn trang riêng (3.3s)
+
+
+  1) tests\session.spec.ts:3:1 › 401 đồng thời chỉ xoay refresh một lần, retry với access mới ──────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Có mặt', { exact: true })
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Có mặt', { exact: true }) with timeout 15000ms
+      - waiting for getByText('Có mặt', { exact: true })
+
+
+      13 |     return route.fulfill({ json: { items: [], total: 0, page: 1, size: 10 } });
+      14 |   });
+    > 15 |   await page.goto('/login'); await fillLogin(page); await page.getByRole('button', { name: 'Đăng nhập', exact: true }).click(); await expect(page.getByText('Có mặt', { exact: true })).toBeVisible(); expect(refreshes).toBe(1);
+         |                                                                                                                                                                                         ^
+      16 |   await page.getByRole('button', { name: 'Menu tài khoản' }).click(); await page.getByRole('menuitem', { name: 'Đăng xuất', exact: true }).click(); await expect(page).toHaveURL(/\/login$/);
+      17 | });
+      18 | test('Refresh bị thu hồi: xóa phiên và chặn trang riêng', async ({ page }) => {
+        at D:\WorkSpace\DATN\datn-facegate-app\03-app\web\tests\session.spec.ts:15:185
+
+    Error Context: test-results\session-401-đồng-thời-chỉ--7a2c2-ột-lần-retry-với-access-mới\error-context.md
+
+  1 failed
+    tests\session.spec.ts:3:1 › 401 đồng thời chỉ xoay refresh một lần, retry với access mới ───────
+  32 passed (2.3m)

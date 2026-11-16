@@ -66,7 +66,7 @@ class KioskService:
                 return await persist_enrollment(self.factory, device, enrollment, payload['employee_id'], inferred)
             if 'decision' in inferred:
                 try:
-                    return await record_decision(self.factory, device, payload, inferred)
+                    return await record_decision(self.factory, device, payload, inferred, self.app.state.monitor.publish)
                 except BaseException:
                     await asyncio.wrap_future(self.runtime.worker.submit('rollback_decision',dict(inferred,gate_id=device.gate_id)))
                     raise

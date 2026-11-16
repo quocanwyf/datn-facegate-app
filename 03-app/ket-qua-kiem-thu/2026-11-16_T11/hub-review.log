@@ -1,0 +1,94 @@
+Review T11: gallery T08, Hub CPU port 8000; timestamp ghi sau commit thật.
+INFO:     Started server process [23096]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:49990 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49993 - "WebSocket /api/v1/ws/monitor" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:49994 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49998 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49997 - "GET /api/v1/events?result=UNKNOWN&result=SPOOF&handled=false&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49996 - "GET /api/v1/events?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50067 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50069 - "GET /api/v1/employees?q=NV006 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49995 - "GET /api/v1/employees?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/v1/events/4e562b7c-a8c1-46f4-9039-1d6517f66f96/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50075 - "GET /api/v1/events/6cfa7421-3f05-4a56-b15a-17a17e4b6c74/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50077 - "GET /api/v1/events/078f94ca-4574-4de5-808d-ae23cb58a08c/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50079 - "GET /api/v1/events/586e7790-2bfa-46f2-99db-41c2d9da2af8/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50076 - "GET /api/v1/events/bae999cc-a0ed-45d8-a158-1deaa6dbbb92/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50083 - "GET /api/v1/events/b6998a19-074f-45a6-a7a0-e3de03912dfb/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50085 - "GET /api/v1/events/d758cff2-dc16-4392-9111-2f7271501525/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50088 - "GET /api/v1/events/a751975e-9045-47ea-905e-35f8932fbdb6/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50089 - "GET /api/v1/events/05c1356a-18cb-4d1f-b22a-a299344ea56a/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50081 - "GET /api/v1/face-profiles?employee_id=194b8035-f397-526e-8680-e269b02863fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50091 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50094 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50094 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50094 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50094 - "POST /api/v1/devices HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50094 - "POST /api/v1/kiosk/pair HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50094 - "GET /api/v1/employees?q=NV006 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50095 - "WebSocket /api/v1/ws/kiosk" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50097 - "GET /api/v1/gates HTTP/1.1" 200 OK
+D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\vendor\code\fr\align\template.py:36: FutureWarning: `estimate` is deprecated since version 0.26 and will be removed in version 2.2. Please use `SimilarityTransform.from_estimate` class constructor instead.
+  tform.estimate(lmk, dst)
+D:\WorkSpace\DATN\datn-facegate-app\03-app\hub\vendor\code\fr\backbones\iresnet.py:157: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(self.fp16):
+MONITOR_COMMIT {"event_id": "9ae4100e-71ca-4765-bdbd-daf84717d712", "commit_observed_ms": 1794798606305.0479}
+INFO:     127.0.0.1:50103 - "GET /api/v1/events?result=UNKNOWN&result=SPOOF&handled=false&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50102 - "GET /api/v1/events?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50104 - "POST /api/v1/devices/116c83f5-dd7d-4dc5-8236-b966707b36a3/revoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50106 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50109 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50109 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50109 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50109 - "POST /api/v1/devices HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50109 - "POST /api/v1/kiosk/pair HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50109 - "GET /api/v1/employees?q=NV006 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50110 - "WebSocket /api/v1/ws/kiosk" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50112 - "GET /api/v1/gates HTTP/1.1" 200 OK
+MONITOR_COMMIT {"event_id": "2501e979-5992-4504-9be4-9beee82267cd", "commit_observed_ms": 1794798617388.558}
+INFO:     127.0.0.1:50117 - "GET /api/v1/events?result=UNKNOWN&result=SPOOF&handled=false&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50119 - "GET /api/v1/events/2501e979-5992-4504-9be4-9beee82267cd/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50116 - "GET /api/v1/events?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50121 - "POST /api/v1/devices/8d32ea75-f8ff-4ab2-97e7-0d6c872aafdd/revoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50123 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50125 - "GET /api/v1/events/2501e979-5992-4504-9be4-9beee82267cd/snapshot HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50134 - "POST /api/v1/events/2501e979-5992-4504-9be4-9beee82267cd/handle HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50137 - "GET /api/v1/events?result=UNKNOWN&result=SPOOF&handled=false&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50145 - "GET /api/v1/events?result=UNKNOWN&result=SPOOF&handled=false&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50144 - "GET /api/v1/events?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50151 - "GET /api/v1/face-profiles?employee_id=194b8035-f397-526e-8680-e269b02863fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50153 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50160 - "POST /api/v1/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50160 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50160 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50160 - "POST /api/v1/devices HTTP/1.1" 201 Created
+INFO:     127.0.0.1:50160 - "POST /api/v1/kiosk/pair HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50160 - "GET /api/v1/employees?q=NV006 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50160 - "POST /api/v1/employees/194b8035-f397-526e-8680-e269b02863fa/suspend HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50161 - "WebSocket /api/v1/ws/kiosk" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50163 - "GET /api/v1/gates HTTP/1.1" 200 OK
+MONITOR_COMMIT {"event_id": "3e9e1c31-761f-4e72-9091-ae67e4f8cf50", "commit_observed_ms": 1794798627877.7842}
+INFO:     127.0.0.1:50167 - "GET /api/v1/events?result=UNKNOWN&result=SPOOF&handled=false&page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50166 - "GET /api/v1/events?page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50172 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50197 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50195 - "POST /api/v1/employees/194b8035-f397-526e-8680-e269b02863fa/reactivate HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50195 - "POST /api/v1/devices/2577ae61-8afa-4df9-abd0-1440db923d58/revoke HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50199 - "GET /api/v1/face-profiles?employee_id=194b8035-f397-526e-8680-e269b02863fa HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50208 - "GET /api/v1/events/manual-report?from=2026-11-16&to=2026-11-16 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50210 - "GET /api/v1/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50205 - "GET /api/v1/events?from_ts=2026-11-15T17%3A00%3A00.000Z&to_ts=2026-11-16T16%3A59%3A59.999Z&page=1&size=20 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50209 - "GET /api/v1/employees?page=1&size=100 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50212 - "GET /api/v1/events/export?from_ts=2026-11-15T17%3A00%3A00.000Z&to_ts=2026-11-16T16%3A59%3A59.999Z HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50269 - "WebSocket /api/v1/ws/monitor" [accepted]
+INFO:     connection open
+INFO:     127.0.0.1:50282 - "WebSocket /api/v1/ws/monitor" [accepted]
+INFO:     connection open

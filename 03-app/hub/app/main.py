@@ -20,6 +20,9 @@ from app.api.dashboard import router as dashboard_router
 from app.api.contract import install_contract_docs
 from app.api.schedule import router as schedule_router
 from app.api.attendance import router as attendance_router
+from app.api.events import router as events_router
+from app.api.ws_monitor import router as monitor_router
+from app.biz.monitor import MonitorHub
 from app.config import get_settings
 from app.db.session import Session
 from app.errors import install_error_handlers
@@ -27,7 +30,7 @@ from app.errors import install_error_handlers
 VERSION = '0.1.0'
 
 
-def create_app(*, attendance_factory=Session) -> FastAPI:
+def create_app(*, attendance_factory=Session, monitor_factory=Session) -> FastAPI:
     @asynccontextmanager
     async def lifespan(app):
         runtime = None
@@ -58,10 +61,12 @@ def create_app(*, attendance_factory=Session) -> FastAPI:
     app.include_router(devices_router)
     app.include_router(kiosk_router)
     app.include_router(ws_router)
-    for router in (organization_router,employees_router,faces_router,gates_router,settings_router,dashboard_router,schedule_router,attendance_router):
+    app.include_router(monitor_router)
+    for router in (organization_router,employees_router,faces_router,gates_router,settings_router,dashboard_router,schedule_router,attendance_router,events_router):
         app.include_router(router)
     app.state.pairing_attempts = PairingAttempts()
     app.state.kiosk_connections = {}
+    app.state.monitor = MonitorHub(monitor_factory)
     app.state.enroll_sessions = EnrollSessions()
     app.state.kiosk_service = None
     app.state.recognition = None

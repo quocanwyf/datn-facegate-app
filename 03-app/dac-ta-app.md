@@ -1,6 +1,6 @@
 # ĐẶC TẢ APP — HỆ THỐNG CHẤM CÔNG & KIỂM SOÁT RA VÀO BẰNG KHUÔN MẶT (GĐ4)
 > ĐATN "Mobile App tích hợp tối ưu AI cho hệ thống điểm danh và kiểm soát ra vào bằng nhận dạng khuôn mặt" — Nguyễn Quốc An, PTIT.
-> Phiên bản **1.4.4**, 14/11/2026 (1.4.4: đồng bộ Q-001–Q-013 đã được người dùng duyệt trong specs; 1.4.3: §8 trỏ về `openapi/openapi.yaml` + `ws-protocol.md` làm hợp đồng chính thức; giao diện chi tiết ở `ui/`; 1.4.2:1.4.2: bỏ tính năng So sánh mô hình — chỉ dùng 1 mô hình V1 s3, kết quả so sánh V1/UniFace đã đo nằm trong quyển; 1.4.1: đồng bộ §1.3, §2.1, §9.2, §15 với §0a; 1.4: rút gọn cho bản DEMO — xem §0a; 1.1: sửa §2.2, §2.3, §3, §4.1, M0 theo review vòng 4; 1.2: thêm M0(4b) tái lập BLUFR trial 01 theo review vòng 5; 1.3: An quyết định (4b) chỉ là dự phòng, không chạy trong M0), session thiết kế app. **Đây là tài liệu cuối để code.** Gộp: `de-xuat-tong-the.md` (v2), `thiet-ke-gd3.md`, review `review/2026-11-14_review-thiet-ke-app.md` và `xu-ly-review.md` (vòng 1 + 2). Khi mâu thuẫn, **file này thắng**.
+> Phiên bản **1.4.5**, 16/11/2026 (1.4.5: Q-014 — SECURITY tra cứu tối thiểu NV ACTIVE/MANUAL để chấm hộ; 1.4.4: đồng bộ Q-001–Q-013 đã được người dùng duyệt trong specs; 1.4.3: §8 trỏ về `openapi/openapi.yaml` + `ws-protocol.md` làm hợp đồng chính thức; giao diện chi tiết ở `ui/`; 1.4.2:1.4.2: bỏ tính năng So sánh mô hình — chỉ dùng 1 mô hình V1 s3, kết quả so sánh V1/UniFace đã đo nằm trong quyển; 1.4.1: đồng bộ §1.3, §2.1, §9.2, §15 với §0a; 1.4: rút gọn cho bản DEMO — xem §0a; 1.1: sửa §2.2, §2.3, §3, §4.1, M0 theo review vòng 4; 1.2: thêm M0(4b) tái lập BLUFR trial 01 theo review vòng 5; 1.3: An quyết định (4b) chỉ là dự phòng, không chạy trong M0), session thiết kế app. **Đây là tài liệu cuối để code.** Gộp: `de-xuat-tong-the.md` (v2), `thiet-ke-gd3.md`, review `review/2026-11-14_review-thiet-ke-app.md` và `xu-ly-review.md` (vòng 1 + 2). Khi mâu thuẫn, **file này thắng**.
 > Quy ước: **[khởi đầu]** = giá trị thiết kế đặt, chỉnh khi kiểm thử; **[chưa đo]** / **[mục tiêu]** = chưa có số đo; **[chờ GVHD]** / **[chờ An]** = phụ thuộc câu trả lời bên ngoài. Mọi con số mô hình đều có nguồn log (mục 4.4).
 
 ## 0a. Phạm vi bản DEMO (v1.4 — quyết định An 14/11/2026, ưu tiên hơn mọi mục khác)
@@ -409,7 +409,7 @@ Vai trò: `OWNER`, `HR`, `MANAGER` (có `scope_department_id`), `SECURITY`, `EMP
 | Chính sách cửa/danh sách phòng ban | W | W (chỉ chính sách) | — | R | — |
 | Cấu hình nhận dạng | W | R | — | — | — |
 | Tài khoản, vai trò | W | W (trừ OWNER) | — | — | — |
-| Nhân viên, phòng ban | W | W | R (team) | R (tên, mã) | R (bản thân) |
+| Nhân viên, phòng ban | W | W | R (team) | R (ACTIVE/MANUAL, tối thiểu) | R (bản thân) |
 | Xác nhận hồ sơ khuôn mặt | W | W | — | — | — |
 | Xem mẫu khuôn mặt (không log đọc ảnh trong demo) | R | R | — | — | — |
 | Ca, phân ca, ngày lễ | W | W | R (team) | R | R (ca mình) |
@@ -681,3 +681,7 @@ Thử thách chủ động (gắn danh tính, chuỗi hướng ngẫu nhiên) ·
 | Lưu điều khoản, log đọc ảnh | R-22 |
 | FPIR 22,1% tại b̃/s (TB 10 trial) | R-01 |
 | Cổng khởi động đọc log (không trích lại so byte); so tensor một lần ở M0; vendor `train.py` + `__init__.py` + `DATN_CODE_DIR`; truyền `row` manifest; nguồn LFW cho M0 | Review vòng 4 (14/11), đã tự kiểm lại trong mã `evaltest/common.py`, `features.py`, `strip_backbone.py`, `manifest_24.json` |
+
+### Q-014 — Quyền tra cứu chấm hộ của SECURITY (16/11/2026)
+
+Người dùng chốt trong chat: SECURITY được GET /employees chỉ NV ACTIVE/MANUAL, trả id, code, full_name, department_id/name, status, attendance_method; không mở GET chi tiết hay quyền ghi. Với nhiều vai trò, quyền OWNER/HR/MANAGER của tài khoản vẫn giữ riêng.

@@ -1,0 +1,12 @@
+[WebServer] (node:4268) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:28520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\monitor.spec.ts:33:1 › W10: event/alert cùng id chỉ một dòng; auth không ở URL; xử lý không thêm hồ sơ (13.9s)
+  ok 2 tests\monitor.spec.ts:42:1 › HR: không có xử lý/mở cửa; snapshot 404 và banner mất WS (3.8s)
+  ok 3 tests\monitor.spec.ts:49:1 › TOKEN_EXPIRED: làm mới rồi xác thực socket mới bằng token mới (3.4s)
+
+  3 passed (26.4s)

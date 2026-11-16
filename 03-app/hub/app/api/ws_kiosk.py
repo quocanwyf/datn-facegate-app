@@ -57,6 +57,7 @@ async def kiosk_socket(socket: WebSocket):
         token = first['device_token']
         device = await service.authenticate(token, first.get('app_version'))
         socket.app.state.kiosk_connections.setdefault(device.id,{})[connection_id] = {'send':send,'revoke':revoke,'device':device}
+        socket.app.state.monitor.publish('device_status', device.id)
         await send(await service.config(device))
         while True:
             try:
@@ -128,5 +129,6 @@ async def kiosk_socket(socket: WebSocket):
             connections.pop(connection_id,None)
             if not connections:
                 socket.app.state.kiosk_connections.pop(device.id,None)
+            socket.app.state.monitor.publish('device_status', device.id)
         if service:
             await service.discard(connection_id)

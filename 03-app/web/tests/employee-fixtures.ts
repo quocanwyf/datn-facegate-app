@@ -16,6 +16,8 @@ export const seedEmployees: components['schemas']['Employee'][] = rows('employee
 }));
 
 export async function employeeApi(page: Page, role: components['schemas']['Role'] = 'OWNER') {
+  // Fixture HTTP dùng token kiểm thử, nên kênh giám sát cũng được cô lập khỏi Hub thật.
+  await page.routeWebSocket('**/api/v1/ws/monitor', socket => { socket.onMessage(() => {}); });
   const state = {
     employees: structuredClone(seedEmployees), role, listError: 0, terminateFailures: 0, mutationDelay: 0,
     listFailures: 0, emptyMode: false,

@@ -1,0 +1,13 @@
+[WebServer] (node:16752) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:14100) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\attendance.spec.ts:35:1 › W09: WAITING_IN, màu token, không sửa bản thân, sửa người khác có lý do (9.9s)
+  ok 2 tests\attendance.spec.ts:51:1 › W12: không hiện duyệt bản thân kể cả server trả can_review=true (4.0s)
+  ok 3 tests\attendance.spec.ts:62:1 › W06: phân ca trùng giữ form, thông báo tiếng Việt (4.4s)
+  ok 4 tests\attendance.spec.ts:75:1 › MANAGER: xuất Excel không tự thêm lọc ngoài team, không có nút sửa/nghỉ (4.3s)
+
+  4 passed (25.9s)

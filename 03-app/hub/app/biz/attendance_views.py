@@ -1,7 +1,7 @@
 from calendar import monthrange
 from datetime import date
 from sqlalchemy import select
-from app.db.models import AttendanceDay, Department, Employee, Gate, Shift, UserAccount, UserRole
+from app.db.models import AttendanceDay, Department, Employee, EventHandling, Gate, Shift, UserAccount, UserRole
 from app.errors import ApiError
 
 WORK_STATUSES = {'NORMAL', 'LATE', 'EARLY', 'LATE_EARLY'}
@@ -81,9 +81,18 @@ async def event_view(session, row):
     gate = await session.get(Gate, row.gate_id)
     employee = await session.get(Employee, row.employee_id) if row.employee_id else None
     performer = await session.get(UserAccount, row.performed_by_user_id) if row.performed_by_user_id else None
+    handling = await session.get(EventHandling, row.id)
     return {**{key: getattr(row, key) for key in ('occurred_at', 'result', 'top1_score', 'threshold_used',
         'threshold_level', 'p_live_min', 'n_frames', 'door_action', 'reason')}, 'id': str(row.id),
         'device_id': str(row.device_id) if row.device_id else None,
         'gate': {'id': str(gate.id), 'name': gate.name, 'mode': gate.mode},
         'employee': await brief(session, employee) if employee else None,
-        'has_snapshot': row.snapshot_path is not None, 'performed_by': performer.email if performer else None}
+        'has_snapshot': row.snapshot_path is not None, 'performed_by': performer.email if performer else None,
+        'handling': await handling_view(session, handling) if handling else None}
+
+
+async def handling_view(session, handling):
+    user = await session.get(UserAccount, handling.handled_by_user_id)
+    employee = await session.get(Employee, handling.linked_employee_id) if handling.linked_employee_id else None
+    return dict(status=handling.status, handled_by=user.email, handled_at=handling.handled_at, note=handling.note,
+                linked_employee=await brief(session, employee) if employee else None)

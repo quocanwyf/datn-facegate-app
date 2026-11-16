@@ -90,6 +90,13 @@ class RecognitionRuntime:
             count = self.gallery.reload(rows)
             self.sessions.clear()
             completed=(payload or {}).get('complete',{})
+            # Đổi trạng thái làm quyết định cũ mất hiệu lực: lượt quét kế tiếp
+            # phải ghi DENIED_INACTIVE (hoặc MATCH khi mở lại), kể cả còn cooldown.
+            changed = {key.split('/')[1] for key in completed
+                       if key.startswith('employee/') and key.endswith('/status')}
+            for key in list(self.cooldowns.employees):
+                if str(key[1]) in changed:
+                    self.cooldowns.employees.pop(key, None)
             self.mutations.finish_reload(generation,completed)
             return count
         except Exception:

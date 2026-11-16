@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Hub API — Chấm công & ra vào bằng khuôn mặt (bản demo ĐATN)
-  version: 1.1.0
+  version: 1.1.1
   description: 'Hợp đồng API giữa Hub (FastAPI) với Web (`/admin`, `/me`) và Kiosk App. Theo `03-app/dac-ta-app.md` v1.4.4 §8 và `db/thiet-ke-db.md`.
 
 
@@ -384,7 +384,8 @@ paths:
       - OWNER
       - HR
       - MANAGER
-      description: MANAGER chỉ thấy NV thuộc phòng ban mình quản lý.
+      - SECURITY
+      description: MANAGER chỉ thấy NV thuộc phòng ban mình quản lý. Q-014 SECURITY chỉ tra cứu ACTIVE/MANUAL với id, code, full_name, department_id, department_name, status, attendance_method; vai trò khác giữ quyền riêng. GET chi tiết không mở cho SECURITY.
       parameters:
       - name: q
         in: query

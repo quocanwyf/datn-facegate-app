@@ -21,7 +21,7 @@ async def auth(factory,number):
 @pytest.mark.parametrize('number,role',[(1,'OWNER'),(2,'HR'),(5,'MANAGER'),(20,'SECURITY'),(6,'EMPLOYEE')])
 async def test_permission_matrix_reads(runtime,number,role):
     client,factory,app=runtime;headers=await auth(factory,number)
-    cases=[('/dashboard/today',{'OWNER','HR'},'Dashboard'),('/employees',{'OWNER','HR','MANAGER'},'PageEmployee'),
+    cases=[('/dashboard/today',{'OWNER','HR'},'Dashboard'),('/employees',{'OWNER','HR','MANAGER','SECURITY'},'PageEmployee'),
            ('/departments',{'OWNER','HR','MANAGER','SECURITY'},None),('/users',{'OWNER','HR'},'PageUser'),
            ('/face-profiles',{'OWNER','HR'},'PageFaceProfile'),('/gates',{'OWNER','HR','SECURITY'},None),
            ('/settings/recognition',{'OWNER','HR'},'RecognitionSettings'),('/models/active',{'OWNER','HR'},'ModelActive'),

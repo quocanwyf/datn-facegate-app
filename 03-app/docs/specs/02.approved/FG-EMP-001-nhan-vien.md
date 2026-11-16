@@ -51,7 +51,7 @@ Hub/DB và dữ liệu tham chiếu phải sẵn sàng. Tài khoản/thiết b�
 
 | Method / path (thêm `/api/v1`) | operationId | x-roles hiện tại | Schema $ref trực tiếp | HTTP khai báo |
 |---|---|---|---|---|
-| `GET /employees` | `getEmployees` | OWNER, HR, MANAGER | `EmployeeStatus`, `AttendanceMethod`, `PageEmployee` | 200, 400, 401, 403 |
+| `GET /employees` | `getEmployees` | OWNER, HR, MANAGER, SECURITY (Q-014, chỉ ACTIVE/MANUAL tối thiểu) | `EmployeeStatus`, `AttendanceMethod`, `PageEmployee` | 200, 400, 401, 403 |
 | `POST /employees` | `postEmployees` | OWNER, HR | `EmployeeCreate`, `EmployeeCreated` | 201, 400, 401, 403, 409 |
 | `GET /employees/{id}` | `getEmployeesById` | OWNER, HR, MANAGER | `Employee` | 200, 401, 403, 404 |
 | `PATCH /employees/{id}` | `patchEmployeesById` | OWNER, HR | `EmployeeUpdate`, `Employee` | 200, 400, 401, 403, 404, 409 |
@@ -80,3 +80,7 @@ Hiển thị đang tải, rỗng, lỗi và không có quyền theo màn hình g
 - **FG-EMP-001-AC06**: Tạm khóa nhân viên có hồ sơ hợp lệ vẫn nhận ra danh tính, ghi DENIED_INACTIVE, không mở cửa và không tính công.
 
 Các AC **chưa chạy/chưa đánh dấu đạt**. Khi triển khai dùng bộ kiểm task gốc và lưu log thật trong `03-app/ket-qua-kiem-thu/`. Không seed giả sự kiện nhận dạng, khuôn mặt hoặc ngày công.
+
+## Q-014 — 16/11/2026
+
+Người dùng chốt SECURITY chỉ tra cứu ACTIVE/MANUAL, trả id/mã/tên/phòng ban/trạng thái/phương thức để chấm hộ. GET chi tiết và các quyền ghi giữ nguyên; nhiều vai trò giữ quyền riêng. Căn cứ: chat và báo cáo T11.

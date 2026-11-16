@@ -3,7 +3,7 @@ from functools import partial
 from typing import Annotated, Literal
 from uuid import UUID
 from zoneinfo import ZoneInfo
-from fastapi import APIRouter, Depends, Query, Response
+from fastapi import APIRouter, Depends, Query, Request, Response
 from sqlalchemy import select
 from app.api.contract import body_contract
 from app.api.faces import own_employee as self_employee
@@ -111,7 +111,7 @@ async def leave(body: Annotated[dict, Depends(body_contract('LeaveInput'))], ses
 
 
 @router.post('/attendance/manual', operation_id='postAttendanceManual', status_code=201)
-async def manual(body: Annotated[dict, Depends(body_contract('ManualAttendanceInput'))], session: Database, principal: Operator):
+async def manual(body: Annotated[dict, Depends(body_contract('ManualAttendanceInput'))], session: Database, principal: Operator, request: Request):
     employee = await scoped(session, Employee, UUID(body['employee_id']), principal, True)
     gate = await scoped(session, Gate, UUID(body['gate_id']), principal)
     if employee.id == principal.account.employee_id:
@@ -125,7 +125,10 @@ async def manual(body: Annotated[dict, Depends(body_contract('ManualAttendanceIn
     await session.flush()
     await apply_event(session, event)
     audit(session, principal, 'ATTENDANCE_MANUAL', 'recognition_event', event.id)
-    return await event_view(session, event)
+    result = await event_view(session, event)
+    await session.commit()
+    request.app.state.monitor.publish('event', event.id)
+    return result
 
 
 @router.get('/attendance/requests', operation_id='getAttendanceRequests')

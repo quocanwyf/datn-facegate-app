@@ -18,7 +18,7 @@
 | GET | `/me/face` | `getMeFace` | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md) | EMPLOYEE | — | 200, 401, 403 |
 | POST | `/me/face/revoke` | `postMeFaceRevoke` | [FG-FACE-004](02.approved/FG-FACE-004-xoa-rut-dong-y.md) | EMPLOYEE | — | 200, 401, 403, 503 |
 | GET | `/dashboard/today` | `getDashboardToday` | [FG-DASH-001](02.approved/FG-DASH-001-tong-quan.md) | OWNER, HR | — | 200, 400, 401, 403 |
-| GET | `/employees` | `getEmployees` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR, MANAGER | q, department_id, status, attendance_method, face_profile_status, page, size | 200, 400, 401, 403 |
+| GET | `/employees` | `getEmployees` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR, MANAGER, SECURITY (Q-014 tối thiểu ACTIVE/MANUAL) | q, department_id, status, attendance_method, face_profile_status, page, size | 200, 400, 401, 403 |
 | POST | `/employees` | `postEmployees` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR | — | 201, 400, 401, 403, 409 |
 | GET | `/employees/{id}` | `getEmployeesById` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR, MANAGER | id | 200, 401, 403, 404 |
 | PATCH | `/employees/{id}` | `patchEmployeesById` | [FG-EMP-001](02.approved/FG-EMP-001-nhan-vien.md) | OWNER, HR | id | 200, 400, 401, 403, 404, 409 |

@@ -2,10 +2,7 @@ from app.api.contract import source_contract
 from app.main import create_app
 
 # Chỉ các operation được plan cho phép để T09/T11; không bỏ qua tùy ý theo tag.
-DEFERRED={
-    ('post','/gates/{id}/manual-open'),
-    ('get','/events'),('get','/events/{id}/snapshot'),('post','/events/{id}/handle'),
-    ('get','/events/manual-report'),('get','/events/export')}
+DEFERRED=set()
 
 
 

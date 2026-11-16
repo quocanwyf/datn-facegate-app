@@ -1,7 +1,7 @@
 from typing import Annotated,Literal
 from uuid import UUID
 from fastapi import APIRouter,Depends,Query,Request,Response
-from sqlalchemy import select
+from sqlalchemy import and_, or_, select
 from starlette.concurrency import run_in_threadpool
 from app.api.contract import body_contract,source_contract
 from app.auth.dependencies import Database,Principal,department_scope,require_roles
@@ -9,29 +9,44 @@ from app.auth.security import password_hasher,utcnow
 from app.biz.admin import audit,converted,department_exists,employee_scope,employee_view,page_result,scoped,temporary_password
 from app.biz.face_data import withdraw_consent
 from app.biz.gallery_sync import reload_gallery
-from app.db.models import Employee,UserAccount,UserRole
+from app.db.models import Department,Employee,UserAccount,UserRole
 from app.errors import ApiError
 
 router=APIRouter(prefix='/api/v1/employees',tags=['Employees'])
 Admin=Annotated[Principal,Depends(require_roles('OWNER','HR'))]
 Reader=Annotated[Principal,Depends(require_roles('OWNER','HR','MANAGER'))]
+ListReader=Annotated[Principal,Depends(require_roles('OWNER','HR','MANAGER','SECURITY'))]
 
 
 @router.get('',operation_id='getEmployees')
-async def employees(session:Database,principal:Reader,q:str|None=None,department_id:UUID|None=None,
+async def employees(session:Database,principal:ListReader,q:str|None=None,department_id:UUID|None=None,
                     status:Literal['ACTIVE','SUSPENDED','TERMINATED']|None=None,attendance_method:Literal['FACE','MANUAL']|None=None,
                     page:Annotated[int,Query(ge=1)]=1,size:Annotated[int,Query(ge=1,le=100)]=20)->dict:
     query=select(Employee).where(Employee.company_id==principal.account.company_id)
-    scopes=department_scope(principal)
-    if scopes is not None:
-        if department_id is not None and department_id not in scopes:
+    roles={grant.role for grant in principal.roles}
+    global_reader=bool(roles.intersection({'OWNER','HR'}))
+    manager_scopes={grant.scope_department_id for grant in principal.roles if grant.role=='MANAGER'}
+    security='SECURITY' in roles
+    if not global_reader:
+        if department_id is not None and department_id not in manager_scopes and not security:
             raise ApiError(403,'FORBIDDEN','Bạn không có quyền xem phòng ban này.')
-        query=query.where(Employee.department_id.in_(scopes))
+        allowed=Employee.department_id.in_(manager_scopes)
+        if security:
+            allowed=or_(allowed,and_(Employee.status=='ACTIVE',Employee.attendance_method=='MANUAL'))
+        query=query.where(allowed)
+        if security and not manager_scopes and (status not in (None,'ACTIVE') or attendance_method not in (None,'MANUAL')):
+            raise ApiError(403,'FORBIDDEN','Bảo vệ chỉ tra cứu nhân viên đang hoạt động dùng chấm hộ.')
     if department_id:query=query.where(Employee.department_id==department_id)
     if status:query=query.where(Employee.status==status)
     if attendance_method:query=query.where(Employee.attendance_method==attendance_method)
     if q:query=query.where(Employee.code.ilike('%'+q+'%')|Employee.full_name.ilike('%'+q+'%'))
-    return await page_result(session,query.order_by(Employee.code),page,size,employee_view)
+    async def visible_employee(session,item):
+        if global_reader or item.department_id in manager_scopes:
+            return await employee_view(session,item)
+        department=await session.get(Department,item.department_id)
+        return {**{key:str(getattr(item,key)) for key in ('id','department_id')},'code':item.code,
+            'full_name':item.full_name,'department_name':department.name,'status':item.status,'attendance_method':item.attendance_method}
+    return await page_result(session,query.order_by(Employee.code),page,size,visible_employee)
 
 
 @router.get('/{id}',operation_id='getEmployeesById')

@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { token, fillLogin } from './fixtures';
 test('401 đồng thời chỉ xoay refresh một lần, retry với access mới', async ({ page }) => {
+  await page.routeWebSocket('**/api/v1/ws/monitor', socket => { socket.onMessage(() => {}); });
   let refreshes = 0; const first = token('OWNER', false); const next = { ...first, access_token: 'renewed-access', refresh_token: 'renewed-refresh' };
   await page.route('**/api/v1/**', async route => {
     const path = new URL(route.request().url()).pathname;
@@ -16,6 +17,7 @@ test('401 đồng thời chỉ xoay refresh một lần, retry với access mớ
   await page.getByRole('button', { name: 'Menu tài khoản' }).click(); await page.getByRole('menuitem', { name: 'Đăng xuất', exact: true }).click(); await expect(page).toHaveURL(/\/login$/);
 });
 test('Refresh bị thu hồi: xóa phiên và chặn trang riêng', async ({ page }) => {
+  await page.routeWebSocket('**/api/v1/ws/monitor', socket => { socket.onMessage(() => {}); });
   await page.route('**/api/v1/**', async route => {
     const path = new URL(route.request().url()).pathname;
     if (path.endsWith('/auth/login')) return route.fulfill({ json: token('OWNER', false) });

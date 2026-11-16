@@ -15,6 +15,7 @@ export async function fillLogin(page: Page, email = 'review@example.test') {
   await page.getByLabel('Mật khẩu', { exact: true }).fill('Review123!');
 }
 export async function mockLogin(page: Page, value = token()) {
+  await page.routeWebSocket('**/api/v1/ws/monitor', socket => { socket.onMessage(() => {}); });
   await page.route('**/api/v1/**', route => route.abort());
   await page.route('**/api/v1/auth/login', route => route.fulfill({ json: value }));
 }

@@ -1,0 +1,19 @@
+{"type": "config", "gate": {"id": "ee25f6ab-38b5-42df-bb47-1dd5266216cb", "name": "T08 review", "mode": "ACCESS_ONLY"}, "research_banner": "Bản trình diễn nghiên cứu – không dùng thương mại", "max_fps": 4, "frame_long_side": 640, "jpeg_quality": 80, "result_display_sec": 3, "server_time": "2026-11-16T03:10:25.071917+00:00"}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 1}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 2}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 3}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 4}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 5}
+{"type": "state", "state": "CHECKING", "bbox": [112.00846862792969, 119.64369201660156, 252.79705810546875, 315.8983459472656], "frames_in_window": 1, "seq": 6}
+{"type": "state", "state": "CHECKING", "bbox": [137.10800170898438, 113.85174560546875, 255.2260284423828, 316.0657958984375], "frames_in_window": 2, "seq": 7}
+{"type": "result", "result": "DENY", "door": "DENY", "attendance": {"kind": "NONE"}, "message": "Không được phép qua cửa.", "employee": {"name": "Võ Thanh Tùng", "code": "NV006"}, "reason": "INACTIVE", "seq": 8}
+{"type": "state", "state": "CHECKING", "bbox": [71.43480682373047, 149.41799926757812, 241.65455627441406, 317.42254638671875], "frames_in_window": 1, "seq": 9}
+{"type": "state", "state": "CHECKING", "bbox": [93.62002563476562, 159.32965087890625, 255.81854248046875, 358.12274169921875], "frames_in_window": 2, "seq": 10}
+{"type": "result", "result": "DENY", "door": "DENY", "attendance": {"kind": "NONE"}, "message": "Không được phép qua cửa.", "employee": {"name": "Võ Thanh Tùng", "code": "NV006"}, "reason": "INACTIVE", "seq": 11}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 12}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 13}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 14}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 15}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 16}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 17}
+PASS actual kiosk_sim suspended

@@ -1,0 +1,33 @@
+[WebServer] (node:7012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:28308) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\monitor-real.spec.ts:21:1 › Quét thật từ ảnh → W10 realtime, INACTIVE bị chặn, xử lý không đổi gallery, CSV (1.5m)
+
+
+  1) tests\monitor-real.spec.ts:21:1 › Quét thật từ ảnh → W10 realtime, INACTIVE bị chặn, xử lý không đổi gallery, CSV 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 25000ms exceeded while waiting on the predicate
+
+      39 |   await expect(page.getByText('Đã lưu xử lý cảnh báo', { exact: true })).toBeVisible();
+      40 |   expect(await profiles()).toBe(samplesBefore); expect((await (await page.request.get('/api/v1/health')).json()).gallery_size).toBe(galleryBefore);
+    > 41 |   await probe('suspended', 'D:/WorkSpace/DATN/U03'); await expect.poll(() => [...received.values()].some(row => row.result === 'DENIED_INACTIVE')).toBe(true);
+         |                                                                                                                                                    ^
+      42 |   const commits = new Map<string, number>();
+      43 |   for (const match of readFileSync(`${report}/hub-review.log`, 'utf8').matchAll(/MONITOR_COMMIT (\{[^\r\n]+\})/g)) { const row = JSON.parse(match[1]!); commits.set(row.event_id, row.commit_observed_ms); }
+      44 |   const timings = [...received].filter(([id]) => commits.has(id)).map(([id, row]) => ({ event_id: id, result: row.result, commit_observed_ms: commits.get(id)!, web_received_ms: row.received_ms, latency_ms: row.received_ms - commits.get(id)! }));
+        at D:\WorkSpace\DATN\datn-facegate-app\03-app\web\tests\monitor-real.spec.ts:41:148
+
+    Error Context: test-results-monitor-real\monitor-real-Quét-thật-từ--1ca49-xử-lý-không-đổi-gallery-CSV\error-context.md
+
+  1 failed
+    tests\monitor-real.spec.ts:21:1 › Quét thật từ ảnh → W10 realtime, INACTIVE bị chặn, xử lý không đổi gallery, CSV 

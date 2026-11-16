@@ -1,0 +1,14 @@
+{"type": "config", "gate": {"id": "ee25f6ab-38b5-42df-bb47-1dd5266216cb", "name": "T08 review", "mode": "ACCESS_ONLY"}, "research_banner": "Bản trình diễn nghiên cứu – không dùng thương mại", "max_fps": 4, "frame_long_side": 640, "jpeg_quality": 80, "result_display_sec": 3, "server_time": "2026-11-16T03:10:12.560177+00:00"}
+{"type": "state", "state": "CHECKING", "bbox": [135.82278442382812, 134.4202117919922, 226.43443298339844, 302.2041320800781], "frames_in_window": 1, "seq": 1}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 2}
+{"type": "state", "state": "CHECKING", "bbox": [162.96937561035156, 118.1063003540039, 195.48391723632812, 238.51512145996094], "frames_in_window": 2, "seq": 3}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 4}
+{"type": "state", "state": "CHECKING", "bbox": [137.80099487304688, 134.87547302246094, 210.35906982421875, 273.1927185058594], "frames_in_window": 3, "seq": 5}
+{"type": "state", "state": "CHECKING", "bbox": [147.59217834472656, 205.87014770507812, 179.1927490234375, 252.9295196533203], "frames_in_window": 4, "seq": 6}
+{"type": "result", "result": "DENY", "door": "DENY", "attendance": {"kind": "NONE"}, "message": "Không nhận diện được khuôn mặt.", "reason": "UNKNOWN", "seq": 7}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 8}
+{"type": "state", "state": "CHECKING", "bbox": [162.96937561035156, 118.1063003540039, 195.48391723632812, 238.51512145996094], "frames_in_window": 1, "seq": 9}
+{"type": "state", "state": "LOOK_STRAIGHT", "seq": 10}
+{"type": "state", "state": "CHECKING", "bbox": [137.80099487304688, 134.87547302246094, 210.35906982421875, 273.1927185058594], "frames_in_window": 2, "seq": 11}
+{"type": "state", "state": "CHECKING", "bbox": [147.59217834472656, 205.87014770507812, 179.1927490234375, 252.9295196533203], "frames_in_window": 3, "seq": 12}
+PASS actual kiosk_sim unknown

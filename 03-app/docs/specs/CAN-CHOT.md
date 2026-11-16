@@ -219,3 +219,8 @@ Báo cáo và giới hạn kiểm tra: [báo cáo đồng bộ](../../ket-qua-ki
 - WAITING_IN biểu diễn Chưa đến — tạm thời, check_in NULL/finalized=false; enum thứ 12 ở DB/API/UI.
 - WS thêm NO_GALLERY và error RECOGNITION_UNAVAILABLE/OPERATION_INCOMPLETE có seq khi phản hồi frame.
 - REST 409 PROFILE_ALREADY_REVIEWED; 503 BIOMETRIC_DELETE_INCOMPLETE/RECOGNITION_UNAVAILABLE. Giữ nguyên 77 operation và operationId, không thêm endpoint.
+
+## Q-014 — 16/11/2026, đã chốt
+
+- Người dùng trực tiếp chọn SECURITY tra cứu riêng NV MANUAL với thông tin tối thiểu để chấm hộ. Server giới hạn ACTIVE/MANUAL, không trả email/điện thoại/dữ liệu hồ sơ mặt; không mở API chi tiết/ghi nhân viên. Các vai trò khác giữ quyền riêng.
+- Đồng bộ OpenAPI 1.1.1 và đặc tả 1.4.5; không đổi DB hoặc thêm endpoint.

@@ -1,0 +1,30 @@
+{
+  "source": "kiosk_sim authorized real photos U03/U04, actual CPU Hub with approved T08 gallery",
+  "timing_definition": "server callback immediately after DB commit → browser WS frame received (same host clock, 1ms client resolution)",
+  "samples_before": 5,
+  "samples_after": 5,
+  "gallery_size": 1,
+  "timings": [
+    {
+      "event_id": "9ae4100e-71ca-4765-bdbd-daf84717d712",
+      "result": "MATCH",
+      "commit_observed_ms": 1794798606305.0479,
+      "web_received_ms": 1794798606394,
+      "latency_ms": 88.9521484375
+    },
+    {
+      "event_id": "2501e979-5992-4504-9be4-9beee82267cd",
+      "result": "UNKNOWN",
+      "commit_observed_ms": 1794798617388.558,
+      "web_received_ms": 1794798617402,
+      "latency_ms": 13.44189453125
+    },
+    {
+      "event_id": "3e9e1c31-761f-4e72-9091-ae67e4f8cf50",
+      "result": "DENIED_INACTIVE",
+      "commit_observed_ms": 1794798627877.7842,
+      "web_received_ms": 1794798627889,
+      "latency_ms": 11.2158203125
+    }
+  ]
+}
