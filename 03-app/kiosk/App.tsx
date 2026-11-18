@@ -68,7 +68,7 @@ function KioskApp() {
       else if (message.type === 'enroll_done' && sceneRef.current === 'enroll') { setDone(message); go('sent'); }
       else if (message.type === 'error') {
         if (message.code === 'SESSION_EXPIRED') { resetEnrollment(); go('scan'); }
-        else if (sceneRef.current === 'enroll' && !['MODEL_NOT_VERIFIED', 'RECOGNITION_UNAVAILABLE', 'FRAME_DECODE_FAILED'].includes(message.code)) { socketRef.current?.setCaptureEnabled(false); setError(message.message); }
+        else if (sceneRef.current === 'enroll' && !['MODEL_NOT_VERIFIED', 'RECOGNITION_UNAVAILABLE'].includes(message.code)) { socketRef.current?.setCaptureEnabled(false); setError(message.message); }
       }
     }
     const socket = new KioskSocket(device.hub, device.token, {

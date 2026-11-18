@@ -12,6 +12,7 @@ from app.db.models import Company, RecognitionModel
 from app.recog.decision import Cooldowns, DeviceSession, Observation, Params
 from app.recog.detector import Detector
 from app.recog.embedder import Embedder
+from app.recog.enrollment_pose import matches_enrollment_step, pose_ratios
 from app.recog.gallery import Gallery, RecognitionUnavailable, gallery_query
 from app.recog.model_loader import load_verified
 from app.recog.worker import InferenceWorker
@@ -234,6 +235,10 @@ class RecognitionRuntime:
         p_live = self.live_score(image, observation.bbox) if payload['settings']['anti_spoof_enabled'] else None
         if p_live is not None and p_live < payload['settings']['liveness_threshold']:
             return {'type':'enroll_progress','accepted':len(samples),'total':5,'reason':'SPOOF'}
+        pose = pose_ratios(observation.landmarks)
+        frontal = samples[0]['pose'] if samples else pose
+        if pose is None or not matches_enrollment_step(len(samples), pose, frontal):
+            return {'type':'enroll_progress','accepted':len(samples),'total':5,'reason':'POSE'}
         embedding = self.embedder.embed(image, observation.landmarks)
         maximum = get_settings().enroll_max_cos_similarity
         if any(float(embedding @ sample['vector']) > maximum for sample in samples):
@@ -243,7 +248,7 @@ class RecognitionRuntime:
         ok, png = cv2.imencode('.png', aligned)
         if not ok:
             raise FrameError('OPERATION_INCOMPLETE', 'Chưa lưu được mẫu đăng ký.')
-        samples.append({'png':png.tobytes(),'vector':embedding,'det_score':observation.det_score,'yaw_ratio':observation.yaw_ratio,'p_live':p_live})
+        samples.append({'png':png.tobytes(),'vector':embedding,'det_score':observation.det_score,'yaw_ratio':observation.yaw_ratio,'p_live':p_live,'pose':pose})
         if len(samples) < 5:
             return {'type':'enroll_progress','accepted':len(samples),'total':5}
         self.samples.pop(key)

@@ -1,6 +1,6 @@
 # THIẾT KẾ GĐ3 — LUỒNG, SƠ ĐỒ, DỮ LIỆU, MÀN HÌNH
-> Session thiết kế app, 14/11/2026. Dựa trên `03-app/de-xuat-tong-the.md` (v2, An đã đồng ý). Trạng thái: **BẢN THIẾT KẾ, chờ An duyệt** → sau đó gộp vào đặc tả `03-app/dac-ta-app.md` (GĐ4).
-> ⚠ Đã có review chéo (14/11): nhiều điểm đã thay đổi, xem `03-app/xu-ly-review.md`; bản cuối sẽ là `dac-ta-app.md`.
+> Session thiết kế app, 14/11/2026. Dựa trên `03-app/docs/lich-su-thiet-ke/de-xuat-tong-the.md` (v2, An đã đồng ý). Trạng thái: **BẢN THIẾT KẾ, chờ An duyệt** → sau đó gộp vào đặc tả `03-app/dac-ta-app.md` (GĐ4).
+> ⚠ Đã có review chéo (14/11): nhiều điểm đã thay đổi, xem `03-app/docs/lich-su-thiet-ke/xu-ly-review.md`; bản cuối sẽ là `dac-ta-app.md`.
 > Sơ đồ viết bằng Mermaid (xem được trong VS Code/GitHub; xuất PNG cho quyển bằng mermaid-cli).
 > Mọi tham số ghi "**[khởi đầu]**" là giá trị ban đầu do thiết kế đặt, sẽ chỉnh khi kiểm thử tại chỗ; KHÔNG phải số đo.
 

@@ -6,7 +6,7 @@
 Kênh `/ws/monitor`, API sự kiện, mở cửa thủ công, báo cáo chấm hộ; màn W-02, W-10, W-11.
 
 ## Đọc trước
-`openapi/ws-protocol.md` §2 · `openapi.yaml` (tag Events, Gates manual-open, Dashboard) · `ui/man-hinh/admin.md` (W-02, W-10, W-11) · đặc tả §5.4, F-06 trong `thiet-ke-gd3.md` · skill `kiosk-ws-protocol`, `gsap`.
+`openapi/ws-protocol.md` §2 · `openapi.yaml` (tag Events, Gates manual-open, Dashboard) · `ui/man-hinh/admin.md` (W-02, W-10, W-11) · đặc tả §5.4, F-06 trong `docs/lich-su-thiet-ke/thiet-ke-gd3.md` · skill `kiosk-ws-protocol`, `gsap`.
 
 ## Được ghi vào
 `03-app/hub/` · `03-app/web/` · `03-app/ket-qua-kiem-thu/<ngày>_T11/`.

@@ -1,5 +1,5 @@
 # XỬ LÝ REVIEW CHÉO — THIẾT KẾ APP
-> Session thiết kế app, 14/11/2026. Trả lời `03-app/review/2026-11-14_review-thiet-ke-app.md` (25 vấn đề).
+> Session thiết kế app, 14/11/2026. Trả lời `03-app/docs/lich-su-thiet-ke/2026-11-14_review-thiet-ke-app.md` (25 vấn đề).
 > Session thiết kế đã **tự chạy lại** các số then chốt reviewer nêu và xác nhận khớp: FPIR tại t = b̃/s TB 10 trial (V1 s3 22,10%; UniFace s3 42,15%), ngưỡng val@FAR=1e-5 = 0,4233 → BLUFR FPIR 5,02% / FNIR 10,56%, `meta.amp = true`, SHA-256 `best.pt` gốc V1 s3 = `120489621a…ef88`, gallery BLUFR = 1000 người/trial.
 > Từ giờ, **bản cuối = `03-app/dac-ta-app.md` (GĐ4)**. `de-xuat-tong-the.md` và `thiet-ke-gd3.md` giữ làm lịch sử; chỉ sửa ngay lỗi số liệu (R-01).
 

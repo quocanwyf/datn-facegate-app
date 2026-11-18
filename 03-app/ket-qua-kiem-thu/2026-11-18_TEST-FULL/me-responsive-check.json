@@ -1,0 +1,42 @@
+[
+  {
+    "nav": "sticky",
+    "overflow": false,
+    "page": "today-desktop",
+    "shellWidth": 1280,
+    "width": 1528
+  },
+  {
+    "calendar": 535.2000122070312,
+    "overflow": false,
+    "page": "month-desktop",
+    "width": 1528
+  },
+  {
+    "navBottom": 844,
+    "overflow": false,
+    "page": "month-mobile",
+    "width": 390
+  },
+  {
+    "navBottom": 844,
+    "overflow": false,
+    "page": "today-mobile",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "page": "request-mobile",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "page": "request-desktop-1024",
+    "width": 1024
+  },
+  {
+    "overflow": false,
+    "page": "today-1024",
+    "width": 1024
+  }
+]

@@ -8,8 +8,8 @@ Bạn là **người review độc lập** cho phần App của đồ án tốt 
 ## Đọc trước (theo thứ tự)
 1. `CLAUDE.md` (quy ước thư mục; tuân thủ tuyệt đối).
 2. `00-quan-ly/de-cuong.md` (phạm vi, ràng buộc, quyết định đã chốt của phần nghiên cứu).
-3. `03-app/tong-hop-thao-luan-app.md` (tóm tắt quyết định).
-4. `03-app/de-xuat-tong-the.md` (GĐ1–2) và `03-app/thiet-ke-gd3.md` (GĐ3); hình ở `03-app/so-do/`.
+3. `03-app/docs/lich-su-thiet-ke/tong-hop-thao-luan-app.md` (tóm tắt quyết định).
+4. `03-app/docs/lich-su-thiet-ke/de-xuat-tong-the.md` (GĐ1–2) và `03-app/docs/lich-su-thiet-ke/thiet-ke-gd3.md` (GĐ3); hình ở `03-app/so-do/`.
 5. Nguồn số liệu để đối chiếu:
    - `02-thuc-nghiem/results/2026-11-12_test-blufr-lfw/eval_test/ket_qua_blufr_lfw.json`
    - `02-thuc-nghiem/results/V1-s1-Ngan/`, `V1-s2-Hy/`, `V1-s3-Hy/` (file `session_*.md` trong `phien-1/`)

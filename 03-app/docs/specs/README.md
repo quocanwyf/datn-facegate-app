@@ -6,7 +6,7 @@ Tài liệu dẫn xuất từ đặc tả v1.4.4 ngày 14/11/2026 để quản l
 
 1. Chọn mã trong danh mục dưới để mở spec.
 2. Xem quyền, dữ liệu, luồng, bất biến, API, nhánh lỗi và tiêu chí `FG-…-ACxx`.
-3. Đối chiếu [quy tắc chung](QUY-UOC-CHUNG.md), [13 quyết định đã chốt](CAN-CHOT.md), [API](MA-TRAN-API.md), [màn hình](MA-TRAN-MAN-HINH.md).
+3. Đối chiếu [quy tắc chung](QUY-UOC-CHUNG.md), [các quyết định đã chốt](CAN-CHOT.md), [API](MA-TRAN-API.md), [màn hình](MA-TRAN-MAN-HINH.md).
 
 ## Trạng thái và thư mục
 
@@ -16,9 +16,9 @@ Tài liệu dẫn xuất từ đặc tả v1.4.4 ngày 14/11/2026 để quản l
 | [02.approved](02.approved/README.md) | APPROVED | Đã review và được approved, đủ căn cứ triển khai |
 | [03.archived](03.archived/README.md) | ARCHIVED | Đã triển khai xong và nghiệm thu, có bằng chứng hoàn thành |
 
-Hiện có 28 specs trong `02.approved`, 4 specs FG-AI-003/FG-AUTH-001/FG-ORG-001/FG-AI-004 trong `03.archived`, không có feature draft. Toàn bộ được duyệt ngày 14/11/2026; FG-AI-003 nghiệm thu ngày 15/11/2026 sau T04/T05. Xem [lịch sử duyệt](LICH-SU-DUYET.md#approved-2026-11-14).
+32 spec được duyệt ban đầu ngày 14/11/2026. Xem trạng thái hiện tại trong danh mục bên dưới và [lịch sử duyệt](LICH-SU-DUYET.md).
 
-Tài liệu dùng chung (mục lục, quy tắc, câu hỏi, ma trận) nằm ở gốc `specs/`. 32 specs đã được duyệt và 13/13 quyết định đã chốt trong `CAN-CHOT.md`. Nguồn chuẩn đã đồng bộ ngày 14/11/2026; tiến độ nghiệm thu theo từng spec và báo cáo task.
+Tài liệu dùng chung (mục lục, quy tắc, câu hỏi, ma trận) nằm ở gốc `specs/`. `CAN-CHOT.md` ghi các quyết định đã chốt, gồm Q-014 bổ sung về tra cứu nhân viên để chấm hộ.
 
 ### Quy trình chuyển trạng thái
 
@@ -34,7 +34,7 @@ Không tự đánh dấu approved khi chưa có xác nhận. Quy trình này qu�
 
 - **32/32 specs APPROVED**, **13/13 quyết định Q-001 đến Q-013 đã chốt** ngày 14/11/2026.
 - Xem [quyết định và nguồn đã đồng bộ](CAN-CHOT.md), [lịch sử xác nhận](LICH-SU-DUYET.md).
-- Đã đồng bộ nguồn chuẩn; chưa triển khai code/nghiệm thu app, các specs chưa chuyển archived.
+- Các lần nghiệm thu và chuyển spec sau đợt duyệt ban đầu được ghi trong lịch sử và báo cáo từng task.
 
 ## Quy tắc mã
 

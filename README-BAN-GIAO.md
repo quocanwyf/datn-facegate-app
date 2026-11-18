@@ -7,16 +7,16 @@
 |---|---|---|
 | `AGENTS.md`, `.agents/skills/` | Luật cho Codex + 4 skill riêng (skill ngoài Codex cài ở T00) | An |
 | `03-app/KE-HOACH-TONG.md` | Kế hoạch tổng, vai trò, trạng thái | An |
-| `03-app/dac-ta-app.md` | **Đặc tả** (v1.4.2; §0a = phạm vi bản demo) | An |
+| `03-app/dac-ta-app.md` | **Đặc tả** (xem phiên bản ở đầu file; §0a = phạm vi bản demo) | An |
 | `03-app/db/` | Thiết kế DB, `schema.sql`, `seed.sql`, `test_constraints.sql`, ERD | An |
 | `03-app/ui/` | Design system, token màu/chữ, layout từng màn (`man-hinh/`) | An |
 | `03-app/openapi/` | Hợp đồng API (`openapi.yaml`) + giao thức WebSocket | An |
 | `03-app/plan-codex/` | **16 task T00–T15** cho Codex + mẫu báo cáo | An |
-| `03-app/hub/`, `web/`, `kiosk/` | Code (hiện chỉ có `AGENTS.md`) | **Hy + Codex** |
+| `03-app/hub/`, `web/`, `kiosk/` | Mã nguồn Hub, web và kiosk | **Hy + Codex** |
 | `03-app/tools/` | `kiem-checkpoint.py`, `kiem-bi-mat.py`, `dong-goi-repo.py` | — |
 | `03-app/ket-qua-kiem-thu/` | Báo cáo + log mỗi task | Hy + Codex |
 | `02-thuc-nghiem/` | Bản rút gọn code + log nghiên cứu (**chỉ đọc**) — xem `BAN-RUT-GON.md` | không ai |
-| `03-app/review/`, `xu-ly-review.md`, `so-do/`, `de-xuat-tong-the.md`, `thiet-ke-gd3.md` | Lịch sử thiết kế, review | đọc tham khảo |
+| `03-app/docs/lich-su-thiet-ke/`, `03-app/so-do/` | Lịch sử thiết kế, review | đọc tham khảo |
 
 ## 2. Checkpoint (file mô hình)
 - **Không có trong repo** (GitHub chặn file > 100 MB và mô hình không công khai).

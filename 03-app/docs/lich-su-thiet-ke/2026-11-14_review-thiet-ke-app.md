@@ -1,6 +1,6 @@
 # REVIEW CHÉO — THIẾT KẾ APP ĐATN (GĐ1–3)
-> Người review: session Claude độc lập (không viết thiết kế), 14/11/2026, theo `03-app/prompt-review-cheo.md`.
-> Phạm vi đã đọc: `CLAUDE.md`, `00-quan-ly/de-cuong.md`, `03-app/tong-hop-thao-luan-app.md`, `03-app/de-xuat-tong-the.md`, `03-app/thiet-ke-gd3.md`, 8 hình `03-app/so-do/`, log trong `02-thuc-nghiem/results/`, code `02-thuc-nghiem/code/fr/`, `02-thuc-nghiem/eval-test/`.
+> Người review: session Claude độc lập (không viết thiết kế), 14/11/2026, theo `03-app/docs/lich-su-thiet-ke/prompt-review-cheo.md`.
+> Phạm vi đã đọc: `CLAUDE.md`, `00-quan-ly/de-cuong.md`, `03-app/docs/lich-su-thiet-ke/tong-hop-thao-luan-app.md`, `03-app/docs/lich-su-thiet-ke/de-xuat-tong-the.md`, `03-app/docs/lich-su-thiet-ke/thiet-ke-gd3.md`, 8 hình `03-app/so-do/`, log trong `02-thuc-nghiem/results/`, code `02-thuc-nghiem/code/fr/`, `02-thuc-nghiem/eval-test/`.
 > Chỉ đọc. Không sửa file thiết kế, không ghi vào `02-thuc-nghiem/`. Script đọc số chạy từ thư mục tạm ngoài dự án (nội dung ở Phụ lục).
 > Phần pháp lý là tóm tắt để tham khảo, người review không phải luật sư.
 

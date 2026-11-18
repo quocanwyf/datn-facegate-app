@@ -1,0 +1,20 @@
+{
+  "folders": [
+    { "name": "FE Web", "path": "03-app/web" },
+    { "name": "FE Kiosk Android", "path": "03-app/kiosk" },
+    { "name": "BE Hub", "path": "03-app/hub" },
+    { "name": "Toàn bộ dự án", "path": "." }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/__pycache__": true,
+      "**/.pytest_cache": true,
+      "**/.venv": true,
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/.expo": true,
+      "**/test-results": true,
+      "**/test-results-*": true
+    }
+  }
+}

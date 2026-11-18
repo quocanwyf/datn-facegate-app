@@ -1,6 +1,6 @@
 # TỔNG HỢP THẢO LUẬN — PHẦN APP (14/11/2026)
-> Session thiết kế app. Tài liệu chi tiết: `03-app/de-xuat-tong-the.md` (GĐ1–2, v2), `03-app/thiet-ke-gd3.md` (GĐ3), `03-app/so-do/` (8 hình).
-> Trạng thái: An đã đồng ý đề xuất v2; thiết kế GĐ3 **chờ duyệt** + **chờ review chéo** (prompt: `03-app/prompt-review-cheo.md`).
+> Session thiết kế app. Tài liệu chi tiết: `03-app/docs/lich-su-thiet-ke/de-xuat-tong-the.md` (GĐ1–2, v2), `03-app/docs/lich-su-thiet-ke/thiet-ke-gd3.md` (GĐ3), `03-app/so-do/` (8 hình).
+> Trạng thái: An đã đồng ý đề xuất v2; thiết kế GĐ3 **chờ duyệt** + **chờ review chéo** (prompt: `03-app/docs/lich-su-thiet-ke/prompt-review-cheo.md`).
 
 ## A. Đã chốt
 | # | Quyết định | Lý do / nguồn |
@@ -38,6 +38,6 @@
 
 ## D. Việc tiếp theo
 1. An duyệt mục B.
-2. Chạy review chéo bằng `03-app/prompt-review-cheo.md` → báo cáo ở `03-app/review/`.
+2. Chạy review chéo bằng `03-app/docs/lich-su-thiet-ke/prompt-review-cheo.md` → báo cáo ở `03-app/review/`.
 3. Sửa theo review → GĐ4: đặc tả `03-app/dac-ta-app.md` (API chi tiết, cấu trúc monorepo, tiêu chí nghiệm thu M0–M7).
 4. An báo GVHD việc thêm chống giả mạo như thành phần ứng dụng; cập nhật `00-quan-ly/nhat-ky.md`.

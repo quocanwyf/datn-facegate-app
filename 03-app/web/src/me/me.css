@@ -51,3 +51,84 @@
 .me-request-heading { display:flex; gap:8px; flex-wrap:wrap; justify-content:space-between; margin-bottom:12px; }
 .me-privacy { margin:20px 0; padding:14px; border-radius:12px; background:var(--c-surface-muted); font-size:13px; }
 @media(max-width:480px) { .me-review-sheet.ant-modal { top:auto; bottom:0; position:fixed; margin:0; max-width:100%; width:100%!important; padding-bottom:0; } .me-review-sheet .ant-modal-content { border-radius:20px 20px 0 0; padding-bottom:calc(24px + env(safe-area-inset-bottom)); } }
+
+@media (min-width: 768px) {
+  .me-shell { max-width: 960px; }
+  .me-content { padding: 28px 32px 104px; }
+  .me-header { padding-inline: 32px; }
+  .me-bottom { width: min(100%, 960px); }
+  .me-bottom a { font-size: 13px; }
+}
+
+@media (min-width: 1024px) {
+  .me-shell {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-rows: 72px 1fr;
+    grid-template-areas: "header header" "navigation content";
+    max-width: 1280px;
+  }
+  .me-header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 72px;
+  }
+  .me-header h1 { font-size: 22px; }
+  .me-bottom {
+    grid-area: navigation;
+    position: sticky;
+    top: 96px;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    align-self: start;
+    flex-direction: column;
+    gap: 6px;
+    width: auto;
+    height: auto;
+    margin: 28px 0 28px 24px;
+    padding: 8px;
+    border: 1px solid var(--c-border);
+    border-radius: 16px;
+  }
+  .me-bottom a {
+    flex: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  .me-content {
+    grid-area: content;
+    align-self: start;
+    min-width: 0;
+    width: 100%;
+    max-width: 860px;
+    margin-inline: auto;
+    padding: 28px 32px 40px;
+  }
+  .me-content:has(> .me-shift),
+  .me-content:has(> .me-month-picker) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 24px;
+    max-width: none;
+  }
+  .me-content:has(> .me-shift) > :not(.me-card),
+  .me-content:has(> .me-month-picker) > :not(.me-card):not(.me-kpis) {
+    grid-column: 1 / -1;
+  }
+  .me-content:has(> .me-month-picker) {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  }
+  .me-content:has(> .me-month-picker) > .me-kpis { margin-top: 16px; }
+  .me-card { min-width: 0; padding: 24px; }
+  .me-calendar a { min-height: 56px; }
+  .me-month-picker { max-width: 440px; }
+}

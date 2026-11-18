@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { CameraFeed } from '../camera/CameraFeed';
@@ -8,20 +8,39 @@ import { fonts, hint, theme, time } from '../theme';
 import type { KioskSocket } from '../ws/KioskSocket';
 import type { Config, FrameMode, FrameState, Progress } from '../ws/protocol';
 const poses = ['Nhìn thẳng', 'Hơi quay sang trái', 'Hơi quay sang phải', 'Hơi ngẩng đầu', 'Hơi cúi đầu'];
-const reasons: Record<string, string> = { NO_FACE: 'Không thấy khuôn mặt', MULTI_FACE: 'Có nhiều khuôn mặt trong khung', TOO_SMALL: 'Khuôn mặt quá nhỏ — lại gần hơn', POSE: 'Nghiêng quá nhiều — nhìn theo hướng dẫn', SPOOF: 'Không xác thực được khuôn mặt thật', TOO_SIMILAR: 'Tư thế gần giống mẫu trước — đổi hướng một chút' };
+const reasons: Record<string, string> = { NO_FACE: 'Không thấy khuôn mặt', MULTI_FACE: 'Có nhiều khuôn mặt trong khung', TOO_SMALL: 'Khuôn mặt quá nhỏ — lại gần hơn', POSE: 'Tư thế chưa đúng. Làm theo hướng dẫn rồi chụp lại.', SPOOF: 'Không xác thực được khuôn mặt thật', TOO_SIMILAR: 'Tư thế gần giống mẫu trước — đổi hướng một chút' };
 export function K02Scan({ socket, config, connected, state, onEnroll, onSent, enroll, progress, error, onCancel, onRetry }: { socket: KioskSocket; config: Config; connected: boolean; state?: FrameState; onEnroll: () => void; onSent: (at: number) => void; enroll?: Extract<FrameMode, { mode: 'enroll' }>; progress?: Progress; error?: string; onCancel: () => void; onRetry: () => void }) {
   const insets = useSafeAreaInsets();
+  const [capture, setCapture] = useState<{ progress?: Progress; frameState?: FrameState; sent: boolean }>();
+  const pending = !!enroll && !!capture && capture.progress === progress && capture.frameState === state;
+  const handleSent = useCallback((at: number) => {
+    setCapture(request => request && { ...request, sent: true });
+    onSent(at);
+  }, [onSent]);
+  useEffect(() => {
+    if (!enroll || !connected || error) setCapture(undefined);
+  }, [enroll?.enroll_session_id, connected, error]);
   const [now, setNow] = useState(Date.now()); const [serverOffset, setServerOffset] = useState(0);
   useEffect(() => { const offset = Date.parse(config.server_time) - Date.now(); setServerOffset(Number.isFinite(offset) ? offset : 0); }, [config.server_time]);
   useEffect(() => { const timer = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(timer); }, []);
   const accepted = progress?.accepted ?? 0;
-  const text = enroll ? progress?.reason ? reasons[progress.reason] : poses[Math.min(accepted, 4)] : hint(state?.state ?? 'NO_FACE');
+  const pose = poses[Math.min(accepted, 4)];
+  const text = enroll ? pose : hint(state?.state ?? 'NO_FACE');
   return <View style={{ flex: 1, backgroundColor: theme.color.inverse }}>
-    <CameraFeed socket={socket} mode={enroll ?? { mode: 'recognize' }} active={connected && !error} bbox={state?.bbox} onSent={onSent} />
+    <CameraFeed socket={socket} mode={enroll ?? { mode: 'recognize' }} active={connected && !error}
+      captureEnabled={!enroll || (pending && !capture.sent)} bbox={state?.bbox} onSent={enroll ? handleSent : onSent} />
     <ScanFrame tracking={enroll ? accepted > 0 : ['CHECKING', 'HOLD_STILL'].includes(state?.state ?? '')} checking={state?.state === 'CHECKING'} />
     <View style={local.clock}><Text style={local.time}>{time(new Date(now + serverOffset).toISOString())}</Text><Text style={local.gate}>{config.gate.name}</Text><View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}><View style={[local.connection, { backgroundColor: connected ? theme.color.connOk : theme.color.accent }]} /><Text style={local.small}>{connected ? 'Đã kết nối Hub' : 'Đang nối lại…'}</Text></View></View>
     {enroll ? <><View style={local.cancel}><PillButton title="Huỷ" secondary onPress={onCancel} /></View><View style={local.progress}><ProgressDots accepted={accepted} /></View></> : <Pressable accessibilityRole="button" accessibilityLabel="Giữ 3 giây để mở chế độ đăng ký" testID="enroll-entry" onLongPress={onEnroll} delayLongPress={3000} style={local.secret} />}
-    <View style={local.hint}><Text style={local.hintText}>{text ?? 'Nhìn trực tiếp vào camera'}</Text>{error ? <View style={[styles.card, { padding: 16 }]}><ErrorNotice message={error} /><PillButton title="Thử đăng ký lại" onPress={onRetry} /></View> : null}</View>
+    <View style={local.hint}>
+      <Text style={local.hintText}>{text ?? 'Nhìn trực tiếp vào camera'}</Text>
+      {error ? <View style={[styles.card, { padding: 16 }]}><ErrorNotice message={error} /><PillButton title="Thử đăng ký lại" onPress={onRetry} /></View> : enroll ? <>
+        {progress?.reason && !pending ? <Text style={local.small}>{reasons[progress.reason]}</Text> : null}
+        {state?.state === 'BUSY' && !pending ? <Text style={local.small}>Hub đang bận. Hãy chụp lại mẫu này.</Text> : null}
+        <PillButton title={`Chụp mẫu ${Math.min(accepted + 1, 5)}/5`} busy={pending}
+          disabled={!connected || pending} onPress={() => setCapture({ progress, frameState: state, sent: false })} />
+      </> : null}
+    </View>
     <View style={[local.research, { bottom: 20 + insets.bottom, right: 24 + insets.right }]}><ResearchBanner text={config.research_banner} /></View>
   </View>;
 }
