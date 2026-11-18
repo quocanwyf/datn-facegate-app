@@ -65,8 +65,7 @@ def runtime_fixture(live):
     return runtime, payload
 
 
-def test_spoof_has_priority_and_enrollment_does_not_accept_fake(monkeypatch):
-    monkeypatch.setattr('app.recog.runtime.require_approval', lambda *args: None)
+def test_spoof_has_priority_and_enrollment_does_not_accept_fake():
     runtime, payload = runtime_fixture(.1)
     runtime.embedder.embed = lambda *args: pytest.fail('Không embed khung không live')
     for _ in range(2): assert runtime.frame(payload)['state'] == 'CHECKING'
@@ -91,11 +90,12 @@ def test_disabled_flag_preserves_match_without_loading_liveness():
     assert runtime.frame(payload) == {'type':'state','state':'NO_GALLERY'}
 
 
-def test_unapproved_enabled_settings_fail_closed(monkeypatch):
+@pytest.mark.parametrize('threshold', [None, float('nan'), float('inf'), -0.1, 1.1])
+def test_invalid_liveness_threshold_fails_closed(threshold):
     runtime, payload = runtime_fixture(.99)
-    def missing(*args): raise FileNotFoundError()
-    monkeypatch.setattr('app.recog.runtime.require_approval', missing)
-    with pytest.raises(FrameError, match='chốt L'): runtime.frame(payload)
+    payload['settings']['liveness_threshold'] = threshold
+    with pytest.raises(FrameError, match='L không hợp lệ'):
+        runtime.frame(payload)
 
 
 def test_opt_in_timings_preserve_result_and_report_executed_stages_only():

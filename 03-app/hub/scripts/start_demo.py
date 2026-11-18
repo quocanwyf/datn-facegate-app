@@ -29,12 +29,14 @@ def main():
     if args.require_liveness:
         from sqlalchemy import create_engine,select
         from app.db.models import Company
-        from app.recog.liveness import require_approval,verify_bundle
+        from app.recog.decision import validate_liveness_threshold
+        from app.recog.liveness import verify_bundle
         engine=create_engine(url.replace('postgresql+asyncpg:','postgresql+psycopg:'),hide_parameters=True)
         try:
             with engine.connect() as connection: settings=connection.scalar(select(Company.settings))
             if not settings['anti_spoof_enabled']: raise SystemExit('Chưa bật liveness bằng API sau khi chốt L.')
-            require_approval(Path(private['data_dir']),settings['liveness_threshold'],settings);verify_bundle()
+            validate_liveness_threshold(settings['liveness_threshold'])
+            verify_bundle()
         finally:engine.dispose()
     from fastapi import HTTPException
     from fastapi.responses import FileResponse

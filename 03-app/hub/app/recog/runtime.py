@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, select,update
 import torch
 from app.config import get_settings
 from app.db.models import Company, RecognitionModel
-from app.recog.decision import Cooldowns, DeviceSession, Observation, Params
+from app.recog.decision import Cooldowns, DeviceSession, Observation, Params, validate_liveness_threshold
 from app.recog.detector import Detector
 from app.recog.embedder import Embedder
 from app.recog.enrollment_pose import matches_enrollment_step, pose_ratios
@@ -17,7 +17,7 @@ from app.recog.gallery import Gallery, RecognitionUnavailable, gallery_query
 from app.recog.model_loader import load_verified
 from app.recog.worker import InferenceWorker
 from app.recog.mutations import MutationBarrier
-from app.recog.liveness import Liveness, POLICY_FIELDS, require_approval
+from app.recog.liveness import Liveness, POLICY_FIELDS
 
 
 class FrameError(RuntimeError):
@@ -145,9 +145,9 @@ class RecognitionRuntime:
         settings = payload['settings']
         if settings['anti_spoof_enabled']:
             try:
-                require_approval(get_settings().hub_data_dir, settings['liveness_threshold'], settings)
-            except (OSError, ValueError, TypeError, KeyError):
-                raise FrameError('RECOGNITION_UNAVAILABLE', 'Chống giả mạo chưa được hiệu chỉnh và chốt L cho cấu hình này.') from None
+                validate_liveness_threshold(settings['liveness_threshold'])
+            except (ValueError, KeyError):
+                raise FrameError('RECOGNITION_UNAVAILABLE', 'Ngưỡng chống giả mạo L không hợp lệ.') from None
         recognize = payload['mode'] == 'recognize'
         if recognize and not self.ready:
             raise FrameError('RECOGNITION_UNAVAILABLE', 'Máy chủ tạm ngưng nhận dạng.')

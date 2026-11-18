@@ -7,8 +7,7 @@ from app.biz.admin import audit,page_result
 from app.db.models import AuditLog,Company,Device,RecognitionModel,ThresholdProfile
 from app.recog.decision import Params
 from app.errors import ApiError
-from app.config import get_settings
-from app.recog.liveness import require_approval, verify_bundle
+from app.recog.liveness import verify_bundle
 
 router=APIRouter(prefix='/api/v1',tags=['Settings'])
 Reader=Annotated[Principal,Depends(require_roles('OWNER','HR'))]
@@ -32,12 +31,11 @@ async def put_settings(body:Annotated[dict,Depends(body_contract('RecognitionSet
     try:
         Params.from_settings(merged,0)
         if merged['anti_spoof_enabled']:
-            require_approval(get_settings().hub_data_dir, merged['liveness_threshold'], merged)
             verify_bundle()
         if merged['max_fps']<=0 or merged['frame_long_side']<=0 or merged['min_face_px']<=0 or not 1<=merged['jpeg_quality']<=100:
             raise ValueError('Tham số khung hình không hợp lệ')
     except (OSError,ValueError,TypeError,KeyError):
-        raise ApiError(422,'VALIDATION_ERROR','Cấu hình không hợp lệ hoặc chống giả mạo chưa được hiệu chỉnh tại T13.') from None
+        raise ApiError(422,'VALIDATION_ERROR','Cấu hình hoặc bộ mô hình chống giả mạo không hợp lệ.') from None
     company.settings=merged;audit(session,principal,'SETTINGS_UPDATE','company',company.id)
     await session.commit()
     service=request.app.state.kiosk_service

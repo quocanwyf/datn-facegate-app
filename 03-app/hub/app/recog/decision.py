@@ -3,6 +3,11 @@ from dataclasses import dataclass, field
 import math
 
 
+def validate_liveness_threshold(value: float | None):
+    if type(value) not in (int, float) or not 0 <= value <= 1:
+        raise ValueError('Bật chống giả mạo cần L trong [0,1]')
+
+
 @dataclass(frozen=True)
 class Params:
     window_size: int
@@ -28,8 +33,8 @@ class Params:
         if not 0 <= self.iou_reset <= 1 or any(not math.isfinite(value) or value < 0 for value in
                 (self.lost_face_sec, self.result_display_sec, self.cooldown_employee_sec, self.cooldown_alert_sec)):
             raise ValueError('Tham số theo dõi/cooldown không hợp lệ')
-        if self.anti_spoof_enabled and (self.liveness_threshold is None or not 0 <= self.liveness_threshold <= 1):
-            raise ValueError('Bật chống giả mạo cần L trong [0,1]')
+        if self.anti_spoof_enabled:
+            validate_liveness_threshold(self.liveness_threshold)
 
     @classmethod
     def from_settings(cls, settings, tau):
